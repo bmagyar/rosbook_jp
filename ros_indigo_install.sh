@@ -38,7 +38,7 @@ if [ ! -e /etc/apt/sources.list.d/ros-latest.list ]; then
 fi
 
 echo "[Set up your ROS keys]"
-sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
+wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
 
 echo "[Update & upgrade the package]"
 sudo apt-get update -qq
