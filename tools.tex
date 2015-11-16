@@ -1,0 +1,156 @@
+% -*- root: main.tex -*-
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%-------------------------------------------------------------------------------
+\chapterimage{chapter_head_1.pdf} 
+
+%-------------------------------------------------------------------------------
+\chapter{ROS 도구}
+
+%-------------------------------------------------------------------------------
+\section{ROS 도구 (RVIZ)}\index{ROS 도구 (RVIZ)}
+
+%-------------------------------------------------------------------------------
+\subsection{도구}\index{도구}
+
+%-------------------------------------------------------------------------------
+
+\begin{enumerate}
+\item The first item
+\item The second item
+\item The third item
+\end{enumerate}
+
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item fifth element
+\end{enumerate}
+
+\begin{enumerate}
+  \item The first item
+  \begin{enumerate}
+    \item Nested item 1
+    \item Nested item 2
+  \end{enumerate}
+  \item The second item
+  \item The third etc \ldots
+\end{enumerate}
+
+
+\begin{itemize}[leftmargin=*]
+\item The first item
+\item The second item
+\item The third item
+\end{itemize}
+
+\begin{corollary}[Corollary name]
+asdfasdfasdfasdfasdf
+\end{corollary}
+
+\begin{description}
+\item[Name] Description
+\item[Word] Definition
+\item[Comment] Elaboration
+\end{description}
+
+
+\begin{description}
+  \item[First] \hfill \\
+  The first item
+  \item[Second] \hfill \\
+  The second item
+  \item[Third] \hfill \\
+  The third etc \ldots
+\end{description}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\toprule
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\midrule
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\bottomrule
+\end{tabular}
+\caption{Table caption}
+\end{table}
+
+%------------------------------------------------
+
+\section{Figure}\index{Figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{picture}
+\caption{caption}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\columnwidth]{picture}
+\caption{caption}
+\end{figure}
+
+
+
+\vspace{\baselineskip}
+
+\setcounter{num}{0}
+
+\vspace{\baselineskip}
+\noindent
+\stepcounter{num}
+\thenum
+
+
+\setcounter{num}{0}
+\vspace{\baselineskip}
+\noindent
+\stepcounter{num}\circled{\thenum} USB 카메라를 컴퓨터에 연결한다.
+\stepcounter{num}\circled{\thenum} 카메라 정보를 확인한다.
+
+
+→←↑↓
+
+\textcolor{green}{녹색}
+{\color{limegreen}녹색}
+\textcolor{orange}{주황색}
+\textcolor{red}{적색}
+
+
+\vspace{\baselineskip}
+\begin{lstlisting}[language=ROS]
+$ roscore
+\end{lstlisting}
+
+
+
+\cite{book_key}
+
+\textbf{섹션~\ref{sec:RosTerm}~\nameref{sec:RosTerm}(pp.\pageref{sec:RosTerm})}
+
+\textasciitilde
+
+\begin{center} 
+ROS은 \textbf{메타운영체제(Meta-Operating System)}이다.
+\end{center}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
