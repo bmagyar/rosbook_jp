@@ -34,13 +34,15 @@
 % \usepackage[english]{babel}
 \renewcommand{\figurename}{図}
 
-%-------------------------------------------------------------------------------
-
-\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
-\input{code} % parameters to insert source code
-
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
 \usepackage[T1]{fontenc} % this encoding has all the printable ASCII characters
 \usepackage[multiple]{footmisc} % for multiple footnote 1,2,3
+
+%-------------------------------------------------------------------------------
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+\input{code} % parameters to insert source code
 
 \begin{document}
 
@@ -62,7 +64,7 @@ ROS入門\\% Book title
 {\Huge \textit{(Robot Operating System)}}\par
 \vspace*{6cm}
 {\large Yoonseok Pyo, Ryo Kurazume, Yuta Watanabe}\\
-{\large Laboratory For Intelligent Robots & Vision System\\Kyushu University in Japan}\par
+{\large Laboratory For Intelligent Robots \& Vision System\\Kyushu University in Japan}\par
 \endgroup
 
 %-------------------------------------------------------------------------------
@@ -132,8 +134,8 @@ License: CC BY-NC-SA 3.0\\
 
 \setlength\parindent{1em}
 \input{chapter1}
-% \input{chapter2}
-% \input{chapter3}
+\input{chapter2}
+\input{chapter3}
 % \input{chapter4}
 % \input{chapter5}
 % \input{chapter6}
