@@ -1,4 +1,4 @@
-% -*- root: rosbook_jp.tex -*-
+% !TEX root = ./rosbook_jp.tex
 %-------------------------------------------------------------------------------
 \chapterimage{chapter_head_1.pdf}
 
@@ -18,18 +18,18 @@
 
 ロボット開発も、携帯電話やスマートフォンによく似た歴史を辿っている。従来、ロボット用アプリ開発者は、ロボットのハードウェア構成を強く意識した専用のソフトウェアを開発してきた。しかし、スマートフォンと同様に、汎用的なロボットオペレーティングシステム、あるいはソフトウェアプラットフォームが開発されれば、アプリ開発者はそこで動作するアプリケーション開発に資源を集中できる。ロボットソフトウェアプラットフォームは、スマートフォンの成長における初期の開発/発展段階にあり、少々乱立気味ともいえるほど多くの種類が発表されている。表1.1 に、特に広く利用され、開発が盛んなロボットソフトウェアプラットフォームと、その開発母体を示す。
 
-表1.1　ロボットソフトウェアプラットフォームの例
+ロボットソフトウェアプラットフォームの例
 
 \begin{itemize}
-\item ERSP\footnote{\url{http://www.evolution.com/products/ersp/}}，Evolution Robotics
-\item MSRDS\footnote{\url{http://msdn.microsoft.com/en-us/robotics/default.aspx}}，Microsoft
-\item MARIE\footnote{\url{http://marie.sourceforge.net/}}, LABORIUS
-\item URBI\footnote{\url{http://www.urbiforge.org/}}, Gostai\footnote{\url{http://www.gostai.com/}}
-\item ROS\footnote{\url{http://www.ros.org/}}，OSRF(Open Source Robotics Foundation)\footnote{\url{http://www.osrfoundation.org/}} (米国)
-\item OpenRTM\footnote{\url{http://www.openrtm.org}}，産業技術総合研究所 (AIST, 日本)
-\item OROCOS\footnote{\url{http://www.orocos.org/}}，KU Leuven、LASS、KTHなどのヨーロッパ連合（ヨーロッパ）
-\item OPRoS\footnote{\url{http://www.opros.or.kr/}}，ETRI、KIST、KITECH、江原大学（韓国）
-\item NAOqi\footnote{\url{https://www.aldebaran.com/ja/naoqi-os}}，ソフトバンク（日本）、Aldebaran（フランス）
+\item ERSP\footnote{\url{http://www.evolution.com/products/ersp/}}、Evolution Robotics
+\item MSRDS\footnote{\url{http://msdn.microsoft.com/en-us/robotics/default.aspx}}、Microsoft
+\item MARIE\footnote{\url{http://marie.sourceforge.net/}}、LABORIUS
+\item URBI\footnote{\url{http://www.urbiforge.org/}}、Gostai\footnote{\url{http://www.gostai.com/}}
+\item ROS\footnote{\url{http://www.ros.org/}}、Open Source Robotics Foundation\footnote{\url{http://www.osrfoundation.org/}} 、(OSRF、米国)
+\item OpenRTM\footnote{\url{http://www.openrtm.org}}、産業技術総合研究所 (AIST、 日本)
+\item OROCOS\footnote{\url{http://www.orocos.org/}}、KU Leuven、LASS、KTHなどのヨーロッパ連合（ヨーロッパ）
+\item OPRoS\footnote{\url{http://www.opros.or.kr/}}、ETRI、KIST、KITECH、江原大学（韓国）
+\item NAOqi\footnote{\url{https://www.aldebaran.com/ja/naoqi-os}}、ソフトバンク（日本）、Aldebaran（フランス）
 \end{itemize}
 
 このように、これまでに様々なロボットソフトウェアプラットフォームが開発されているが、その優劣を一概に論じることは難しい。なぜなら、使いやすいコンポーネントの追加機能や通信機能、可視化、シミュレータ、リアルタイム性など、各プラットフォームがそれぞれユニークな機能を提供しているからである。しかし、現在のパーソナルコンピュータのオペレーティングシステム（OS）のように、ロボットソフトウェアプラットフォームも、いずれは淘汰され、統合されていくと予想される。
@@ -61,7 +61,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_01.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_01.png}
   \caption{メタ・オペレーティングシステムとしてのROS}
 \end{figure}
 
@@ -70,7 +70,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_02.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_02.png}
   \caption{異なるオペレーティングシステムやハードウェア上のプロセスに対する通信}
 \end{figure}
 
@@ -82,7 +82,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_03.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_03.png}
   \caption{ROS生態系}
 \end{figure}
 
@@ -95,7 +95,7 @@ ROSの技術的な詳細について述べる前に、ROSの歴史を振り返�
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_04.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_04.png}
   \caption{ROSロゴ（http://wiki.ros.org/）}
 \end{figure}
 
@@ -108,30 +108,32 @@ ROSは、フリーソフトウェアの代表的なライセンス体系であ�
 Willow GarageがSwitchyardをROS（Robot Operating System）という名前で引き継ぎ、その後7回のバージョンアップを経て、2012年12月にROS Groovy Galapagosバージョンをリリースした。
 その後、2013年にWillow Garageが商業サービスロボット市場に参入し、ROSの開発はロボット向けのオープンソースソフトウエア財団であるOSRF（Open Source Robotics Foundation）注31に移譲された。OSRFは、2014年7月にROSの9番目のバージョンアップROS Indigo Iglooバージョンをリリースした。各リリースは図1-9に示すように亀をモチーフにしたシンボルで表されている。
 
-表1-? ROSのリリース注32とコンファレンス注33
-■2015.05.30：Jade Turtleリリース
-■2014.09.12：ROSCon2014カンファレンス開催
-■2014.07.22：Indigo Iglooリリース
-■2014.06.06：ROS Kong 2014開催
-■2013.09.04：Hydro Medusaリリース
-■2013.05.11：ROSCon2013カンファレンス開催
-■2013.02.11：Open Source Robotics Foundationが開発、管理を務める
-■2012.12.31：Groovy Galapagosリリース
-■2012.05.19：ROSCon2012カンファレンス開催
-■2012.04.23：Fuerteリリース
-■2011.08.30：Electric Emysリリース
-■2011.03.02：Diamondbackリリース
-■2010.08.03：C Turtleリリース
-■2010.03.01：Box Turtleリリース
-■2010.01.22：ROS 1.0開発
-■2007.11.01：Willow Garageが「ROS」という名前で開発を開始
-■2007.05.01：Switchyard、Morgan Quigley、Stanford AI LAB、スタンフォード大学
-■2000：Player/Stage Project、Brian Gerkey、Richard Vaughan、Andrew Howard、南カリフォルニア大学
+ROSのリリース注32とコンファレンス注33
+\begin{itemize}
+\item  2015/05/30: Jade Turtleリリース
+\item  2014/09/12: ROSCon2014カンファレンス開催
+\item  2014/07/22: Indigo Iglooリリース
+\item  2014/06/06: ROS Kong 2014開催
+\item  2013/09/04: Hydro Medusaリリース
+\item  2013/05/11: ROSCon2013カンファレンス開催
+\item  2013/02/11: Open Source Robotics Foundationが開発、管理を務める
+\item  2012/12/31: Groovy Galapagosリリース
+\item  2012/05/19: ROSCon2012カンファレンス開催
+\item  2012/04/23: Fuerteリリース
+\item  2011/08/30: Electric Emysリリース
+\item  2011/03/02: Diamondbackリリース
+\item  2010/08/03: C Turtleリリース
+\item  2010/03/01: Box Turtleリリース
+\item  2010/01/22: ROS 1/0開発
+\item  2007/11/01: Willow Garageが「ROS」という名前で開発を開始
+\item  2007/05/01: Switchyard、Morgan Quigley、Stanford AI LAB、スタンフォード大学
+\item  2000: Player/Stage Project、Brian Gerkey、Richard Vaughan、Andrew Howard、南カリフォルニア大学
+\end{itemize}
 
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_05.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_05.png}
   \caption{ROSのバージョン（http://wiki.ros.org/）}
 \end{figure}
 
@@ -143,7 +145,7 @@ ROSはこれまでに、ROS 1.0、Box Turtle、C Turtle、Diamondback、Electric
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_06.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_06.png}
   \caption{各バージョンの亀のアイコン}
 \end{figure}
 
@@ -155,7 +157,7 @@ ROSのサポートは、一般的なUbuntuバージョンに合わせたもの�
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_07.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_07.png}
   \caption{Ubuntu向けROSのリリースサイクル}
 \end{figure}
 
@@ -171,7 +173,7 @@ http://ja.wikipedia.org/wiki/Ubuntu
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_08.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_08.png}
   \caption{Indigo Iglooのバージョンのポスターとアイコン}
 \end{figure}
 
@@ -186,13 +188,13 @@ ROSの各バージョンにおけるUbuntuの対応状況に関する情報は�
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_09.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_09.png}
   \caption{Indigo Iglooのバージョンの移植状況}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter1/pic_01_10.png}
+  \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_10.png}
   \caption{Indigo Iglooのバージョンの移植状況の詳細}
 \end{figure}
 
@@ -201,63 +203,66 @@ ROSの各バージョンにおけるUbuntuの対応状況に関する情報は�
 ⑤ 番号：1744、1744、1692などは、それぞれbuilding, shadow-fixed, ros/publicで使えるパッケージの数を意味する。
 ROSの最新バージョンへの移行を考える際、まず自分が使用したいパッケージがROSやUbuntuのバージョンに対応済みかを確認する必要がある。ROSの最新バージョンでは、多くのパッケージが「移植中」と表示されるが、使用したいパッケージ、および重要なパッケージが対応済みであれば最新バージョンに移行しても構わない。一方、もし使用したいパッケージが最新バージョンに対応していない場合には、移行は見合わせるべきである。
 
-表1-? Ubuntuのバージョン
-■Ubuntu 15.04 Vivid Vervet
-■Ubuntu 14.10 Utopic Unicorn
-■Ubuntu 14.04 Trusty Tahr（LTS）
-■Ubuntu 13.10 Saucy Salamander
-■Ubuntu 13.04 Raring Ringtail
-■Ubuntu 12.10 Quantal Quetzal
-■Ubuntu 12.04 Precise Pangolin（LTS）
-■Ubuntu 11.10 Oneiric Ocelot
-■Ubuntu 11.04 Natty Narwhal
-■Ubuntu 10.10 Maverick Meerkat
-■Ubuntu 10.04 Lucid Lynx（LTS）
+\begin{itemize}
+\item Ubuntu 15.04: Vivid Vervet
+\item Ubuntu 14.10: Utopic Unicorn
+\item Ubuntu 14.04: Trusty Tahr（LTS）
+\item Ubuntu 13.10: Saucy Salamander
+\item Ubuntu 13.04: Raring Ringtail
+\item Ubuntu 12.10: Quantal Quetzal
+\item Ubuntu 12.04: Precise Pangolin（LTS）
+\item Ubuntu 11.10: Oneiric Ocelot
+\item Ubuntu 11.04: Natty Narwhal
+\item Ubuntu 10.10: Maverick Meerkat
+\item Ubuntu 10.04: Lucid Lynx（LTS）
+\end{itemize}
 
 本書では、2016年に次のUbuntu LTSバージョンがリリースされるまでは、以下の組み合わせを推奨する。
 
-■オペレーティングシステム：Ubuntu 14.04 Trusty Tahr（LTS）
-■ROSのバージョン：ROS Indigo Igloo
+\begin{itemize}
+\item オペレーティングシステム：Ubuntu 14.04 Trusty Tahr（LTS）
+\item ROSのバージョン：ROS Indigo Igloo
+\end{itemize}
 
 
-注1 http://www.segye.com/content/html/2013/04/04/20130404004829.html
-注2 http://www.evolution.com/products/ersp/
-注3 http://msdn.microsoft.com/en-us/robotics/default.aspx
-注4 http://marie.sourceforge.net/
-注5 http://www.urbiforge.org/
-注6 http://www.gostai.com/
-注7 http://www.ros.org/
-注8 http://www.osrfoundation.org/
-注9 http://www.openrtm.org
-注10 http://www.orocos.org/
-注11 http://www.opros.or.kr/
-注12 https://www.aldebaran.com/ja/naoqi-os
-注13 http://wiki.ros.org/ROS/Introduction
-注14 http://roscon.ros.org/
-注15 http://wiki.ros.org/Metrics
-注16 http://www.ros.org/browse/list.php
-注17 http://www.ros.org/news/2012/12/ros-five-years.html
-注18 http://ai.stanford.edu/
-注19 http://stair.stanford.edu/
-注20 http://www.osrfoundation.org/morgan-quigley.html
-注21 http://playerstage.sourceforge.net/
-注22 http://www.osrfoundation.org/brian-gerkey.html
-注23 http://opencv.org/
-注24 http://pointclouds.org/
-注25 http://opensource.org/licenses/BSD-3-Clause
-注26 http://rosindustrial.org/
-注27 http://opensource-robotics.tokyo.jp/
-注28 https://groups.google.com/forum/#!forum/ros-japan-users
-注29 http://www.willowgarage.com/pages/pr2/overview
-注30 http://turtlebot.com/
-注31 http://osrfoundation.org/
-注32 http://wiki.ros.org/Distributions
-注33 http://roscon.ros.org/
-注34 http://wiki.ros.org/turtlesim
-注35 http://www.ubuntu.com/
-注36 http://wiki.ros.org/Distributions/Timeline
-注37 http://wiki.ros.org/indigo/
-注38 http://wiki.ros.org/catkin
-注39 https://wiki.ubuntu.com/Releases
+% 注1 http://www.segye.com/content/html/2013/04/04/20130404004829.html
+% 注2 http://www.evolution.com/products/ersp/
+% 注3 http://msdn.microsoft.com/en-us/robotics/default.aspx
+% 注4 http://marie.sourceforge.net/
+% 注5 http://www.urbiforge.org/
+% 注6 http://www.gostai.com/
+% 注7 http://www.ros.org/
+% 注8 http://www.osrfoundation.org/
+% 注9 http://www.openrtm.org
+% 注10 http://www.orocos.org/
+% 注11 http://www.opros.or.kr/
+% 注12 https://www.aldebaran.com/ja/naoqi-os
+% 注13 http://wiki.ros.org/ROS/Introduction
+% 注14 http://roscon.ros.org/
+% 注15 http://wiki.ros.org/Metrics
+% 注16 http://www.ros.org/browse/list.php
+% 注17 http://www.ros.org/news/2012/12/ros-five-years.html
+% 注18 http://ai.stanford.edu/
+% 注19 http://stair.stanford.edu/
+% 注20 http://www.osrfoundation.org/morgan-quigley.html
+% 注21 http://playerstage.sourceforge.net/
+% 注22 http://www.osrfoundation.org/brian-gerkey.html
+% 注23 http://opencv.org/
+% 注24 http://pointclouds.org/
+% 注25 http://opensource.org/licenses/BSD-3-Clause
+% 注26 http://rosindustrial.org/
+% 注27 http://opensource-robotics.tokyo.jp/
+% 注28 https://groups.google.com/forum/#!forum/ros-japan-users
+% 注29 http://www.willowgarage.com/pages/pr2/overview
+% 注30 http://turtlebot.com/
+% 注31 http://osrfoundation.org/
+% 注32 http://wiki.ros.org/Distributions
+% 注33 http://roscon.ros.org/
+% 注34 http://wiki.ros.org/turtlesim
+% 注35 http://www.ubuntu.com/
+% 注36 http://wiki.ros.org/Distributions/Timeline
+% 注37 http://wiki.ros.org/indigo/
+% 注38 http://wiki.ros.org/catkin
+% 注39 https://wiki.ubuntu.com/Releases
 
 %-------------------------------------------------------------------------------
