@@ -1,4 +1,4 @@
-rosbook_kr
+rosbook_jp
 ==========
 
 # ROS入門
