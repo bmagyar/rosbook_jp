@@ -1,4 +1,4 @@
-rosbook_kr
+rosbook_jp
 ==========
 
 ROS入門
@@ -12,8 +12,7 @@ PUBLISHED BY IRVS
 このライセンスのコピーを閲覧するには、http://creativecommons.org/licenses/by/4.0/ を訪問して下さい。
 
 This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International
-License. To view a copy of this license, visit http://creativecommons.org/licenses/
-by-nc/4.0/. Unless required by applicable law or agreed to in writing, software distributed un-
+License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/. Unless required by applicable law or agreed to in writing, software distributed un-
 der the License is distributed on an ‘‘ AS IS ’’ BASIS , WITHOUT WARRANTIES OR CONDITIONS
 OF ANY KIND , either express or implied. See the License for the specific language governing
 permissions and limitations under the License.
