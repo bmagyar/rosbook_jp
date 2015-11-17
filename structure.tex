@@ -25,7 +25,7 @@
 \titlecontents{chapter}[1.25cm] % Indentation
 {\addvspace{15pt}\large\sffamily\bfseries} % Spacing and font options for chapters
 {\color{ocre!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Chapter number
-{}  
+{}
 {\color{ocre!60}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
 % Section text styling
 \titlecontents{section}[1.25cm] % Indentation
@@ -40,7 +40,7 @@
 {\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
 {}
 {\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
-[] 
+[]
 
 %-------------------------------------------------------------------------------
 %	MINI TABLE OF CONTENTS IN CHAPTER HEADS
@@ -59,7 +59,7 @@
 {}
 {}
 {}
- 
+
 %-------------------------------------------------------------------------------
 %	PAGE HEADERS
 %-------------------------------------------------------------------------------
@@ -152,21 +152,21 @@
 \makeatother
 
 % Defines the theorem text style for each type of theorem to one of the three styles above
-\newcounter{dummy} 
+\newcounter{dummy}
 \numberwithin{dummy}{section}
 \theoremstyle{ocrenumbox}
 \newtheorem{theoremeT}[dummy]{Theorem}
 \newtheorem{problem}{Problem}[chapter]
 % \newtheorem{exerciseT}{Exercise}[chapter]
-\newtheorem{exerciseT}{참고}
+\newtheorem{exerciseT}{参考}
 \theoremstyle{blacknumex}
 \newtheorem{exampleT}{Example}[chapter]
 \theoremstyle{blacknumbox}
 % \newtheorem{vocabulary}{Vocabulary}[chapter]
 % \newtheorem{definitionT}{Definition}[section]
-\newtheorem{vocabulary}{ROS용어}
-\newtheorem{definitionT}{ROS용어}
-\newtheorem*{definitionT*}{ROS용어}
+\newtheorem{vocabulary}{ROS用語}
+\newtheorem{definitionT}{ROS用語}
+\newtheorem*{definitionT*}{ROS用語}
 % \newtheorem{corollaryT}[dummy]{Corollary}
 \newtheorem{corollaryT}{Tip!}
 \theoremstyle{ocrenum}
@@ -190,7 +190,7 @@ leftmargin=0cm,
 rightmargin=0cm,
 innerbottommargin=5pt]{tBox}
 
-% Exercise box	  
+% Exercise box
 \newmdenv[skipabove=7pt,
 skipbelow=7pt,
 rightline=false,
@@ -205,7 +205,7 @@ innertopmargin=5pt,
 innerbottommargin=5pt,
 leftmargin=0cm,
 rightmargin=0cm,
-linewidth=4pt]{eBox}	
+linewidth=4pt]{eBox}
 
 % Definition box
 \newmdenv[skipabove=7pt,
@@ -221,7 +221,7 @@ innertopmargin=0pt,
 leftmargin=0cm,
 rightmargin=0cm,
 linewidth=4pt,
-innerbottommargin=0pt]{dBox}	
+innerbottommargin=0pt]{dBox}
 
 % Corollary box
 \newmdenv[skipabove=7pt,
@@ -245,8 +245,8 @@ innerbottommargin=5pt]{cBox}
 \newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}
 \newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}
 \newenvironment{definition*}{\begin{dBox}\begin{definitionT*}}{\end{definitionT*}\end{dBox}}
-\newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}		
-\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}	
+\newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}
+\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}
 
 %-------------------------------------------------------------------------------
 %	REMARK ENVIRONMENT
@@ -265,7 +265,7 @@ innerbottommargin=5pt]{cBox}
 %-------------------------------------------------------------------------------
 
 \makeatletter
-\renewcommand{\@seccntformat}[1]{\llap{\textcolor{ocre}{\csname the#1\endcsname}\hspace{1em}}}                    
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{ocre}{\csname the#1\endcsname}\hspace{1em}}}
 \renewcommand{\section}{\@startsection{section}{1}{\z@}
 {-4ex \@plus -1ex \@minus -.4ex}
 {1ex \@plus.2ex }
@@ -277,7 +277,7 @@ innerbottommargin=5pt]{cBox}
 \renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
 {-2ex \@plus -0.1ex \@minus -.2ex}
 {.2ex \@plus.2ex }
-{\normalfont\small\sffamily\bfseries}}                        
+{\normalfont\small\sffamily\bfseries}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
 {-2ex \@plus-.2ex \@minus .2ex}
 {.1ex}
@@ -324,7 +324,7 @@ innerbottommargin=5pt]{cBox}
 \fi
 \fi}
 
-% Unnumbered chapters without mini tableofcontents (could be added though) 
+% Unnumbered chapters without mini tableofcontents (could be added though)
 \def\@makeschapterhead#1{
 \thispagestyle{empty}
 {\centering \normalfont\sffamily
