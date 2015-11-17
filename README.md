@@ -7,7 +7,7 @@ rosbook_kr
 - ISBN 978-4-9908736-0-8
 
 # Related Site
-- Book's official	page:  http://irvs.github.io/ros_tms/
+- Book's official	page:  http://irvs.github.io/rosbook_jp/
 - Github repository: https://github.com/irvs/rosbook_jp
 - Kurazume laboratory's official page: http://robotics.ait.kyushu-u.ac.jp/
 
