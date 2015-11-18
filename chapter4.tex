@@ -1011,7 +1011,7 @@ $ rostopic list
 /turtle1/pose
 \end{lstlisting}
 
-次に、使用しているトピックの中から、記録するトピックとして/turtle1/cmd\_velトピックを指定し、bagの記録を開始する。この際、「-O」のオプションで保存ファイル名を指定できる。下の例ではmsglog.bagに保存する。その後、turtle_teleop_keyノードでキーボードの矢印キーで亀を移動させると、オプションで指定された/turtle1/cmd\_velトピックが記録される。また、<Ctrl>+<C>を押して記録を終了すると、以下のようにmsglog.bagファイルが生成される。
+次に、使用しているトピックの中から、記録するトピックとして/turtle1/cmd\_velトピックを指定し、bagの記録を開始する。この際、「-O」のオプションで保存ファイル名を指定できる。下の例ではmsglog.bagに保存する。その後、turtle\_teleop\_keyノードでキーボードの矢印キーで亀を移動させると、オプションで指定された/turtle1/cmd\_velトピックが記録される。また、<Ctrl>+<C>を押して記録を終了すると、以下のようにmsglog.bagファイルが生成される。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag record -O msglog.bag /turtle1/cmd_vel
