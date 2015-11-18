@@ -1,4 +1,4 @@
-% -*- root: main.tex -*-
+% !TEX root = ./rosbook_jp.tex
 %-------------------------------------------------------------------------------
 \chapterimage{chapter_head_4.pdf}
 
@@ -113,13 +113,15 @@ ROS実行コマンドは、ROSノードの実行を制御する。特にroscore�
 %-------------------------------------------------------------------------------
 \subsection{roscore：ROSマスター、rosout、パラメータサーバの起動}
 
-roscoreは、ノード間のメッセージ通信の接続情報を管理するROSマスターを起動するコマンドである。起動されたROSマスターはXMLRPCのサーバとなる。ROSマスターは、ROSの使用にあたって最初に起動しておく必要がある。roscoreを実行すると、ユーザーが設定した「~/.bashrc」中のROS_MASTER_URIをマスターURIとし、ROSマスターが立ち上がる。
+roscoreは、ノード間のメッセージ通信の接続情報を管理するROSマスターを起動するコマンドである。起動されたROSマスターはXMLRPCのサーバとなる。ROSマスターは、ROSの使用にあたって最初に起動しておく必要がある。roscoreを実行すると、ユーザーが設定した「~/.bashrc」中のROS\_MASTER\_URIをマスターURIとし、ROSマスターが立ち上がる。
+
+\setcounter{num}{0}
 
 \begin{lstlisting}[language=ROS]
 $ roscore
-... logging to /home/xxx/.ros/log/f4b17da6-ecda-11e4-a7bf-d43d7e970cb0/roslaunch-rt-18869.log　%*・・・①*)
+... logging to /home/xxx/.ros/log/f4b17da6-ecda-11e4-a7bf-d43d7e970cb0/roslaunch-rt-18869.log \stepcounter{num}\circled{\thenum} )
 Checking log directory for disk usage. This may take a while.
-Press Ctrl-C to interrupt　%*・・・②*)
+Press Ctrl-C to interrupt  \stepcounter{num}\circled{\thenum}
 Done checking log file disk usage. Usage is <1GB.
 
 started roslaunch server http://192.168.4.100:47915/
@@ -130,24 +132,24 @@ SUMMARY
 ========
 
 PARAMETERS
- * /rosdistro: indigo　%*・・・③*)
- * /rosversion: 1.11.10　%*・・・④*)
+ * /rosdistro: indigo \stepcounter{num}\circled{\thenum}
+ * /rosversion: 1.11.10 \stepcounter{num}\circled{\thenum}
 
 NODES
 
 auto-starting new master
 process[master]: started with pid [18881]
-ROS_MASTER_URI=http://192.168.4.100:11311/　%*・・・⑤*)
+ROS_MASTER_URI=http://192.168.4.100:11311/ \stepcounter{num}\circled{\thenum}
 
 setting /run_id to f4b17da6-ecda-11e4-a7bf-d43d7e970cb0
 process[rosout-1]: started with pid [18894]
-started core service [/rosout] 　%*・・・⑥*)
+started core service [/rosout] \stepcounter{num}\circled{\thenum}
 \end{lstlisting}
 
-上記の出力結果の太字部分から、①「/home/xxx/.ros/log/」フォルダにログが保存されていること、②<Ctrl>+<C>でroscoreを終了ができること、③「/rosdistro」と④「/rosversion」がパラメータとしてパラメータサーバに登録されたこと、⑤ROS_MASTER_URIの情報、⑥「/rosout」ノードが実行されたことなどが確認できる。
+上記の出力結果の太字部分から、①「/home/xxx/.ros/log/」フォルダにログが保存されていること、②<Ctrl>+<C>でroscoreを終了ができること、③「/rosdistro」と④「/rosversion」がパラメータとしてパラメータサーバに登録されたこと、⑤ROS\_MASTER\_URIの情報、⑥「/rosout」ノードが実行されたことなどが確認できる。
 
 \begin{exercise}[ログの保存場所]
-上の例ではlogが保存される場所が「/home/xxx/.ros/log/」（xxxはユーザー名）となっているが、ROS_HOME環境変数を設定することで任意の場所に保存できる。変数が設定されていない場合は「/home/xxx/.ros/log/」に記録される。
+上の例ではlogが保存される場所が「/home/xxx/.ros/log/」（xxxはユーザー名）となっているが、ROS\_HOME環境変数を設定することで任意の場所に保存できる。変数が設定されていない場合は「/home/xxx/.ros/log/」に記録される。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -159,7 +161,7 @@ rosrunは、指定したパッケージ内の1つのノードを実行するコ�
 \item   rosrun [パッケージ名] [ノード名]
 \end{itemize}
 
-以下の例では、turtlesimパッケージ内のturtlesim_nodeノードを実行する。実行結果を図4-1に示す。
+以下の例では、turtlesimパッケージ内のturtlesim\_nodeノードを実行する。実行結果を図4-1に示す。
 
 \begin{lstlisting}[language=ROS]
 $ rosrun turtlesim turtlesim_node
@@ -167,7 +169,12 @@ $ rosrun turtlesim turtlesim_node
 [INFO] [1430205691.827666004]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 \end{lstlisting}
 
-図4-1 turtlesim_nodeノードを実行した様子
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_01.png}
+  \caption{turtlesim\_nodeノードを実行した様子}
+\end{figure}
+
 
 %-------------------------------------------------------------------------------
 \subsection{roslaunch：複数のROSノードの実行}
@@ -179,7 +186,7 @@ roslaunchは、指定されたパッケージから1つ以上のノードを実�
 \end{itemize}
 
 roslaunchは、複数のノードを実行する際に非常に有用であり、頻繁に使用されるノードの実行方法である。launchファイルの作成法については、6.5節「roslaunchの使い方」で詳細に取り上げる。
-下の例のようにopenni_launchパッケージ内のopenni.launchファイルを実行するだけで、camera_nodelet_manager、depth_metric、depth_metric_rect、depth_pointsなどの20以上のノードが実行される。また、これらのノードで使用される10個のパラメータがパラメータサーバに登録される。
+下の例のようにopenni\_launchパッケージ内のopenni.launchファイルを実行するだけで、camera\_nodelet\_manager、depth\_metric、depth\_metric\_rect、depth\_pointsなどの20以上のノードが実行される。また、これらのノードで使用される10個のパラメータがパラメータサーバに登録される。
 
 \begin{lstlisting}[language=ROS]
 $ roslaunch openni_launch openni.launch
@@ -213,7 +220,7 @@ $ rosclean check
 ログファイルが1GBを超えていると、roscoreを起動時に、
 
 \begin{lstlisting}[language=ROS]
-WARNING：disk usage in log directory[/xxx/.ros/log] is over 1GB
+WARNING: disk usage in log directory[/xxx/.ros/log] is over 1GB
 \end{lstlisting}
 
 というメッセージが表示される。ログを削除したい場合には、以下のroscleanコマンドを使用すれば、ROSログ保存先のログをすべて削除できる。
@@ -251,7 +258,7 @@ ROS情報コマンドは、ノード、トピック、サービス、パラメ�
 $ sudo apt-get install ros-indigo-turtlesim
 \end{lstlisting}
 
-ROS情報コマンドを説明するために、次の手順でturtlesim_nodeノードを実行する。
+ROS情報コマンドを説明するために、次の手順でturtlesim\_nodeノードを実行する。
 
 \textbf{roscoreの実行}
 
@@ -261,15 +268,15 @@ ROS情報コマンドを説明するために、次の手順でturtlesim_nodeノ
 $ roscore
 \end{lstlisting}
 
-turtlesimパッケージのturtlesim_nodeノードを実行
-新しいターミナルウィンドウを開き、次のコマンドを実行する。これにより、turtlesimパッケージのturtlesim_nodeノードが実行され、図4-1 に示すように青い画面に亀が表示される。
+turtlesimパッケージのturtlesim\_nodeノードを実行
+新しいターミナルウィンドウを開き、次のコマンドを実行する。これにより、turtlesimパッケージのturtlesim\_nodeノードが実行され、図4-1 に示すように青い画面に亀が表示される。
 
 \begin{lstlisting}[language=ROS]
 $ rosrun turtlesim turtlesim_node
 \end{lstlisting}
 
-turtlesimパッケージのturtle_teleop_keyノードを実行
-新しいターミナルウィンドウを開き、次のコマンドを実行する。これにより、turtlesimパッケージのturtle_teleop_keyノードが実行される。実行後、同じターミナルウィンドウ上で、キーボードの矢印キーを使用して亀の移動を制御できる。方向キー（↑、↓）を押すと、亀が前進あるいは後退し、（←、→）で左右に回転する。
+turtlesimパッケージのturtle\_teleop\_keyノードを実行
+新しいターミナルウィンドウを開き、次のコマンドを実行する。これにより、turtlesimパッケージのturtle\_teleop\_keyノードが実行される。実行後、同じターミナルウィンドウ上で、キーボードの矢印キーを使用して亀の移動を制御できる。方向キー（↑、↓）を押すと、亀が前進あるいは後退し、（←、→）で左右に回転する。
 
 \begin{lstlisting}[language=ROS]
 $ rosrun turtlesim turtle_teleop_key
@@ -289,7 +296,7 @@ rosnodeは、ROSノードの情報を確認するためのコマンドである�
 %-------------------------------------------------------------------------------
 \subsubsection{rosnode list：実行中のノードのリストを確認}
 
-rosnode listは、ROSマスターに登録されている実行中の全てのノードのリストを表示するコマンドである。 ROSマスターに登録されているノードが、roscoreと先ほど実行したノード（turtlesim_node、turtle_teleop_key）のみであれば、roscoreで起動されたrosoutノードと、実行したteleop_turtleノードとturtlesimノードが表示される。
+rosnode listは、ROSマスターに登録されている実行中の全てのノードのリストを表示するコマンドである。 ROSマスターに登録されているノードが、roscoreと先ほど実行したノード（turtlesim\_node、turtle\_teleop\_key）のみであれば、roscoreで起動されたrosoutノードと、実行したteleop\_turtleノードとturtlesimノードが表示される。
 
 \begin{lstlisting}[language=ROS]
 $ rosnode list
@@ -299,7 +306,7 @@ $ rosnode list
 \end{lstlisting}
 
 \begin{exercise}[起動時に指定するノード名と実行されたノード名が違う理由]
-上の例で起動時に指定したノード名は、turtlesim_nodeとturtle_teleop_keyであるのに対し、rosnode listコマンドではturtlesimとteleop_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle_teleop_keyノードは、ソースファイル注2の中に「ros::init(argc, argv, "teleop_turtle");」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(argc, argv, "起動時に指定するノード名"（例えば"turtle_teleop_key");」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
+上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_keyノードは、ソースファイル注2の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(argc, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -329,7 +336,7 @@ rosnode infoは指定したノードの情報を取得するコマンドであ�
 $ rosnode info /turtlesim
 ------------------------------------------------
 Node[/turtlesim]
-Publications：
+Publications:
 */turtle1/color_sensor [turtlesim/Color]
 %*〜省略〜*)
 \end{lstlisting}
@@ -384,7 +391,7 @@ rostopicは、使用中のROSトピックの情報の確認するためのコマ
 
 オプションには、list、echo、find、type、bw、hz、info、pubなどが指定できる。
 
-rostopicコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rostopicコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -420,16 +427,16 @@ Subscribed topics:
 %-------------------------------------------------------------------------------
 \subsubsection{rostopic echo [トピック名]：指定されたトピックのメッセージの内容を表示}
 
-rostopic echoは通信中のトピックのメッセージの内容を表示するコマンドである。以下の例では、turtlesim_nodeノードが配信している/turtle1/poseトピックのx、y、theta、linear_velocity、angular_velocityのデータが確認できる。
+rostopic echoは通信中のトピックのメッセージの内容を表示するコマンドである。以下の例では、turtlesim\_nodeノードが配信している/turtle1/poseトピックのx、y、theta、linear\_velocity、angular\_velocityのデータが確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic echo
 /turtle1/pose
-x：5.35244464874
-y：5.544444561
-theta：0.0
-linear_velocity：0.0
-angular_velocity：0.0
+x: 5.35244464874
+y: 5.544444561
+theta: 0.0
+linear_velocity: 0.0
+angular_velocity: 0.0
 %*〜省略〜*)
 \end{lstlisting}
 
@@ -494,7 +501,7 @@ Subscribers: None
 %-------------------------------------------------------------------------------
 \subsubsection{rostopic pub [トピック名] [メッセージ型] [パラメータ]：指定されたトピック名でメッセージを配信}
 
-rostopic pubは、コマンドラインから、指定されたトピック名でメッセージを配信するコマンドである。次の例では、/turtle1/cmd_velのトピック名でgeometry_msgs/Twist型のメッセージを配信している。geometry_msgs/Twist 型はlinear型、angular型それぞれ3変数の計6変数からなり、ここでは、それぞれ[2.0, 0.0, 0.0]と[0.0, 0.0, 1.8]を指定している。
+rostopic pubは、コマンドラインから、指定されたトピック名でメッセージを配信するコマンドである。次の例では、/turtle1/cmd\_velのトピック名でgeometry_msgs/Twist型のメッセージを配信している。geometry\_msgs/Twist 型はlinear型、angular型それぞれ3変数の計6変数からなり、ここでは、それぞれ[2.0, 0.0, 0.0]と[0.0, 0.0, 1.8]を指定している。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
@@ -505,13 +512,16 @@ publishing and latching message for 3.0 seconds
 
 \begin{itemize}
 \item -1：メッセージを一度だけ配信する。（一度だけの実行で、上記のように3秒間実行されたことが確認できる）
-\item /turtle1/cmd_vel：指定されたトピックの名前
-\item geometry_msgs/Twist：配信するメッセージの型
+\item /turtle1/cmd\_vel：指定されたトピックの名前
+\item geometry\_msgs/Twist：配信するメッセージの型
 \item -- ‘[2.0、0.0、0.0]''[0.0、0.0、1.8]’：x軸方向に毎秒2.0mで移動、z軸を中心に毎秒1.8radで反時計周りに回転
 \end{itemize}
 
-
-図4-2配信したメッセージが反映された様子
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_02.png}
+  \caption{配信したメッセージが反映された様子}
+\end{figure}
 
 なお、メッセージ型の詳細は、以下のように「rosmsg show [メッセージ名]」で調べることができる。
 
@@ -543,7 +553,7 @@ rosserviceは、ROSサービスの情報を確認するためのコマンドで�
 
 オプションには、list、info、type、find、uri、args、callなどが指定できる。
 
-rosserviceコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rosserviceコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -582,7 +592,7 @@ $ rosservice list
 %-------------------------------------------------------------------------------
 \subsubsection{rosservice info [サービス名]：指定されたサービスの情報を表示}
 
-rosservice infoは、実行ノードやPC名、サービス型など、指定されたサービスの詳細な情報を表示するコマンドである。下の例では、/turtle1/set_penサービスのノード名、URI、サービス型、パラメータを確認できる。
+rosservice infoは、実行ノードやPC名、サービス型など、指定されたサービスの詳細な情報を表示するコマンドである。下の例では、/turtle1/set\_penサービスのノード名、URI、サービス型、パラメータを確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rosservice info /turtle1/set_pen
@@ -595,7 +605,7 @@ Args: r g b width off
 %-------------------------------------------------------------------------------
 \subsubsection{rosservice type [サービス名]：指定されたサービスのサービス型を表示}
 
-rosservice typeは、指定したサービスで使用しているサービス型を表示するコマンドである。次の例では、/turtle1/set_penサービスで使用しているサービスの型がturtlesim/SetPenであることが確認できる。
+rosservice typeは、指定したサービスで使用しているサービス型を表示するコマンドである。次の例では、/turtle1/set\_penサービスで使用しているサービスの型がturtlesim/SetPenであることが確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rosservice type /turtle1/set_pen
@@ -615,7 +625,7 @@ $ rosservice find turtlesim/SetPen
 %-------------------------------------------------------------------------------
 \subsubsection{rosservice uri [サービス名]：指定されたサービスのROSRPC URIの表示}
 
-rosservice uriは指定したサービスのURIを表示するコマンドである。下の例は、/turtle1/set_penサービスのROSRPC URIを表示している。
+rosservice uriは指定したサービスのURIを表示するコマンドである。下の例は、/turtle1/set\_penサービスのROSRPC URIを表示している。
 
 \begin{lstlisting}[language=ROS]
 $ rosservice uri /turtle1/set_pen
@@ -625,7 +635,7 @@ URI: rosrpc://192.168.4.100:34715
 %-------------------------------------------------------------------------------
 \subsubsection{rosservice args [サービス名]：サービスパラメータの表示}
 
-rosservice argsは指定したサービスのパラメータを表示するコマンドである。下の例は、/turtle1/set_penサービスの各パラメータを表示している様子でありr、g、b、width、offというパラメータが使用されていることが確認できる。
+rosservice argsは指定したサービスのパラメータを表示するコマンドである。下の例は、/turtle1/set\_penサービスの各パラメータを表示している様子でありr、g、b、width、offというパラメータが使用されていることが確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rosservice args /turtle1/set_pen
@@ -635,16 +645,19 @@ r g b width off
 %-------------------------------------------------------------------------------
 \subsubsection{rosservice call [サービス名] [パラメータ]：指定されたサービスのリクエストを実行}
 
-rosservice callは、コマンドラインから指定されたサービスをリクエストするコマンドである。サービスのテストのために使用される便利なコマンドであり、使用頻度は高い。次の例は、/turtle1/set_penサービスへリクエストするものである。使用された「255 0 0 5 0」の5つの数値はそれぞれ/turtle1/set_penサービスに使用されているパラメータ（r、g、b、width、off）に対応する。赤を表すrは最大値の255を、g、bはいずれも0とし、widthは5の太さを設定、線の可視化を表すoffは0（false）と設定している。
+rosservice callは、コマンドラインから指定されたサービスをリクエストするコマンドである。サービスのテストのために使用される便利なコマンドであり、使用頻度は高い。次の例は、/turtle1/set\_penサービスへリクエストするものである。使用された「255 0 0 5 0」の5つの数値はそれぞれ/turtle1/set\_penサービスに使用されているパラメータ（r、g、b、width、off）に対応する。赤を表すrは最大値の255を、g、bはいずれも0とし、widthは5の太さを設定、線の可視化を表すoffは0（false）と設定している。
 
 \begin{lstlisting}[language=ROS]
 $ rosservice call /turtle1/set_pen 255 0 0 5 0
 \end{lstlisting}
 
-上のコマンドでサービスをリクエストすることで、turtlesimに使用されるペンの特性を変えられる。turtle_teleop_keyコマンドで移動した結果、次のように白いペンの色が赤で表示されることが確認できる。
+上のコマンドでサービスをリクエストすることで、turtlesimに使用されるペンの特性を変えられる。turtle\_teleop\_keyコマンドで移動した結果、次のように白いペンの色が赤で表示されることが確認できる。
 
-
-図4-3 rosservice callの例
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_03.png}
+  \caption{rosservice callの例}
+\end{figure}
 
 %-------------------------------------------------------------------------------
 \subsubsection{rosparam：ROSパラメータ情報の確認と修正}
@@ -657,7 +670,7 @@ rosparamは、ROSサービスのパラメータの情報の確認するための
 
 オプションには、list、get、set、dump、load、deleteなどが指定できる。
 
-rosparamコマンドの例を実行する前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rosparamコマンドの例を実行する前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -690,7 +703,7 @@ $ rosparam list
 %-------------------------------------------------------------------------------
 \subsubsection{rosparam get [パラメータ名]：パラメータ値の読み込み}
 
-rosparam getは指定したパラメータの値を表示するコマンドである。次の例では、/background_bパラメータの値を確認できる。
+rosparam getは指定したパラメータの値を表示するコマンドである。次の例では、/background\_bパラメータの値を確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rosparam get /background_b
@@ -721,17 +734,20 @@ $ rosparam dump ~/parameters.yaml
 %-------------------------------------------------------------------------------
 \subsubsection{rosparam set [パラメータ名]：パラメータ値の書き込み}
 
-rosparam dumpは、指定したパラメータに値を設定するコマンドである。下の例では、turtlesimノードの背景色に関するパラメータであるbackground_bを0に設定している。
+rosparam dumpは、指定したパラメータに値を設定するコマンドである。下の例では、turtlesimノードの背景色に関するパラメータであるbackground\_bを0に設定している。
 
 \begin{lstlisting}[language=ROS]
 $ rosparam set background_b 0
 $ rosservice call clear
 \end{lstlisting}
 
-これにより、RGBは255、86、69から0、86、69に変更されるため、図4-4の右図のように背景色が濃い緑になる。ただし、turtlesimノードの仕様により、変更を反映するためには、「rosparam set background_b0」コマンドでパラメータを変更した後、「rosservice call clear」コマンドで画面を更新する必要がある。
+これにより、RGBは255、86、69から0、86、69に変更されるため、図4-4の右図のように背景色が濃い緑になる。ただし、turtlesimノードの仕様により、変更を反映するためには、「rosparam set background\_b0」コマンドでパラメータを変更した後、「rosservice call clear」コマンドで画面を更新する必要がある。
 
-
-図4-4 rosparam setの例
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_04.png}
+  \caption{rosparam setの例}
+\end{figure}
 
 %-------------------------------------------------------------------------------
 \subsubsection{rosparam load [ファイル名]：指定したファイルに保存されたパラメータの読み込み}
@@ -763,7 +779,7 @@ rosmsgは、ROSメッセージの情報の確認するためのコマンドで�
 
 オプションには、list、show、md5、package、packagesなどが指定できる。
 
-rosmsg コマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rosmsg コマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -801,7 +817,7 @@ zeroconf_msgs/DiscoveredService
 %-------------------------------------------------------------------------------
 \subsubsection{rosmsg show [メッセージ名]：指定したメッセージのメッセージ型を表示}
 
-rosmsg showは、指定したメッセージのメッセージ型を表示するコマンドである。下の例では、turtlesim/Poseメッセージのメッセージ型を出力している様子である。float32（浮動小数点型変数）で、x、y、theta、linear_velocity、angular_velocityの5つの変数からなるメッセージであることが確認できる。
+rosmsg showは、指定したメッセージのメッセージ型を表示するコマンドである。下の例では、turtlesim/Poseメッセージのメッセージ型を出力している様子である。float32（浮動小数点型変数）で、x、y、theta、linear\_velocity、angular\_velocityの5つの変数からなるメッセージであることが確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rosmsg show turtlesim/Pose
@@ -860,7 +876,7 @@ rossrvは、ROSサービスの情報の確認するためのコマンドであ�
 
 オプションには、rosmsgと同様に、list、show、md5、package、packagesなどが指定できる。
 
-rossrvコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rossrvコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -965,7 +981,7 @@ ros bagは、ROSメッセージを記録、再生するためのコマンドで�
 
 オプションには、record、info、play、compress、decompress、filter、reindex bag、check bag、fixなどが指定できる。
 
-rosbagコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rosbagコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -995,7 +1011,7 @@ $ rostopic list
 /turtle1/pose
 \end{lstlisting}
 
-次に、使用しているトピックの中から、記録するトピックとして/turtle1/cmd_velトピックを指定し、bagの記録を開始する。この際、「-O」のオプションで保存ファイル名を指定できる。下の例ではmsglog.bagに保存する。その後、turtle_teleop_keyノードでキーボードの矢印キーで亀を移動させると、オプションで指定された/turtle1/cmd_velトピックが記録される。また、<Ctrl>+<C>を押して記録を終了すると、以下のようにmsglog.bagファイルが生成される。
+次に、使用しているトピックの中から、記録するトピックとして/turtle1/cmd\_velトピックを指定し、bagの記録を開始する。この際、「-O」のオプションで保存ファイル名を指定できる。下の例ではmsglog.bagに保存する。その後、turtle_teleop_keyノードでキーボードの矢印キーで亀を移動させると、オプションで指定された/turtle1/cmd\_velトピックが記録される。また、<Ctrl>+<C>を押して記録を終了すると、以下のようにmsglog.bagファイルが生成される。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag record -O msglog.bag /turtle1/cmd_vel
@@ -1018,7 +1034,7 @@ $ rosbag record -a -O msglog.bag
 %-------------------------------------------------------------------------------
 \subsubsection{rosbag info [ファイル名]：bagファイルの情報を確認}
 
-rosbag infoは、記録したbagファイルの情報を表示するコマンドである。下の例では、記録した/turtle1/cmd_velトピックのbagファイルが、合計167個のメッセージの記録で構成されていることや、使用されたメッセージの型、パス、バージョン、記録時間などの情報が確認できる。
+rosbag infoは、記録したbagファイルの情報を表示するコマンドである。下の例では、記録した/turtle1/cmd\_velトピックのbagファイルが、合計167個のメッセージの記録で構成されていることや、使用されたメッセージの型、パス、バージョン、記録時間などの情報が確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag info msglog.bag
@@ -1038,7 +1054,7 @@ topics: /turtle1/cmd_vel
 %-------------------------------------------------------------------------------
 \subsubsection{rosbag play [ファイル名]：指定されたbagファイルを再生}
 
-rosbag playは、記録したbagファイルを再生するコマンドである。下の例は、上のrosbag recordコマンドの説明で記録したmsglog.bagを再生したものであり、記録時の/turtle1/cmd_velメッセージがそのまま再生され、画面上のカメが動く様子を確認できる。ただし、turtlesim_nodeを再起動し、ロボット軌跡とロボットの位置を初期化する必要がある。問題なければ、図4-5のように、rosbag recordで記録した時と同じ軌跡を得ることができる。
+rosbag playは、記録したbagファイルを再生するコマンドである。下の例は、上のrosbag recordコマンドの説明で記録したmsglog.bagを再生したものであり、記録時の/turtle1/cmd\_velメッセージがそのまま再生され、画面上のカメが動く様子を確認できる。ただし、turtlesim\_nodeを再起動し、ロボット軌跡とロボットの位置を初期化する必要がある。問題なければ、図4-5のように、rosbag recordで記録した時と同じ軌跡を得ることができる。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag play msglog.bag
@@ -1050,8 +1066,11 @@ Hit space to toggle paused, or 's' to step.
 %*〜省略〜*)
 \end{lstlisting}
 
-
-図4-5 rosbag playの例（左：記録時、右：再生時）
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_05.png}
+  \caption{rosbag playの例（左：記録時、右：再生時）}
+\end{figure}
 
 %-------------------------------------------------------------------------------
 \subsubsection{rosbag compress [ファイル名]：指定されたbagファイルを圧縮}
@@ -1085,7 +1104,7 @@ msglog.bag  100%  15.8 KB 00:00
 
 rosbag filterは、作成済みのbagファイルから、指定されたトピックのみを残して、新しいbagファイルを作成するコマンドである。
 
-rosbag filterコマンドの例を実行する前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim_nodeとturtle_teleop_keyを実行する。
+rosbag filterコマンドの例を実行する前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -1105,9 +1124,9 @@ $ rosrun turtlesim turtle_teleop_key
 $ rosbag record -O msglog.bag -a
 \end{lstlisting}
 
-turtle_teleop_keyを実行したターミナルで矢印キーを操作し、亀を移動させる。その後、＜Ctrol＞+＜C＞でrosbag recordコマンドを終了する。
+turtle\_teleop\_keyを実行したターミナルで矢印キーを操作し、亀を移動させる。その後、＜Ctrol＞+＜C＞でrosbag recordコマンドを終了する。
 
-記録したmsglog.bagをrosbag infoコマンドで確認すると、以下のように/rosout, /turtle1/cmd_vel, /turtle1/color_sensor, /turtle1/pose トピックが記録されていることがわかる。
+記録したmsglog.bagをrosbag infoコマンドで確認すると、以下のように/rosout, /turtle1/cmd\_vel, /turtle1/color\_sensor, /turtle1/pose トピックが記録されていることがわかる。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag info msglog.bag
@@ -1129,13 +1148,13 @@ topics:      /rosout                   4 msgs    : rosgraph_msgs/Log   (2 connec
              /turtle1/pose           774 msgs    : turtlesim/Pose
 \end{lstlisting}
 
-次に、rosbag filterコマンドにより、/turtle1/cmd_velトピックのみを残して、他のトピックを削除する。以下では、出力ファイルをonly_cmd_vel.bagとしている。
+次に、rosbag filterコマンドにより、/turtle1/cmd\_velトピックのみを残して、他のトピックを削除する。以下では、出力ファイルをonly\_cmd\_vel.bagとしている。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag filter msglog.bag only_cmd_vel.bag "topic == '/turtle1/cmd_vel'"
 \end{lstlisting}
 
-rosbag infoコマンドによりonly_cmd_vel.bagファイルを確認すると、/turtle1/cmd_velトピックのみが含まれていることがわかる。このようにrosbag filterコマンドは、指定されたトピックのみを残して、新しいbagファイルを作成するために使用される。
+rosbag infoコマンドによりonly\_cmd\_vel.bagファイルを確認すると、/turtle1/cmd\_velトピックのみが含まれていることがわかる。このようにrosbag filterコマンドは、指定されたトピックのみを残して、新しいbagファイルを作成するために使用される。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag info only_cmd_vel.bag
@@ -1209,30 +1228,30 @@ ROS catkinは、catkinビルドシステムを用いてパッケージをビル�
 \end{description}
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_create_pkg：catkinビルドシステムでパッケージを自動生成}
+\subsection{catkin\_create\_pkg：catkinビルドシステムでパッケージを自動生成}
 
-catkin_create_pkgはCMakeLists.txtとpackage.xmlを含む空のパッケージを生成するコマンドである。詳しい使用方法は3.4.1項を参照のこと。
+catkin\_create\_pkgはCMakeLists.txtとpackage.xmlを含む空のパッケージを生成するコマンドである。詳しい使用方法は3.4.1項を参照のこと。
 
 \begin{itemize}
-\item catkin_create_pkg <パッケージ名> [依存パッケージ1] [依存パッケージ2] …
+\item catkin\_create\_pkg <パッケージ名> [依存パッケージ1] [依存パッケージ2] …
 \end{itemize}
 
-catkin_create_pkgの使用例を下に示す。
+catkin\_create\_pkgの使用例を下に示す。
 
 \begin{lstlisting}[language=ROS]
 $ catkin_create_pkg my_package roscpp std_msgs
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_make：catkinビルドシステムのビルド命令}
+\subsection{catkin\_make：catkinビルドシステムのビルド命令}
 
-catkin_makeはユーザーが作成したパッケージまたはダウンロードしたパッケージをビルドするコマンドである。
+catkin\_makeはユーザーが作成したパッケージまたはダウンロードしたパッケージをビルドするコマンドである。
 
 \begin{itemize}
-\item  catkin_make
+\item  catkin\_make
 \end{itemize}
 
-~/catkin_ws/srcフォルダにある全てのパッケージをビルドする例を示す。
+~/catkin\_ws/srcフォルダにある全てのパッケージをビルドする例を示す。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws
@@ -1246,15 +1265,15 @@ catkin_make --pkg user_ros_tutorials
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_eclipse：Eclipseを使用したパッケージの管理}
+\subsection{catkin\_eclipse：Eclipseを使用したパッケージの管理}
 
-catkin_eclipseは、統合開発環境（IDE）の一つであるEclipseを用いて、ユーザーが作成したパッケージを管理し、プログラミングを行う環境を構築するコマンドである。
+catkin\_eclipseは、統合開発環境（IDE）の一つであるEclipseを用いて、ユーザーが作成したパッケージを管理し、プログラミングを行う環境を構築するコマンドである。
 
 \begin{itemize}
-\item catkin_eclipse
+\item catkin\_eclipse
 \end{itemize}
 
-このコマンドを実行すると~/catkin_ws/build/.cproject、~/catkin_ws/build/.projectなど、Eclipse用のプロジェクトファイルが生成される。Eclipse のメニューから「Makefile Project with Existing Code」を選択し、「~/catkin_ws/build/」を選択すると、~/catkin_ws/srcにある全パッケージをEclipseで管理できる。
+このコマンドを実行すると~/catkin\_ws/build/.cproject、~/catkin\_ws/build/.projectなど、Eclipse用のプロジェクトファイルが生成される。Eclipse のメニューから「Makefile Project with Existing Code」を選択し、「~/catkin\_ws/build/」を選択すると、~/catkin\_ws/srcにある全パッケージをEclipseで管理できる。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws
@@ -1262,32 +1281,32 @@ $ catkin_eclipse
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_generate_changelog：CHANGELOG.rstファイルの作成}
+\subsection{catkin\_generate\_changelog：CHANGELOG.rstファイルの作成}
 
-catkin_generate_changelogは、パッケージのバージョンアップ時に変更点を記述するCHANGELOG.rstファイルを作成するコマンドである。
+catkin\_generate\_changelogは、パッケージのバージョンアップ時に変更点を記述するCHANGELOG.rstファイルを作成するコマンドである。
 
 \begin{itemize}
-\item catkin_generate_changelog
+\item catkin\_generate\_changelog
 \end{itemize}
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_prepare_release：リリース準備するときに使用されるchangelog整理とバージョンのタグ管理}
+\subsection{catkin\_prepare\_release：リリース準備するときに使用されるchangelog整理とバージョンのタグ管理}
 
-catkin_prepare_releaseは、catkin_generate_changelogコマンドで作成されたCHANGELOG.rstを更新するとき使用されるコマンドである。
+catkin\_prepare\_releaseは、catkin\_generate\_changelogコマンドで作成されたCHANGELOG.rstを更新するとき使用されるコマンドである。
 
 \begin{itemize}
-\item catkin_prepare_release
+\item catkin\_prepare\_release
 \end{itemize}
 
-catkin_generate_changelogとcatkin_prepare_releaseコマンドは、作成したパッケージをROSレポジトリ注3に登録する時や、登録されたパッケージのバージョンアップの際に使用されるコマンドである。
+catkin\_generate\_changelogとcatkin\_prepare\_releaseコマンドは、作成したパッケージをROSレポジトリ注3に登録する時や、登録されたパッケージのバージョンアップの際に使用されるコマンドである。
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_init_workspace：catkinビルドシステムの作業フォルダの初期化}
+\subsection{catkin\_init\_workspace：catkinビルドシステムの作業フォルダの初期化}
 
-catkin_init_workspaceはユーザーの作業フォルダ（~/catkin_ws/src）の初期化コマンドである。
+catkin\_init\_workspaceはユーザーの作業フォルダ（~/catkin\_ws/src）の初期化コマンドである。
 
 \begin{itemize}
-\item catkin_init_workspace
+\item catkin\_init\_workspace
 \end{itemize}
 
 2.1.1項で説明したように、このコマンドはROSインストールの後に一度だけ行えばよい。
@@ -1298,15 +1317,15 @@ $ catkin_init_workspace
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\subsection{catkin_find：ワークスペースの検索}
+\subsection{catkin\_find：ワークスペースの検索}
 
-catkin_findはプロジェクト毎に作業フォルダを表示するコマンドである。
+catkin\_findはプロジェクト毎に作業フォルダを表示するコマンドである。
 
 \begin{itemize}
-\item  catkin_find [パッケージ名]
+\item  catkin\_find [パッケージ名]
 \end{itemize}
 
-catkin_findコマンドを実行すると、使用している全ての作業フォルダを調べることができる。また、「catkin_find パッケージ名」とすると、オプションで指定したパッケージに関連する作業フォルダが表示される。
+catkin\_findコマンドを実行すると、使用している全ての作業フォルダを調べることができる。また、「catkin\_find パッケージ名」とすると、オプションで指定したパッケージに関連する作業フォルダが表示される。
 
 \begin{lstlisting}[language=ROS]
 $ catkin_find
@@ -1417,7 +1436,7 @@ roslib
 std_srvs
 \end{lstlisting}
 
-rospack profileコマンドは、パッケージが保存されている「/opt/ros/indigo/share」や「~/catkin_ws/src」などの作業フォルダやパッケージの情報を確認し、パッケージのインデックスを再構築するコマンドである。新しく追加したパッケージが「roscd」などで反映されないときに実行する。
+rospack profileコマンドは、パッケージが保存されている「/opt/ros/indigo/share」や「~/catkin\_ws/src」などの作業フォルダやパッケージの情報を確認し、パッケージのインデックスを再構築するコマンドである。新しく追加したパッケージが「roscd」などで反映されないときに実行する。
 
 \begin{lstlisting}[language=ROS]
 $ rospack profile
@@ -1486,7 +1505,7 @@ Using ROS_DISTRO: indigo
 %-------------------------------------------------------------------------------
 \subsection{roscreate-pkg：ROSパッケージの自動生成（旧rosbuildシステムで使用）}
 
-roscreate-pkgはcatkin_create_pkgコマンドと同様にパッケージを自動生成するコマンドである。
+roscreate-pkgはcatkin\_create\_pkgコマンドと同様にパッケージを自動生成するコマンドである。
 
 \begin{itemize}
 \item  rosbuild [パッケージ名]
@@ -1496,16 +1515,16 @@ catkinビルドシステム以前のrosbuildシステムのためのコマンド
 %-------------------------------------------------------------------------------
 \subsection{rosmake：ROSパッケージをビルド（旧rosbuildシステムで使用）}
 
-rosmakeは「catkin_make」と同様にパッケージをビルドするコマンドである。
+rosmakeは「catkin\_make」と同様にパッケージをビルドするコマンドである。
 
 \begin{itemize}
 \item  rosmake
 \end{itemize}
 catkinビルドシステム以前のrosbuildシステムのためのコマンドであり、最近は使われない。
 
-注1  http://wiki.ros.org/ROS/CommandLineTools
-注2  https://github.com/ros/ros_tutorials/blob/indigo-devel/turtlesim/tutorials/teleop_turtle_key.cpp
-注3  rosdistroレポジトリ　https://github.com/robotpilot/rosdistro
+% 注1  http://wiki.ros.org/ROS/CommandLineTools
+% 注2  https://github.com/ros/ros_tutorials/blob/indigo-devel/turtlesim/tutorials/teleop_turtle_key.cpp
+% 注3  rosdistroレポジトリ　https://github.com/robotpilot/rosdistro
 
 
 
