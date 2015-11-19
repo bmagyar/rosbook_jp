@@ -247,7 +247,7 @@ $ rosrun find_object_2d find_object_2d image:=image_raw
 \begin{figure}[h]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_09.png}
-  \caption{検出対象（「find_object_2d」および「ROS.org」と書かれた画像）}
+  \caption{検出対象（「find\_object_2d」および「ROS.org」と書かれた画像）}
 \end{figure}
 
 それでは、実際に物体検出に挑戦してみよう。図7-10のように、検出対象の画像を含む絵を用意し、それを紙に印刷したものをカメラで撮影する。実行結果の例を図7-10に示す。図7-9に示した2つの文字列が四角で囲まれ、適切に検出されている。なお、ターミナルウィンドウで、「rostopic echo /object」と入力すると、検出された対象の座標値が出力される。このパッケージを利用して新たなパッケージを作成する際には、この座標値をトピックで受信して利用することができる。
