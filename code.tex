@@ -24,7 +24,22 @@
   sudo,apt-get,install,cd,mkdir,make,cp,ntpdate,gedit,nano,ssh,
   ls,rm,sh,wget,update,upgrade,apt,get,ifconfig,source,git,qtcreator,cm,hg},
   comment=[l]{//},
-  literate={\$}{{\textcolor{red}\$}}1   
+  literate={\$}{{\textcolor{red}\$}}1
+}
+
+\lstdefinelanguage{YAML}{
+  keywords={true,false,null,y,n},
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{red}\textgreater}}1
+                {|}{{\textcolor{red}\textbar}}1
+                {\ -\ }{{\mdseries\ -\ }}3
 }
 
 % \newfontfamily\listingsfont[Scale=.7]{DejaVu Sans Mono}
