@@ -36,11 +36,11 @@ ROSはUSBカメラに関連した様々なパッケージを提供している�
 
 本項では、USBカメラのパッケージの中でも最も広く利用されているuvc-camera注1を利用する。他のパッケージの使用方法もuvc-cameraと共通点が多いが、詳細についてはそれぞれのパッケージのWikiで確認してほしい。
 
-\textbf{USBカメラの接続}
+\subsubsection{USBカメラの接続}
 
 USBカメラを準備し、PCのUSBポートとUSBケーブルで接続する。
 
-\textbf{カメラ情報の確認}
+\subsubsection{カメラ情報の確認}
 
 新しいターミナルウィンドウを開いて、lsusbコマンドにより接続が正しいことを確認する。UVC注2規格のカメラであれば、以下の太文字のように、接続されたUSBカメラのメーカやUSB規格が表示される。この例では、Z-Star Microelectronics社のUSBカメラが認識されている。
 
@@ -56,7 +56,7 @@ Bus 001 Device 002: ID 8087:0024 Intel Corp. Integrated Rate Matching Hub Bus 00
 Bus 002 Device 002: ID 8087:0024 Intel Corp. Integrated Rate Matching Hub
 \end{lstlisting}
 
-\textbf{ROS uvc-cameraカメラのパッケージのインストール}
+\subsubsection{ROS uvc-cameraカメラのパッケージのインストール}
 
 ROSのUSBカメラドライバであるuvc-cameraパッケージをインストールする。
 
@@ -64,7 +64,7 @@ ROSのUSBカメラドライバであるuvc-cameraパッケージをインスト�
 $ sudo apt-get install ros-indigo-uvc-camera
 \end{lstlisting}
 
-\textbf{ROS image関連パッケージのインストール}
+\subsubsection{ROS image関連パッケージのインストール}
 
 画像処理と画像可視化のためのROS image関連パッケージをインストールする。
 
@@ -73,7 +73,7 @@ $ sudo apt-get install ros-indigo-image-*
 $ sudo apt-get install ros-indigo-rqt-image-view
 \end{lstlisting}
 
-\textbf{uvc\_cameraノードの実行}
+\subsubsection{uvc\_cameraノードの実行}
 
 以下のようにuvc\_cameraノードを実行すると、「[WARN] [1423194481.257752159]: Camera calibration file /home/xxx/.ros/camera\_info/camera.yaml not found.」のように、カメラキャリブレーション注3に関連する警告が表示される。これは、キャリブレーションファイルが存在しないためであり、単に画像を表示するだけであれば無視しても構わない。キャリブレーション方法については、8.1.5項で詳しく説明する。
 
@@ -82,7 +82,7 @@ $ roscore
 $ rosrun uvc_camera uvc_camera_node
 \end{lstlisting}
 
-\textbf{トピックスメッセージの確認}
+\subsubsection{トピックスメッセージの確認}
 
 以下のようにトピックメッセージを表示すると、カメラ情報（/camera\_info）と画像情報（/image\_raw）が配信されていることが確認できる。
 
@@ -107,7 +107,7 @@ $ rostopic list
 
 前項ではuvc\_camera\_nodeノードを実行し、画像情報が配信されていることを確認した。本項では、可視化ツールであるimage\_viewとrvizを利用して、画像を実際に表示してみる。もし以下の手順を実行しても画像が表示できない場合には、カメラのドライバや接続に問題がある。
 
-\textbf{image\_viewノードによる確認}
+\subsubsection{image\_viewノードによる確認}
 
 まず、画像を表示するためにimage\_viewノードを実行しよう。つぎのコマンドで、「image:=/image\_raw」というオプションとともにimage\_viewノードを起動する。「image:=/image\_raw」は、上記のトピック一覧で確認した「/image\_raw」トピックを画像で表示するためのオプションである。
 
@@ -124,7 +124,7 @@ $ rosrun image_view image_view image:=/image_raw
 \end{figure}
 
 
-\textbf{rqt\_image\_viewノードによる確認}
+\subsubsection{rqt\_image\_viewノードによる確認}
 
 次に5.2.4項で説明したrqt\_image\_viewを利用してみよう。rqt\_image\_viewはrqtプラグインとして、image\_viewにGUIを追加したものである。以下のようにrqt\_image\_viewノードを実行すると、図8-2に示すような画像が表示される。ただしimage\_viewとは異なり、GUI形式であり、上部のプルダウンメニューからトピックを選択することができる。
 
@@ -138,7 +138,7 @@ $ rqt_image_view image:=/image_raw
   \caption{rqt\_image\_viewノードを利用した画像表示}
 \end{figure}
 
-\textbf{RVizによる確認}
+\subsubsection{RVizによる確認}
 
 最後に、可視化ツールであるRVizで確認してみる。RVizの詳細な説明は5.1節を参考にしてほしい。まず、次のコマンドでRVizを実行しよう。
 
@@ -167,7 +167,7 @@ RVizが起動したら、Displaysオプションを変更する。RViz左下の<
 
 前項では、PCに直接USBカメラを接続して画像を表示した。本項では、ロボットのコンピュータ（マスター）に接続されたカメラの画像情報を、別のリモートコンピュータに表示する方法を説明する。
 
-\textbf{カメラが接続されているコンピュータ上でマスターを起動}
+\subsubsection{カメラが接続されているコンピュータ上でマスターを起動}
 
 マスターはどのコンピュータで起動しても構わないが、今回の例では、カメラが接続されているコンピュータをマスターとする。最初に行う設定はROS\_MASTER\_URIとROS\_HOSTNAMEなどのネットワーク変数の変更である。まず、geditなどの文書編集プログラムを使用して、次のように「.bashrc」ファイルを開く。
 
@@ -189,7 +189,7 @@ $ roscore
 $ rosrun uvc_camera uvc_camera_node
 \end{lstlisting}
 
-\textbf{リモートコンピュータでの画像表示}
+\subsubsection{リモートコンピュータでの画像表示}
 
 リモートコンピュータでも同様に、「.bashrc」ファイルを開いてROS\_MASTER\_URIとROS\_HOSTNAME変数を変更する。次のように、ROS\_MASTER\_URIはカメラが接続されたコンピュータのIPアドレス（192.168.4.100）とし、ROS\_HOSTNAME変数はリモートコンピュータのIPアドレス（ここでは192.168.4.120）に変更する。ここでもリモートコンピュータのIPアドレス192.168.4.120は一例なので、実際のコンピュータのIPアドレスをifconfigで確認し、正しく入力する必要がある。
 
@@ -213,7 +213,7 @@ $ rosrun image_view image_view image:=/image_raw
 カメラキャリブレーションとは、カメラ固有のパラメータを同定し、画像を補正する処理である。一般的に、複数台のカメラから得られた画像情報からカメラと対象物の間の正確な距離を計算するには、カメラの光学特性の情報が必要となる。特にレンズとイメージセンサとの距離（焦点距離）や画像中心座標、軸の傾き、レンズの歪み（収差）はカメラごとに異なり、それぞれのカメラで事前にキャリブレーションを行い、同定しておく必要がある。
 ROSでは、OpenCVのカメラキャリブレーションを利用したキャリブレーションパッケージが提供されている。以下では、実際にUSBカメラをキャリブレーションする手順を示す。
 
-\textbf{カメラキャリブレーションパッケージのインストール}
+\subsubsection{カメラキャリブレーションパッケージのインストール}
 
 まず、以下のようにカメラのキャリブレーションパッケージをインストールして、uvc\_camera\_nodeノードを実行しよう。
 
@@ -250,7 +250,7 @@ do_rectify: False
 ---
 \end{lstlisting}
 
-\textbf{チェスボードの準備}
+\subsubsection{チェスボードの準備}
 
 カメラキャリブレーションでは、図8-5のように黒と白の四角形からなるチェスボード（chess board）を使用する。以下のアドレスから、8 x 6のチェスボードの画像（横方向に8つの格子点、縦方向に6つの格子点）がダウンロードできる。
 
@@ -265,7 +265,7 @@ http://wiki.ros.org/camera\_calibration/Tutorials/MonocularCalibration?action=At
 \end{figure}
 
 
-\textbf{キャリブレーションの実行}
+\subsubsection{キャリブレーションの実行}
 
 以下のコマンドで、カメラキャリブレーションを実行してみよう。キャリブレーションノードの引数「--size 8x6」はチェスボードの横x縦の格子点数、「--square 0.024」はチェスボードの四角形一つの実際のサイズ（単位はメートル）である。この四角形の大きさはプリンタによって異なる場合があるので、実際に印刷したチェスボードのサイズを定規で測って記入する。
 
@@ -392,7 +392,7 @@ LRFの使用にあたっては、以下の3つの点に留意する必要があ�
 
 ROSでは、各社のLRFに対応する多くのパッケージが用意されている。例えば、SICK製LRFに対応したsicks300、sicktoolbox、sicktoolbox\_wrapperパッケージ、北陽電機製LRFのhokuyo_node注11、urg_node注12パッケージ、Velodyne製HDLをサポートするVelodyneパッケージなどがある。本項では、ROSで北陽電機製UTM-30LX注13を使用する例を挙げる。
 
-\textbf{urg\_nodeパッケージのインストール}
+\subsubsection{urg\_nodeパッケージのインストール}
 
 まず最初に、以下のコマンドでurg\_nodeパッケージをインストールする。
 
@@ -402,7 +402,7 @@ $ sudo apt-get install ros-indigo-urg-node
 
 なおROSのHydroバージョンより以前は、hokuyo\_nodeが使用されていたが、Hydroバージョン以降は新たなデバイスやイーサネット、マルチエコーに対応したurg\_nodeパッケージが使われるようになりつつある。
 
-\textbf{LRF接続とアクセス権の変更}
+\subsubsection{LRF接続とアクセス権の変更}
 
 北陽電機製UTM-30LXはインターフェースがUSB方式であり、PCとUSBケーブルで接続する。PCに接続されると、UTM-30LXは「ttyACMx」（xは数字）として認識される。例えば、以下ではUTM-30LXは「ttyACM0」として認識されている。
 
@@ -422,7 +422,7 @@ crw-rw-rw- 1 root dialout 166, 0 Aug 11 14:35 ttyACM0
 
 これより、アクセス権が「crw-rw-rw-」となり、所有者やグループ、その他のすべてにアクセス権が与えられたことが確認できる。
 
-\textbf{urg\_nodeノードの実行}
+\subsubsection{urg\_nodeノードの実行}
 
 では、urg\_nodeノードを実行し、LRFからデータを取得してみよう。まず、ターミナルウィンドウを開き、roscoreを実行する。
 
@@ -436,7 +436,7 @@ $ roscore
 $ rosrun urg_node urg_node
 \end{lstlisting}
 
-\textbf{トピックメッセージの確認}
+\subsubsection{トピックメッセージの確認}
 
 urg\_nodeノードを実行すると、「/scan」というトピックでLRFの計測値が送信される。次のコマンドでトピックの内容を確認できる。
 
@@ -504,7 +504,7 @@ LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simu
 デプスカメラは 2次元ので距離（距離画像）が一度に得られるセンサであり、深度センサ、あるいはデプスセンサとも呼ばれる。カラー映像が同時に取得できる場合にはRGB-Dカメラとも呼ばれるが、本書ではすべてデプスカメラと呼ぶことにする。
 デプスカメラの距離測定の方式として、様々なものが提案されている。ここでは、なかでも代表的なToF方式（Time of Flight）注14とパターン投影方式（Pattern projection）を紹介する。
 
-\textbf{ ToF方式}
+\subsubsection{ ToF方式}
 
 ToF方式は近赤外光などを投射し、対象物表面で反射して戻るまでの時間（Time of Flight）から距離を測定する。一般的には光投射部と受光部が対になり、ピクセルごとに距離を読み取る。ToF方式のデプスカメラは構造が複雑なため、次に説明するパターン投影方式のカメラよりも一般に高価である（近年では、位相差や高速シャッターを利用した、低価格なToF方式のセンサも開発されている）。
 ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Imaging社SwissRanger、Fotonic社FOTONIC-B70、pmdtechnologies社CamCubeとCamBoard、SoftKinectic社DepthSense DSシリーズ、Microsoft社から最近発売されたKinect 2などがある。
@@ -515,7 +515,7 @@ ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Im
   \caption{左からD-IMager、SwissRanger、CamBoard、Kinect2}
 \end{figure}
 
-\textbf{パターン投影方式}
+\subsubsection{パターン投影方式}
 
 パターン投影方式を使用しているデプスカメラには、Microsoft社のKinect注16やASUS社のXtion注17、PrimeSense社のCarmine、Capriなどがあり、最近ではOccipital社からStructure Sensor注18が発売されている。これらのデプスカメラは、共通してPrimeSense社のPrimeSense SoC（System on a Chip、半導体チップ上に機能を集積した集積回路）を使用している。
 
