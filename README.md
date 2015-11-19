@@ -28,6 +28,12 @@ rosbook_jp
 - Original author (LaTeX template): Mathias Legrand (legrand.mathias@gmail.com)
 - License: CC BY-NC-SA 3.0
 
+# Make
+```sh
+sudo apt-get install texlive*
+sh latex
+```
+
 # Special Thanks
 We’d like to give special thanks to ROS development team, many ROS maintainers and contributors.
 We ♥ ROS! (http://www.ros.org/)
