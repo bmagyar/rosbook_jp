@@ -15,7 +15,7 @@
 
 もしコンピュータにインストールされているUbuntuのバージョンが異なる場合は、対応状況を公式サイト\footnote{\url{http://wiki.ros.org/indigo/Installation/Ubuntu}}で確認する必要がある。オペレーティングシステムがOS XまたはWindowsであれば、それぞれのインストール方法を関連Wiki\footnote{\url{http://wiki.ros.org/indigo/Installation/OSX/Homebrew/Source},\url{http://wiki.ros.org/hydro/Installation/Windows}} で確認されたい。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=0.9\columnwidth]{pictures/chapter2/pic_02_01.png}
   \caption{UbuntuのTrustyバージョンとROS Indigoバージョンのロゴ}
@@ -58,7 +58,6 @@ $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) ma
 
 ROSリポジトリからパッケージをダウンロードするために公開鍵を追加する。次のように入力する。
 
-\\
 \begin{lstlisting}[language=ROS]
 $ wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
 \end{lstlisting}
@@ -67,7 +66,6 @@ $ wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sud
 
 ソースリストにROSリポジトリアドレスを追加したので、以下のコマンドでパッケージリストをアップデートする。必須ではないが、ROSのインストール前に、インストール済みのUbuntu関連の全てのパッケージを最新のものにしておくとよい。
 
-\\
 \begin{lstlisting}[language=ROS]
 $ sudo apt-get update && sudo apt-get upgrade
 \end{lstlisting}
@@ -343,7 +341,7 @@ ROSをインストールした後、正常に動作するかを確認するた�
 $ roscore
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=0.9\columnwidth]{pictures/chapter2/pic_02_02.png}
   \caption{roscoreが起動された画面}
@@ -362,7 +360,7 @@ $ rosrun turtlesim turtlesim_node
 
 これを実行すると、メッセージがいくつか表示され、turtlesimパッケージのturtlesim \_nodeが実行される。そして図2-6のように、青い背景のウィンドウに亀が表示される。亀の形状はランダムに変化するため、図2-6と形状が異なる場合がある。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=0.9\columnwidth]{pictures/chapter2/pic_02_03.png}
   \caption{turtlesim\_nodeのウィンドウ: (a) 起動時 (b) 亀を移動させた様子}
@@ -393,7 +391,7 @@ $ rosrun rqt_graph rqt_graph
 楕円はノード（/teleop\_turtle、/turtlesim）を意味し、四角はトピック（/turtle1/cmd\_vel）を意味する。teleop\_turtle、turtlesim はそれぞれ、turtle\_teleop\_keyノード、turtlesim\_nodeノードの実行名である。外側の3つの四角（teleop\_turtle、turtle1、turtlesim）は異なるグループであることを示している。図2-7を詳細に見てみよう。/teleop\_turtleノードから矢印が引かれて/turtlesimにつながっている。これは、両方のノードが実行中で、両方のノードの間にはトピックメッセージ（/turtle1/cmd\_vel）通信が行われていることを表す。つまり、turtle\_teleop\_keyノードから、ユーザーのキーボードコマンドがロボットのシミュレーターであるturtlesim\_nodeノードに渡されている。ノード間のトピックメッセージ通信については、後半の章で取り上げる。
 以上でROS動作テストは完了である。ここまでスムーズに進行した場合、問題無くROSがインストールされている。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=0.9\columnwidth]{pictures/chapter2/pic_02_04.png}
   \caption{rqt\_graphノード}

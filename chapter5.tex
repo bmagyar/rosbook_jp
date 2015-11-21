@@ -24,25 +24,25 @@ RVizは、ROSの3次元可視化ツールである。RVizはROSネットワー�
 RVizでは、あらかじめ用意された多くの画面設定（ディスプレイ）から適切なものを選択することで、多様な情報が表示できる。例えば、ディスプレイの一つであるInteractive Markersを使用すると、対象物の可視化と同時に、指定した対象物の位置・姿勢をユーザーが自由に変えることができ、インタラクティブなノードとユーザー間の情報（ロボットアームの位置・姿勢や目的地の位置・姿勢など）のやりとりが可能になる。また、3次元モデルの記述法であるURDF（Unified Robot Description Format）フォーマットでロボットを定義し、ファイルに保存しておけば、RVizはそのファイルを読み込み、3次元コンピュータグラフィックスでロボットを表示できる。さらに、モデルに関節自由度や移動自由度を定義しておけば、ロボットの位置や姿勢を変更でき、シミュレーションや実時間でのロボットの動作確認に利用できる。
 
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_01.png}
   \caption{RViz使用例1：LEGOロボットと超音波センサを用いた簡単なマップの作成の例}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_02.png}
   \caption{RViz使用例2：Kinectから人の骨格を取得し、ロボットを制御している例}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_03.png}
   \caption{RViz使用例3：LRFを用いた距離計測の例}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_04.png}
   \caption{RViz使用例4：Xtionセンサから取得した3次元距離値の例}
@@ -70,7 +70,7 @@ $ rosrun rviz rviz
 
 RVizの画面構成について、図5-5を用いて説明する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_05.png}
   \caption{RVizの画面構成}
@@ -91,7 +91,7 @@ RVizの画面構成について、図5-5を用いて説明する。
 \item 時間（Time）：現在の時間（wall time）とROS Time、またそれぞれの経過時間を示す。経過時間を再起動するには、一番下の<Reset>ボタンをクリックする。
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_06.png}
   \caption{RVizディスプレイの選択画面}
@@ -162,7 +162,7 @@ $ rqt_plot
 
 rqt\_plotを実行し、右上隅にある歯車の形のアイコン（オプションを意味する）をクリックする。表示された図5-7のオプション選択画面で、「Plot Type」の中から「PyQtGraph」を選択する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_07.png}
   \caption{rqt\_plotのオプション選択画面}
@@ -179,7 +179,7 @@ $ rqt
 
 rqtを実行すると、図5-8のようにrqtのgui画面が現れる。初めて起動したときには、メニューのみが表示される。これは、rqt上で実行するプラグインが指定されていないためである。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_08.png}
   \caption{rqtの初期画面}
@@ -269,7 +269,7 @@ rqtの上部メニューの中から[プラグイン（Plugins）]を選択す�
 \item  [TF Tree] tfの関係をツリー構造で表すグラフビュー形式のプラグイン
 \end{description}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_09.png}
   \caption{rqtプラグイン}
@@ -298,7 +298,7 @@ $ rosrun uvc_camera uvc_camera_node
 $ rqt
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_10.png}
   \caption{USBカメラの画像データをrqt\_image\_viewで確認している例}
@@ -323,10 +323,10 @@ $ rosrun uvc_camera uvc_camera_node
 $ rqt
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_11.png}
-  \caption{rqt_graph実行例}
+  \caption{rqt\_graph実行例}
 \end{figure}
 
 図5-11で「teleop\_turtle」などの外側の四角は名前空間のグループ（「6.5 roslaunchを用いた複数ノードの起動」を参照）を意味し、その中の「/teleop\_turtle」などの円は、実行した配信者（publisher）や購読者（subscriber）のノードを意味する。「/turtle1/cmd\_vel」と「/image\_raw」を囲む小さな四角はトピックを意味する。矢印は、トピック通信の送受信方向を意味する。図5-11の例では、turtle\_teleop\_key、turtlesim\_nodeを実行すると、teleop\_turtleとturtlesimのノードが立ち上がる。この2つのノードは、キーボードの方向キーが押されたときに配信される「/turtle1/cmd\_vel」トピックを介し、配信者と購読者の間でデータを送受信していることが確認できる。uvc\_cameraパッケージも同様に、配信者であるuvc\_cameraノードが「/imge\_raw」トピックを発行していることが確認できる。
@@ -362,7 +362,7 @@ $ rosrun turtlesim turtle_teleop_key
 その結果、図5-12のように亀の位置、姿勢、そして速度と角速度が表示されることが確認できる。
 このようにrqt\_plotは2次元データの表示に便利なツールである。今回はturtlesimに対して利用したが、ユーザーが開発したノードの2次元データの表示にも利用できる。特に、速度や加速度などの時間経過を伴うセンサの値を表示するのに適している。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_12.png}
   \caption{rqt\_plotの使用例}
@@ -382,7 +382,7 @@ $ rqt
 rqt\_bagは、rosbagと同様に、トピックメッセージの保存、再生、圧縮などが可能である。加えて、GUIプログラムで構成されており、すべてのコマンドはボタンで動作する。このため、操作が容易で、カメラの映像をビデオ編集プログラムのように時間軸を合わせながら確認できる。実際に、USBカメラの映像をbagファイルとして保存した後、rqt\_bagで再生してみよう。
 「rqt」コマンドでrqtを実行し、メニューの[Plugins]→[Logging]→[Bag]を選択する。次に、左上のフォルダの形（Load Bag）のアイコンを選択して、上の「rosbag record /image\_raw」コマンドで記録した「*.bag」ファイルを開く。これにより、図5-13のようにカメラの映像を時間軸の変化とともに確認できる。また、このツールは映像の拡大、一定時間のデータ数の確認などができ、さらにマウスの右ボタンを押した後、「Publish」オプションをクリックすると、メッセージの再発行も可能である。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter5/pic_05_13.png}
   \caption{rqt\_bagの使用例}

@@ -169,7 +169,7 @@ $ rosrun turtlesim turtlesim_node
 [INFO] [1430205691.827666004]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_01.png}
   \caption{turtlesim\_nodeノードを実行した様子}
@@ -501,7 +501,7 @@ Subscribers: None
 %-------------------------------------------------------------------------------
 \subsubsection{rostopic pub [トピック名] [メッセージ型] [パラメータ]：指定されたトピック名でメッセージを配信}
 
-rostopic pubは、コマンドラインから、指定されたトピック名でメッセージを配信するコマンドである。次の例では、/turtle1/cmd\_velのトピック名でgeometry_msgs/Twist型のメッセージを配信している。geometry\_msgs/Twist 型はlinear型、angular型それぞれ3変数の計6変数からなり、ここでは、それぞれ[2.0, 0.0, 0.0]と[0.0, 0.0, 1.8]を指定している。
+rostopic pubは、コマンドラインから、指定されたトピック名でメッセージを配信するコマンドである。次の例では、/turtle1/cmd\_velのトピック名でgeometry\_msgs/Twist型のメッセージを配信している。geometry\_msgs/Twist 型はlinear型、angular型それぞれ3変数の計6変数からなり、ここでは、それぞれ[2.0, 0.0, 0.0]と[0.0, 0.0, 1.8]を指定している。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
@@ -517,7 +517,7 @@ publishing and latching message for 3.0 seconds
 \item -- ‘[2.0、0.0、0.0]''[0.0、0.0、1.8]’：x軸方向に毎秒2.0mで移動、z軸を中心に毎秒1.8radで反時計周りに回転
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_02.png}
   \caption{配信したメッセージが反映された様子}
@@ -653,7 +653,7 @@ $ rosservice call /turtle1/set_pen 255 0 0 5 0
 
 上のコマンドでサービスをリクエストすることで、turtlesimに使用されるペンの特性を変えられる。turtle\_teleop\_keyコマンドで移動した結果、次のように白いペンの色が赤で表示されることが確認できる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_03.png}
   \caption{rosservice callの例}
@@ -743,7 +743,7 @@ $ rosservice call clear
 
 これにより、RGBは255、86、69から0、86、69に変更されるため、図4-4の右図のように背景色が濃い緑になる。ただし、turtlesimノードの仕様により、変更を反映するためには、「rosparam set background\_b0」コマンドでパラメータを変更した後、「rosservice call clear」コマンドで画面を更新する必要がある。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_04.png}
   \caption{rosparam setの例}
@@ -1066,7 +1066,7 @@ Hit space to toggle paused, or 's' to step.
 %*〜省略〜*)
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_05.png}
   \caption{rosbag playの例（左：記録時、右：再生時）}
@@ -1218,7 +1218,7 @@ ROS catkinは、catkinビルドシステムを用いてパッケージをビル�
 \vspace{\baselineskip}
 \noindent
 \begin{description}
-\item[catkin\_create_pkg]（★★★）：catkinビルドシステムでパッケージを自動生成
+\item[catkin\_create\_pkg]（★★★）：catkinビルドシステムでパッケージを自動生成
 \item[catkin\_make]（★★★）：catkinビルドシステムのビルド命令
 \item[catkin\_eclipse]（★★☆）：catkinビルドシステムで生成したパッケージをEclipseで使用できるように変更
 \item[catkin\_prepare\_release]（★★☆）：リリース準備するときに使用されるchangelog整理とバージョンのタグ管理

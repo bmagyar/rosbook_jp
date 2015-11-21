@@ -15,7 +15,7 @@
 ROSで用いられる代表的なロボットパッケージとしては、Willow Garageで開発されたPR2注3とWillow Garage, OSRF, Yujin Robotが共同開発したタートルボット（turtlebot）注4に対するロボットパッケージが挙げられる。PR2は、Willow Garageが研究用途に開発したヒューマノイド型ロボットであり、他のロボットパッケージは、PR2パッケージを参考に開発されているものが多い。しかし、PR2は汎用的で優れた性能をもつ一方、価格が高いという問題があった。これに対し、ロボット開発費用を抑え、低価格で提供されたロボットパッケージが移動ロボット、タートルボットである。当初、タートルボットはiRobot社のRoomba createを移動ベースとして用いていたが、その後開発されたタートルボット 2では、Yujin Robot社のKobukiが採用されている。タートルボットの詳細については、9章でタートルボットに関するロボットパッケージの使い方とともに説明する。
 
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_01.png}
   \caption{ PR2（左）、タートルボット2（右）}
@@ -24,7 +24,7 @@ ROSで用いられる代表的なロボットパッケージとしては、Willo
 
 この代表的な二つのロボット以外にも、ROSのWiki（http://wiki.ros.org/Robots）では、マニピュレータや移動ロボット、自動走行車、ヒューマノイドなど、140種類以上の多様なロボットパッケージが公開されている。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_02.png}
   \caption{ROSを導入したロボット（http://wiki.ros.org/Robots）}
@@ -67,7 +67,7 @@ $ hg clone http://code.google.com/p/amor-ros-pkg/ %*→ ファイルをリポジ
 
 ロボットには多種多様なセンサが搭載されている。センサにより得られる情報は、ロボットの位置、姿勢、空間、力、画像、音声、慣性、振動、電流、RFIDなど、多岐にわたる。ROSで提供するセンサパッケージは徐々に増えつつあり、またI2CやUARTを採用したセンサはインターフェイスを統一する方向にある。センサの製造会社も積極的にROSセンサパッケージをサポートしはじめており、今後も多くのセンサがROSに対応すると思われる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_03.png}
   \caption{ROSで使用可能なセンサの例}
@@ -97,7 +97,7 @@ http://www.ros.org/browse/list.php
 
 図7-4のように、利用可能なパッケージの一覧がブラウザに表示されるので、Webページの上部のROSのバージョンを選択するボタンで"indigo"をクリックし、ROSのindigoバージョンのパッケージのリストを表示する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_04.png}
   \caption{ROSパッケージのリスト}
@@ -115,7 +115,7 @@ http://www.ros.org/browse/list.php
 http://wiki.ros.org/
 http://www.ros.org/browse/list.php
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_05.png}
   \caption{パッケージの検索方法}
@@ -124,7 +124,7 @@ http://www.ros.org/browse/list.php
 検索キーワードが適切であれば、図7-5のように関連するパッケージが表示される。多数の関連パッケージがあるが、ここでは上から2つ目の「find\_object\_2d - ROS Wiki」にある「find\_object\_2d」パッケージを利用する。パッケージを導入する際には、ビルドシステムがcatkinかrosbuildか、誰が製作したものか、オープンソースのライセンスの種類などの情報を確認し、注意深く検討すべきである。
 find\_object\_2dパッケージを導入するには、まず上から2つ目の「find\_object\_2d - ROS Wiki」をクリックし、図7-6に示すfind\_object\_2dパッケージのWikiページを開く。次に、上部の「Indigo」のボタンを押し、Indigoバージョンの情報を表示する。このページには、図7-6のように、パッケージのリポジトリアドレス、パッケージの依存関係（右のDependenciesをクリックすると表示される）、プロジェクトのWebページへのリンク（External website）などが記載されている。特に、パッケージの依存関係は必ず確認しよう。次項で示すように、関連パッケージは目的のパッケージより先にインストールしておく必要がある。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_06.png}
   \caption{パッケージ情報}
@@ -199,13 +199,13 @@ Source: svn https://find-object.googlecode.com/svn/trunk/ros-pkg/find\_object\_2
 
 まず、パッケージについてより詳しく調べるために、External websiteに記されたアドレス「http://find-object.googlecode.com」をクリックすると、そのページが「http://introlab.github.io/find-object/」に移動していると表示されるので、再度「http://introlab.github.io/find-object/」をクリックする。このページの中程に「Install」の項があり、そこにROSのインストール方法を記したGitHubへのリンク「See find\_object\_2d on GitHub.」（図7-7）があるので、それをクリックして「https://github.com/introlab/find-object/tree/master#find\_object\_2d-ros-package」に移動する（図7-8）。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_07.png}
   \caption{GitHubへのリンク}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_08.png}
   \caption{インストール方法を記したWebページ}
@@ -244,17 +244,17 @@ $ rosrun find_object_2d find_object_2d image:=image_raw
 
 検出対象の画像をPNG形式やJPEG形式など一般的な画像ファイル形式で保存しておき、起動したアプリケーション上にそのファイルをドラッグ・アンド・ドロップする。ここでは、検出対象として、以下の2枚の画像を使用する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_09.png}
-  \caption{検出対象（「find\_object_2d」および「ROS.org」と書かれた画像）}
+  \caption{検出対象（「find\_object\_2d」および「ROS.org」と書かれた画像）}
 \end{figure}
 
 それでは、実際に物体検出に挑戦してみよう。図7-10のように、検出対象の画像を含む絵を用意し、それを紙に印刷したものをカメラで撮影する。実行結果の例を図7-10に示す。図7-9に示した2つの文字列が四角で囲まれ、適切に検出されている。なお、ターミナルウィンドウで、「rostopic echo /object」と入力すると、検出された対象の座標値が出力される。このパッケージを利用して新たなパッケージを作成する際には、この座標値をトピックで受信して利用することができる。
 
 以上で公開されているパッケージの活用方法の一例を示した。ROS Wiki（http://wiki.ros.org/）には、パッケージの開発者によって、パッケージの使用方法が詳細に記述されているので、公開パッケージの使用の際には参考にしてほしい。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter7/pic_07_10.png}
   \caption{画像の検出結果}

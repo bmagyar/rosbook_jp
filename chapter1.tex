@@ -59,7 +59,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 またROSは、ROSを利用して開発された様々なアプリケーションパッケージを管理し、流通する仕組み（生態系、Ecosystem）を備えている。
 このようにROSとは、既存の伝統的なオペレーティングシステムを利用しながら、ロボットアプリケーションの開発に必須となるロボットやセンサの制御システムを、ハードウェア抽象化の概念に基づいてパッケージ化したものである。さらに様々なアプリケーションもパッケージとして提供することで、ユーザーによるロボットアプリケーション開発を強力に支援する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_01.png}
   \caption{メタ・オペレーティングシステムとしてのROS}
@@ -68,7 +68,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 
 また図1-1のように、ROSでプロセス間通信に使用されるメッセージは、異なるオペレーティングシステムや異なるハードウェア上のプロセス間でも自由に情報をやり取りすることができる。したがってROSは、様々なハードウェアから構成される複雑なロボットの開発にも適したオペレーティングシステムである。これについては、後半の章でより詳細に取り上げる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_02.png}
   \caption{異なるオペレーティングシステムやハードウェア上のプロセスに対する通信}
@@ -80,7 +80,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 近年、Android、iOS、Symbian、RiMO、Tizenなどスマートフォン向けオペレーティングシステムの開発現場では、生態系（Ecosystem）、あるいはモバイル生態系という単語をよく耳にする。これは、スマートフォンの製造会社と販社、様々なアプリケーションを開発するサードパーティ、さらにユーザーが有機的に密に結びつけられたモデルのことである。例えば、スマートフォン製造会社がオペレーティングシステムで定められたインターフェースに合わせて機器を製造し、各オペレーティングシステム会社は、これに合わせたライブラリを作成して提供する。ソフトウェア開発者は提供されたライブラリを利用することで、ハードウェアの深い知識がなくても容易にサービスプログラムを開発できる。さらに、開発されたプログラムをユーザーが入手しやすいように流通させることで、収益が循環し、市場が成長する。この生態系には軸となるオペレーティングシステムが必要であり、パーソナルコンピュータ分野ではマイクロソフト社のWindows OSとフリーソフトウェアのLinuxがこれに当たる。
 現在、ロボット分野でも同様の流れが見られる。つまり、当初は様々なハードウェアが乱立し、これらを統合するためのオペレーティングシステムが開発されていなかった。しかし現在では、様々なソフトウェアプラットフォームが提案され、特にROSはいち早く生態系の枠組みを整えつつある。今後、ロボット製造会社やセンサ製造会社などのロボット関連ハードウェアメーカー、およびROSの開発運用チームには、アプリ開発者やユーザーにも広く恩恵が及ぶようなROS生態系の確立が期待されている。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_03.png}
   \caption{ROS生態系}
@@ -93,7 +93,7 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
 
 ROSの技術的な詳細について述べる前に、ROSの歴史を振り返っておこう。 ROSは、2007年5月、米国のスタンフォード大学人工知能研究所（AI LAB）注18が実施したSTAIR（STanford AI Robot）プロジェクト注19において、Morgan Quigley注20が開発したSwitchyardに端を発する。2007年11月、米国のロボット専門企業Willow GarageがSwitchyardを引き継ぎ、ROSの名前で開発を始めた。Willow Garageは、パーソナルロボットとサービスロボットで著名な企業であり、有名な画像処理オープンソースソフトウエアであるOpenCV注23や、マイクロソフトKinectなどの3次元計測器で利用されるPCL（Point Cloud Library）注24をサポートしていたことでも知られる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_04.png}
   \caption{ROSロゴ（http://wiki.ros.org/）}
@@ -131,7 +131,7 @@ ROSのリリース注32とコンファレンス注33
 \end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_05.png}
   \caption{ROSのバージョン（http://wiki.ros.org/）}
@@ -143,7 +143,7 @@ ROSのリリース注32とコンファレンス注33
 ROSはこれまでに、ROS 1.0、Box Turtle、C Turtle、Diamondback、Electric Emys、Fuerte、Groovy Galapagos、Hydro Medusa、Indigo Igloo、Jade Turtleの10のバージョンをリリースしている。ROSの各バージョンは、2つめのバージョン以降、その頭文字がアルファベット順になるように名づけられている（この命名方式は、UbuntuやAndroidと同様である）。つまり、現在多く使われているIndigo Iglooのバージョンは、アルファベットIバージョン、すなわち9番目のバージョンである。
 また、図1-9と図1-10に示すように、各バージョンではポスター形式のイラストと亀のアイコンを発表している。この亀のアイコンは、turtlesim注34というROS公式チュートリアル用のシミュレーションにも使用されている。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_06.png}
   \caption{各バージョンの亀のアイコン}
@@ -155,7 +155,7 @@ ROSはこれまでに、ROS 1.0、Box Turtle、C Turtle、Diamondback、Electric
 ROSが正式にサポートしているオペレーティングシステムはUbuntu注35であるため、Ubuntuの新バージョンのリリースサイクルと同様に、1年に2回（4月、10月）の更新が行われていた。しかし2013年、ROSの開発と管理を担当しているOSRFは、ユーザーの意見を取り入れて、Hydro Medusaバージョンから1年に1回、Ubuntuの新しいバージョンのリリースに合わせて4月か5月にリリースすることを発表した。
 ROSのサポートは、一般的なUbuntuバージョンに合わせたものは1年間、2年に一度リリースされるUbuntu LTS（Long Term Support、例えばUbuntu 14.04）バージョンに合わせたものは、3年間サポートされる。例えば、2014年4月にリリースされたUbuntu 14.04 LTS（Trusty Tahr）に対応するROSのバージョンは、2014年のROS I版と2015年のJ版という2つのバージョンであり、それぞれ2017年4月までサポートされる予定である。現在までのUbuntu向けROSのリリースサイクル注36は、図1-11のとおりである。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_07.png}
   \caption{Ubuntu向けROSのリリースサイクル}
@@ -171,7 +171,7 @@ http://ja.wikipedia.org/wiki/Ubuntu
 %-------------------------------------------------------------------------------
 \subsection{ROS Indigo Igloo}\index{ROS Indigo Igloo}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_08.png}
   \caption{Indigo Iglooのバージョンのポスターとアイコン}
@@ -186,13 +186,13 @@ http://ja.wikipedia.org/wiki/Ubuntu
 ROSはメタ・オペレーティングシステムであり、ROSを利用するには、まず基本的に使用するオペレーティングシステムを選択する必要がある。ROSはUbuntu、Mac OS X、Fedora、Gentoo、OpenSUSE、Debian、Arch Linux、Windowsなどの多くのオペレーティングシステムをサポートしているが、ROSのユーザーが最も多く使用しているオペレーティングシステムはUbuntuである。開発チームでもUbuntuのLTSバージョン注39に合わせて新バージョンをリリースしていることから、特に支障がない限り、UbuntuのLTSバージョンに合ったROSのバージョンを選択することが好ましい。
 ROSの各バージョンにおけるUbuntuの対応状況に関する情報は、関連ROS Wikiサイトである「http://www.ros.org/debbuild/」にアクセスし、使用予定のROSのバージョンを選択することで得られる。このファイルには、現在選択しているROSのバージョンに対し、Ubuntuのバージョンごとに、既存のROSパッケージに対する最新のROSバージョンへの対応状況が記載されている。例えば、「http://www.ros.org/debbuild/indigo.html」では、図1-13のようにIndigo Iglooのバージョンの対応状況が確認できる。内容はパッケージの名前（Name）、パッケージのレポジトリ（Repo）、バージョン（Version）、開発やメンテナンスされているかの情報（Wet Status）、メインテナー（Maintainer）、各UbuntuとROSバージョンに対する移植状況等が記載されている。特に移植状況には注意する必要があるので、図1-13を例に説明する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_09.png}
   \caption{Indigo Iglooのバージョンの移植状況}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter1/pic_01_10.png}
   \caption{Indigo Iglooのバージョンの移植状況の詳細}

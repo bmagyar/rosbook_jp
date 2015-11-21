@@ -18,7 +18,7 @@ ROSに対応したロボットとして、2015年5月現在で140のロボット
 タートルボットはROSの標準リファレンス・プラットフォームで、ROSを初めて学ぶ人のために開発された低価格なロボットである。
 現在までに、図9-1に示すタートルボット1、2が販売されている。タートルボット1ではiRobot社の研究用ロボットRoomba createを、タートルボット2ではYujin Robot社のKobukiを移動ベースとして利用している。センサ    はタートルボット1、2ともにMicrosoft社のRGB-DカメラKinectが標準で搭載されている。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_01.png}
   \caption{タートルボット1（左）とタートルボット2（右）}
@@ -52,7 +52,7 @@ ROSに対応したロボットとして、2015年5月現在で140のロボット
 
 Kobukiは、Yujin Robot社が開発し、タートルボット2で採用された研究用移動ロボットプラットフォームである。図9-2にKobukiとタートルボット2を示す。移動ロボットプラットフォームとは、移動ロボット開発に必要な基本的な機能を搭載したハードウェアであり、多様なセンサやロボットアームが装備できるなど、様々な拡張が可能である。  Kobukiには、標準でバンパーセンサ、落下検知センサ、ホイールドロップセンサ、高解像度の車輪エンコーダ、モータ、3軸ジャイロセンサ、デジタル入出力端子、アナログ入力端子、バッテリーが搭載されている。  本節では、Kobukiのハードウェア構成について解説する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_02.png}
   \caption{Kobukiとタートルボット2}
@@ -64,7 +64,7 @@ Kobukiは、Yujin Robot社が開発し、タートルボット2で採用され�
 
 Kobukiと付属機器を図9-3に示す。基本的な構成は、Kobuki本体、ドッキングステーション、リチウムイオン電池、充電アダプタ、プレートと柱、USBケーブルである。本章では、これに加えて9.4.2項に示すように、プログラム開発用のデスクトップPCとノートパソコンを使用する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_03.png}
   \caption{Kobuki本体と付属機器}
@@ -75,14 +75,14 @@ Kobukiと付属機器を図9-3に示す。基本的な構成は、Kobuki本体�
 
 http://kobuki.yujinrobot.com/home-kr/about/specifications/
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_04.png}
   \caption{Kobuki本体の各部分の説明}
 \end{figure}
 
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_05.png}
   \caption{Kobukiのバンパーと前進方向}
@@ -101,7 +101,7 @@ http://kobuki.yujinrobot.com/home-kr/about/specifications/
 
 Kobukiの後部には、図9-6のような制御パネルがある。制御パネルには、搭載するセンサ用の外部電源  、簡単なステータスを表示するLEDやUSB端子、ボタン、スイッチがある。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_06.png}
   \caption{Kobukiの制御パネル}
@@ -109,7 +109,7 @@ Kobukiの後部には、図9-6のような制御パネルがある。制御パ�
 
 図9-7のように、Kobukiはノートパソコン、組み込みボード、Kinectなどの外部機器用に4つの電源ピンを備えている。Kobukiの電源を外部機器で利用したいとき、この電源ピンを使用すればよい。電源ピンのコネクタを以下に示す。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_07.png}
   \caption{Kobuki制御パネル上の電源ピン}
@@ -120,7 +120,7 @@ Kobukiの後部には、図9-6のような制御パネルがある。制御パ�
 
 Kobukiの充電は、ユーザーが直接充電アダプタを接続する方法と、ロボットが自ら充電ステーション（ドッキングステーション、図9-8）へ移動して充電  する方法がある。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_08.png}
   \caption{Kobukiドッキングステーション}
@@ -131,7 +131,7 @@ Kobukiの充電は、ユーザーが直接充電アダプタを接続する方�
 
 Kobukiの制御パネルには、図9-9のような D-Sub コネクタ（25ピン）の通信ポートがある。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_09.png}
   \caption{KobukiのD-Subコネクタ（25ピン）通信ポート}
@@ -139,7 +139,7 @@ Kobukiの制御パネルには、図9-9のような D-Sub コネクタ（25ピ�
 
 この通信ポートの各ピンの名称、機能を表9-1に示す。
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l l l}
 \toprule
@@ -168,7 +168,7 @@ USBケーブルを介してKobukiとノートパソコンを接続すれば、�
 \item 通信プロトコルの仕様: 通信プロトコルの仕様は、次のURLに記載されている。http://yujinrobot.github.io/kobuki/doxygen/enAppendixProtocolSpecification.html
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_10.png}
   \caption{SBC、MCUとの接続方法}
@@ -422,7 +422,7 @@ Kobukiに搭載するPCであり、Kobukiと直接通信して動作コマンド
 \item ROSパッケージ: ros-indigo-kobukiとros-indigo-kobuki-core
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_11.png}
   \caption{開発環境}
@@ -651,7 +651,7 @@ GUI環境で確認するには、「rqt\_graph」コマンドを使用する。�
 
 それぞれのトピックについて、より詳しい説明を表9-2に示す１ 。例えば、「velocity」はKobukiの動作速度を設定するトピックである。ユーザーは、ロボットの前進、後進、左右旋回、静止などを、このトピックを介して制御できる。
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l l}
 \toprule
@@ -756,7 +756,7 @@ Kobukiが配信するトピックは、状態の診断関連トピック（diagn
 
 いくつかの代表的な配信者トピックについて、より詳しい説明を表9-3から表9-6に示す。特に、odom、tf、joint\_states、sensorsの各トピック  は、今後Kobukiを使用する際に特に重要なトピックなので、どのような情報を含んでいるか、理解してほしい。
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l l}
 \toprule
@@ -781,7 +781,7 @@ wheel\_drop  & kobuki\_msgs/WheelDropEvent  & 左（0）、右側（1）車輪�
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l l}
 \toprule
@@ -803,7 +803,7 @@ imu\_data\_raw & sensor\_msgs/Imu  & ジャイロセンサの補正前データ�
 \caption{Kobukiセンサ関連トピック}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l l}
 \toprule
@@ -817,7 +817,7 @@ raw\_data\_stream & std\_msgs/String & ロボットから受信された加工�
 \caption{Kobukiデバッグ関連トピック}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l l}
 \toprule
@@ -952,7 +952,7 @@ transforms:
 $ rosrun rqt_tf_tree rqt_tf_tree
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_12.png}
   \caption{tf\_treeによる座標変換の表示}
@@ -976,7 +976,7 @@ $ rosrun rqt_robot_monitor rqt_robot_monitor
 
 rqt\_robot\_monitorノードを実行すると、図9-13のように、ロボットに関する様々な情報が表示される。例えばリンクエラーや警告情報、バッテリーの状態、バンパーの状態、落下検知、ホイールドロップ、モータ電流、ジャイロセンサの値、アナログ/デジタル入力値などである。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_13.png}
   \caption{rqt\_robot\_monitorを用いたロボットの診断}
@@ -986,7 +986,7 @@ Error Deviceには、ハードウェアやドライバにエラーがある場�
 
 ロボットが壁に衝突した場合など、何か問題が発生すると、図9-14のように「Warned Device」の部分に警告マークが表示され、問題の内容が表示される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_14.png}
   \caption{ロボットが壁に衝突したときの診断情報}
@@ -1013,7 +1013,7 @@ $ rosrun kobuki_dashboard kobuki_dashboard
 \stepcounter{num}\circled{\thenum}「Laptop」はノートパソコンの現在のバッテリー状態を表している。
 \stepcounter{num}\circled{\thenum}「Kobuki」はロボットの現在のバッテリー状態を表している。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_15.png}
   \caption{ダッシュボード（dashboard）}
@@ -1025,7 +1025,7 @@ $ rosrun kobuki_dashboard kobuki_dashboard
 次に、Kobukiのハードウェアをターミナルウィンドウからテストできるkobuki\_testsuiteパッケージを紹介する。
 kobuki\_testsuiteパッケージは、ハードウェアをテストするノードを数多く含むので、Kobukiの故障箇所を把握するのに便利である。使用できるノードには、車輪の回転、イベントの検出、ジャイロテスト、サウンドテスト  などを行うノードがある。これらのノードは表9－7のようにPythonで記述されている。
 
-\begin{table}[h]
+\begin{table}[htp]
 \centering
 \begin{tabular}{l l}
 \toprule
@@ -1148,7 +1148,7 @@ $ ls -l /dev/kobuki
 lrwxrwxrwx 1 root root 7 Aug 24 14:26 /dev/kobuki -> ttyUSB0
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_16.png}
   \caption{ファームウェアのダウンロード受信機能切り替えスイッチ}
@@ -1171,7 +1171,7 @@ $ roslaunch kobuki_node minimal.launch --screen
 
 Kobukiが自走してバッテリーを充電するには、図9-8のドッキングステーションが必要である。ドッキングステーションは、充電アダプタを内部に含んでおり、図9-17に示す下部の充電端子を介してロボットと接続すると充電を開始する。K obukiとドッキングステーションのドッキングに使用されるハードウェアは、ドッキングステーション側の3つのIR（赤外線）発光部（中央、左、右）と3つのKobuki本体側の受光部、充電端子と充電状態表示LEDである。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_17.png}
   \caption{Kobuki本体の充電端子}
@@ -1206,7 +1206,7 @@ $ roslaunch kobuki_auto_docking activate.launch --screen
 
 図9-18に自動ドッキングの様子を示す。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_18.png}
   \caption{ドッキングおよび自動充電の様子}
@@ -1247,7 +1247,7 @@ Yujin Robot社では、参考資料注8でKobukiの自動ドッキングに関�
 \item FAR\_RIGHT = 32 (=0x20)
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_19.png}
   \caption{ドッキングステーションの領域}
@@ -1255,7 +1255,7 @@ Yujin Robot社では、参考資料注8でKobukiの自動ドッキングに関�
 
 図9-20に示すように、Kobuki本体には3つの受光部があり、それぞれドッキングステーションの赤外線発光部からの赤外線を受光できる。もしKobukiがドッキングステーションの赤外線を受光できる領域内にある場合、kobuki\_auto\_dockingノードが実行可能である。受光可能な領域は、ドッキングステーションを中心に水平2m、垂直正面方向に5m程度   である。Kobukiは、ドッキングのために所定の位置で回転し、3つの赤外線受光部のいずれかで赤外線を検出すると、ドッキング作業を実行する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_20.png}
   \caption{赤外線受信部の位置と方向}
@@ -1344,7 +1344,7 @@ $ roslaunch kobuki_softnode full.launch --screen
 
 次に、RVizを実行して、左のディスプレイウィンドウで[Global Options]→[fixed frame]を「/odom」に変更  する。そして、ディスプレイウィンドウの左下の<Add>ボタンを押して、「RobotModel」を選択して追加する。すでにfull.launchファイルでKobukiの3次元モデルを読み込んだので、図9-21のようにそのモデルが画面中央に表示される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_21.png}
   \caption{仮想ロボットの実行}
@@ -1363,13 +1363,13 @@ $ roslaunch kobuki_keyop keyop.launch
 仮想のKobukiの動作を確認した  ので、続いて、オドメトリ情報が正しく計算され、配信されているかを確認する。rostopic echo /odom コマンドでも確認できるが、今回はRVizを用いているので、GUI環境で視覚的に確認してみる。RVizの左下の<Add>ボタンを押して、図9-22のように「By Topic」タブをクリックし、「Odometry」を選択する。これにより、画面上のKobukiの前進方向に、オドメトリを示す赤い矢印が現れる。初期設定ではこの矢印が長すぎるので、左側のディスプレイウィンドウの[Odometry]詳細オプションで「Length」の値を0.5に設定する。
 次に、再び「keyop.launch」ノードを使用して仮想のKobukiを動かすと、図9-23のように、Kobukiの軌跡に沿って赤い矢印が表示されることが確認できる。このオドメトリ情報は、移動ロボットの推定位置を示す。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_22.png}
   \caption{odomトピックの確認のためodometryディスプレイを追加}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_23.png}
   \caption{keyop.launchを利用した仮想ロボットの制御}
@@ -1385,13 +1385,13 @@ RVizの左下の<Add>ボタンを押して「TF」を選択する。すると、
 $ rosrun rqt_tf_tree rqt_tf_tree
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_24.png}
   \caption{RVizを用いたtfトピックの確認}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_25.png}
   \caption{rqt\_tf\_treeを用いたtfトピックの確認}
@@ -1415,7 +1415,7 @@ $ roslaunch kobuki_softapps nav_demo.launch
 
 これにより、図9-26のようにRVizが自動的に起動するが、これにはナビゲーションに必要な環境があらかじめ含まれている。RViz画面上の<2D Nav Goal>アイコンを選択して、地図上の任意の位置をクリック、ドラッグして、目標位置と目標姿勢  を設定してみよう。仮想のKobukiが障害物を避けて、目標位置、姿勢まで移動する様子が確認できる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_26.png}
   \caption{nav\_demo.launchの実行画面}
@@ -1465,7 +1465,7 @@ $ sudo apt-get install libsdformat1 libsdformat-dev gazebo2
 $ gazebo
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_27.png}
   \caption{Gazeboの初期画面}
@@ -1488,7 +1488,7 @@ $ roslaunch kobuki_gazebo kobuki_empty_world.launch
 
 これにより、gazebo、gazebo\_gui、mobile\_base\_nodelet\_ manager、robot\_state\_publisher、spawn\_mobile\_baseノードが一斉に起動され、図9-28のようにKobukiがGazeboの画面に現れる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_28.png}
   \caption{gazebo上kobukiの3次元外観}
@@ -1519,7 +1519,7 @@ Gazeboでは、単に仮想のKobukiが移動するだけではなく、  Kobuki
 $ roslaunch kobuki_gazebo safe_random_walker_app.launch
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_29.png}
   \caption{kobuki\_playground.launchを実行中の画面}
