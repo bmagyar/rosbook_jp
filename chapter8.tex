@@ -117,7 +117,7 @@ $ rosrun image_view image_view image:=/image_raw
 
 図8-1のように、小さなウィンドウが現れ、カメラ画像が表示される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_01.png}
   \caption{image\_viewノードを利用した画像表示}
@@ -132,7 +132,7 @@ $ rosrun image_view image_view image:=/image_raw
 $ rqt_image_view image:=/image_raw
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_02.png}
   \caption{rqt\_image\_viewノードを利用した画像表示}
@@ -148,7 +148,7 @@ $ rosrun rviz rviz
 
 RVizが起動したら、Displaysオプションを変更する。RViz左下の<Add>をクリックして、図8-3のように[By display type]→[rviz]→[Image]を選択して画像表示を追加する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_03.png}
   \caption{RVizに画像表示を追加}
@@ -156,7 +156,7 @@ RVizが起動したら、Displaysオプションを変更する。RViz左下の<
 
 次に[Image]→[Image Topic]の値を「/image\_raw」に変更する。これにより、図8-4のように画像が表示される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_04.png}
   \caption{RVizを利用した画像表示}
@@ -258,7 +258,7 @@ http://wiki.ros.org/camera\_calibration/Tutorials/MonocularCalibration?action=At
 
 ダウンロードしたチェスボード画像をプリンタでA4サイズの紙に出力して、平らな板などに張り付けておく。このチェスボード画像は、位置や姿勢を変えながらカメラで複数回撮影し、キャリブレーション用の画像を作成するのに使われる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_05.png}
   \caption{8 x 6チェスボード}
@@ -275,7 +275,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.024 image:
 
 キャリブレーションのノードが実行されると、図8-6のようにGUI画面が現れる。チェスボードをカメラの前に置き、チェスボードを上下左右、斜め、あるいは回転させて、画像を複数回撮影しよう。撮影は、チェスボード全体が映っているときに自動で行われる。GUI画面の右側にX、Y、Size、Skewと表示されたバーがあるが、チェスボードを上下（Y）、左右（X）、前後（Size）、回転（Skew）させると、それぞれのバーの色が次第に緑に変化する。できるだけすべてのバーが緑色になるまで、チェスボードをいろいろな位置、角度に動かし続けよう。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_06.png}
   \caption{キャリブレーションGUIの初期状態}
@@ -283,7 +283,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.024 image:
 
 カメラでチェスボードを撮影すると、格子点検出などのキャリブレーションに必要な処理が自動的に行われる。図8-7は、チェスボード内部の格子点が検出された例である。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_07.png}
   \caption{キャリブレーションGUI}
@@ -364,7 +364,7 @@ LRFは高速・高精度な距離計測が可能で、短時間で大量の点�
 ロボット分野で多く使用される代表的なLRFには、屋内外での無人走行車などに多く使用されているSICK注6社のLMSシリーズ、室内ロボットに広く使用されている北陽電機のURGシリーズ注7、そして複数のレーザ光源を搭載した全方向レーザスキャナであるVelodyne社のHDLシリーズ注8などがある。これらのセンサはまだ高価格であり、一台当たり数十万～数百万円である。しかしRPLIDAR注9などの低価格LRFが販売され始めており、今後、一層の低価格化が期待される。
 以降の項ではLRFの動作原理と必要なパッケージのインストール方法、利用方法について説明する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_08.png}
   \caption{SICK LMS 210（左）、Hokuyo UTM-30LX（中央）、Velodyne HDL-64e（右）}
@@ -376,7 +376,7 @@ LRFは高速・高精度な距離計測が可能で、短時間で大量の点�
 LRFは、主に単一のレーザ光源(Velodyne HDLシリーズは複数)と反射鏡、そしてモーターで構成されている。LRFを起動すると、光源からレーザが投射され、モーターが内部の反射鏡を回転させてレーザを水平面に走査する。LRFは、走査されたレーザが物体表面で反射されて光源に戻るまでの時間から、物体までの距離を計測する。
 図8-9の左図は、LRFが内部の反射鏡でレーザを走査している様子を表しており、LRFは図8-9の中図のようにLRFを中心に水平面内の物体までの距離を計測することができる。ただし、測定の原理上、図8-9の右図のように、計測物までの距離が遠いと計測点の間隔が広くなり、またノイズの影響も受け易くなる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_09.png}
   \caption{LRFによる空間計測}
@@ -390,7 +390,7 @@ LRFの使用にあたっては、以下の3つの点に留意する必要があ�
 %-------------------------------------------------------------------------------
 \subsection{LRFの接続とテスト}
 
-ROSでは、各社のLRFに対応する多くのパッケージが用意されている。例えば、SICK製LRFに対応したsicks300、sicktoolbox、sicktoolbox\_wrapperパッケージ、北陽電機製LRFのhokuyo\_node注11、urg_node注12パッケージ、Velodyne製HDLをサポートするVelodyneパッケージなどがある。本項では、ROSで北陽電機製UTM-30LX注13を使用する例を挙げる。
+ROSでは、各社のLRFに対応する多くのパッケージが用意されている。例えば、SICK製LRFに対応したsicks300、sicktoolbox、sicktoolbox\_wrapperパッケージ、北陽電機製LRFのhokuyo\_node注11、urg\_node注12パッケージ、Velodyne製HDLをサポートするVelodyneパッケージなどがある。本項では、ROSで北陽電機製UTM-30LX注13を使用する例を挙げる。
 
 \subsubsection{urg\_nodeパッケージのインストール}
 
@@ -471,7 +471,7 @@ ranges: [0.9929999709129333,1.3346457658567, .............................
 \item RViz左下の<Add>ボタンをクリックした後、[LaserScan]を選択して追加する。図8-10のように詳細設定でトピックや色を変えることができる（TopicとColor Transformer、Color）。
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_10.png}
   \caption{RVizによるLaserScanの表示}
@@ -484,7 +484,7 @@ ranges: [0.9929999709129333,1.3346457658567, .............................
 
 LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simultaneous Localization And Mapping）がある。SLAMとは、図8-11のように、ロボットにLRFなどの外界センサを取り付け、ロボットの自己位置同定と周辺の地図作成を同時に行う手法である。SLAMについては10章で詳しく説明する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_11.png}
   \caption{LRF活用例1: 移動ロボットの障害物検出}
@@ -492,7 +492,7 @@ LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simu
 
 また、LRFを床面上に設置して固定することで、図8-12のようにLRF周囲にある様々な物体の位置や、検出された足の動きから人の位置を検出、追跡することもできる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_12.png}
   \caption{LRF活用例2: 人と物体の検出（動画はhttps://youtu.be/2cATgSHOVtcを参照）}
@@ -509,7 +509,7 @@ LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simu
 ToF方式は近赤外光などを投射し、対象物表面で反射して戻るまでの時間（Time of Flight）から距離を測定する。一般的には光投射部と受光部が対になり、ピクセルごとに距離を読み取る。ToF方式のデプスカメラは構造が複雑なため、次に説明するパターン投影方式のカメラよりも一般に高価である（近年では、位相差や高速シャッターを利用した、低価格なToF方式のセンサも開発されている）。
 ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Imaging社SwissRanger、Fotonic社FOTONIC-B70、pmdtechnologies社CamCubeとCamBoard、SoftKinectic社DepthSense DSシリーズ、Microsoft社から最近発売されたKinect 2などがある。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_13.png}
   \caption{左からD-IMager、SwissRanger、CamBoard、Kinect2}
@@ -519,7 +519,7 @@ ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Im
 
 パターン投影方式を使用しているデプスカメラには、Microsoft社のKinect注16やASUS社のXtion注17、PrimeSense社のCarmine、Capriなどがあり、最近ではOccipital社からStructure Sensor注18が発売されている。これらのデプスカメラは、共通してPrimeSense社のPrimeSense SoC（System on a Chip、半導体チップ上に機能を集積した集積回路）を使用している。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_14.png}
   \caption{左からKinect Xbox、Xtion、Carmine、Structure Sensor}
@@ -527,7 +527,7 @@ ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Im
 
 PrimeSense社のPrimeSense SoCを使用したデプスカメラは、一対の赤外線プロジェクターと赤外線カメラからなるセンサで、特殊な投影パターンを持つ赤外線ドットを計測物体に投影し、この点の分布を赤外線カメラで計測している。ここで計測物体上の赤外線ドットのパターンは、平らな物体であれば投影パターンと同じであるが、障害物の形状が変化すると歪みが生じる。図8-16は壁を計測したときに赤外線ドットのパターンである。ドットパターンの変形量と赤外線プロジェクター・赤外線カメラ間の距離を用いると、物体表面の各点までの距離が計算できる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_15.png}
   \caption{Kinectのドットパターンの例}
@@ -578,7 +578,7 @@ $ rosrun pcl_ros pcd_to_pointcloud cloud_file.pcd _frame_id:=/map
 
 これにより、図8-17 のようにRVizに点群データが表示される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_16.png}
   \caption{RVizによるPCD点群データの表示}
@@ -627,7 +627,7 @@ $ roslaunch openni2_launch openni2.launch
 \item 図8-18のように点群データを確認することができる。色の基準をX軸に指定したので、点群がX軸から遠ざかるほど紫色に表示される。
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_17.png}
   \caption{RVizによる点群表示}
@@ -638,7 +638,7 @@ $ roslaunch openni2_launch openni2.launch
 
 デプスカメラの用途は多岐に渡るが、代表的な例に3次元SLAMや、移動ロボットや無人自動車などで用いられる障害物回避、あるいは人の骨格情報などを利用したヒューマンインタフェースなどがある。例えば、図8-17の二次元バーコードを読み取り、デプスカメラを用いたモーションキャプチャやロボットの遠隔操作、ジェスチャーを使用した移動ロボットへの指示などを紹介する動画を参照されたい。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_18.png}
   \caption{デプスカメラの用途の例}

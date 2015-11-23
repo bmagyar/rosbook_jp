@@ -15,7 +15,7 @@
 ROSで使用される通信には、ノード間でメッセージをやり取りするメッセージ通信と、パラメータサーバとノード間でパラメータ値をやり取りするパラメータ通信    がある。図6-1にメッセージ通信とパラメータ通信の概要を示す 。メッセージ通信は、一方向通信方式のトピック(topic)通信と、双方向通信方式のサービス(service)通信に分けることができる。
 \end{definition*}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_01.png}
   \caption{ノード間のメッセージ通信とパラメータ通信}
@@ -26,7 +26,7 @@ ROSで使用される通信には、ノード間でメッセージをやり取�
 トピック通信は一方向通信であるが、一回接続された配信者ノードと購読者ノードは、その後は連続して通信を行うことができるという特徴をもつ。そのため、センサからセンサドライバを通して直接計測値を読み込むノードを配信者ノード、計測値を加工してより高度な情報処理を行うノードを購読者ノードとするなど、連続してメッセージを送る必要があるセンサデータ送信  に適している。
 \end{definition*}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_02.png}
   \caption{トピック通信}
@@ -37,7 +37,7 @@ ROSで使用される通信には、ノード間でメッセージをやり取�
 サ  ービスは、トピックとは異なり、一回限りのメッセージ通信であるため、サービスのリクエストとレスポンスが完了すると、2つのノードの接続は切断される。  サービス通信は、ロボットへの定型動作の実行命令や、特定の条件が満たされたときにイベントを発生するノードなどに使用される。
 \end{definition*}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_03.png}
   \caption{サービス通信}
@@ -48,7 +48,7 @@ ROSで使用される通信には、ノード間でメッセージをやり取�
 パラメータ通信はトピック通信やサービス通信とは異なり、ノード間通信に用いるものではなく、ノードとパラメータサーバ間の通信に使われる。具体的には、  デバイスポートの指定、センサ計測範囲の設定などに利用される。
 \end{definition*}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_04.png}
   \caption{パラメータ通信}
@@ -376,10 +376,10 @@ $ rosrun irvs_ros_tutorials ros_tutorial_msg_publisher
 
 配信者ノードを実行すると、図6-5のような出力画面が表示され、ROSメッセージが配信されているのがわかる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_05.png}
-  \caption{ros_tutorial_msg_publisherノードの実行画面}
+  \caption{ros\_tutorial\_msg\_publisherノードの実行画面}
 \end{figure}
 
 4  章で紹介したrostopicコマンドを実行  して、ROSのネットワークで使用されているトピックのリストを確認してみよう。rostopicコマンドにlistオプションを付けて実行すると、ros\_tutorial\_msgトピックがあることを確認できる。
@@ -397,7 +397,7 @@ $ rostopic list
 $ rostopic echo /ros_tutorial_msg
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_06.png}
   \caption{ros\_tutorial\_msgトピックの内容}
@@ -415,7 +415,7 @@ $ rosrun irvs_ros_tutorials ros_tutorial_msg_subscriber
 
 購読者ノードを実行すると、図6-7のような出力画面が表示される。配信者ノードから送信されたros\_tutorial\_msgトピックのメッセージを、購読者ノードが受信した結果が表示される。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_07.png}
   \caption{ros\_tutorial\_msg\_subscriberノードの実行画面}
@@ -437,7 +437,7 @@ $ rqt
 
 rqt上のメニューの[Plugins]→[Introspection]→[Node Graph]を選択すれば、図6-8のように、現在ROSで実行しているノードとメッセージが確認できる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_08.png}
   \caption{ノードの関係をrqt上で表示した結果}
@@ -744,7 +744,7 @@ $ rosrun irvs_ros_tutorials ros_tutorial_srv_client 2 3
 
 なお、サービスはトピックと異なり一回限りの通信であるため、6.2.10項と同様にrqt\_graphを実行しても、rqt\_graphには図6-9のように配信者と購読者ノード、トピックのみ表示され、サービスは表示されない。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_09.png}
   \caption{rqt上ではサービスは表示されない}
@@ -774,7 +774,7 @@ $ rqt
 
 次に、rqtプログラムのメニューから[Plugins]→[Service]→[Service Caller]を選択すると、図6-10のような画面が現れる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_10.png}
   \caption{rqtのService Callerプラグインを使用したサービスリクエスト}
@@ -1049,7 +1049,7 @@ $ rosnode list
 $ rqt_graph
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_11.png}
   \caption{roslaunchを利用した複数のノードの実行}
@@ -1087,7 +1087,7 @@ $ roslaunch irvs_ros_tutorials union.launch --screen
 $ rqt_graph
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_12.png}
   \caption{名前空間を用いたメッセージ通信}

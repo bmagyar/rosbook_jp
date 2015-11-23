@@ -13,7 +13,7 @@ SLAM (Simultaneous Localization And Mapping)とは、ロボットが未知の環
 本節では、移動ロボットのナビゲーションに必要な4つの機能について説明する。ナビゲーションは、広義には出発地から目的地まで人やものを案内する機能である。我々にとって最も身近なナビゲーションは、カーナビゲーションシステム (カーナビ)であろう。カーナビは、端末の地図上で目的地を設定すると、現在位置から目的地までの正確な距離、所要時間、経由する場所や利用する道路などを詳細に表示してくれる。
 移動ロボットにおけるナビゲーションは、図10-1に示すように出発地から目的地まで、“障害物を避けながら”移動する機能である。ナビゲーションは古くから研究されており、これまでに様々な手法が提案されてきた  。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_01.png}
   \caption{ナビゲーション}
@@ -42,7 +42,7 @@ SLAM (Simultaneous Localization And Mapping)とは、ロボットが未知の環
 
 ナビゲーションにおいて、移動ロボットが自己位置を計測/推定する機能は必須である。移動ロボットにおける最も基本的な自己位置計測手法は、車輪の回転量を用いるオドメトリ (odometry)法  である。しかしオドメトリ法は、車輪の滑りなどによって誤差が蓄積されやすい。そこで、IMUセンサなどで慣性情報 (速度や加速度)を取得し、それらの情報を統合することで誤差の蓄積を低減する方法がしばしば用いられる。オドメトリ法やIMUセンサを用いた方法など、微少な移動量を加え合わせて現在位置を推定する手法をデッドレコニング法 (dead reckoning)と呼ぶ。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_02.png}
   \caption{オドメトリ法に必要な情報 (中心位置座標 (ｘ、ｙ)、車輪間の距離D、車輪半径r)}
@@ -100,7 +100,7 @@ y_(k+1)=y_k+\Delta \sin(\theta_k+\Delta\theta/2)
 
 移動ロボットは人間が操縦するカーナビと違い、ロボットが自ら移動中に障害物を検出して、衝突を回避しなければならない。障害物には壁、家具などの静止したものと、人や車など移動するものがあるが、それらの検出には、遠距離から非接触で存在を検出できる距離センサやビジョンセンサが利用される。距離センサには、LRF、超音波センサ、赤外線距離センサなどが良く用いられる。一方、ビジョンセンサには、単眼カメラ、ステレオカメラ、全方位カメラなどがあり、最近ではKinect、Xtionなどのデプスカメラも広く利用されている。  検出された障害物情報を基に、次項の最適経路の計算手法により、適切な回避動作が計画される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_03.png}
   \caption{オドメトリ法}
@@ -146,7 +146,7 @@ XY平面 (床面)上の障害物の位置、形状を正確に計測できるLRF
 正方形、長方形、円筒形 の車輪型移動ロボットでなければならない。一辺が極端に長いロボットや複雑な形状のロボット、2足ヒューマノイドロボット、多脚移動ロボット、飛行ロボット、水中ロボットなどは適用外である。
 本節では、第9章で紹介した移動ロボットプラットフォームKobuki注2を使用する。ただし、図10-4に示すように、Kobuki本体にタートルボット2のモジュールプレートとフレームを2段に積んだ。下段にはノートパソコンを設置し、上段に北陽電機製 LRF注3  (UTM-30LX)を搭載した。ただし、本節ではKobukiプラットフォームとLRFを用いた場合について説明するが、これを応用すれば、特定のロボットプラットフォーム、特定のセンサに限らず、様々なロボットにSLAMを実装できる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_04.png}
   \caption{LRFを搭載したKobuki}
@@ -276,7 +276,7 @@ $ rosrun map_server map_saver
 map\_saverノードは、ロボットのオドメトリ情報、tf情報、LRFの距離情報から自動的に環境地図を作成する。作成された環境地図は、すでに起動しているRVizで確認できる。
 実際に、図10-5に示す環境を用意し、環境地図を作成した。この環境には、ベッド、机、テーブル、棚、本棚、冷蔵庫、TV、ソファなどが含まれる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_05.png}
   \caption{計測対象の環境 (左)と計測対象の3次元モデル (右)}
@@ -284,13 +284,13 @@ map\_saverノードは、ロボットのオドメトリ情報、tf情報、LRF�
 
 図10-6に環境地図作成の途中経過を、図10-7に完成した環境地図を示す。図10-5で示した環境の環境地図が作成されたことを確認できる。なお、ファイル名を特に指定しなければ、map\_saverを動作させたディレクトリに、実際の環境地図であるmap.pgmファイルと、解像度などの情報を含むmap.yamlファイルが保存される。環境地図の保存形式については、10.3節で説明する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_06.png}
   \caption{環境地図作成の様子}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_07.png}
   \caption{完成した環境地図}
@@ -327,7 +327,7 @@ $ rosrun map_server map_saver
 
 本項では、環境地図としてROSコミュニティで一般的に広く使用されている2次元の占有格子地図 (Occupancy Grid Map)について説明する  。10.2.4項  で得られた環境地図も占有格子地図である。一例を図10-8に示す。白い領域は、ロボットが移動可能な自由空間 (free area)、黒い領域は移動不可能な占有空間 (occupied area)、灰色はセンサ情報が得られて  いない未知空間 (unknown area)を表す。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_08.png}
   \caption{完成した占有格子地図}
@@ -356,7 +356,7 @@ SLAMに必要な情報は、「距離センサから得られる距離情報」�
 次に、距離センサの位置情報について考える。距離センサは移動ロボットに固定されているが、単純にロボットの座標値をセンサの座標値として扱うことはできない。オドメトリ情報であるロボットの現在位置に、距離センサの取り付け位置の情報を加えた値が距離センサの位置情報となる。
 通常、距離センサから得られる距離情報はscanトピック、オドメトリ情報やセンサ取り付け位置などの座標変換情報はtfトピックで表される。図10-9のように、scanトピックとtfトピックの2つの情報に基づいてSLAMを実行し、環境地図であるmapトピックを生成する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_09.png}
   \caption{tfトピックとscanトピック、mapトピックの関係}
@@ -367,7 +367,7 @@ SLAMに必要な情報は、「距離センサから得られる距離情報」�
 
 前節では、Kobukiを用いてSLAMを実行するために、kobukiノードに加えてkobuki\_slamパッケージを利用した。このパッケージには、SLAMの実行に必要なノードをまとめたkobuki\_slam.launch ファイルが含まれている。図10-10に、このlaunchファイルで起動されるノードとトピックの流れを示す。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_10.png}
   \caption{kobuki\_slam.launchファイルで実行されるノードとトピック}
@@ -407,7 +407,7 @@ Kobukiノードは、ユーザーからの指令を受けて、実際にロボ�
 図10-11は、「rosrun rqt\_tf\_tree rqt\_tf\_tree」コマンドで確認できるtf注4のtreeビューアで、ロボットとセンサ間の座標変換情報を示している。
 10.3.1で説明したように、距離センサの位置情報は、オドメトリ情報であるロボットの現在位置に、距離センサの取り付け位置の情報を加えた値である。実際に図10-11より、odom → base\_footprint → base\_link → base\_scanの順に位置情報が関連付けられていることがわかる。SLAMを行うには、このすべてのtf情報 (tfトピックとして配信される座標変換情報)が  必要である。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_11.png}
   \caption{ロボット各部の座標変換情報}
@@ -616,7 +616,7 @@ SLAMでは、これらのセンサから得られた位置推定値は、距離�
 位置推定では、Rudolf E. Kalmanが開発したカルマンフィルタが多く使用されている。カルマンフィルタは、正規分布に従うノイズ (ガウスノイズ)を含む線形システムに対し、ベイズの定理 に基づいて対象の状態を最尤推定する再帰フィルタである 。図10-12の処理の流れを示す。まずシステムの動作モデル  (例えばオドメトリ法や等速直線モデル)に基づいて、現時刻のシステムの状態を予測する。次に、より正確な状態量を推定するために、この予測値と実際の計測値との間の誤差を用いてシステムの状態を補正する。この補正に、これまでに得られた誤差の統計量を利用する ことで、予測値と計測値を確率的に最適に融合する。これを繰り返し実行することで、推定位置精度が向上する。
 カルマンフィルタを利用したSLAMでは、ある時刻までに得られている環境地図と自己位置の推定値から、次時刻で観測されるべき周囲環境を予測し、これと実際に観測された周囲環境との差を誤差として用いる。この誤差をもとに自己位置を補正することで、自己位置と環境地図の推定精度を同時に向上する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_12.png}
   \caption{カルマンフィルタの処理の流れ}
@@ -781,7 +781,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_navigation`/rviz/kobuki_nav.rviz
 
 これを実行すると、図10-13のような画面が現れ、環境地図に多数の緑の矢印  が確認できる。ひとつひとつの矢印が10.4.2項で説明したパーティクルフィルタの各粒子を表している。緑の矢印の中央付近にKobukiを示す●印  がある。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_13.png}
   \caption{RVizで表示したパーティクル (ロボット周囲の矢印)}
@@ -795,7 +795,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_navigation`/rviz/kobuki_nav.rviz
 
 ここまで\circled{1}~\circled{5}の作業  が完了したら、ナビゲーションを実行してみよう。RVizのメニューから[2D Nav Goal]をクリックし、ロボットを移動させる目的地をクリックすると、\circled{5}と同じように  大きな緑色の矢印が現れる。次にクリックしたままで、この矢印をドラッグすることで目標姿勢を与え、目的地の位置と姿勢を設定する。その後、ロボットは作成された環境地図を用いて、目的地までの障害物を回避しながら移動する (図10-14)。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_14.png}
   \caption{目的地の設定 (左から３番目の図の大きな矢印)とロボットの移動の様子}
@@ -839,7 +839,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_navigation`/rviz/kobuki_nav.rviz
 
 図10-15は、ROSのナビゲーションパッケージの実行に必要なノードとトピックの関係図である。ナビゲーションに必要な情報 (トピック)を中心に説明する。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_15.png}
   \caption{ナビゲーションに必要なノードとトピックの関係図}
@@ -883,7 +883,7 @@ $ roslaunch kobuki_navigation kobuki_navigation.launch --screen
 
 ここで、rqt\_graphを実行すると、図10-16のようにROS環境で実行しているノードとトピックの情報が確認できる。ナビゲーションに必要な情報は、それぞれ/odom、/tf、/scan、/map、/mobile\_base/commands/velocityというトピック名で配信/購読されており、/move\_base\_simple/goalはRVizで目標座標を指定した後に配信される。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_16.png}
   \caption{kobuki\_navigationの各ノードとトピックの状態}
@@ -1313,7 +1313,7 @@ $ cp kobuki_nav.rviz `rospack find kobuki_slam`/rviz/
 $ rosrun rviz rviz -d `rospack find kobuki_slam`/rviz/kobuki_nav.rviz
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_17.png}
   \caption{RVizでのナビゲーションの様子}
@@ -1338,7 +1338,7 @@ costmapは、各領域の状態を0〜255の数値で表現する。  図10-18�
 \item 255: ロボットが移動不可能な占有空間 (occupied area)
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_18.png}
   \caption{障害物との距離とcostmap値の関係}
@@ -1347,7 +1347,7 @@ costmapは、各領域の状態を0〜255の数値で表現する。  図10-18�
 costmapを視覚的に表現すると、例えば図10-19のようになる。左図は地図をグレースケールで表示したもので、右図はカラーで表示したものである (「http://goo.gl/tlMnzv」を参照)。左図は中央にロボットがあり、地図の色が濃い領域ほど  衝突の可能性が高い。ロボット周囲の緑色  の枠がロボットのモデルであり、この緑の円が壁にぶつかると、ロボットは衝突する。赤は距離センサで得られた障害物である。
 右図では、黄色の領域は障害物である。水色の領域はロボットの重心位置がこの中に入ると障害物と衝突することを示す。青の領域は衝突の可能性が低い  領域であり、紫は水色と青の  境界線である。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_19.png}
   \caption{costmap表現 (「http://goo.gl/tlMnzv」を参照)}
@@ -1390,7 +1390,7 @@ costmapを視覚的に表現すると、例えば図10-19のようになる。�
 
 このように予測と更新を繰り返しながらパーティクルを収束させ、ロボットの推定位置を得る。一例を図10-20に示す。$t_1, t_2, t_3, t_4$と時刻が進むにつれて、パーティクルが収束していく様子がわかる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_20.png}
   \caption{AMCLを用いたロボットの位置推定}
@@ -1422,7 +1422,7 @@ Dynamic Windows Approach (DWA)は、ロボットの速度探索空間 (velocity 
 
 このダイナミックウィンドウ内で、ロボットの方向、障害物までの距離、速度からなる目的関数G(v,ω)が最大となる並進速度vと回転速度ωを求める。すなわち、図10-22のように、実現可能な様々な進速度v、回転速度ωをの選択肢から、目標値に到達するために目的関数が最大となる  速度を得る。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_21.png}
   \caption{ロボットの速度探索空間 (velocity search space)とダイナミックウィンドウ}
@@ -1430,7 +1430,7 @@ Dynamic Windows Approach (DWA)は、ロボットの速度探索空間 (velocity 
 
 ここまで、SLAMとナビゲーションについて説明した。移動ロボットプラットフォームKobukiを中心に説明したが、他の移動ロボットプラットフォームや独自のロボットにも適用できる。
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_22.png}
   \caption{並進速度vと回転速度ω}

@@ -134,7 +134,7 @@ ROSのビルドシステムであるcatkinはCMakeを拡張したものである
 \subsection{トピックメッセージ通信}
 トピックメッセージ通信は、図3-1のように、情報を送信する配信者と情報を受信する購読者が、トピックと呼ばれる形式でメッセージを送受信するものである。一つの配信者から複数の購読者への通信や、逆に複数の配信者から一つの購読者への通信も可能である。もちろん、一つの配信者から一つの購読者や、多数の配信者から多数の購読者への通信も可能である。トピックメッセージ通信は、例えば移動ロボットの両輪のエンコーダ値を計測して、ロボットの現在位置であるオドメトリ（odometry）情報を計算し、得られた位置情報をトピックメッセージ（x、y、θ）として送信する場合など、一方向で連続的なメッセージの送受信に用いられる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_01.png}
   \caption{トピックメッセージ通信}
@@ -144,7 +144,7 @@ ROSのビルドシステムであるcatkinはCMakeを拡張したものである
 \subsection{サービスメッセージ通信}
 サービスメッセージ通信とは、図3-2に示すようにサービスをリクエスト（request）するサービスクライアント（service client）と、レスポンス（response）を返すサービスサーバ（service server）間の、双方向サービスメッセージ通信である。例えば、図3-2に示すように、クライアントがサーバに現在時刻をリクエストすると、サーバは時間を調べてクライアントにレスポンスを返す。このサービスメッセージ通信は、トピックメッセージ通信とは異なり、一対一の通信のみが可能である。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_02.png}
   \caption{サービスメッセージ通信}
@@ -155,7 +155,7 @@ ROSのビルドシステムであるcatkinはCMakeを拡張したものである
 配信者、購読者、サービスサーバ、サービスクライアントは、一般にそれぞれ異なるノードの中に存在する。従って、これらのノードがメッセージ通信をするには、ノードを接続する必要がある。このノード間の接続を管理するのがマスター注3である。マスターは、ノードの名前、トピックやサービスの名前、URIアドレスとポート、パラメータなどの情報を管理している。ノードは、生成と同時にマスターに情報を登録し、マスターを介して接続先のノードの情報を得る。その後、ノードとノードが直接接続してメッセージ通信を行う。
 図3-3にノード間のメッセージ通信の仕組みを示す。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_03.png}
   \caption{メッセージ通信}
@@ -172,7 +172,7 @@ ROSの通信の使用にあたり、ノード間のメッセージ通信の接�
 $ roscore
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_04.png}
   \caption{マスターのみを起動した状態}
@@ -187,7 +187,7 @@ $ rosrun PACKAGE_NAME NODE_NAME
 $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_05.png}
   \caption{購読者ノードの実行}
@@ -197,7 +197,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{配信者ノード（publisher node）の実行}
 配信者ノードは、購読者ノードと同様に、rosrun又はroslaunchコマンドにより実行される。配信者ノードは、実行時に、マスターに自分の配信者ノード名、配信しようとするトピック名、メッセージの形式、URIアドレスとポートを登録する。この時、図3-6のように、マスターと配信者ノードはXMLRPCを利用して通信する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_06.png}
   \caption{配信者ノードの実行}
@@ -207,7 +207,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{購読者ノードへの配信者情報の通知}
 マスターは、購読者ノードに購読者が接続したい配信者ノード名やトピック名などの情報を送信する。図3-7のように、マスターと購読者ノードはXMLRPCを利用して通信する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_07.png}
   \caption{購読者へ配信者ノードへの情報の通知}
@@ -217,7 +217,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{購読者ノードの接続要請}
 購読者ノードは、マスターから受信した配信者の情報に基づいて、配信者ノードに直接接続を要請する。この時に送信される情報には、自分の購読者ノード名、トピック名、メッセージ方式が含まれる。図3-8のように、配信者ノードと購読者ノードはXMLRPCを利用して通信する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_08.png}
   \caption{配信者ノードに接続要請}
@@ -227,7 +227,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{配信者ノードの接続応答}
 配信者ノードは、購読者ノードの接続要請への応答として、自身のURIアドレスとポートを送信する。図3-9のように、配信者ノードと購読者ノードはXMLRPCを利用して通信する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_09.png}
   \caption{配信者ノードの接続応答}
@@ -237,7 +237,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{TCP接続}
 購読者ノードはTCPROSを用いて、配信者ノードに対するクライアントを生成し、配信者ノードと直接接続する。図3-10のように、購読者ノードと配信者ノード間はTCP/IP方式であるTCPROSを利用して通信する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_10.png}
   \caption{購読者ノードと配信者ノードの接続}
@@ -247,7 +247,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{トピックメッセージの送信}
 配信者ノードは、購読者ノードにトピックメッセージを送信する。ノード間の通信は、TCPROSを使用する。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_11.png}
   \caption{トピックメッセージ通信}
@@ -264,7 +264,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \end{itemize}
 サービスサーバとクライアントの接続は、配信者ノードと購読者ノード間の接続と同様にTCPROS接続である。しかし、サービスメッセージ通信はトピックメッセージ通信とは異なり、1回限り接続して、リクエストとレスポンスを行い、その後お互いの接続を切断する。再度通信するときは、再び接続から始めなければならない。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_12.png}
   \caption{サービスメッセージ通信}
@@ -274,7 +274,7 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \subsection{メッセージ通信の例}
 2章では、turtlesimを利用して、ROSの動作をテストした。この例でもマスターと2つのノードが使用され、両方のノードが「/turtle1/cmd\_vel」というトピックを利用してメッセージ通信を行った。上記のROSにおける通信の手順に照らし合わせると、これは図3-13のように理解できる。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_13.png}
   \caption{turtlesim におけるメッセージ通信の例}
@@ -297,7 +297,7 @@ ROSは、「/opt/ros/[バージョン名]」フォルダにインストールさ
 
 ROSのインストールフォルダである「/opt/ros/indigo」フォルダは、図3-14のように、「bin」、「etc」、「include」、「lib」、「share」などのフォルダと、環境設定ファイルで構成されている。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_14.png}
   \caption{ROSファイルの構成}
@@ -330,7 +330,7 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
 \subsubsection{ファイルの構成}
 ユーザー作業フォルダは、図3-15のようにbuild、devel、srcの3つのフォルダで構成されている。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_15.png}
   \caption{catkin workspaceのファイル構成}
@@ -348,7 +348,7 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
 \subsubsection{ユーザーパッケージ}
 「src」フォルダは、ユーザーのソースコードを置くフォルダである。このフォルダにユーザーが開発したROSパッケージや他のユーザーが開発したパッケージを保存する。図3-16は、著者が作成したirvs\_ros\_tutorialsというパッケージを展開した後の状態である。
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_16.png}
   \caption{ユーザーパッケージのファイル構成}
@@ -404,7 +404,7 @@ CMakeLists.txt
 package.xml
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htp]
   \centering
   \includegraphics[width=\columnwidth]{pictures/chapter3/pic_03_17.png}
   \caption{自動生成されたファイルとフォルダ}
