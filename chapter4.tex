@@ -5,14 +5,14 @@
 %-------------------------------------------------------------------------------
 \chapter{ROS コマンド}\index{ROS コマンド}
 
-ROSは、Ubuntuのコマンドラインインタフェース (CLI)であるシェル（shell）環境で、様々なコマンドを使用して、ファイルシステムの利用、ソースコードの編集、ビルド、デバッグ、パッケージ管理などを行う。ROSを利用するには、基本的なLinuxコマンドに加えて、ROS固有のコマンド注1を修得する必要がある。本章では、それらのROS固有のコマンドを、ROSシェルコマンド、ROS実行コマンド、ROS情報コマンド、ROS catkinコマンド、ROSパッケージのコマンドに分けて説明する。主な用途を以下に示す。
+ROSは、Ubuntuのコマンドラインインタフェース (CLI)であるシェル（shell）環境で、様々なコマンドを使用して、ファイルシステムの利用、ソースコードの編集、ビルド、デバッグ、パッケージ管理などを行う。ROSを利用するには、基本的なLinuxコマンドに加えて、ROS固有のコマンド注1を修得する必要がある。本章では、それらのROS固有のコマンドを、ROSシェルコマンド、ROS実行コマンド、ROS情報コマンド、ROS catkinコマンド、ROSパッケージのコマンドに分けて説明する。主な用途を以下に示す。\\
 
 \begin{itemize}
 \item ROSシェルコマンド: コピーなどのファイル操作やディレクトリ操作
 \item ROS実行コマンド: ノードの実行
 \item ROS情報コマンド: ノードやメッセージ情報の表示
 \item ROS catkinコマンド: パッケージのビルド
-\item ROSパッケージのコマンド: パッケージのインストールや依存関係の表示
+\item ROSパッケージのコマンド: パッケージのインストールや依存関係の表示\\
 \end{itemize}
 
 なお、コマンドの後のアスタリスクは、そのコマンドの使用頻度を表している。
@@ -30,7 +30,7 @@ ROSシェルコマンドはrosbashと呼ばれ、Linuxで一般的に使用さ�
 \item[rosed]（★☆☆）ros+ed（editor）：ROSパッケージのファイルを編集
 \item[roscp] （★☆☆）ros+cp（copies files）：ROSパッケージのファイルをコピー
 \item[rospd]（☆☆☆）ros+pushd：ROSディレクトリインデックスにディレクトリを追加
-\item[rosd]（☆☆☆）ros+directory：ROSディレクトリインデックスを確認
+\item[rosd]（☆☆☆）ros+directory：ROSディレクトリインデックスを確認\\
 \end{description}
 
 このうち、頻繁に使用されるroscd、rosls、rosedコマンドについて詳しく述べる。
@@ -50,10 +50,10 @@ ROSシェルコマンドはrosbashと呼ばれ、Linuxで一般的に使用さ�
 %-------------------------------------------------------------------------------
 \subsection{roscd：ROSパッケージのディレクトリへ移動}
 
-roscdは、パッケージの保存先のディレクトリに移動するコマンドである。自分が作成したパッケージやインストールしたパッケージの名前を、パラメータとしてこのコマンドに続けて入力すると、そのパッケージの置かれたディレクトリに移動する。使用頻度は非常に高い。
+roscdは、パッケージの保存先のディレクトリに移動するコマンドである。自分が作成したパッケージやインストールしたパッケージの名前を、パラメータとしてこのコマンドに続けて入力すると、そのパッケージの置かれたディレクトリに移動する。使用頻度は非常に高い。\\
 
 \begin{itemize}
-\item roscd [パッケージ名]
+\item roscd [パッケージ名]\\
 \end{itemize}
 
 下の例は、ROSのインストールフォルダにあるturtlesimパッケージに移動している様子である。
@@ -63,7 +63,7 @@ $ roscd turtlesim
 /opt/ros/indigo/share/turtlesim$
 \end{lstlisting}
 
-なお、上の例では、関連するパッケージであるros-indigo-turtlesimがインストールされている必要がある。インストールされていない場合は、次のコマンドでインストールできる。
+なお、上の例では、関連するパッケージであるros-indigo-turtlesimがインストールされている必要がある。インストールされていない場合は、次のコマンドでインストールできる。\\
 
 \begin{lstlisting}[language=ROS]
 $ sudo apt-get install ros-indigo-turtlesim
@@ -72,10 +72,10 @@ $ sudo apt-get install ros-indigo-turtlesim
 %-------------------------------------------------------------------------------
 \subsection{rosls：ROSファイルのリスト表示}
 
-roslsは指定されたROSパッケージ内のファイルの一覧を表示するコマンドである。パッケージ名をこのコマンドに続けて入力すると、そのパッケージを検索し、パッケージ内のファイルの一覧を表示する。
+roslsは指定されたROSパッケージ内のファイルの一覧を表示するコマンドである。パッケージ名をこのコマンドに続けて入力すると、そのパッケージを検索し、パッケージ内のファイルの一覧を表示する。\\
 
 \begin{itemize}
-\item  rosls [パッケージ名]
+\item  rosls [パッケージ名]\\
 \end{itemize}
 
 \begin{lstlisting}[language=ROS]
@@ -86,10 +86,10 @@ cmake images msg package.xml srv
 %-------------------------------------------------------------------------------
 \subsection{rosed：ROSファイルの編集}
 
-rosedはパッケージ内のファイルを編集するときに使用するコマンドであり、ユーザーが設定したエディタでファイルを開く。比較的簡単な内容を手軽に修正するときに使用する。この時、使用されるエディタは、「~/.bashrc」ファイルに「export EDITOR= 'nano'」のように指定する。
+rosedはパッケージ内のファイルを編集するときに使用するコマンドであり、ユーザーが設定したエディタでファイルを開く。比較的簡単な内容を手軽に修正するときに使用する。この時、使用されるエディタは、「~/.bashrc」ファイルに「export EDITOR= 'nano'」のように指定する。\\
 
 \begin{itemize}
-\item   rosed [パッケージ名] [ファイル名]
+\item   rosed [パッケージ名] [ファイル名]\\
 \end{itemize}
 
 \begin{lstlisting}[language=ROS]
@@ -146,19 +146,19 @@ process[rosout-1]: started with pid [18894]
 started core service [/rosout] \stepcounter{num}\circled{\thenum}
 \end{lstlisting}
 
-上記の出力結果の太字部分から、①「/home/xxx/.ros/log/」フォルダにログが保存されていること、②<Ctrl>+<C>でroscoreを終了ができること、③「/rosdistro」と④「/rosversion」がパラメータとしてパラメータサーバに登録されたこと、⑤ROS\_MASTER\_URIの情報、⑥「/rosout」ノードが実行されたことなどが確認できる。
+上記の出力結果の太字部分から、①「/home/xxx/.ros/log/」フォルダにログが保存されていること、②<Ctrl>+<C>でroscoreを終了ができること、③「/rosdistro」と④「/rosversion」がパラメータとしてパラメータサーバに登録されたこと、⑤ROS\_MAST\\ER\_URIの情報、⑥「/rosout」ノードが実行されたことなどが確認できる。
 
 \begin{exercise}[ログの保存場所]
-上の例ではlogが保存される場所が「/home/xxx/.ros/log/」（xxxはユーザー名）となっているが、ROS\_HOME環境変数を設定することで任意の場所に保存できる。変数が設定されていない場合は「/home/xxx/.ros/log/」に記録される。
+上の例ではlogが保存される場所が「/home/xxx/.ros/log/」（x\\xxはユーザー名）となっているが、ROS\_HOME環境変数を設定することで任意の場所に保存できる。変数が設定されていない場合は「/home/xxx/.ros/log/」に記録される。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
 \subsection{rosrun：ROSノードの実行}
 
-rosrunは、指定したパッケージ内の1つのノードを実行するコマンドである。
+rosrunは、指定したパッケージ内の1つのノードを実行するコマンドである。\\
 
 \begin{itemize}
-\item   rosrun [パッケージ名] [ノード名]
+\item   rosrun [パッケージ名] [ノード名]\\
 \end{itemize}
 
 以下の例では、turtlesimパッケージ内のturtlesim\_nodeノードを実行する。実行結果を図4-1に示す。
@@ -169,9 +169,9 @@ $ rosrun turtlesim turtlesim_node
 [INFO] [1430205691.827666004]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 \end{lstlisting}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_01.png}
+  \includegraphics[width=8cm]{pictures/chapter4/pic_04_01.png}
   \caption{turtlesim\_nodeノードを実行した様子}
 \end{figure}
 
@@ -179,10 +179,10 @@ $ rosrun turtlesim turtlesim_node
 %-------------------------------------------------------------------------------
 \subsection{roslaunch：複数のROSノードの実行}
 
-roslaunchは、指定されたパッケージから1つ以上のノードを実行するコマンドである。
+roslaunchは、指定されたパッケージから1つ以上のノードを実行するコマンドである。\\
 
 \begin{itemize}
-\item   roslaunch [パッケージ名] [launchファイル名]
+\item   roslaunch [パッケージ名] [launchファイル名]\\
 \end{itemize}
 
 roslaunchは、複数のノードを実行する際に非常に有用であり、頻繁に使用されるノードの実行方法である。launchファイルの作成法については、6.5節「roslaunchの使い方」で詳細に取り上げる。
@@ -202,11 +202,10 @@ $ sudo apt-get install ros-indigo-openni-launch
 %-------------------------------------------------------------------------------
 \subsection{rosclean：ログの確認、および削除}
 
-roscleanは、ROSのログファイルを確認又は削除するコマンドである。roscoreの実行により、すべてのノードの記録はログファイルに記録される。時間が経つにつれデータが蓄積されるため、定期的にroscleanコマンドを用いてログファイルを削除する必要がある。
-
+roscleanは、ROSのログファイルを確認又は削除するコマンドである。roscoreの実行により、すべてのノードの記録はログファイルに記録される。時間が経つにつれデータが蓄積されるため、定期的にroscleanコマンドを用いてログファイルを削除する必要がある。\\
 
 \begin{itemize}
-\item  rosclean [オプション]
+\item  rosclean [オプション]\\
 \end{itemize}
 オプションには、checkまたはpurgeを指定できる。
 
@@ -306,7 +305,7 @@ $ rosnode list
 \end{lstlisting}
 
 \begin{exercise}[起動時に指定するノード名と実行されたノード名が違う理由]
-上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_keyノードは、ソースファイル注2の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(argc, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
+上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_key\\ノードは、ソースファイル注2の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(arg\\c, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -501,7 +500,7 @@ Subscribers: None
 %-------------------------------------------------------------------------------
 \subsubsection{rostopic pub [トピック名] [メッセージ型] [パラメータ]：指定されたトピック名でメッセージを配信}
 
-rostopic pubは、コマンドラインから、指定されたトピック名でメッセージを配信するコマンドである。次の例では、/turtle1/cmd\_velのトピック名でgeometry\_msgs/Twist型のメッセージを配信している。geometry\_msgs/Twist 型はlinear型、angular型それぞれ3変数の計6変数からなり、ここでは、それぞれ[2.0, 0.0, 0.0]と[0.0, 0.0, 1.8]を指定している。
+rostopic pubは、コマンドラインから、指定されたトピック名でメッセージを配信するコマンドである。次の例では、/turtle1/cmd\_velのトピック名でgeometry\_msgs/Twist　型のメッセージを配信している。geometry\_msgs/Twist 型はlinear型、angular型それぞれ3変数の計6変数からなり、ここでは、それぞれ[2.0, 0.0, 0.0]と[0.0, 0.0, 1.8]を指定している。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
@@ -517,9 +516,9 @@ publishing and latching message for 3.0 seconds
 \item -- ‘[2.0、0.0、0.0]''[0.0、0.0、1.8]’：x軸方向に毎秒2.0mで移動、z軸を中心に毎秒1.8radで反時計周りに回転
 \end{itemize}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_02.png}
+  \includegraphics[width=8cm]{pictures/chapter4/pic_04_02.png}
   \caption{配信したメッセージが反映された様子}
 \end{figure}
 
@@ -545,10 +544,10 @@ float64 z
 %-------------------------------------------------------------------------------
 \subsection{rosservice：ROSサービス情報の確認}
 
-rosserviceは、ROSサービスの情報を確認するためのコマンドである。
+rosserviceは、ROSサービスの情報を確認するためのコマンドである。\\
 
 \begin{itemize}
-\item rosservice [オプション]
+\item rosservice [オプション]\\
 \end{itemize}
 
 オプションには、list、info、type、find、uri、args、callなどが指定できる。
@@ -653,9 +652,9 @@ $ rosservice call /turtle1/set_pen 255 0 0 5 0
 
 上のコマンドでサービスをリクエストすることで、turtlesimに使用されるペンの特性を変えられる。turtle\_teleop\_keyコマンドで移動した結果、次のように白いペンの色が赤で表示されることが確認できる。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_03.png}
+  \includegraphics[width=8cm]{pictures/chapter4/pic_04_03.png}
   \caption{rosservice callの例}
 \end{figure}
 
@@ -743,9 +742,9 @@ $ rosservice call clear
 
 これにより、RGBは255、86、69から0、86、69に変更されるため、図4-4の右図のように背景色が濃い緑になる。ただし、turtlesimノードの仕様により、変更を反映するためには、「rosparam set background\_b0」コマンドでパラメータを変更した後、「rosservice call clear」コマンドで画面を更新する必要がある。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_04.png}
+  \includegraphics[width=15cm]{pictures/chapter4/pic_04_04.png}
   \caption{rosparam setの例}
 \end{figure}
 
@@ -779,7 +778,7 @@ rosmsgは、ROSメッセージの情報の確認するためのコマンドで�
 
 オプションには、list、show、md5、package、packagesなどが指定できる。
 
-rosmsg コマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
+rosmsg コマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_\\keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -876,7 +875,7 @@ rossrvは、ROSサービスの情報の確認するためのコマンドであ�
 
 オプションには、rosmsgと同様に、list、show、md5、package、packagesなどが指定できる。
 
-rossrvコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
+rossrvコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_\\keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -981,7 +980,7 @@ ros bagは、ROSメッセージを記録、再生するためのコマンドで�
 
 オプションには、record、info、play、compress、decompress、filter、reindex bag、check bag、fixなどが指定できる。
 
-rosbagコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
+rosbagコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_\\keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -1011,7 +1010,7 @@ $ rostopic list
 /turtle1/pose
 \end{lstlisting}
 
-次に、使用しているトピックの中から、記録するトピックとして/turtle1/cmd\_velトピックを指定し、bagの記録を開始する。この際、「-O」のオプションで保存ファイル名を指定できる。下の例ではmsglog.bagに保存する。その後、turtle\_teleop\_keyノードでキーボードの矢印キーで亀を移動させると、オプションで指定された/turtle1/cmd\_velトピックが記録される。また、<Ctrl>+<C>を押して記録を終了すると、以下のようにmsglog.bagファイルが生成される。
+次に、使用しているトピックの中から、記録するトピックとして/turtle1/cmd\_velトピックを指定し、bagの記録を開始する。この際、「-O」のオプションで保存ファイル名を指定できる。下の例ではmsglog.bagに保存する。その後、turtle\_teleop\_keyノードでキーボードの矢印キーで亀を移動させると、オプションで指定された/turtle1/cmd\_v\\elトピックが記録される。また、<Ctrl>+<C>を押して記録を終了すると、以下のようにmsglog.bagファイルが生成される。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag record -O msglog.bag /turtle1/cmd_vel
@@ -1066,9 +1065,9 @@ Hit space to toggle paused, or 's' to step.
 %*〜省略〜*)
 \end{lstlisting}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter4/pic_04_05.png}
+  \includegraphics[width=15cm]{pictures/chapter4/pic_04_05.png}
   \caption{rosbag playの例（左：記録時、右：再生時）}
 \end{figure}
 
@@ -1104,7 +1103,7 @@ msglog.bag  100%  15.8 KB 00:00
 
 rosbag filterは、作成済みのbagファイルから、指定されたトピックのみを残して、新しいbagファイルを作成するコマンドである。
 
-rosbag filterコマンドの例を実行する前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_keyを実行する。
+rosbag filterコマンドの例を実行する前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとtur\\tle\_teleop\_keyを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -1124,7 +1123,7 @@ $ rosrun turtlesim turtle_teleop_key
 $ rosbag record -O msglog.bag -a
 \end{lstlisting}
 
-turtle\_teleop\_keyを実行したターミナルで矢印キーを操作し、亀を移動させる。その後、＜Ctrol＞+＜C＞でrosbag recordコマンドを終了する。
+turtle\_teleop\_keyを実行したターミナルで矢印キーを操作し、亀を移動させる。その後、＜Ctrl＞+＜C＞でrosbag recordコマンドを終了する。
 
 記録したmsglog.bagをrosbag infoコマンドで確認すると、以下のように/rosout, /turtle1/cmd\_vel, /turtle1/color\_sensor, /turtle1/pose トピックが記録されていることがわかる。
 
@@ -1292,7 +1291,7 @@ catkin\_generate\_changelogは、パッケージのバージョンアップ時�
 %-------------------------------------------------------------------------------
 \subsection{catkin\_prepare\_release：リリース準備するときに使用されるchangelog整理とバージョンのタグ管理}
 
-catkin\_prepare\_releaseは、catkin\_generate\_changelogコマンドで作成されたCHANGELOG.rstを更新するとき使用されるコマンドである。
+catkin\_prepare\_releaseは、catkin\_generate\_changelogコマンドで作成されたCHANGELOG.\\rstを更新するとき使用されるコマンドである。
 
 \begin{itemize}
 \item catkin\_prepare\_release
