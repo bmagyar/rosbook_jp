@@ -3,32 +3,32 @@
 \chapterimage{chapter_head_6.pdf}
 
 %-------------------------------------------------------------------------------
-\chapter{ROSプログラミング  の基本}
+\chapter{ROSプログラミングの基本}
 
 %-------------------------------------------------------------------------------
 \section{メッセージ、トピック、サービス、パラメータ}\index{メッセージ、トピック、サービス、パラメータ}
 
 5章まではROSの概要や、コマンド、ツールなどを紹介した。本章からは本格的にROSプログラミングについて説明していく。
-こ  こまでで最も頻繁に使われた用語は、メッセージ、トピック、サービス、パラメータなどである。ROSプログラミングにおける最小の実行単位  であるノードは、メッセージ通信を介してほかのノードとデータをやり取りするが、それに使用される方式がトピック、サービスである。一方、パラメータ通信は、パラメータサーバとノード間でパラメータ値をやり取りする際に用いられる  。本節  では、メッセージ通信、パラメータ通信の概念、および具体的な通信方式を、実例を交えて説明する。
+ここまでで最も頻繁に使われた用語は、メッセージ、トピック、サービス、パラメータなどである。ROSプログラミングにおける最小の実行単位であるノードは、メッセージ通信を介してほかのノードとデータをやり取りするが、それに使用される方式がトピック、サービスである。一方、パラメータ通信は、パラメータサーバとノード間でパラメータ値をやり取りする際に用いられる。本節では、メッセージ通信、パラメータ通信の概念、および具体的な通信方式を、実例を交えて説明する。
 
 \begin{definition*}[ROSで使用される通信]
 ROSで使用される通信には、ノード間でメッセージをやり取りするメッセージ通信と、パラメータサーバとノード間でパラメータ値をやり取りするパラメータ通信    がある。図6-1にメッセージ通信とパラメータ通信の概要を示す 。メッセージ通信は、一方向通信方式のトピック(topic)通信と、双方向通信方式のサービス(service)通信に分けることができる。
 \end{definition*}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_01.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_01.png}
   \caption{ノード間のメッセージ通信とパラメータ通信}
 \end{figure}
 
 \begin{definition*}[トピック(topic)通信]
-トピック通信とは、ノードからノードへ一方向にメッセージを送信する手段である。この時、メッセージを配信するノードを配信者(publisher)ノード、購読するノードを購読者(subscriber)ノードという。配信者ノードはメッセージを配信する際に、マスター     にトピック名を登録する。トピック(話題)とはメッセージの内容を表すラベルである。トピックの購読を購読者ノードが希望すると、マスターはそのトピックを配信している配信者ノードの情報を購読者ノードに伝える。この情報をもとに、購読者ノードと配信者ノードは直接通信を行う。
-トピック通信は一方向通信であるが、一回接続された配信者ノードと購読者ノードは、その後は連続して通信を行うことができるという特徴をもつ。そのため、センサからセンサドライバを通して直接計測値を読み込むノードを配信者ノード、計測値を加工してより高度な情報処理を行うノードを購読者ノードとするなど、連続してメッセージを送る必要があるセンサデータ送信  に適している。
+トピック通信とは、ノードからノードへ一方向にメッセージを送信する手段である。この時、メッセージを配信するノードを配信者(publisher)ノード、購読するノードを購読者(subscriber)ノードという。配信者ノードはメッセージを配信する際に、マスターにトピック名を登録する。トピック(話題)とはメッセージの内容を表すラベルである。トピックの購読を購読者ノードが希望すると、マスターはそのトピックを配信している配信者ノードの情報を購読者ノードに伝える。この情報をもとに、購読者ノードと配信者ノードは直接通信を行う。
+トピック通信は一方向通信であるが、一回接続された配信者ノードと購読者ノードは、その後は連続して通信を行うことができるという特徴をもつ。そのため、センサからセンサドライバを通して直接計測値を読み込むノードを配信者ノード、計測値を加工してより高度な情報処理を行うノードを購読者ノードとするなど、連続してメッセージを送る必要があるセンサデータ送信に適している。
 \end{definition*}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_02.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_02.png}
   \caption{トピック通信}
 \end{figure}
 
@@ -37,9 +37,9 @@ ROSで使用される通信には、ノード間でメッセージをやり取�
 サ  ービスは、トピックとは異なり、一回限りのメッセージ通信であるため、サービスのリクエストとレスポンスが完了すると、2つのノードの接続は切断される。  サービス通信は、ロボットへの定型動作の実行命令や、特定の条件が満たされたときにイベントを発生するノードなどに使用される。
 \end{definition*}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_03.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_03.png}
   \caption{サービス通信}
 \end{figure}
 
@@ -48,9 +48,9 @@ ROSで使用される通信には、ノード間でメッセージをやり取�
 パラメータ通信はトピック通信やサービス通信とは異なり、ノード間通信に用いるものではなく、ノードとパラメータサーバ間の通信に使われる。具体的には、  デバイスポートの指定、センサ計測範囲の設定などに利用される。
 \end{definition*}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_04.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_04.png}
   \caption{パラメータ通信}
 \end{figure}
 
@@ -71,7 +71,7 @@ $ catkin_create_pkg irvs_ros_tutorials std_msgs roscpp
 
 std\_msgsやroscppなどのパッケージは、作成されたパッケージをビルドする前に、あらかじめインストールしておく必要がある。これら依存するパッケージやライブラリの設定は、上記のようにcatkin\_create\_pkgコマンドで新たにパッケージを作成するときに指定することもできるが、  作成した後にpackage.xmlを直接編集して指定することもできる。
 
-パッケージを作成すると、「~/catkin\_ws/src」フォルダにirvs\_ros\_tutorialsパッケージフォルダが作られ、その中に必要なROSのパッケージやCMakeLists.txt、 package.xmlファイルが置かれる。次のようにlsコマンドを入力するか、Nautilusを利用してパッケージのフォルダを確認すると、以下のように表示される。次項では、ここで作成されたpackage.xml、CMakeLists.txtを修正する。
+パッケージを作成すると、「\verb|~|/catkin\_ws/src」フォルダにirvs\_ros\_tutorialsパッケージフォルダが作られ、その中に必要なROSのパッケージやCMakeLists.txt、 package.xmlファイルが置かれる。次のようにlsコマンドを入力するか、Nautilusを利用してパッケージのフォルダを確認すると、以下のように表示される。次項では、ここで作成されたpackage.xml、CMakeLists.txtを修正する。
 
 \begin{lstlisting}[language=ROS]
 $ cd irvs_ros_tutorials
@@ -149,7 +149,7 @@ add_message_files(FILES msgTutorial.msg)
 ## %*これらのパッケージが存在しない場合、catkinビルドの途中でエラーが出る。*)
 generate_messages(DEPENDENCIES std_msgs)
 
-## %*インクルードディレクトリ、ライブラリ、catkinビルドおよびシステムに依存するパッケージの指定*)
+## %*インクルードディレクトリ、ライブラリ、catkinビルド、システムに依存するパッケージの指定*)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES irvs_ros_tutorials
@@ -186,7 +186,7 @@ add_dependencies(ros_tutorial_msg_subscriber
 add_message_files(FILES msgTutorial.msg)
 \end{lstlisting}
 
-このオプションは、6.2.1項で作成したパッケージに含まれるノードでmsgTutorial.msgメッセージを使用するため、そのメッセージ型を定義したmsgTutorial.hファイルを作成する ための設定である。ただしメッセージファイルmsgTutorial.msg自体はまだ作成していないので、次の手順で作成する。
+このオプションは、6.2.1項で作成したパッケージに含まれるノードでmsgTutorial.ms\\gメッセージを使用するため、そのメッセージ型を定義したmsgTutorial.hファイルを作成する ための設定である。ただしメッセージファイルmsgTutorial.msg自体はまだ作成していないので、次の手順で作成する。
 
 \begin{lstlisting}[language=ROS]
 $ roscd irvs_ros_tutorials  %*→パッケージフォルダに移動*)
@@ -356,8 +356,8 @@ $ cd ~/catkin_ws  %*→ catkinフォルダに移動*)
 $ catkin_make   %*→ catkinビルドを実行する*)
 \end{lstlisting}
 
-irvs\_ros\_tutorialsパッケージのプログラムは、「~/catkin\_ws/src/irvs\_ros\_tutorials/src」フォルダにあり、irvs\_ros\_tutorialsパッケージのメッセージファイルは「~/catkin\_ws/src/irvs\_ros\_tutorials/msg」フォルダにある。
-このコマンドにより、「~/catkin\_ws/build」と「~/catkin\_ws /develフォルダにそれぞれファイルが生成される。「~/catkin\_ws/build」フォルダには、catkinビルドで使用された設定内容が保存され、「~/catkin\_ws/devel/lib/irvs\_ros\_tutorials」フォルダには実行ファイルが、「~/catkin\_ws/devel/include/irvs\_ros\_tutorials」にはメッセージファイルから自動生成されたヘッダーファイルが保存される。
+irvs\_ros\_tutorialsパッケージのプログラムは、「\verb|~|/catkin\_ws/src/irvs\_ros\_tutorials/src」フォルダにあり、irvs\_ros\_tutorialsパッケージのメッセージファイルは「\verb|~|/catkin\_ws/src\\/irvs\_ros\_tutorials/msg」フォルダにある。
+このコマンドにより、「\verb|~|/catkin\_ws/build」と「\verb|~|/catkin\_ws /develフォルダにそれぞれファイルが生成される。「\verb|~|/catkin\_ws/build」フォルダには、catkinビルドで使用された設定内容が保存され、「\verb|~|/catkin\_ws/devel/lib/irvs\\\_ros\_tutorials」フォルダには実行ファイルが、「\verb|~|/catkin\_ws/devel/include/irvs\_ros\_tutorials\\」にはメッセージファイルから自動生成されたヘッダーファイルが保存される。
 
 %-------------------------------------------------------------------------------
 \subsection{配信者ノードの実行}
@@ -376,13 +376,13 @@ $ rosrun irvs_ros_tutorials ros_tutorial_msg_publisher
 
 配信者ノードを実行すると、図6-5のような出力画面が表示され、ROSメッセージが配信されているのがわかる。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_05.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_05.png}
   \caption{ros\_tutorial\_msg\_publisherノードの実行画面}
 \end{figure}
 
-4  章で紹介したrostopicコマンドを実行  して、ROSのネットワークで使用されているトピックのリストを確認してみよう。rostopicコマンドにlistオプションを付けて実行すると、ros\_tutorial\_msgトピックがあることを確認できる。
+4章で紹介したrostopicコマンドを実行して、ROSのネットワークで使用されているトピックのリストを確認してみよう。rostopicコマンドにlistオプションを付けて実行すると、ros\_tutorial\_msgトピックがあることを確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic list
@@ -397,12 +397,11 @@ $ rostopic list
 $ rostopic echo /ros_tutorial_msg
 \end{lstlisting}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_06.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_06.png}
   \caption{ros\_tutorial\_msgトピックの内容}
 \end{figure}
-
 
 %-------------------------------------------------------------------------------
 \subsection{購読者ノードの実行}
@@ -415,9 +414,9 @@ $ rosrun irvs_ros_tutorials ros_tutorial_msg_subscriber
 
 購読者ノードを実行すると、図6-7のような出力画面が表示される。配信者ノードから送信されたros\_tutorial\_msgトピックのメッセージを、購読者ノードが受信した結果が表示される。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_07.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_07.png}
   \caption{ros\_tutorial\_msg\_subscriberノードの実行画面}
 \end{figure}
 
@@ -437,13 +436,13 @@ $ rqt
 
 rqt上のメニューの[Plugins]→[Introspection]→[Node Graph]を選択すれば、図6-8のように、現在ROSで実行しているノードとメッセージが確認できる。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_08.png}
+  \includegraphics[width=10cm]{pictures/chapter6/pic_06_08.png}
   \caption{ノードの関係をrqt上で表示した結果}
 \end{figure}
 
-図6-8では、現在のROSネットワーク上には、配信者ノード(ros\_tutorial\_msg\_publisher)がトピック(ros\_tutorial\_msg)を配信しており、これを購読者ノード(ros\_tutorial\_msg\_subscriber)が受信していることが確認できる。
+図6-8では、現在のROSネットワーク上には、配信者ノード(ros\_tutorial\_msg\_publish\\er)がトピック(ros\_tutorial\_msg)を配信しており、これを購読者ノード(ros\_tutorial\_msg\_\\subscriber)が受信していることが確認できる。
 
 %-------------------------------------------------------------------------------
 \section{サービス通信の実践}\index{サービス通信の実践}
@@ -453,7 +452,7 @@ rqt上のメニューの[Plugins]→[Introspection]→[Node Graph]を選択す�
 %-------------------------------------------------------------------------------
 \subsection{ビルド設定ファイル(CMakeLists.txt)の修正}
 
-前節で作成したirvs\_ros\_tutorialsパッケージに、新しいサービスサーバノード、クライアントノード、サービスファイル(*.srv)を追加する。まず、次のようにirvs\_ros\_tutorialsパッケージに移動した後、CMakeLists.txtファイルを変更する。
+前節で作成したirvs\_ros\_tutorialsパッケージに、新しいサービスサーバノード、クライアントノード、サービスファイル(*.srv)を追加する。まず、次のようにirvs\_ros\_tutorial\\sパッケージに移動した後、CMakeLists.txtファイルを変更する。
 
 \begin{lstlisting}[language=ROS]
 $ roscd irvs_ros_tutorials
@@ -481,7 +480,7 @@ add_service_files(FILES srvTutorial.srv)
 ## %*これらのパッケージが存在しない場合、catkinビルドの途中でエラーが出る。*)
 generate_messages(DEPENDENCIES std_msgs)
 
-## %*インクルードディレクトリ、ライブラリ、catkinビルドおよびシステムに依存するパッケージの指定*)
+## %*インクルードディレクトリ、ライブラリ、catkinビルド、システムに依存するパッケージの指定*)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES irvs_ros_tutorials
@@ -532,7 +531,7 @@ add_dependencies(ros_tutorial_srv_client
 add_service_files(FILES srvTutorial.srv)
 \end{lstlisting}
 
-このオプションは、6.2.1項で作成したパッケージに含まれるノードでmsgTutorial.srvサービスを使用するため、そのメッセージ型を定義したmsgTutorial.hファイルを作成する ための設定である 。ただしサービスファイルmsgTutorial.srv自体はまだ作成していないので、次の手順で作成する。
+このオプションは、6.2.1項で作成したパッケージに含まれるノードでmsgTutorial.sr\\vサービスを使用するため、そのメッセージ型を定義したmsgTutorial.hファイルを作成する ための設定である 。ただしサービスファイルmsgTutorial.srv自体はまだ作成していないので、次の手順で作成する。
 
 \begin{lstlisting}[language=ROS]
 $ roscd irvs_ros_tutorials  %*→ パッケージフォルダに移動*)
@@ -560,7 +559,7 @@ int64 result
 add_executable(ros_tutorial_srv_server src/ros_tutorial_srv_server.cpp)
 \end{lstlisting}
 
-これは、srcフォルダのros\_tutorial\_srv\_server.cppという名前のファイルから、 ros\_tutorial\_srv\_serverという実行ファイルを作成することを意味する。
+これは、srcフォルダのros\_tuto\\rial\_srv\_server.cppという名前のファイルから、 ros\_tutorial\_srv\_serverという実行ファイルを作成することを意味する。
 次の手順でサービスサーバノードのためのプログラムを作成してみよう。
 
 \begin{lstlisting}[language=ROS]
@@ -631,7 +630,7 @@ CMakeLists.txtファイルには、次のようなサービスクライアント
 add_executable(ros_tutorial_srv_client src/ros_tutorial_srv_client.cpp)
 \end{lstlisting}
 
-これは、srcフォルダのros\_tutorial\_srv\_client.cppという名前のファイルから、ros\_tutorial\_srv\_clientという実行ファイルを作成することを意味する。
+これは、srcフォルダのros\_tuto\\rial\_srv\_client.cppという名前のファイルから、ros\_tutorial\_srv\_clientという実行ファイルを作成することを意味する。
  次の手順で  サービスクライアントノードのためのプログラムを作成してみよう。
 
 \begin{lstlisting}[language=ROS]
@@ -714,8 +713,8 @@ $ cd ~/catkin_ws
 $ catkin_make
 \end{lstlisting}
 
-irvs\_ros\_tutorialsパッケージのプログラムは、「~/catkin\_ws/src/irvs\_ros\_tutorials/src」フォルダにあり、irvs\_ros\_tutorialsパッケージのサービスファイルは「~/catkin\_ws/src /irvs\_ros\_tutorials/srv」フォルダにある。
-このコマンドにより、「~/catkin\_ws/build」と「~/catkin\_ws /develフォルダにそれぞれファイルが生成される。「~/catkin\_ws/build」フォルダには、catkinビルドで使用された設定内容が保存され、「~/catkin\_ws/devel/lib/irvs\_ros\_tutorials」フォルダには実行ファイルが、「~/catkin\_ws/devel/include/irvs\_ros\_tutorials」にはサービスファイルから自動的に生成されたヘッダーファイルが保存される。
+irvs\_ros\_tutorialsパッケージのプログラムは、「\verb|~|/catkin\_ws/src/irvs\_ros\_tutorials/src」フォルダにあり、irvs\_ros\_tutorialsパッケージのサービスファイルは「\verb|~|/catkin\_ws/src /irvs\_ros\_tutorials/srv」フォルダにある。
+このコマンドにより、「\verb|~|/catkin\_ws/build」と「\verb|~|/catkin\_ws /develフォルダにそれぞれファイルが生成される。「\verb|~|/catkin\_ws/build」フォルダには、catkinビルドで使用された設定内容が保存され、「\verb|~|/catkin\_ws/devel/lib/irvs\\\_ros\_tutorials」フォルダには実行ファイルが、「\verb|~|/catkin\_ws/devel/include/irvs\_ros\_tutorials\\」にはサービスファイルから自動的に生成されたヘッダーファイルが保存される。
 
 %-------------------------------------------------------------------------------
 \subsection{サービスサーバ  ノードの実行}
@@ -744,9 +743,9 @@ $ rosrun irvs_ros_tutorials ros_tutorial_srv_client 2 3
 
 なお、サービスはトピックと異なり一回限りの通信であるため、6.2.10項と同様にrqt\_graphを実行しても、rqt\_graphには図6-9のように配信者と購読者ノード、トピックのみ表示され、サービスは表示されない。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_09.png}
+  \includegraphics[width=12cm]{pictures/chapter6/pic_06_09.png}
   \caption{rqt上ではサービスは表示されない}
 \end{figure}
 
@@ -774,15 +773,15 @@ $ rqt
 
 次に、rqtプログラムのメニューから[Plugins]→[Service]→[Service Caller]を選択すると、図6-10のような画面が現れる。
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_10.png}
+  \includegraphics[width=12cm]{pictures/chapter6/pic_06_10.png}
   \caption{rqtのService Callerプラグインを使用したサービスリクエスト}
 \end{figure}
 
 画面上部にあるService欄でサービス名を選択すると、Request欄にサービスリクエストに必要な情報が表示されるので、それぞれのExpression欄に情報を入力する。この例では、aに10、bに5を入力した。次に、右上にある緑の電話の形の<Call>アイコンをクリックすると、サービスリクエストが実行され、Response欄にサービスレスポンス値が表示される。
 
-本節では、サービスサーバノードとサービスクライアントノードを作成し、これらを実行して、ノード間でサービスを通信する方法について学んだ。関連するプログラムはhttps://github.com/irvs/irvs\_ros\_tutorialsから入手できる。すぐにプログラムを実行したい場合は、次のように「~/catkin\_ws/src」フォルダから次のコマンドを実行すればよい。
+本節では、サービスサーバノードとサービスクライアントノードを作成し、これらを実行して、ノード間でサービスを通信する方法について学んだ。関連するプログラムはhttps://github.com/irvs/irvs\_ros\_tutorialsから入手できる。すぐにプログラムを実行したい場合は、次のように「\verb|~|/catkin\_ws/src」フォルダから次のコマンドを実行すればよい。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws/src
@@ -984,7 +983,7 @@ result: 2
 %-------------------------------------------------------------------------------
 \section{roslaunchを用いた複数ノードの起動}\index{roslaunchを用いた複数ノードの起動}
 
-rosrunが一つのノードを実行するコマンドであるのに対し、roslaunchは、複数のノードを実行するコマンドである。またオプションにより、ノードの実行時のパラメータの変更、ノード名の変更、ノードの名前空間  (後述)の設定、ROS\_ROOTとROS\_PACKAGE\_PATHの設定、環境変数の変更なども可能である。
+rosrunが一つのノードを実行するコマンドであるのに対し、roslaunchは、複数のノードを実行するコマンドである。またオプションにより、ノードの実行時のパラメータの変更、ノード名の変更、ノードの名前空間  (後述)の設定、ROS\_ROOTとROS\_PACK\\AGE\_PATHの設定、環境変数の変更なども可能である。
 roslaunchは、「*.launch」というXML形式のファイルにより実行ノードを設定する。実行コマンドは、「roslaunch [パッケージ名] [roslaunchファイル]」である。
 本節では、roslaunchを用いて、これまでに作成したros\_tutorial\_msg\_publisherとros\_tutorial\_msg\_subscriberノードを実行する例を示す。ただしROSネットワーク内ではノード名は重複してはならないため、発信者ノードと購読者ノードをそれぞれ2つずつ、名前を変えて起動して、お互い別々のメッセージ通信を行うことにする。
 
@@ -1041,7 +1040,7 @@ $ rosnode list
 /rosout
 \end{lstlisting}
 
-その結果、msg\_publisher1とmsg\_publisher2と名付けられた2つのros\_tutorial\_msg\_publisherノードが実行され、同様にmsg\_subscriber1とmsg\_subscriber2の2つのros\_tutorial\_msg\_subscriberノードも実行されているのが確認できる。
+その結果、msg\_publisher1とmsg\_publisher2と名付けられた2つのros\_tutorial\_msg\_publ\\isherノードが実行され、同様にmsg\_subscriber1とmsg\_subscriber2の2つのros\_tutorial\_msg\\\_subscriberノードも実行されているのが確認できる。
 6.5.3 名前空間を用いたノードのグループ化
 ここまでで、配信者ノードと購読者ノードを2つずつ実行することはできた。しかし、発信者ノードと購読者ノードをそれぞれ2つずつ起動して、「お互い別々のメッセージ通信を行う」ことは実現できていない。試しに、以下のようにターミナルウインドウでrqt\_graphを起動して、ノード間の接続とメッセージの送受信の状態を確認してみよう。図6-11のように、購読者ノードであるmsg\_subscriber1とmsg\_subscriber2が、配信者であるmsg\_publisher1とmsg\_publisher2により配信されたメッセージをすべて購読していることがわかる。 これは実行ノードの名前だけを変更し、使用されるメッセージの名前を変更していないためである。
 
@@ -1049,9 +1048,9 @@ $ rosnode list
 $ rqt_graph
 \end{lstlisting}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_11.png}
+  \includegraphics[width=12cm]{pictures/chapter6/pic_06_11.png}
   \caption{roslaunchを利用した複数のノードの実行}
 \end{figure}
 
@@ -1087,9 +1086,9 @@ $ roslaunch irvs_ros_tutorials union.launch --screen
 $ rqt_graph
 \end{lstlisting}
 
-\begin{figure}[htp]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter6/pic_06_12.png}
+  \includegraphics[width=12cm]{pictures/chapter6/pic_06_12.png}
   \caption{名前空間を用いたメッセージ通信}
 \end{figure}
 
