@@ -109,7 +109,7 @@ $ rostopic list
 
 \subsubsection{image\_viewノードによる確認}
 
-まず、画像を表示するためにimage\_viewノードを実行しよう。つぎのコマンドで、「image:=/image\_raw」というオプションとともにimage\_viewノードを起動する。「image:=/image\_raw」は、上記のトピック一覧で確認した「/image\_raw」トピックを画像で表示するためのオプションである。
+まず、画像を表示するためにimage\_viewノードを実行しよう。つぎのコマンドで、「i\\mage:=/image\_raw」というオプションとともにimage\_viewノードを起動する。「image:=\\/image\_raw」は、上記のトピック一覧で確認した「/image\_raw」トピックを画像で表示するためのオプションである。
 
 \begin{lstlisting}[language=ROS]
 $ rosrun image_view image_view image:=/image_raw
@@ -119,7 +119,7 @@ $ rosrun image_view image_view image:=/image_raw
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_01.png}
+  \includegraphics[width=10cm]{pictures/chapter8/pic_08_01.png}
   \caption{image\_viewノードを利用した画像表示}
 \end{figure}
 
@@ -134,7 +134,7 @@ $ rqt_image_view image:=/image_raw
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_02.png}
+  \includegraphics[width=10cm]{pictures/chapter8/pic_08_02.png}
   \caption{rqt\_image\_viewノードを利用した画像表示}
 \end{figure}
 
@@ -150,7 +150,7 @@ RVizが起動したら、Displaysオプションを変更する。RViz左下の<
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_03.png}
+  \includegraphics[width=10cm]{pictures/chapter8/pic_08_03.png}
   \caption{RVizに画像表示を追加}
 \end{figure}
 
@@ -158,7 +158,7 @@ RVizが起動したら、Displaysオプションを変更する。RViz左下の<
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_04.png}
+  \includegraphics[width=10cm]{pictures/chapter8/pic_08_04.png}
   \caption{RVizを利用した画像表示}
 \end{figure}
 
@@ -254,13 +254,13 @@ do_rectify: False
 
 カメラキャリブレーションでは、図8-5のように黒と白の四角形からなるチェスボード（chess board）を使用する。以下のアドレスから、8 x 6のチェスボードの画像（横方向に8つの格子点、縦方向に6つの格子点）がダウンロードできる。
 
-http://wiki.ros.org/camera\_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=view&target=check-108.pdf
+http://wiki.ros.org/camera\_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=\\view&target=check-108.pdf
 
 ダウンロードしたチェスボード画像をプリンタでA4サイズの紙に出力して、平らな板などに張り付けておく。このチェスボード画像は、位置や姿勢を変えながらカメラで複数回撮影し、キャリブレーション用の画像を作成するのに使われる。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_05.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_05.png}
   \caption{8 x 6チェスボード}
 \end{figure}
 
@@ -277,7 +277,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.024 image:
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_06.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_06.png}
   \caption{キャリブレーションGUIの初期状態}
 \end{figure}
 
@@ -285,7 +285,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.024 image:
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_07.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_07.png}
   \caption{キャリブレーションGUI}
 \end{figure}
 
@@ -366,7 +366,7 @@ LRFは高速・高精度な距離計測が可能で、短時間で大量の点�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_08.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_08.png}
   \caption{SICK LMS 210（左）、Hokuyo UTM-30LX（中央）、Velodyne HDL-64e（右）}
 \end{figure}
 
@@ -412,7 +412,7 @@ $ ls -l ttyACM*
 crw-rw---- 1 root dialout 166, 0 Aug 11 14:30 ttyACM0
 \end{lstlisting}
 
-上の例では、ttyACM0のアクセス権が「crw-rw----」となっており、所有者（root、「rw-」）やグループ(dialout、「rw-」)以外にはアクセス権が与えられていない（「---」）ことが分かる。そこで、このインターフェースが誰でも利用できるように、chmodコマンドでアクセス許可を設定する。
+上の例では、ttyACM0のアクセス権が「crw-rw----」となっており、所有者（root、「r\\w-」）やグループ(dialout、「rw-」)以外にはアクセス権が与えられていない（「---」）ことが分かる。そこで、このインターフェースが誰でも利用できるように、chmodコマンドでアクセス許可を設定する。
 
 \begin{lstlisting}[language=ROS]
 $ sudo chmod a+rw /dev/ttyACM0
@@ -458,7 +458,7 @@ range_max: 60.0
 ranges: [0.9929999709129333,1.3346457658567, .............................
 \end{lstlisting}
 
-これより、frame\_idはlaserに設定されており、走査角度は最小-135°（-2.35619449615ラジアン）から最大135°までの270°である。また、角度分解能（angle\_increment）は0.25°（0.00436332309619 ラジアン）であり、1スキャン270°あたり1,080回の距離計測が行われ、1スキャンにかかる時間（scan\_time）は25msecであることなども確認できる。
+これより、frame\_idはlaserに設定されており、走査角度は最小-135°（-2.35619449615\\ラジアン）から最大135°までの270°である。また、角度分解能（angle\_increment）は0.25°（0.00436332309619 ラジアン）であり、1スキャン270°あたり1,080回の距離計測が行われ、1スキャンにかかる時間（scan\_time）は25msecであることなども確認できる。
 
 %-------------------------------------------------------------------------------
 \subsection{LRFの距離情報の確認（RViz）}
@@ -486,7 +486,7 @@ LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simu
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_11.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_11.png}
   \caption{LRF活用例1: 移動ロボットの障害物検出}
 \end{figure}
 
@@ -494,7 +494,7 @@ LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simu
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_12.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_12.png}
   \caption{LRF活用例2: 人と物体の検出（動画はhttps://youtu.be/2cATgSHOVtcを参照）}
 \end{figure}
 
@@ -511,13 +511,13 @@ ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Im
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_13.png}
+  \includegraphics[width=12cm]{pictures/chapter8/pic_08_13.png}
   \caption{左からD-IMager、SwissRanger、CamBoard、Kinect2}
 \end{figure}
 
 \subsubsection{パターン投影方式}
 
-パターン投影方式を使用しているデプスカメラには、Microsoft社のKinect注16やASUS社のXtion注17、PrimeSense社のCarmine、Capriなどがあり、最近ではOccipital社からStructure Sensor注18が発売されている。これらのデプスカメラは、共通してPrimeSense社のPrimeSense SoC（System on a Chip、半導体チップ上に機能を集積した集積回路）を使用している。
+パターン投影方式を使用しているデプスカメラには、Microsoft社のKinect注16やASUS\\社のXtion注17、PrimeSense社のCarmine、Capriなどがあり、最近ではOccipital社からStructure Sensor注18が発売されている。これらのデプスカメラは、共通してPrimeSen\\se社のPrimeSense SoC（System on a Chip、半導体チップ上に機能を集積した集積回路）を使用している。
 
 \begin{figure}[htp]
   \centering
@@ -598,7 +598,7 @@ $ sudo apt-get install ros-indigo-openni2-camera ros-indigo-openni2-launch
 \end{lstlisting}
 
 \begin{itemize}
-\item Xtion用ドライバをインストールする。Xtionの購入時に同梱されているCDにXtion用ドライバが含まれているので、それをインストールする。
+\item Xtion用ドライバをインストールする。Xtionの購入時に同梱されているCDにXtio\\n用ドライバが含まれているので、それをインストールする。
 \end{itemize}
 
 \begin{lstlisting}[language=ROS]
@@ -629,7 +629,7 @@ $ roslaunch openni2_launch openni2.launch
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_17.png}
+  \includegraphics[width=10cm]{pictures/chapter8/pic_08_17.png}
   \caption{RVizによる点群表示}
 \end{figure}
 
@@ -640,7 +640,7 @@ $ roslaunch openni2_launch openni2.launch
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter8/pic_08_18.png}
+  \includegraphics[width=10cm]{pictures/chapter8/pic_08_18.png}
   \caption{デプスカメラの用途の例}
 \end{figure}
 
