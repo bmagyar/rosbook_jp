@@ -16,21 +16,21 @@
 %-------------------------------------------------------------------------------
 \section{ロボットアームの構成要素と種類}\index{ロボットアームの構成要素と種類}
 
-ロボットアームを構成する要素は、図11-2に示すように、リンク(link)、関節(joint)、エンドエフェクタ(end effector)の3種類に分けられる。ロボットアームの一端は、土台部分であるベース(base)に固定されている。産業用ロボットでは、ロボットはベースである床面に固定されるが、移動ロボットに取り付けられたロボットアームのように、ベースが移動可能な場合もある。エンドエフェクタは、リンクと関節を腕と見立てた場合、手に対応する部分であり、物体把持や様々な作業に使われる。
+ロボットアームを構成する要素は、図11-1に示すように、リンク(link)、関節(joint)、エンドエフェクタ(end effector)の3種類に分けられる。ロボットアームの一端は、土台部分であるベース(base)に固定されている。産業用ロボットでは、ロボットはベースである床面に固定されるが、移動ロボットに取り付けられたロボットアームのように、ベースが移動可能な場合もある。エンドエフェクタは、リンクと関節を腕と見立てた場合、手に対応する部分であり、物体把持や様々な作業に使われる。
 
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.8\columnwidth]{pictures/chapter11/pic_11_01.png}
+  \includegraphics[width=10cm]{pictures/chapter11/pic_11_01.png}
   \caption{3関節ロボットアームの構成要素}
 \end{figure}
 
 リンクは、ベース、関節、エンドエフェクタをつなぐ剛体部品である。関節は、モータや油空圧アクチュエータによる駆動部分で、軸回りに回転する回転運動型、ある方向に並進運動する直動運動型に分けられる。エンドエフェクタにはさまざまな種類があり、作業目的に応じたものを選択・装着する。例えば塗装で使用されるスプレーガン、溶接トーチ、ドリル、グラインダーなどのツールや、あるいは物体を把持するグリッパーや多指ハンドなどがある。
-ロボットアームは、関節の種類や配置によって、極座標型、円筒座標型、直交座標型、水平多関節型、垂直多関節型などに分けることができる。サービスロボットの多くは、図11-3のような人間の腕に最も近い垂直多関節型ロボットアームである。
+ロボットアームは、関節の種類や配置によって、極座標型、円筒座標型、直交座標型、水平多関節型、垂直多関節型などに分けることができる。サービスロボットの多くは、図11-2のような人間の腕に最も近い垂直多関節型ロボットアームである。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.8\columnwidth]{pictures/chapter11/pic_11_02.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_02.png}
   \caption{ロボットアームの分類と垂直多関節型マニピュレータ}
 \end{figure}
 
@@ -44,7 +44,7 @@
 
 ロボットアームの制御において、「作業空間」と「関節空間」という2つの概念は非常に重要である。まずはこれらを理解しよう。
 XYZ座標系などで定義された3次元空間で、ロボットに作業命令を与える状況を想定する。例えば、「そこの物を取れ」という命令を与えるとき、実際には「そこ」は3次元空間内のある(x，y，z)座標点で表す。ロボットアームがこの命令を実行するには、手先が指示された座標に来るように、自身の関節を適切に動かさなければならない。したがって、ロボットアームにとって必要な情報は、各関節の回転角度である。つまり、私たちが与える情報とロボットが動作に必要な情報は異なる。
-ここで、ロボットアームが動作する3次元空間は、ロボットの手に対応するエンドエフェクタの位置と姿勢で表現できる。3次元空間では、位置は(x，y，z)の3つの変数で、姿勢はx軸、y軸、z軸回りの角度である(θ，φ，ψ)の3つの変数で記述できる。これをまとめた6つの変数(x, y, z, , , )で表わされる空間を作業空間(Work Space)という。一方で、ロボットがエンドエフェクタを決められた位置、姿勢へ動かすには、各関節の角度(θ1，θ2，θ3，...)の適切な値を計算しなければならない。この関節の角度を表す空間を関節空間(Joint Space)という。
+ここで、ロボットアームが動作する3次元空間は、ロボットの手に対応するエンドエフェクタの位置と姿勢で表現できる。3次元空間では、位置は(x，\ y，\ z)の3つの変数で、姿勢はx軸、y軸、z軸回りの角度である(θ，φ，ψ)の3つの変数で記述できる。これをまとめた6つの変数(x,\ y,\ z,θ，φ，ψ)で表わされる空間を作業空間(Work Space)という。一方で、ロボットがエンドエフェクタを決められた位置、姿勢へ動かすには、各関節の角度(θ1，θ2，θ3，...)の適切な値を計算しなければならない。この関節の角度を表す空間を関節空間(Joint Space)という。
 
 \subsubsection{自由度}
 
@@ -63,7 +63,7 @@ XYZ座標系などで定義された3次元空間で、ロボットに作業命�
 \subsection{3関節ロボットアームのモデリング}
 
 前述のように、ROSはURDF形式でロボットアームの各構成要素を記述する。URDF形式では、最初にロボットの名前、ベースの名前や種類、ベースが接続しているリンクを記述し、続いてリンクや関節の詳細を一つずつ記述する。リンクについては、リンクの名前や大きさ、重さや慣性などを記述する。また関節については、関節の名前、種類、各関節が接続しているリンクを記述する。
-実際に、図11-2のような4つのリンクと3つの関節からなるロボットアームをモデル化してみよう。次のようにtestbot\_descriptionというパッケージを作成した後、urdfという名前のフォルダを作成する。次に、エディタを使用して、testbot.urdfという名前のファイルを作成して、以下のURDFの例を入力しよう。
+実際に、図11-3のような4つのリンクと3つの関節からなるロボットアームをモデル化してみよう。次のようにtestbot\_descriptionというパッケージを作成した後、urdfという名前のフォルダを作成する。次に、エディタを使用して、testbot.urdfという名前のファイルを作成して、以下のURDFの例を入力しよう。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws/src
@@ -258,19 +258,19 @@ linkタグは、それぞれのリンクの特性を記述する。ベースはU
 </link>
 \end{lstlisting}
 
-このように、リンク1は、collision、visual、inertialタグで構成されている。collisionタグには、リンクの干渉範囲を表す幾何的な情報を入力する。originには、干渉範囲の中心座標を記す。またgeometryには、originを中心とする干渉範囲の形状と大きさを記す。例えば四角柱 (box) 型の干渉範囲では、その縦、横、高さの値である。四角柱型以外にも、円筒型、球型などがあるが、それぞれ入力する内容が異なる。visualタグには、実際の形状を記す。originやgeometryはcollisionタグと同様である。また、ここにSTLやDAEなどのCADファイルを入力することもできる。なお、collisionタグでもCADモデルを使用できるが、ODEやBulletなど一部の物理エンジンでのみ使用でき、DARTやSimbodyなどではサポートしていない。inertialタグには、リンクの重量(mass、単位はkg)と慣性モーメント(moments of inertia、単位はkgm2)を記入する。これらの情報は、動力学シミュレーション時に使用する。
+このように、リンク1は、collision、visual、inertialタグで構成されている。collisio\\nタグには、リンクの干渉範囲を表す幾何的な情報を入力する。originには、干渉範囲の中心座標を記す。またgeometryには、originを中心とする干渉範囲の形状と大きさを記す。例えば四角柱 (box) 型の干渉範囲では、その縦、横、高さの値である。四角柱型以外にも、円筒型、球型などがあるが、それぞれ入力する内容が異なる。visualタグには、実際の形状を記す。originやgeometryはcollisionタグと同様である。また、ここにSTLやDAEなどのCADファイルを入力することもできる。なお、collisionタグでもCADモデルを使用できるが、ODEやBulletなど一部の物理エンジンでのみ使用でき、DARTやSimbodyなどではサポートしていない。inertialタグには、リンクの重量(mass、単位はkg)と慣性モーメント(moments of inertia、単位はkgm2)を記入する。これらの情報は、動力学シミュレーション時に使用する。
 testbot.urdfに記述されたリンク1、リンク2、リンク4は、一方の端を原点とし、z軸方向に伸びた長さ0.5、幅0.1、奥行き0.1の四角柱であり、リンク3も同様に原点からz軸方向に伸びた、長さ1、幅0.1、奥行き0.1の四角柱である。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter11/pic_11_03.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_03.png}
   \caption{リンクの各要素とジョイント}
 \end{figure}
 
 \subsubsection{joint}
 
 jointタグは、関節の特性を記述する。具体的には、関節の名前、種類(revolute(回転運動型)、prismatic(直動運動型)、fixed(固定型)など)、接続する2つのリンクの名前、関節の位置、回転および並進運動の基準軸、動作の制限を記述する。接続するリンクには、親リンク、子リンクの名前を指定する。通常、ベースに近いリンクを親リンクとする。
-図11-5は、図11-2のリンク2からリンク3までを抜き出して描いたものである。この2つのリンクを接続する関節(関節2)を例に、jointタグの記述について説明する。
+図11-4は、図11-2のリンク2からリンク3までを抜き出して描いたものである。この2つのリンクを接続する関節(関節2)を例に、jointタグの記述について説明する。
 
 \begin{lstlisting}[language=XML]
 <joint name="joint2" type="revolute">
@@ -282,11 +282,11 @@ jointタグは、関節の特性を記述する。具体的には、関節の名
 </joint>
 \end{lstlisting}
 
-このjoint2では、種類(type)は回転運動型関節のrevolute、親リンク(parent link)はlink2、子リンク(child link)はlink3に設定した。さらに、originには、一つ前の関節(joint1)の座標系から見た、この関節(joint2)の座標系の相対位置、姿勢を指定する。例えば、joint2の座標系の原点は、joint1の座標系のz軸方向に、joint1から0.5だけ離れた位置である。またaxisには回転運動型関節であれば回転軸の方向を、直動運動型関節であれば運動方向を記入する。このjoint2では、y軸回りに回転する関節であることを示している。 limitには、関節動作に関する制限事項を記述し、関節に与えられる力(effort、単位はN)、最大・最小角度(lower、upper、単位はradian)、速度(単位はrad/s)の制限値を設定する。
+このjoint2では、種類(type)は回転運動型関節のrevolute、親リンク(parent link)はlin\\k2、子リンク(child link)はlink3に設定した。さらに、originには、一つ前の関節(joint1)の座標系から見た、この関節(joint2)の座標系の相対位置、姿勢を指定する。例えば、joint2の座標系の原点は、joint1の座標系のz軸方向に、joint1から0.5だけ離れた位置である。またaxisには回転運動型関節であれば回転軸の方向を、直動運動型関節であれば運動方向を記入する。このjoint2では、y軸回りに回転する関節であることを示している。 limitには、関節動作に関する制限事項を記述し、関節に与えられる力(effort、単位はN)、最大・最小角度(lower、upper、単位はradian)、速度(単位はrad/s)の制限値を設定する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.5\columnwidth]{pictures/chapter11/pic_11_04.png}
+  \includegraphics[width=8cm]{pictures/chapter11/pic_11_04.png}
   \caption{関節部分のモデリング要素}
 \end{figure}
 
@@ -324,7 +324,7 @@ ERROR: Model Parsing the xml failed
 
 \subsubsection{グラフ表示}
 
-次に、urdf\_to\_graphizプログラムを利用して、作成されたモデルをグラフで表示する方法を説明する。次の例のように、urdf\_to\_graphizを実行すると、*.gvファイルと.pdfファイルが生成される。これをpdfビューアで表示すると、図11-6のようにlinkとjointが交互に接続されていることが確認できる。
+次に、urdf\_to\_graphizプログラムを利用して、作成されたモデルをグラフで表示する方法を説明する。次の例のように、urdf\_to\_graphizを実行すると、*.gvファイルと.pdfファイルが生成される。これをpdfビューアで表示すると、図11-5のようにlinkとjointが交互に接続されていることが確認できる。
 
 \begin{lstlisting}[language=ROS]
 $ urdf_to_graphiz testbot.urdf
@@ -334,7 +334,7 @@ Created file test_robot.pdf
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.3\columnwidth]{pictures/chapter11/pic_11_05.png}
+  \includegraphics[width=4cm]{pictures/chapter11/pic_11_05.png}
   \caption{URDFのlinkとjointの関係}
 \end{figure}
 
@@ -370,11 +370,11 @@ $ gedit testbot.launch
 </launch>
 \end{lstlisting}
 
-このtestbot.launch ファイルでは、まず上で作成したモデルtestbot.urdfを呼び出し、図11-7のように、joint\_state\_publisherノードがモデルのjoint情報に基づいて関節角度値を配信する。その後、robot\_state\_publisherノードが関節の情報を購読し、配信された関節角度値の変化に応じて各関節とリンクの間の3次元位置、姿勢情報をtfトピックとして配信する。
+このtestbot.launch ファイルでは、まず上で作成したモデルtestbot.urdfを呼び出し、図11-6のように、joint\_state\_publisherノードがモデルのjoint情報に基づいて関節角度値を配信する。その後、robot\_state\_publisherノードが関節の情報を購読し、配信された関節角度値の変化に応じて各関節とリンクの間の3次元位置、姿勢情報をtfトピックとして配信する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_06.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_06.png}
   \caption{joint\_state\_publisherノードとrobot\_state\_publisherノードのトピック通信}
 \end{figure}
 
@@ -385,7 +385,7 @@ $ roslaunch testbot_description testbot.launch
 $ rosrun rviz rviz
 \end{lstlisting}
 
-launchファイルが実行されると、図11-8に示すようなjoint\_state\_publisherノードのGUI画面が現れる。この画面上では、joint 1、2、3の関節値を調整できる。その後、RVizの画面で [Fixed Frame]で「base」を選択し、左下の<Add>ボタンをクリックして「RobotModel」を追加すれば、図11-9のようにRVizで各関節とリンクを表示できる。そして、joint\_state\_publisherノードのGUI画面で各関節のパラメータを変更すると、図11-10のようにRViz上の仮想ロボットが動作する。
+launchファイルが実行されると、図11-7に示すようなjoint\_state\_publisherノードのGUI画面が現れる。この画面上では、joint 1、2、3の関節値を調整できる。その後、RVizの画面で [Fixed Frame]で「base」を選択し、左下の<Add>ボタンをクリックして「RobotModel」を追加すれば、図11-8のようにRVizで各関節とリンクを表示できる。そして、joint\_state\_publisherノードのGUI画面で各関節のパラメータを変更すると、図11-9のようにRViz上の仮想ロボットが動作する。
 本項で作成したtestbot.urdfとtestbot.launchは、githubリポジトリ「https://github.com/irvs/rosbook\_robot\_arm」から入手できる。ダウンロードの方法は以下の通りである。
 
 \begin{lstlisting}[language=ROS]
@@ -394,31 +394,31 @@ $ git clone https://github.com/irvs/rosbook_robot_arm.git
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.8\columnwidth]{pictures/chapter11/pic_11_07.png}
+  \includegraphics[width=8cm]{pictures/chapter11/pic_11_07.png}
   \caption{Joint State PublisherのGUI画面}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_08.png}
+  \includegraphics[width=10cm]{pictures/chapter11/pic_11_08.png}
   \caption{RVizによる関節とリンクの表示}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_09.png}
+  \includegraphics[width=10cm]{pictures/chapter11/pic_11_09.png}
   \caption{仮想ロボットの動作}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 \subsection{タートルボットアームのモデリング}
 
-ここまで、3関節ロボットアームを例にURDFを作成する方法を説明してきた。この項では、より実際に近い例として、図11-11に示す4関節と開閉型グリッパーをもつロボットアームのモデリングを説明する。このロボットアームは、タートルボットアーム(turtlebot arm)注3という名前で販売されており、主にロボットアームの学習に用いられる。
+ここまで、3関節ロボットアームを例にURDFを作成する方法を説明してきた。この項では、より実際に近い例として、図11-10に示す4関節と開閉型グリッパーをもつロボットアームのモデリングを説明する。このロボットアームは、タートルボットアーム(turtlebot arm)注3という名前で販売されており、主にロボットアームの学習に用いられる。
 タートルボットアームのベースは、タートルボットのフレームであり、関節アクチュエータにはRobotis社のDynamixel AX-12Aを使用している。エンドエフェクタの開閉型グリッパーなど、このアームで使用されている部品の3次元CADファイルは、「http://www.thingiverse.com/thing:5192」で公開されている。関連するハードウェアなどの説明は、http://wiki.ros.org/turtlebot\_armを参照してほしい。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=0.8\columnwidth]{pictures/chapter11/pic_11_10.png}
+  \includegraphics[width=10cm]{pictures/chapter11/pic_11_10.png}
   \caption{4関節＋開閉型グリッパーを有するタートルボットアーム}
 \end{figure}
 
@@ -476,8 +476,8 @@ $ urdf_to_graphiz arm.urdf
 
 urdf\_to\_graphizを利用した場合、turtlebot\_arm.pdfという名前のファイルが作成される。これを見ると、タートルボットアームは25個のリンクと24個の関節で表現されていることが分かる。ただし24個の関節のうち、18個は複数の部品(リンク)を固定するための固定関節である。
 
-arm.urdfは、関節1(arm\_shoulder\_pan\_joint)、関節2(arm\_shoulder\_lift\_joint)、関節3(arm\_elbow\_flex\_joint)、関節4(arm\_wrist\_flsx\_joint)、関節5(gripper\_link\_joint)、およびエンドエフェクタの開閉軸(gripper\_joint)をもつロボットアームである。ただし、関節5は、ikfast\_pluginを利用して逆運動学を解くために追加された受動関節(自らは駆動しない関節)であり、実際には存在しない。このため制御できる関節は、関節1～4の4関節とエンドエフェクタの1関節である。関節1〜5とエンドエフェクタの関節の種類はrevolute(回転関節)であり、残りの18個の関節はfixed(固定関節)である。
-さらに、タートルボットアームのモデルをRVizで表示すると、図11-12に示すように、各関節(アクチュエータ、黒)とリンク(フレーム、白)が確認できる。先に述べた通りリンクは全部で25個あるが、大部分は固定関節で相互に結合されており、関節間は実質的に1つのリンクからなる。
+arm.urdfは、関節1(arm\_shoulder\_pan\_joint)、関節2(arm\_shoulder\_lift\_joint)、関節3(a\\rm\_elbow\_flex\_joint)、関節4(arm\_wrist\_flsx\_joint)、関節5(gripper\_link\_joint)、およびエンドエフェクタの開閉軸(gripper\_joint)をもつロボットアームである。ただし、関節5は、ikfast\_pluginを利用して逆運動学を解くために追加された受動関節(自らは駆動しない関節)であり、実際には存在しない。このため制御できる関節は、関節1～4の4関節とエンドエフェクタの1関節である。関節1〜5とエンドエフェクタの関節の種類はrevolute(回転関節)であり、残りの18個の関節はfixed(固定関節)である。
+さらに、タートルボットアームのモデルをRVizで表示すると、図11-11に示すように、各関節(アクチュエータ、黒)とリンク(フレーム、白)が確認できる。先に述べた通りリンクは全部で25個あるが、大部分は固定関節で相互に結合されており、関節間は実質的に1つのリンクからなる。
 次に、Joint State PublisherのGUIツールで各関節を動かしてみよう。次のようにtest.launchファイルを実行し、RVizの画面で「Fixed Frame」に「base\_link」を選択し、左下の<Add>ボタンを押して「RobotModel」を追加する。その後、joint\_state\_publisherノードのGUI画面で各関節のパラメータを変更すると、RViz上の仮想ロボットが動作する。ただし、gripper\_link\_jointは受動関節であり、関節のパラメータを変更しても何も動作しない。
 
 \begin{lstlisting}[language=ROS]
@@ -487,7 +487,7 @@ $ rosrun rviz rviz
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_11.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_11.png}
   \caption{RVizによる関節、リンク、グリッパーの表示}
 \end{figure}
 
@@ -508,12 +508,12 @@ MoveItで使用できるロボットアームは、前節で紹介したター�
 %-------------------------------------------------------------------------------
 \subsection{MoveItの処理手順}
 
-本稿では、MoveItの内部で行われる処理手順の概要を説明する。MoveItのシステムアーキテクチャを図11-13に示す。MoveItは動作計画を行うノードなど、個々のノードと外部とのインターフェースの役割を担うmove\_groupノード注6を中心に構成されている。MoveItを起動すると、move\_groupのノードはROSパラメータサーバよりロボットモデルと環境変数をURDF、SRDF、Config形式で受けとる。また、move\_groupノードはロボットの各関節値の情報であるJoint Stateトピックと、各関節とリンクの相対位置関係を記述したtfトピックを受け取り、ロボットの現在の姿勢を計算する。さらに、ロボットが把持する物体として、RViz上に仮想的に存在する物体、もしくはKinectやXtionなどのデプスカメラから取得した点群(Point Cloud)形式の物体の情報が与えられる。
+本稿では、MoveItの内部で行われる処理手順の概要を説明する。MoveItのシステムアーキテクチャを図11-12に示す。MoveItは動作計画を行うノードなど、個々のノードと外部とのインターフェースの役割を担うmove\_groupノード注6を中心に構成されている。MoveItを起動すると、move\_groupのノードはROSパラメータサーバよりロボットモデルと環境変数をURDF、SRDF、Config形式で受けとる。また、move\_groupノードはロボットの各関節値の情報であるJoint Stateトピックと、各関節とリンクの相対位置関係を記述したtfトピックを受け取り、ロボットの現在の姿勢を計算する。さらに、ロボットが把持する物体として、RViz上に仮想的に存在する物体、もしくはKinectやXtionなどのデプスカメラから取得した点群(Point Cloud)形式の物体の情報が与えられる。
 ユーザーは、move\_group\_interface(C ++)、moveit\_commander(Python)、RViz PluginのGUI画面などのユーザインターフェースを介し、move\_groupノードに接続して作業コマンドを送信する。move\_groupノードは、ユーザーから作業コマンドを受信すると、MoveItの主要コンポーネントの一つであるOMPL(Open Motion Planning Library、動作計画ライブラリ)、ロボットの姿勢、センサ情報、把持物体や障害物の幾何情報(Planning Scene)、順運動学・逆運動学プラグイン、衝突チェック機能などを使用して、必要な動作を自動生成する。最後に、Robot Controllersノードに、生成された作業動作を実現する各関節の関節軌道(Joint Trajectory)を渡すことで、ロボットが計画通りに動作する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_12.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_12.png}
   \caption{MoveItのシステムアーキテクチャ(http://moveit.ros.org/documentation/concepts/)}
 \end{figure}
 
@@ -536,15 +536,15 @@ $ roslaunch moveit_setup_assistant setup_assistant.launch
 
 \subsubsection{設定ファイルの読み込み}
 
-MoveIt Setup Assistantを実行すると、図11-14のようなGUI画面が現れる。ここでは、［Choose mode]が2つあり、左ボタンをクリックすると、ユーザーが指定したURDFから設定を開始する。右ボタンをクリックした場合は、既存の設定ファイルから設定を読み込み、作業を開始する。新しいロボットであれば左ボタンをクリックするが、ここではタートルボットアームについて説明するため、右ボタンを押す。
+MoveIt Setup Assistantを実行すると、図11-13のようなGUI画面が現れる。ここでは、［Choose mode]が2つあり、左ボタンをクリックすると、ユーザーが指定したURDFから設定を開始する。右ボタンをクリックした場合は、既存の設定ファイルから設定を読み込み、作業を開始する。新しいロボットであれば左ボタンをクリックするが、ここではタートルボットアームについて説明するため、右ボタンを押す。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_13.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_13.png}
   \caption{MoveIt Setup Assistantの初期画面}
 \end{figure}
 
-[Choose mode]で右ボタンをクリックすると、図11-15のように、既存のMoveIt設定パッケージのアドレスを入力する部分が現れる。<Browse>ボタンを押してturtlebot\_arm\_moveit\_configパッケージが保存された場所を選択する。 turtlebot\_arm\_moveit\_configパッケージは、11.4.2項に従ってダウンロードしていれば、次の場所にある。
+[Choose mode]で右ボタンをクリックすると、図11-14のように、既存のMoveIt設定パッケージのアドレスを入力する部分が現れる。<Browse>ボタンを押してturtlebot\_arm\_moveit\_configパッケージが保存された場所を選択する。 turtlebot\_arm\_moveit\_configパッケージは、11.4.2項に従ってダウンロードしていれば、次の場所にある。
 
 /home/[ユーザー名]/catkin\_ws/src/turtlebot\_arm/turtlebot\_arm\_moveit\_config
 
@@ -552,133 +552,133 @@ turtlebot\_arm\_moveit\_configフォルダを選択して、<Load Files>ボタ�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_14.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_14.png}
   \caption{MoveIt Setup Assistantでの設定ファイルの読み込み}
 \end{figure}
 
-読み込みが終わると、図11-16のように、画面の右側にロボットが表示される。
+読み込みが終わると、図11-15のように、画面の右側にロボットが表示される。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_15.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_15.png}
   \caption{MoveIt Setup Assistant でのロボットの表示}
 \end{figure}
 
 \subsubsection{自己干渉(Self-Collisions)}
 
-自己干渉オプションは、リンク間の幾何学的な接触に対して、常に接触している部分、絶対接触することがない部分を予め設定し、MoveItの干渉チェックで判定しないように設定するオプションである。今回読み込んだモデルでは、図11-17のように自己干渉オプションが既に設定されている。もし、新たに作成したロボットであれば、<Regeneratre Default Collision Matrix>ボタンをクリックすれば、己干渉オプションが設定される。
+自己干渉オプションは、リンク間の幾何学的な接触に対して、常に接触している部分、絶対接触することがない部分を予め設定し、MoveItの干渉チェックで判定しないように設定するオプションである。今回読み込んだモデルでは、図11-16のように自己干渉オプションが既に設定されている。もし、新たに作成したロボットであれば、<Regeneratre Default Collision Matrix>ボタンをクリックすれば、己干渉オプションが設定される。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_16.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_16.png}
   \caption{自己干渉の設定}
 \end{figure}
 
 \subsubsection{仮想関節(Virtual Joints)}
 
-フレーム間に仮想的な関節を設定するオプションである。MoveItで床面を移動する移動ロボットを用いる場合は、床上をスライドできる平面拘束関節(planar)を設定する。本項では、床面に固定されたロボットアームを用いるので、設定する必要はない。
+フレーム間に仮想的な関節を設定するオプションである。(図11-17)MoveItで床面を移動する移動ロボットを用いる場合は、床上をスライドできる平面拘束関節(planar)を設定する。本項では、床面に固定されたロボットアームを用いるので、設定する必要はない。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_17.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_17.png}
   \caption{仮想関節の設定画面}
 \end{figure}
 
 \subsubsection{プランニンググループ(Planning Groups)}
 
-ロボットアームの要素をグループに分け、グループごとの作業計画を可能にする。タートルボットアームの場合、図11-19に示すように、ロボットアーム本体のarmグループとエンドエフェクタのgripperグループの2つに分かれる。まず、gripperについて説明する。
+ロボットアームの要素をグループに分け、グループごとの作業計画を可能にする。タートルボットアームの場合、図11-18に示すように、ロボットアーム本体のarmグループとエンドエフェクタのgripperグループの2つに分かれる。まず、gripperについて説明する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_18.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_18.png}
   \caption{プランニンググループ}
 \end{figure}
 
-中央画面の太字のgripper を選択して、Edit Selectedボタンを押すと、gripperグループの設定が確認できる。ここでは、図11-20のように名前、運動学ソルバ(Solver)のプラグイン名、運動学計算の分解能、制限時間、試行回数などが設定されている。ここで、通常は運動学ソルバにはkdl\_kinematics\_plugin/KDLKinematicsPluginを、分解能、制限時間、試行回数は初期値をそのまま設定する。しかし、タートルボットアームのグリッパーは機構が単純で運動学ソルバを必要としないため設定しない。確認したら、Cancelを押して、元の画面に戻る。
+中央画面の太字のgripper を選択して、Edit Selectedボタンを押すと、gripperグループの設定が確認できる。ここでは、図11-19のように名前、運動学ソルバ(Solver)のプラグイン名、運動学計算の分解能、制限時間、試行回数などが設定されている。ここで、通常は運動学ソルバにはkdl\_kinematics\_plugin/KDLKine\\maticsPluginを、分解能、制限時間、試行回数は初期値をそのまま設定する。しかし、タートルボットアームのグリッパーは機構が単純で運動学ソルバを必要としないため設定しない。確認したら、Cancelを押して、元の画面に戻る。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_19.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_19.png}
   \caption{グリッパーグループの設定}
 \end{figure}
 
-図11-19のように、画面中央のCurrent Groupsの欄には、プランニンググループごとに [Joints]、[Links]、[Chain]、[Subgroups]の項目が表示されている。[Joints]を選択してEdit Selectedボタンを押すと、図11-21のようにグループに登録する関節名の選択画面が現れる。登録する関節を選択して入力するが、既に設定済みであり、キャンセルを押して元の画面に戻る。[Links]は、図11-22のようにグリッパーを構成するすべてのリンクを設定しておく。[Chain]は、ベースから末端のリンクまでが運動学チェーン(運動学を計算するリンクと関節の並び)であることを設定する。[Subgroups]は、グループの下にサブグループが存在する場合に使用され、通常は使用しない。
+図11-18のように、画面中央のCurrent Groupsの欄には、プランニンググループごとに [Joints]、[Links]、[Chain]、[Subgroups]の項目が表示されている。[Joints]を選択してEdit Selectedボタンを押すと、図11-20のようにグループに登録する関節名の選択画面が現れる。登録する関節を選択して入力するが、既に設定済みであり、キャンセルを押して元の画面に戻る。[Links]は、図11-21のようにグリッパーを構成するすべてのリンクを設定しておく。[Chain]は、ベースから末端のリンクまでが運動学チェーン(運動学を計算するリンクと関節の並び)であることを設定する。[Subgroups]は、グループの下にサブグループが存在する場合に使用され、通常は使用しない。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_20.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_20.png}
   \caption{プランニンググループにおけるJoints項目の設定}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_21.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_21.png}
   \caption{プランニンググループにおけるLinks項目の設定}
 \end{figure}
 
-次に、armグループについて説明する。armグループには、図11-19に示すように、[Joints]や[Links]の情報が設定されていない。一般的なロボットアームの場合、運動学ソルバとしてMoveItで提供される標準の6自由度アーム用KDLKinematicsPlugin注9を用いるには、図11-23、図11-24のように関節(arm\_shoulder\_pan\_joint、arm\_shoulder\_lift\_joint、arm\_elbow\_flex\_joint、arm\_wrist\_flsx\_joint)やリンク(arm\_base\_linkからarm\_wrist\_F3\_0\_linkまで)の情報を入力して、図11-25のように設定しなければならない。しかし、 armグループのロボットアームは4自由度なので、6自由度アーム用KDLKinematicsPluginを用いることができない。そこで、4つのアクチュエータに1つの受動関節を追加した5関節モデルを作り、図11-26のように運動学ソルバにIKFASTKinematicsPlugin注10を設定した。この場合、図11-19に示すように、関節とリンク情報は設定する必要はなく、chain情報のみを記述する。
+次に、armグループについて説明する。armグループには、図11-18に示すように、[Joints]や[Links]の情報が設定されていない。一般的なロボットアームの場合、運動学ソルバとしてMoveItで提供される標準の6自由度アーム用KDLKinematicsPlugin注9を用いるには、図11-22、図11-23のように関節(arm\_sho\\ulder\_pan\_joint、arm\_shoulder\_lift\_joint、arm\_elbow\_flex\_joint、arm\_wrist\_flsx\_joint)\\やリンク(arm\_base\_linkからarm\_wrist\_F3\_0\_linkまで)の情報を入力して、図11-24のように設定しなければならない。しかし、 armグループのロボットアームは4自由度なので、6自由度アーム用KDLKinematicsPluginを用いることができない。そこで、4つのアクチュエータに1つの受動関節を追加した5関節モデルを作り、図11-25のように運動学ソルバにIKFASTKinematicsPlugin注10を設定した。この場合、図11-18に示すように、関節とリンク情報は設定する必要はなく、chain情報のみを記述する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_22.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_22.png}
   \caption{一般的なロボットアームでの関節情報の登録}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_23.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_23.png}
   \caption{一般的なロボットアームでのリンク情報の登録}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_24.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_24.png}
   \caption{一般的なロボットアームに対する登録結果}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_25.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_25.png}
   \caption{運動学ソルバにIKFASTKinematicsPluginを設定}
 \end{figure}
 
 \subsubsection{ロボットの姿勢(Robot Poses)}
 
-MoveItでは、ロボットアームの複数の姿勢を事前に登録できる。例えば、図11-27のような最もコンパクトな姿勢や、図11-28のようなすべての関節が伸びた姿勢などである。新たな姿勢を登録するには、右下のAdd Poseボタンを押して、図11-29の画面で右側のスライダを動かして姿勢を調整する。目的の姿勢が決まったら、Pose Name欄に名前を入力して、Saveボタンを押す。
+MoveItでは、ロボットアームの複数の姿勢を事前に登録できる。例えば、図11-26のような最もコンパクトな姿勢や、図11-27のようなすべての関節が伸びた姿勢などである。新たな姿勢を登録するには、右下のAdd Poseボタンを押して、図11-28の画面で右側のスライダを動かして姿勢を調整する。目的の姿勢が決まったら、Pose Name欄に名前を入力して、Saveボタンを押す。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_26.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_26.png}
   \caption{登録された姿勢の例(最もコンパクトな姿勢)}
 \end{figure}
-図11-27　
+%図11-27　
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_27.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_27.png}
   \caption{登録された姿勢の例(すべての関節が伸びた姿勢)}
 \end{figure}
-図11-28　
+%図11-28　
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_28.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_28.png}
   \caption{姿勢の登録方法}
 \end{figure}
 
 \subsubsection{エンドエフェクタ(End Effectors)}
 
-エンドエフェクタの設定では、グリッパーや多指ハンドなどのエンドエフェクタの情報を設定する。図11-30のAdd End Effectorボタンを押すと、図11-31のようにグリッパーの名前、グループ名、親リンク、親グループの情報を入力する欄が現れる。既に設定されているgripperという名前のエンドエフェクタでは、グループ名はgripper、親リンクがgripper\_link、親グループの情報がarmとなっている。
+エンドエフェクタの設定では、グリッパーや多指ハンドなどのエンドエフェクタの情報を設定する。図11-29のAdd End Effectorボタンを押すと、図11-30のようにグリッパーの名前、グループ名、親リンク、親グループの情報を入力する欄が現れる。既に設定されているgripperという名前のエンドエフェクタでは、グループ名はgripper、親リンクがgripper\_link、親グループの情報がarmとなっている。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_29.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_29.png}
   \caption{エンドエフェクタ(グリッパー)の設定}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_30.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_30.png}
   \caption{エンドエフェクタの情報入力}
 \end{figure}
 
@@ -688,17 +688,17 @@ MoveItでは、ロボットアームの複数の姿勢を事前に登録でき�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_31.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_31.png}
   \caption{受動関節の設定}
 \end{figure}
 
 \subsubsection{設定ファイル(Configuration Files)}
 
-最後に、図11-33のようにMoviItを使用するための設定ファイルを生成する。これらは、SRDF形式のアームのモデル、運動学計算で必要な関節とリンクの設定ファイル、launchファイルなど、25種以上の設定ファイルからなる。これらの設定ファイルの保存場所は任意に選べ、また必要な設定ファイルだけ選択して保存できる。ここでは全てのチェックボタンにチェックを入れ、右下の<Generate Package>をクリックすると、指定した保存場所に設定ファイルが生成される。その後、<Exit Setup Assitant>をクリックすると、セットアップが終了する。
+最後に、図11-32のようにMoviItを使用するための設定ファイルを生成する。これらは、SRDF形式のアームのモデル、運動学計算で必要な関節とリンクの設定ファイル、launchファイルなど、25種以上の設定ファイルからなる。これらの設定ファイルの保存場所は任意に選べ、また必要な設定ファイルだけ選択して保存できる。ここでは全てのチェックボタンにチェックを入れ、右下の<Generate Package>をクリックすると、指定した保存場所に設定ファイルが生成される。その後、<Exit Setup Assitant>をクリックすると、セットアップが終了する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_32.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_32.png}
   \caption{設定ファイルの生成}
 \end{figure}
 
@@ -711,54 +711,54 @@ MoveItでは、ロボットアームの複数の姿勢を事前に登録でき�
 $ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch
 \end{lstlisting}
 
-図11-34に示すように、RVizの右側のウィンドウには、ロボットモデルと緑色のボールマーカ、ボールマーカの位置と姿勢を変更するためのインタラクティブマーカー注11が表示される。表示されないときは、catkin\_makeを実行する。この緑色のボールをタートルボットアームが把持可能な位置におき、MoveItで逆運動学計算を行うと、ボールを把持するのに適当な各関節の角度値が計算され、RViz上の仮想タートルボットアームが把持位置に動く。
+図11-33に示すように、RVizの右側のウィンドウには、ロボットモデルと緑色のボールマーカ、ボールマーカの位置と姿勢を変更するためのインタラクティブマーカー注11が表示される。表示されないときは、catkin\_makeを実行する。この緑色のボールをタートルボットアームが把持可能な位置におき、MoveItで逆運動学計算を行うと、ボールを把持するのに適当な各関節の角度値が計算され、RViz上の仮想タートルボットアームが把持位置に動く。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_33.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_33.png}
   \caption{ロボットモデルとインタラクティブマーカー}
 \end{figure}
 
-実際に動作テストをしてみよう。まず緑色のボールをマウスで選択し、図11-35に示すように適当な場所に移動させる。ただし、ロボットアームが到達できない作業空間の外にボールを配置してしまうと、逆運動学の解を見つけることができない。ロボットアームを動作させるには、ボールは必ず作業空間内に配置する必要がある。
+実際に動作テストをしてみよう。まず緑色のボールをマウスで選択し、図11-34に示すように適当な場所に移動させる。ただし、ロボットアームが到達できない作業空間の外にボールを配置してしまうと、逆運動学の解を見つけることができない。ロボットアームを動作させるには、ボールは必ず作業空間内に配置する必要がある。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_34.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_34.png}
   \caption{シミュレーション結果}
 \end{figure}
 
-ボールを目的の場所に移動させた後、RVizの左下のGUIパネルでPlanningタブを選択する。そしてCommandsの<Plan＆Execute>ボタンをクリックすれば、図11-36のように、ボールの位置を目標にロボットアームが動作する。さらに、図11-37のようにRVizの左上にDisplaysパネルでMotionPlanning項目のPlanned Pathの[Show Trail]チェックボックスをチェックすると、ロボットアームの移動軌跡が確認できる。また、[Loop Animation]チェックボックスをチェックすると、アニメーションで動作を確認することもできる。
+ボールを目的の場所に移動させた後、RVizの左下のGUIパネルでPlanningタブを選択する。そしてCommandsの<Plan＆Execute>ボタンをクリックすれば、図11-35のように、ボールの位置を目標にロボットアームが動作する。さらに、図11-36のようにRVizの左上にDisplaysパネルでMotionPlanning項目のPlanned Pathの[Show Trail]チェックボックスをチェックすると、ロボットアームの移動軌跡が確認できる。また、[Loop Animation]チェックボックスをチェックすると、アニメーションで動作を確認することもできる。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_35.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_35.png}
   \caption{ロボットアームの把持動作}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_36.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_36.png}
   \caption{把持動作のアニメーション}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 \subsection{実際のロボットアームを使った動作確認}
 
-本項では、実際にロボットアームを使ってMoveItの動作を確認してみる。まず、タートルボットアームを準備する。11.4.2項で述べたとおり、タートルボットアームは4つの関節と1つのグリッパーをもち、合計5つのアクチュエータで構成される。アクチュエータには、スマートアクチュエータ注12 DynamixelシリーズのAX-12A(図11-38)を使用している。PCでアクチュエータを直接制御するには、USB2Dynamixel(図11-39)をPCのUSBポートに接続して、制御コマンドをアクチュエータにシリアル通信で伝達する。
+本項では、実際にロボットアームを使ってMoveItの動作を確認してみる。まず、タートルボットアームを準備する。11.4.2項で述べたとおり、タートルボットアームは4つの関節と1つのグリッパーをもち、合計5つのアクチュエータで構成される。アクチュエータには、スマートアクチュエータ注12 DynamixelシリーズのAX-12A(図11-37)を使用している。PCでアクチュエータを直接制御するには、USB2Dynamixel(図11-38)をPCのUSBポートに接続して、制御コマンドをアクチュエータにシリアル通信で伝達する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_37.png}
+  \includegraphics[width=4cm]{pictures/chapter11/pic_11_37.png}
   \caption{Dynamixel AX-12A}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_38.png}
+  \includegraphics[width=6cm]{pictures/chapter11/pic_11_38.png}
   \caption{USB2Dynamixel}
 \end{figure}
 
-Dynamixelシリーズは、図11-40のようにデイジーチェーン(Daisy chain)方式(アクチュエータの信号線を直列に接続可能な方式)であり、配線が簡単になる。一つのアクチュエータは、モータ、減速ギア、コントローラ、駆動部、通信部で構成され、位置、温度、負荷、電圧などが出力できる。また、基本的な位置制御だけでなく、速度制御やトルク制御(一部のシリーズ)も可能である。
+Dynamixelシリーズは、図11-39のようにデイジーチェーン(Daisy chain)方式(アクチュエータの信号線を直列に接続可能な方式)であり、配線が簡単になる。一つのアクチュエータは、モータ、減速ギア、コントローラ、駆動部、通信部で構成され、位置、温度、負荷、電圧などが出力できる。また、基本的な位置制御だけでなく、速度制御やトルク制御(一部のシリーズ)も可能である。
 DynamixelシリーズのアクチュエータをROSで使用するには、dynamixelパッケージ注13かarbotixパッケージ注14のどちらかが必要になる。2つのパッケージのうち、タートルボットではarbotixのみをサポートしているので、ここではarbotixパッケージをインストールする。
 
 \begin{lstlisting}[language=ROS]
@@ -773,13 +773,13 @@ $ sudo apt-get install ros-indigo-dynamixel*
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_39.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_39.png}
   \caption{デイジーチェーン接続で複数のアクチュエータを制御}
 \end{figure}
 
 \subsubsection{手動制御による動作確認}
 
-実際のロボットを使ってMoveItを実行する前に、タートルボットアームの各アクチュエータが正常に動作するかを確認する。まず、図11-39のUSB2DynamixelをPCのUSBポートに挿入して、次のように、/devのなかで、どのポート番号で認識されるかを確認する。USBポートに他のシリアルデバイスが接続されていない場合は「ttyUSB0」として認識され、他のシリアルデバイスを使用している場合は他の名前で認識される。
+実際のロボットを使ってMoveItを実行する前に、タートルボットアームの各アクチュエータが正常に動作するかを確認する。まず、図11-38のUSB2Dynamixel\\をPCのUSBポートに挿入して、次のように、/devのなかで、どのポート番号で認識されるかを確認する。USBポートに他のシリアルデバイスが接続されていない場合は「ttyUSB0」として認識され、他のシリアルデバイスを使用している場合は他の名前で認識される。
 
 \begin{lstlisting}[language=ROS]
 $ cd /dev/
@@ -820,7 +820,7 @@ controllers: {
 }
 \end{lstlisting}
 
-次に、PCに接続したUSB2Dynamixelにタートルボットアームを接続する。タートルボットアームの電源を入れ、arbotix\_guiを起動すると、図11-41の画面が表示される。画面右側のMove Servosタブに、5つの関節の項目が表示される。それぞれの関節のOn/Offをチェックボックスで選択でき、スライドバーで関節を動かすことができる。図11-41のように、すべてのチェックボックスを選択し、スライドバーを操作して、実際のロボットを動かしてみよう。ここまで問題がなければ、実際にロボットが動作するはずである。
+次に、PCに接続したUSB2Dynamixelにタートルボットアームを接続する。タートルボットアームの電源を入れ、arbotix\_guiを起動すると、図11-40の画面が表示される。画面右側のMove Servosタブに、5つの関節の項目が表示される。それぞれの関節のOn/Offをチェックボックスで選択でき、スライドバーで関節を動かすことができる。図11-40のように、すべてのチェックボックスを選択し、スライドバーを操作して、実際のロボットを動かしてみよう。ここまで問題がなければ、実際にロボットが動作するはずである。
 
 \begin{lstlisting}[language=ROS]
 $ roslaunch turtlebot_arm_bringup arm.launch --screen
@@ -829,7 +829,7 @@ $ arbotix_gui
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_40.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_40.png}
   \caption{arbotix\_guiの操作画面}
 \end{figure}
 
@@ -842,11 +842,11 @@ $ roslaunch turtlebot_arm_bringup arm.launch --screen
 $ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=false --screen
 \end{lstlisting}
 
-RVizでのタートルボットアームの姿勢設定方法は、11.5.3項と同様である。緑色のボールをマウスで移動させると、図11-42に示すように、RViz画面内でタートルボットアームの関節が動いてアームの先がボールに向かって移動する。また<Plan and Execute>ボタンを押すと、実際のタートルボットアームが動作する。
+RVizでのタートルボットアームの姿勢設定方法は、11.5.3項と同様である。緑色のボールをマウスで移動させると、図11-41に示すように、RViz画面内でタートルボットアームの関節が動いてアームの先がボールに向かって移動する。また<Plan and Execute>ボタンを押すと、実際のタートルボットアームが動作する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_41.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_41.png}
   \caption{タートルボットアームが目標に向かって移動する様子}
 \end{figure}
 
@@ -863,7 +863,7 @@ $ sudo gedit kobuki_hexagons_kinect.urdf.xacro
 
 このファイルはタートルボットのモデルを記述したものである。エディタで、これに次の太字部分を追加する。
 
-\textbf{ファイル名:/opt/ros/indigo/share/turtlebot\_description/robots/kobuki\_hexagons\_kinect.urdf.xacro}
+\textbf{ファイル名:/opt/ros/indigo/share/turtlebot\_description/robots/kobuki\_hexagons\_ki\\nect.urdf.xacro}
 \begin{lstlisting}[language=XML]
 <?xml version="1.0"?>
 <!--
@@ -886,7 +886,7 @@ $ sudo gedit kobuki_hexagons_kinect.urdf.xacro
 </robot>
 \end{lstlisting}
 
-次にRVizで仮想ロボットモデルを呼び出すと、図11-43のようにタートルボットとタートルボットアームが表示される。また、図11-44に示すように、Joint State PublisherのGUI画面で、タートルボットアームの各関節を操作できる。
+次にRVizで仮想ロボットモデルを呼び出すと、図11-42のようにタートルボットとタートルボットアームが表示される。また、図11-43に示すように、Joint State PublisherのGUI画面で、タートルボットアームの各関節を操作できる。
 
 \begin{lstlisting}[language=ROS]
 $ roslaunch turtlebot_rviz_launchers view_model.launch
@@ -894,13 +894,13 @@ $ roslaunch turtlebot_rviz_launchers view_model.launch
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_42.png}
+  \includegraphics[width=12cm]{pictures/chapter11/pic_11_42.png}
   \caption{RVizで表示されたタートルボットとタートルボットアーム}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter11/pic_11_43.png}
+  \includegraphics[width=6cm]{pictures/chapter11/pic_11_43.png}
   \caption{Joint State PublisherのGUI画面}
 \end{figure}
 
