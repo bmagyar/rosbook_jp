@@ -5,12 +5,12 @@
 - 出版日：2015年 11月 30日
 - 出版社：Kurazume Laboratory (出版者記号 9908736)
 - ISBNコード：9784990873608
-- フォーマット：PDF版　（無料公開）
+- フォーマット：PDF版（無料公開）
 - ページ数：300p
 - サイズ：A4
 
 # ダウンロード
-[Direct download link (Version 0.9)](https://raw.githubusercontent.com/irvs/rosbook_jp/master/README.md)
+[Direct download link (Version 0.9.0 for test)](https://raw.githubusercontent.com/irvs/rosbook_jp/master/release/ROSBOOK_JP_V0.9.0.pdf)
 
 # 主な内容
 1. ROS入門
@@ -72,4 +72,5 @@ sh latex.sh
 ```
 # Special Thanks
 We’d like to give special thanks to ROS development team, many ROS maintainers and contributors.
+
 We ♥ ROS! (http://www.ros.org/)
