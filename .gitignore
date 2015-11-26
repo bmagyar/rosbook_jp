@@ -19,7 +19,7 @@
 # *.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
-# *.bbl
+*.bbl
 *.bcf
 *.blg
 *-blx.aux
