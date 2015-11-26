@@ -49,56 +49,63 @@
 %-------------------------------------------------------------------------------
 % TITLE PAGE
 %-------------------------------------------------------------------------------
-
 \begingroup
 \thispagestyle{empty}
 \AddToShipoutPicture*{\put(6,5){\includegraphics[scale=1]{cover}}} % Image background
 \centering
 \vspace*{3cm}
+
 \begin{figure}[htp]
 \centering\hspace{30pt}\includegraphics[scale=0.05]{turtle}
 \end{figure}
+
 \vspace*{1cm}
-\par\normalfont\fontsize{50}{50}\sffamily\selectfont
-ROS入門\\% Book title
-{\Huge \textit{(Robot Operating System)}}\par
-\vspace*{6cm}
-{\large Yoonseok Pyo, Ryo Kurazume, Yuta Watanabe}\\
-{\large Laboratory For Intelligent Robots \& Vision System\\Kyushu University in Japan}\par
+\par\normalfont\fontsize{35}{35}\sffamily\selectfont
+詳説 ROS\\% Book title
+ロボットプログラミング\\% Book title
+{\LARGE \textit{- 導入からSLAM・Gazebo・MoveItまで -}}\par
+\vspace*{5cm}
+{\Large 表　允晳, 倉爪　亮, 渡邊　裕太}\\
+\vspace*{-0.5cm}
+{\Large Yoonseok Pyo, Ryo Kurazume, Yuta Watanabe}\\
+\vspace*{1cm}
+{\Large Laboratory For Intelligent Robots \& Vision System\\Kyushu University}\\
+\vspace*{2cm}
+{\large (Ver 0.9.0, 2015-11-26)}\\ % Printing/edition date
 \endgroup
 
 %-------------------------------------------------------------------------------
 % COPYRIGHT PAGE
 %-------------------------------------------------------------------------------
-
 \newpage
-~\vfill
+% ~\vfill
 \thispagestyle{empty}
 
-\noindent ROS入門\\
-
-\noindent Copyright \copyright\ 2015\\by Yoonseok Pyo (\href{mailto:passionvirus@gmail.com}{passionvirus@gmail.com}), Ryo Kurazume, Yuta Watanabe\\ % Copyright notice
-
-\noindent \textsc{Published by IRVS}\\ % Publisher
-
-\noindent \textit{Ver 0.1.0, \today}\\ % Printing/edition date
-
-% \noindent
-% Special Thanks: 박형일, 이재상, 신경만, 김대근, 김성준, 유재성, 이용진, 이준규, 주용수, 진성주, 하광진, 한승록, Daniel, 이지훈, yukino040, 김영진, 한성 / 이 책이 나올 수 있었던 고마운 분들입니다. 다시 한번 감사 드립니다.
-
+\begin{itemize}[leftmargin=*]
+\item タイトル：詳説　ROSロボットプログラミング
+\item 副題：- 導入からSLAM・Gazebo・MoveItまで -
+\item 著者：表 允晳, 倉爪 亮, 渡邊 裕太 (Yoonseok Pyo, Ryo Kurazume, Yuta Watanabe)
+\item 出版日：2015年 11月 30日（初版）
+\item 出版社：Kurazume Laboratory (出版者記号 9908736)
+\item ISBNコード：9784990873608
+\item フォーマット：PDF版（無料公開）
+\item ページ数：300p
+\item サイズ：A4
+\end{itemize}
+\vspace*{1cm}
+\textit{Ver 0.9.0, 2015-11-26}\\ % Printing/edition date
+% \noindent \textit{Ver 0.9.0, \today}\\ % Printing/edition date
 
 \begin{figure}[htp]
 \centering
-\includegraphics[scale=0.3]{cc-logo}
+\includegraphics[scale=0.5]{cc-logo}
 \hspace{10pt}
-\includegraphics[scale=0.5]{by-nc}
+\includegraphics[scale=0.8]{by-nc}
 \end{figure}
 
-\noindent この作品はクリエイティブ・コモンズ・表示 4.0 国際・ライセンスで提供されています。このライセンスのコピーを閲覧するには、 \url{http://creativecommons.org/licenses/by/4.0/} を訪問して下さい。\\
+\noindent この作品はクリエイティブ・コモンズ・表示 - 非営利 4.0 国際・ライセンスで提供されています。このライセンスのコピーを閲覧するには、 \url{http://creativecommons.org/licenses/by-nc/4.0/} を訪問して下さい。\\
 
-\noindent This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc/4.0/}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
-
-% \noindent 이 저작물에서 사용된 (주)유진로봇의 Kobuki와 관련해서는 사용 허락을 받아 사용하였고, 본문에서 사용된 일부 이미지 및 템플릿에 대해서 별도의 라이선스를 가지고 있으며, 필자는 그 세부 사항을 아래에 표시합니다. 또한, 이 저작물에 사용된 이미지 중 본 저작물의 라이센스인 CC BY-NC 이외의 저작권을 갖는 이미지는 각 페이지에 별도로 표시합니다.\\
+\noindent This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc/4.0/}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
 
 \noindent Background image of cover page and chapter head image\\
 Free Turtle Pattern By freecooldesign (www.freecooldesign.com)\\
@@ -115,17 +122,46 @@ License: CC BY-NC-SA 3.0\\
 \noindent \textbf{We'd like to give special thanks to ROS development team, many ROS maintainers and contributors. We $\heartsuit$ ROS (\url{http://www.ros.org/})}
 
 %-------------------------------------------------------------------------------
+% AUTHOR PAGE
+%-------------------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+
+\noindent{\Large 著者プロフィール\\
+
+\noindent{\Large 表 允晳 ( Yoonseok Pyo )\\
+\noindent\rule{12cm}{0.6pt}\\
+2009 年韓国光云大学電子情報工学部電子工学科卒業.\\
+同年韓国科学技術研究院研究員.\\
+現在九州大学大学院システム情報科学府在学中.\\
+日本学術振興会特別研究員.\\
+サーボコントローラ,環境構造化の研究に従事.\\
+
+\noindent{\Large 倉爪 亮 ( Ryo Kurazume )}\\
+\noindent\rule{12cm}{0.6pt}\\
+1991 年東京工業大学機械物理工学専攻修士課程修了.\\
+同年(株)富士通研究所入社.\\
+1995 年東京工業大学機械宇宙学科助手.\\
+2000 年スタンフォード大学客員研究員.\\
+同年東京大学生産技術研究所博士研究員.\\
+2002 年九州大学システム情報科学研究院助教授.\\
+2007 年より同教授, 現在に至る.\\
+群ロボット,歩行機械,レーザ計測の研究に従事.\\
+博士(工学).\\
+
+\noindent{\Large 渡邊 裕太 ( Yuta Watanabe )}\\
+\noindent\rule{12cm}{0.6pt}\\
+2015 年九州大学工学部電気情報工学科卒業.\\
+現在九州大学大学院システム情報科学府在学中.\\
+環境構造化の研究に従事.\\
+
+%-------------------------------------------------------------------------------
 % TABLE OF CONTENTS
 %-------------------------------------------------------------------------------
-
 \chapterimage{chapter_head_14.pdf} % Table of contents heading image
-
 \pagestyle{empty} % No headers
-
 \tableofcontents % Print the table of contents itself
-
 \cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
-
 \pagestyle{fancy} % Print headers again
 
 %-------------------------------------------------------------------------------
@@ -149,14 +185,14 @@ License: CC BY-NC-SA 3.0\\
 % BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\chapter*{Bibliography}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
-\section*{Books}
-\addcontentsline{toc}{section}{Books}
-\printbibliography[heading=bibempty,type=book]
-\section*{Articles}
-\addcontentsline{toc}{section}{Articles}
-\printbibliography[heading=bibempty,type=article]
+% \chapter*{Bibliography}
+% \addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+% \section*{Books}
+% \addcontentsline{toc}{section}{Books}
+% \printbibliography[heading=bibempty,type=book]
+% \section*{Articles}
+% \addcontentsline{toc}{section}{Articles}
+% \printbibliography[heading=bibempty,type=article]
 
 %----------------------------------------------------------------------------------------
 % INDEX
