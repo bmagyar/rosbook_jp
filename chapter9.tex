@@ -3,14 +3,14 @@
 \chapterimage{chapter_head_9.pdf}
 
 %-------------------------------------------------------------------------------
-\chapter{移動ロボットの制御とRViz、Gazeboを用いたシミュレーション}
+\chapter{{移動ロボットの制御とシミュレーション}}
 
 本章ではROSを用いた移動ロボットの制御法を、ROSが推奨するリファレンス·プラットフォーム「タートルボット2」の移動ロボットKobukiを例に学んでいく。本章の前半で、Kobukiのハードウェアを紹介した後、Kobukiを遠隔操縦するパッケージを使ってトピックメッセージを用いた制御方法を説明する。後半では、実際のKobukiと同じ動作をコンピュータでシミュレーションするためのパッケージを紹介する。
 
 %-------------------------------------------------------------------------------
 \section{ROSが対応するロボット}\index{ROSが対応するロボット}
 
-ROSに対応したロボットとして、2015年5月現在で140のロボットがwiki（http://wiki.ros.org/Robots）に登録されている。なかでも最も広く知られているロボットは、PR2とタートルボットである。これらはWillow Garage注1またはOSRF（Open Source Robotics Foundation）注2が開発した、ROSの標準的なリファレンス·プラットフォーム（standard reference platform）である。
+ROSに対応したロボットとして、2015年5月現在で140のロボットがwiki（http://wiki.ros\\.org/Robots）に登録されている。なかでも最も広く知られているロボットは、PR2とタートルボットである。これらはWillow Garage注1またはOSRF（Open Source Robotics Foundation）注2が開発した、ROSの標準的なリファレンス·プラットフォーム（standard reference platform）である。
 
 %-------------------------------------------------------------------------------
 \subsection{タートルボット}
@@ -20,7 +20,7 @@ ROSに対応したロボットとして、2015年5月現在で140のロボット
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_01.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_01.png}
   \caption{タートルボット1（左）とタートルボット2（右）}
 \end{figure}
 
@@ -54,7 +54,7 @@ Kobukiは、Yujin Robot社が開発し、タートルボット2で採用され�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_02.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_02.png}
   \caption{Kobukiとタートルボット2}
 \end{figure}
 
@@ -66,7 +66,7 @@ Kobukiと付属機器を図9-3に示す。基本的な構成は、Kobuki本体�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_03.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_03.png}
   \caption{Kobuki本体と付属機器}
 \end{figure}
 
@@ -77,14 +77,14 @@ http://kobuki.yujinrobot.com/home-kr/about/specifications/
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_04.png}
+  \includegraphics[width=15cm]{pictures/chapter9/pic_09_04.png}
   \caption{Kobuki本体の各部分の説明}
 \end{figure}
 
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_05.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_05.png}
   \caption{Kobukiのバンパーと前進方向}
 \end{figure}
 
@@ -103,7 +103,7 @@ Kobukiの後部には、図9-6のような制御パネルがある。制御パ�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_06.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_06.png}
   \caption{Kobukiの制御パネル}
 \end{figure}
 
@@ -111,7 +111,7 @@ Kobukiの後部には、図9-6のような制御パネルがある。制御パ�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_07.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_07.png}
   \caption{Kobuki制御パネル上の電源ピン}
 \end{figure}
 
@@ -122,7 +122,7 @@ Kobukiの充電は、ユーザーが直接充電アダプタを接続する方�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_08.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_08.png}
   \caption{Kobukiドッキングステーション}
 \end{figure}
 
@@ -133,7 +133,7 @@ Kobukiの制御パネルには、図9-9のような D-Sub コネクタ（25ピ�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_09.png}
+  \includegraphics[width=8cm]{pictures/chapter9/pic_09_09.png}
   \caption{KobukiのD-Subコネクタ（25ピン）通信ポート}
 \end{figure}
 
@@ -141,7 +141,8 @@ Kobukiの制御パネルには、図9-9のような D-Sub コネクタ（25ピ�
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l l l}
+\small
+\begin{tabular}{p{3cm} p{3cm} p{3cm} p{3cm}}
 \toprule
 \textbf{ピン番号} & \textbf{名称} & \textbf{機能} & \textbf{備考}\\
 \midrule
@@ -150,7 +151,7 @@ Kobukiの制御パネルには、図9-9のような D-Sub コネクタ（25ピ�
 8,9 & EX5 & 5V電源  & 1A \\
 10,11,12,13 & AI0, AI1, AI2, AI3  & アナログ入力  & 12bit ADC: 0~4095, 0~3.3V \\
 14  & EN  & 外部ボード検出 & 外部GND \\
-15,17,18,19 & DO0, DO1, DO2, DO3  & デジタル出力  & Open-drain, プルアップ抵抗が必要 \\
+15,17,18,19 & DO0, DO1, DO2, DO3  & デジタル出力  & Open-drain,プルアップ抵抗が必要} \\
 22,23 & EX3.3 & 3.3V & 電源 1A \\
 6,16,20,21,24,25  & GND & グラウンド & GND \\
 \bottomrule
@@ -165,18 +166,19 @@ USBケーブルを介してKobukiとノートパソコンを接続すれば、�
 \begin{itemize}
 \item RS-232インターフェース方式の接続  : Kobukiのシリアルポート（通信ポートの1，2番ピン）の使用電圧は標準3.3V、最大5V   である。これ以外の通信基準電圧を使用する 産業用組込みLinuxボード等を接続する   には、MAX232チップなどのライントランシーバ（line transceiver）を用いる必要がある（図9-10左図）。
 \item MCUとの接続: Kobukiのシリアルピン入出力は3.3V〜5Vまで許容されるので、一般的なMCUは図9-10右図のように直接接続することができる  。
-\item 通信プロトコルの仕様: 通信プロトコルの仕様は、次のURLに記載されている。http://yujinrobot.github.io/kobuki/doxygen/enAppendixProtocolSpecification.html
+\item 通信プロトコルの仕様: 通信プロトコルの仕様は、次のURLに記載されている。
+\\http://yujinrobot.github.io/kobuki/doxygen/enAppendixProtocolSpecification.html
 \end{itemize}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_10.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_10.png}
   \caption{SBC、MCUとの接続方法}
 \end{figure}
 
 \begin{exercise}[通信ポート関連回路図の入手先]
 通信ポートに関連した回路図は以下のURLから入手できる。
-http://kobuki.yujinrobot.com/files/5613/5526/9189/io\_port\_121024.pdf
+\\http://kobuki.yujinrobot.com/files/5613/5526/9189/io\_port\_121024.pdf
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -190,7 +192,7 @@ Kobuki関連のソフトウェアがほぼすべて含まれ、通常使用さ�
 
 \begin{itemize}
 \item リポジトリ: https://github.com/yujinrobot/kobuki
-\item パッケージ: kobuki\_auto\_docking、kobuki\_bumper2pc、kobuki\_capabilities、kobuki\_controller\_tutorial、kobuki\_description、kobuki\_keyop、kobuki\_node、kobuki\_random\_walker、kobuki\_rapps、kobuki\_safety\_controller、kobuki\_testsuite
+\item パッケージ: kobuki\_auto\_docking、kobuki\_bumper2pc、kobuki\_capabilities、kobuki\_\\controller\_tutorial、kobuki\_description、kobuki\_keyop、kobuki\_node、kobuki\_random\\\_walker、kobuki\_rapps、kobuki\_safety\_controller、kobuki\_testsuite
 \end{itemize}
 
 \subsubsection{kobuki\_desktopメタパッケージ}
@@ -199,7 +201,7 @@ Kobuki関連のソフトウェアがほぼすべて含まれ、通常使用さ�
 
 \begin{itemize}
 \item リポジトリ: https://github.com/yujinrobot/kobuki\_desktop
-\item パッケージ: kobuki\_dashboard、kobuki\_gazebo、kobuki\_gazebo\_plugins、kobuki\_qtestsuite
+\item パッケージ: kobuki\_dashboard、kobuki\_gazebo、kobuki\_gazebo\_plugins、kobuki\_qte\\stsuite
 
 
 \subsubsection{kobuki\_softメタパッケージ}
@@ -223,12 +225,12 @@ Kobukiのハードウェアを直接操作するためのドライバパッケ�
 以下では、各メタパッケージの詳細について説明する。
 
 \begin{exercise}[Kobuki SDK]
-  Kobuki SDKは Kobuki制御用のWindows/Linux向けC/C ++ APIライブラリである。ROSパッケージを使用しない場合は、これらのライブラリを利用できる。
+  Kobuki SDKは Kobuki制御用のWindows/Linux向けC/C ++ APIライブラリである。ROSパッケージを使用しない場合は、これらのライブラリを利用できる。\\
   http://yujinrobot.github.io/kobuki/doxygen/enMainPage.html
 
   \begin{itemize}
   \item Windows用
-  http://files.yujinrobot.com/kobuki/windows/sdk-kobuki-x86-vs10-release.zip
+  http://files.yujinrobot.com/kobuki/windows/sdk-kobuki-x86-vs10-re\\lease.zip
   \item Linux用
   https://github.com/yujinrobot/kobuki\_core.git
   \end{itemize}
@@ -240,8 +242,9 @@ http://openrtm.org/openrtm/node/273
 \end{exercise}
 
 %-------------------------------------------------------------------------------
+\begin{itemize}
+\end{itemize}
 \subsection{kobukiメタパッケージ}
-
 kobukiメタパッケージには、Kobukiに関連するパッケージがほぼすべて含まれている。ここでは、主なパッケージについて説明していく。
 
 \begin{itemize}
@@ -424,7 +427,7 @@ Kobukiに搭載するPCであり、Kobukiと直接通信して動作コマンド
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_11.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_11.png}
   \caption{開発環境}
 \end{figure}
 
@@ -522,7 +525,7 @@ $ %*sshユーザー名*)@%*ノートパソコンのIPアドレス*)
 
 \stepcounter{num}\circled{\thenum} Kobukiポートの作成
 
-ノートパソコンに接続したターミナルウィンドウで、次のようにcreate\_udev\_rulesノードを実行する。これにより、「/dev/kobuki」ポートが生成される。
+ノートパソコンに接続したターミナルウィンドウで、次のようにcreate\_udev\_rul\\esノードを実行する。これにより、「/dev/kobuki」ポートが生成される。
 
 \begin{lstlisting}[language=ROS]
 $ rosrun kobuki_ftdi create_udev_rules
@@ -649,15 +652,16 @@ GUI環境で確認するには、「rqt\_graph」コマンドを使用する。�
 /mobile_base/commands/velocity
 \end{lstlisting}
 
-それぞれのトピックについて、より詳しい説明を表9-2に示す１ 。例えば、「velocity」はKobukiの動作速度を設定するトピックである。ユーザーは、ロボットの前進、後進、左右旋回、静止などを、このトピックを介して制御できる。
+それぞれのトピックについて、より詳しい説明を表9-2に示す１ 。例えば、「velo\\city」はKobukiの動作速度を設定するトピックである。ユーザーは、ロボットの前進、後進、左右旋回、静止などを、このトピックを介して制御できる。
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l l}
+\small
+\begin{tabular}{p{2cm} p{5cm} p{5cm}}
 \toprule
 \textbf{名} & \textbf{タイプ} & \textbf{機能}\\
 \midrule
-controller\_info & kobuki\_msgs/ControllerInfo  & PIDゲイン設定（デフォルトのPID ゲイン: Kp = 100、Ki = 0.1、Kd = 2）\\
+controller\_info & kobuki\_msgs/ControllerInfo  &  PIDゲイン設定（デフォルトのPID ゲイン: Kp = 100、Ki = 0.1、Kd = 2）}\\
 digital\_output  & kobuki\_msgs/DigitalOutput & デジタル出力ピン制御 \\
 external\_power  & kobuki\_msgs/ExternalPower & 外部電源On/Off \\
 led1 & kobuki\_msgs/Led & LED1制御 \\
@@ -754,24 +758,24 @@ Kobukiが配信するトピックは、状態の診断関連トピック（diagn
 /tf
 \end{lstlisting}
 
-いくつかの代表的な配信者トピックについて、より詳しい説明を表9-3から表9-6に示す。特に、odom、tf、joint\_states、sensorsの各トピック  は、今後Kobukiを使用する際に特に重要なトピックなので、どのような情報を含んでいるか、理解してほしい。
+いくつかの代表的な配信者トピックについて、より詳しい説明を表9-3から表9-6に示す。特に、odom、tf、joint\_states、sensorsの各トピックは、今後Kobukiを使用する際に特に重要なトピックなので、どのような情報を含んでいるか、理解してほしい。
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l l}
+\begin{tabular}{p{2cm} p{5cm} p{6cm}}
 \toprule
 \textbf{名} & \textbf{タイプ} & \textbf{機能}\\
 \midrule
-bumper & kobuki\_msgs/BumperEvent & バンパーOn/Offイベント、左（0）、中央（1）、右側（2）のバンパーの状態を示し、通常の状態が0、押した場合は、1である。 \\
+bumper & kobuki\_msgs/BumperEvent & バンパーOn/Offイベント、左側（0）、中央（1）、右側（2）のバンパーの状態を示し、通常の状態が0、押した場合は、1である。} \\
 button & kobuki\_msgs/ButtonEvent & ボタンOn/Offイベント、ボタン0、1、2の値で、通常の状態が0、押した場合は、1である。\\
 cliff & kobuki\_msgs/CliffEvent  & 落下検知イベント、左（0）、中央（1）、右側（2）の崖の検出状態を示し、通常の状態が0、崖と判断される場合、1である。 \\
 digital\_input & kobuki\_msgs/DigitalInputEvent & デジタル入力値（DI0、1、2、3） \\
-power\_system & kobuki\_msgs/PowerSystemEvent  & 電源の状態を示す。
-& & 0 = UNPLUGGED
-& & 1 = PLUGGED\_TO\_ADAPTER
-& & 2 = PLUGGED\_TO\_DOCKBASE
-& & 3 = CHARGE\_COMPLETED
-& & 4 = BATTERY\_LOW
+power\_system & kobuki\_msgs/PowerSystemEvent  & 電源の状態を示す。 \\
+& & 0 = UNPLUGGED \\
+& & 1 = PLUGGED\_TO\_ADAPTER \\
+& & 2 = PLUGGED\_TO\_DOCKBASE \\
+& & 3 = CHARGE\_COMPLETED  \\
+& & 4 = BATTERY\_LOW \\
 & & 5 = BATTERY\_CRITICAL \\
 robot\_state & kobuki\_msgs/RobotStateEvent & ロボットのオン/オフライン状態を示す。\\
 wheel\_drop  & kobuki\_msgs/WheelDropEvent  & 左（0）、右側（1）車輪がドロップされているかを表し、通常の状態が0、車輪がドロップされている場合が1である。\\
@@ -783,18 +787,18 @@ wheel\_drop  & kobuki\_msgs/WheelDropEvent  & 左（0）、右側（1）車輪�
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l l}
+\begin{tabular}{p{2cm} p{5cm} p{6cm}}
 \toprule
 \textbf{名} & \textbf{タイプ} & \textbf{機能}\\
 \midrule
 core  & kobuki\_msgs/SensorState  & 50Hz周期制御ですべてのセンサの値を配信するトピックである。 \\
-dock\_ir  & kobuki\_msgs/DockInfraRed  & ドッキング充電ステージで走査する赤外線LEDをKobukiが受信したときの、近接値を配信する。
-& & NONE = 0
-& & NEAR\_LEFT = 1
-& & NEAR\_CENTER = 2
-& & NEAR\_RIGHT = 4
-& & FAR\_LEFT = 16
-& & FAR\_CENTER = 8
+dock\_ir  & kobuki\_msgs/DockInfraRed  & ドッキング充電ステージで走査する赤外線LEDをKobukiが受信したときの、近接値を配信する。\\
+& & NONE = 0 \\
+& & NEAR\_LEFT = 1 \\
+& & NEAR\_CENTER = 2 \\
+& & NEAR\_RIGHT = 4 \\
+& & FAR\_LEFT = 16 \\
+& & FAR\_CENTER = 8 \\
 & & FAR\_RIGHT = 32 \\
 imu\_data  & sensor\_msgs/Imu  & ジャイロセンサのデータで、方向とz軸の角速度情報を示す。\\
 imu\_data\_raw & sensor\_msgs/Imu  & ジャイロセンサの補正前データでx、y、z軸の各角速度データを示す。これを補正した情報が、前述のimu\_dataトピックである。\\
@@ -805,7 +809,7 @@ imu\_data\_raw & sensor\_msgs/Imu  & ジャイロセンサの補正前データ�
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l l}
+\begin{tabular}{p{4cm} p{4cm} p{5cm}}
 \toprule
 \textbf{名} & \textbf{タイプ} & \textbf{機能}\\
 \midrule
@@ -819,7 +823,7 @@ raw\_data\_stream & std\_msgs/String & ロボットから受信された加工�
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l l}
+\begin{tabular}{p{2cm} p{3cm} p{8cm}}
 \toprule
 \textbf{名} & \textbf{タイプ} & \textbf{機能}\\
 \midrule
@@ -857,7 +861,7 @@ bumperの値は0, 1, 2の3通りで、それぞれ左、中央、右のバンパ
 
 \subsubsection{coreトピック}
 
-「/sensors/core」トピックでは、bumper、wheel\_drop、cliff、left\_encoder、right\_encoder、left\_pwm、right\_pwm、buttons、charger、battery、bottom、current、over\_current、digital\_input、analog\_inputのセンサの値を配信している。各データの単位は、「kobuki\_msgs/SensorState」注3で確認してほしい。
+「/sensors/core」トピックでは、bumper、wheel\_drop、cliff、left\_encoder、right\_enc\\oder、left\_pwm、right\_pwm、buttons、charger、battery、bottom、current、over\_curre\\nt、digital\_input、analog\_inputのセンサの値を配信している。各データの単位は、「kobuki\_msgs/SensorState」注3で確認してほしい。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic echo /mobile_base/sensors/core
@@ -954,7 +958,7 @@ $ rosrun rqt_tf_tree rqt_tf_tree
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_12.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_12.png}
   \caption{tf\_treeによる座標変換の表示}
 \end{figure}
 
@@ -978,7 +982,7 @@ rqt\_robot\_monitorノードを実行すると、図9-13のように、ロボッ
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_13.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_13.png}
   \caption{rqt\_robot\_monitorを用いたロボットの診断}
 \end{figure}
 
@@ -988,7 +992,7 @@ Error Deviceには、ハードウェアやドライバにエラーがある場�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_14.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_14.png}
   \caption{ロボットが壁に衝突したときの診断情報}
 \end{figure}
 
@@ -1005,7 +1009,7 @@ $ rosrun kobuki_dashboard kobuki_dashboard
 実行すると、図9-15のように、情報の確認やLEDを制御できるGUI形式のダッシュボードが現れる。
 
 \setcounter{num}{0}
-\stepcounter{num}\circled{\thenum} 「Diagnostics   」ボタンをクリックすると、9.7.1項で説明したrqt\_robot\_monitorの情報が追加される。
+\stepcounter{num}\circled{\thenum} 「Diagnostics   」ボタンをクリックすると、9.7.1項で説明したrqt\_robot\_monitor\\の情報が追加される。
 \stepcounter{num}\circled{\thenum}「Rosout」ボタンをクリックすると、rosoutメッセージが表示される。
 \stepcounter{num}\circled{\thenum}「Motors」ボタンをクリックすると、ロボットのモータの電源をOn/Offする。
 \stepcounter{num}\circled{\thenum}「LED」ボタンで、KobukiのLED1の状態（Off、緑、オレンジ、赤）を切り替える。
@@ -1015,19 +1019,19 @@ $ rosrun kobuki_dashboard kobuki_dashboard
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_15.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_15.png}
   \caption{ダッシュボード（dashboard）}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 \subsection{機能テスト（CUI版）}
 
-次に、Kobukiのハードウェアをターミナルウィンドウからテストできるkobuki\_testsuiteパッケージを紹介する。
+次に、Kobukiのハードウェアをターミナルウィンドウからテストできるkobuki\_te\\stsuiteパッケージを紹介する。
 kobuki\_testsuiteパッケージは、ハードウェアをテストするノードを数多く含むので、Kobukiの故障箇所を把握するのに便利である。使用できるノードには、車輪の回転、イベントの検出、ジャイロテスト、サウンドテスト  などを行うノードがある。これらのノードは表9－7のようにPythonで記述されている。
 
 \begin{table}[htp]
 \centering
-\begin{tabular}{l l}
+\begin{tabular}{p{5cm} p{8cm}}
 \toprule
 \textbf{ノード名} & \textbf{機能}\\
 \midrule
@@ -1150,7 +1154,7 @@ lrwxrwxrwx 1 root root 7 Aug 24 14:26 /dev/kobuki -> ttyUSB0
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_16.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_16.png}
   \caption{ファームウェアのダウンロード受信機能切り替えスイッチ}
 \end{figure}
 
@@ -1173,7 +1177,7 @@ Kobukiが自走してバッテリーを充電するには、図9-8のドッキ�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_17.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_17.png}
   \caption{Kobuki本体の充電端子}
 \end{figure}
 
@@ -1249,15 +1253,15 @@ Yujin Robot社では、参考資料注8でKobukiの自動ドッキングに関�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_19.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_19.png}
   \caption{ドッキングステーションの領域}
 \end{figure}
 
-図9-20に示すように、Kobuki本体には3つの受光部があり、それぞれドッキングステーションの赤外線発光部からの赤外線を受光できる。もしKobukiがドッキングステーションの赤外線を受光できる領域内にある場合、kobuki\_auto\_dockingノードが実行可能である。受光可能な領域は、ドッキングステーションを中心に水平2m、垂直正面方向に5m程度   である。Kobukiは、ドッキングのために所定の位置で回転し、3つの赤外線受光部のいずれかで赤外線を検出すると、ドッキング作業を実行する。
+図9-20に示すように、Kobuki本体には3つの受光部があり、それぞれドッキングステーションの赤外線発光部からの赤外線を受光できる。もしKobukiがドッキングステーションの赤外線を受光できる領域内にある場合、kobuki\_auto\_docking\\ノードが実行可能である。受光可能な領域は、ドッキングステーションを中心に水平2m、垂直正面方向に5m程度である。Kobukiは、ドッキングのために所定の位置で回転し、3つの赤外線受光部のいずれかで赤外線を検出すると、ドッキング作業を実行する。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_20.png}
+  \includegraphics[width=10cm]{pictures/chapter9/pic_09_20.png}
   \caption{赤外線受信部の位置と方向}
 \end{figure}
 
@@ -1332,21 +1336,21 @@ $ sudo apt-get install ros-indigo-kobuki-soft
 %-------------------------------------------------------------------------------
 \subsection{仮想Kobukiの準備}
 
-シミュレーションで仮想的にKobukiを利用するには、次のコマンドでkobuki\_softnodeパッケージのfull.launchファイルを実行する。
+シミュレーションで仮想的にKobukiを利用するには、次のコマンドでkobuki\_soft\\nodeパッケージのfull.launchファイルを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roslaunch kobuki_softnode full.launch --screen
 \end{lstlisting}
 
 これにより、kobuki\_descriptionパッケージでKobukiの3次元モデルが読み込まれ、kobuki\_nodeパッケージと同様の様々なノード（mobile base nodelet manager、mobile base、diagnostic aggregator、robot state publisher）が仮想的に利用できる。
-これらのノードは、turtle\_teleop\_keyノードから配信されるvelocity、motor\_powerなどのモータ駆動命令を購読し、仮想的にモータを駆動してKobukiを制御する。例えば、mobile\_baseノードは、速度コマンドを受け取り、オドメトリ情報を計算し、自己位置に関するトピックを配信する。また同時
+これらのノードは、turtle\_teleop\_keyノードから配信されるvelocity、motor\_powerなどのモータ駆動命令を購読し、仮想的にモータを駆動してKobuki\\を制御する。例えば、mobile\_baseノードは、速度コマンドを受け取り、オドメトリ情報を計算し、自己位置に関するトピックを配信する。また同時
 にjoint statesやtfなどのトピックも配信しており、RVizでKobukiの動きをシミュレーションにより確認できる。
 
-次に、RVizを実行して、左のディスプレイウィンドウで[Global Options]→[fixed frame]を「/odom」に変更  する。そして、ディスプレイウィンドウの左下の<Add>ボタンを押して、「RobotModel」を選択して追加する。すでにfull.launchファイルでKobukiの3次元モデルを読み込んだので、図9-21のようにそのモデルが画面中央に表示される。
+次に、RVizを実行して、左のディスプレイウィンドウで[Global Options]→[fixed frame]を「/odom」に変更  する。そして、ディスプレイウィンドウの左下の<Add>\\ボタンを押して、「RobotModel」を選択して追加する。すでにfull.launchファイルでKobukiの3次元モデルを読み込んだので、図9-21のようにそのモデルが画面中央に表示される。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_21.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_21.png}
   \caption{仮想ロボットの実行}
 \end{figure}
 
@@ -1365,13 +1369,13 @@ $ roslaunch kobuki_keyop keyop.launch
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_22.png}
+  \includegraphics[width=8cm]{pictures/chapter9/pic_09_22.png}
   \caption{odomトピックの確認のためodometryディスプレイを追加}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_23.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_23.png}
   \caption{keyop.launchを利用した仮想ロボットの制御}
 \end{figure}
 
@@ -1387,13 +1391,13 @@ $ rosrun rqt_tf_tree rqt_tf_tree
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_24.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_24.png}
   \caption{RVizを用いたtfトピックの確認}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_25.png}
+  \includegraphics[width=12cm]{pictures/chapter9/pic_09_25.png}
   \caption{rqt\_tf\_treeを用いたtfトピックの確認}
 \end{figure}
 
@@ -1486,11 +1490,11 @@ $ sudo apt-get install ros-indigo-gazebo-ros ros-indigo-gazebo-plugins ros-indig
 $ roslaunch kobuki_gazebo kobuki_empty_world.launch
 \end{lstlisting}
 
-これにより、gazebo、gazebo\_gui、mobile\_base\_nodelet\_ manager、robot\_state\_publisher、spawn\_mobile\_baseノードが一斉に起動され、図9-28のようにKobukiがGazeboの画面に現れる。
+これにより、gazebo、gazebo\_gui、mobile\_base\_nodelet\_ manager、robot\_state\_publi\\sher、spawn\_mobile\_baseノードが一斉に起動され、図9-28のようにKobukiがGazeb\\oの画面に現れる。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter9/pic_09_28.png}
+  \includegraphics[width=15cm]{pictures/chapter9/pic_09_28.png}
   \caption{gazebo上kobukiの3次元外観}
 \end{figure}
 
@@ -1532,9 +1536,9 @@ $ roslaunch kobuki_gazebo safe_random_walker_app.launch
 
 タートルボットは3種類のシミュレーション（stage、stdr、gazebo）をサポートしている。様々なシミュレーション上で仮想ロボットを動作させたい時は、以下の関連Wikiを参考にしてほしい。
 
-http://wiki.ros.org/turtlebot\_stage
-http://wiki.ros.org/turtlebot\_stdr
-http://wiki.ros.org/turtlebot\_gazebo
+http://wiki.ros.org/turtlebot\_stage\\
+http://wiki.ros.org/turtlebot\_stdr\\
+http://wiki.ros.org/turtlebot\_gazebo\\
 
 % 注1  http://www.willowgarage.com/
 % 注2  http://www.osrfoundation.org/
