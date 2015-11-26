@@ -15,7 +15,7 @@ SLAM (Simultaneous Localization And Mapping)とは、ロボットが未知の環
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_01.png}
+  \includegraphics[width=15cm]{pictures/chapter10/pic_10_01.png}
   \caption{ナビゲーション}
 \end{figure}
 
@@ -44,7 +44,7 @@ SLAM (Simultaneous Localization And Mapping)とは、ロボットが未知の環
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_02.png}
+  \includegraphics[width=8cm]{pictures/chapter10/pic_10_02.png}
   \caption{オドメトリ法に必要な情報 (中心位置座標 (ｘ、ｙ)、車輪間の距離D、車輪半径r)}
 \end{figure}
 
@@ -102,7 +102,7 @@ y_(k+1)=y_k+\Delta \sin(\theta_k+\Delta\theta/2)
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_03.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_03.png}
   \caption{オドメトリ法}
 \end{figure}
 
@@ -148,7 +148,7 @@ XY平面 (床面)上の障害物の位置、形状を正確に計測できるLRF
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_04.png}
+  \includegraphics[width=8cm]{pictures/chapter10/pic_10_04.png}
   \caption{LRFを搭載したKobuki}
 \end{figure}
 
@@ -234,7 +234,7 @@ $ roslaunch kobuki_node minimal.launch --screen
 
 \stepcounter{num}\circled{\thenum} kobuki\_slamの実行
 
-ノートパソコンをKobukiに接続し、ポートを設定する (9.6節参照)。次にkobuki\_slam.launchファイルを実行する。このlaunchファイルは、LRFのドライバであるurg\_nodeノード、座標変換のためのkobuki\_tfノード、環境地図作成のためのslam\_gmappingノードの、計3つのノードを同時に起動する。
+ノートパソコンをKobukiに接続し、ポートを設定する (9.6節参照)。次にkobuki\_s\\lam.launchファイルを実行する。このlaunchファイルは、LRFのドライバであるurg\_nodeノード、座標変換のためのkobuki\_tfノード、環境地図作成のためのslam\_gmappingノードの、計3つのノードを同時に起動する。
 
 \begin{lstlisting}[language=ROS]
 $ sudo chmod a+rw /dev/ttyACM0
@@ -251,7 +251,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_slam`/rviz/kobuki_slam.rviz
 
 \stepcounter{num}\circled{\thenum} トピックメッセージの保存
 
-Kobukiとkobuki\_slamパッケージで配信する「/scan」と「/tf」トピックを、「scan\_data」というファイル名のbagファイルとして保存しておく。4.3.7項で説明したように、rosbagコマンドでトピックをファイルに保存しておくと、実行中の「/scan」と「/tf」トピックを実行後に再生でき、ロボットを実際に用いなくても環境地図の再作成が可能になる。
+Kobukiとkobuki\_slamパッケージで配信する「/scan」と「/tf」トピックを、「scan\_\\data」というファイル名のbagファイルとして保存しておく。4.3.7項で説明したように、rosbagコマンドでトピックをファイルに保存しておくと、実行中の「/scan」と「/tf」トピックを実行後に再生でき、ロボットを実際に用いなくても環境地図の再作成が可能になる。
 
 \begin{lstlisting}[language=ROS]
 $ rosbag record -O scan_data /scan /tf
@@ -278,7 +278,7 @@ map\_saverノードは、ロボットのオドメトリ情報、tf情報、LRF�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_05.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_05.png}
   \caption{計測対象の環境 (左)と計測対象の3次元モデル (右)}
 \end{figure}
 
@@ -286,13 +286,13 @@ map\_saverノードは、ロボットのオドメトリ情報、tf情報、LRF�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_06.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_06.png}
   \caption{環境地図作成の様子}
 \end{figure}
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_07.png}
+  \includegraphics[width=10cm]{pictures/chapter10/pic_10_07.png}
   \caption{完成した環境地図}
 \end{figure}
 
@@ -329,7 +329,7 @@ $ rosrun map_server map_saver
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_08.png}
+  \includegraphics[width=10cm]{pictures/chapter10/pic_10_08.png}
   \caption{完成した占有格子地図}
 \end{figure}
 
@@ -358,18 +358,18 @@ SLAMに必要な情報は、「距離センサから得られる距離情報」�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_09.png}
+  \includegraphics[width=10cm]{pictures/chapter10/pic_10_09.png}
   \caption{tfトピックとscanトピック、mapトピックの関係}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 \subsection{kobuki\_slamの機能と処理}
 
-前節では、Kobukiを用いてSLAMを実行するために、kobukiノードに加えてkobuki\_slamパッケージを利用した。このパッケージには、SLAMの実行に必要なノードをまとめたkobuki\_slam.launch ファイルが含まれている。図10-10に、このlaunchファイルで起動されるノードとトピックの流れを示す。
+前節では、Kobukiを用いてSLAMを実行するために、kobukiノードに加えてkobu\\ki\_slamパッケージを利用した。このパッケージには、SLAMの実行に必要なノードをまとめたkobuki\_slam.launch ファイルが含まれている。図10-10に、このlaunchファイルで起動されるノードとトピックの流れを示す。
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_10.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_10.png}
   \caption{kobuki\_slam.launchファイルで実行されるノードとトピック}
 \end{figure}
 
@@ -379,7 +379,7 @@ SLAMに必要な情報は、「距離センサから得られる距離情報」�
 
 \stepcounter{num}\circled{\thenum} kobuki\_urg\_node
 
-LRFのセンサドライバーノードを実行して、SLAMに必要なscanトピックをslam\_gmappingノードに配信する。
+LRFのセンサドライバーノードを実行して、SLAMに必要なscanトピックをslam\_\\gmappingノードに配信する。
 
 \stepcounter{num}\circled{\thenum} kobuki\_keyop
 
@@ -409,7 +409,7 @@ Kobukiノードは、ユーザーからの指令を受けて、実際にロボ�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_11.png}
+  \includegraphics[width=10cm]{pictures/chapter10/pic_10_11.png}
   \caption{ロボット各部の座標変換情報}
 \end{figure}
 
@@ -580,7 +580,8 @@ kobuki\_slam.launchファイルの最初の項目は、Kobukiに装着されたL
 <param name = "stt" value = "0.02" />   %*オドメトリエラー (回転→回転)*)
 <param name = "linearUpdate" value = "0.25" />  %*処理開始に必要な最低移動距離*)
 <param name = "angularUpdate" value = "0.25" /> %*処理開始に必要な最低回転角度*)
-<param name = "temporalUpdate" value = " - 1.0" />  %*最後にスキャンを行った時間がこの更新時間を過ぎた場合、スキャンを行う。この値が0以下の場合は使用しない。*)
+<param name = "temporalUpdate" value = " - 1.0" />  %*最後にスキャンを行った時間がこの更新時*)
+%*間を過ぎた場合、スキャンを行う。この値が0以下の場合は使用しない。*)
 <param name = "resampleThreshold" value = "0.5" />  %*リサンプルを行う閾値*)
 <param name = "particles" value = "300" />    %*パーティクル数*)
 <param name = "xmin" value = " - 10.0" />  %* 最小のx座標*)
@@ -652,7 +653,7 @@ LRFなどからの観測情報とパーティクルの状態量を基に、観�
 なお、パーティクルフィルタにより正確な状態量の推定を行うには、サンプル数が十分でなければならない。上記では推定する状態量は位置・姿勢の3つであったが、SLAMではこれに加えて環境地図も推定する必要がある。しかし環境地図も状態量とすると推定すべき状態量が多くなり  、十分なサンプル数を用意するのが非現実的になる。そこでパーティクルフィルタとカルマンフィルタを同時に使用することでパーティクルフィルタの推定状態量を低減するRBPFを用いたSLAMも提案されている。
 
 \begin{exercise}[パーティクルフィルタの解説書]
-  パーティクルフィルタなど、ロボット分野で話題の確率的手法については、「Probabilistic Robotics」   (2005年、Sebastian Thrun, Wolfram Burgard, Dieter Fox著、The MIT Press)を一読することを推奨する。ユダシティのオンライン講座「Artificial Intelligence for Robotics」も参考にしてほしい。
+  パーティクルフィルタなど、ロボット分野で話題の確率的手法については、「Probabilistic Robotics」   (2005年、Sebastian Thrun, Wolfram Burgard, Dieter Fox著、The MIT Press)を一読することを推奨する。ユダシティのオンライン講座「Artificial Intelligence for Robotics」も参考にしてほしい。\\
   ユダシティオンライン講座　https://www.udacity.com/course/cs373
 \end{exercise}
 
@@ -783,7 +784,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_navigation`/rviz/kobuki_nav.rviz
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_13.png}
+  \includegraphics[width=15cm]{pictures/chapter10/pic_10_13.png}
   \caption{RVizで表示したパーティクル (ロボット周囲の矢印)}
 \end{figure}
 
@@ -869,7 +870,7 @@ map\_serverパッケージを利用して、10.2節  で作成した占有格子
 
 \stepcounter{num}\circled{\thenum} 速度コマンド (「/cmd\_vel」、geometry\_msgs/Twist)
 
-計画された移動軌跡に基づき、速度コマンドを配信することで、ロボットは目的地まで移動する。本節では、この速度コマンドを「/mobile\_base/commands/velocity」というトピック名で配信する。
+計画された移動軌跡に基づき、速度コマンドを配信することで、ロボットは目的地まで移動する。本節では、この速度コマンドを「/mobile\_base/commands/velo\\city」というトピック名で配信する。
 
 %-------------------------------------------------------------------------------
 \subsection{kobuki\_navigationの実行}
@@ -885,14 +886,14 @@ $ roslaunch kobuki_navigation kobuki_navigation.launch --screen
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_16.png}
+  \includegraphics[width=15cm]{pictures/chapter10/pic_10_16.png}
   \caption{kobuki\_navigationの各ノードとトピックの状態}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 \subsection{kobuki\_navigationパッケージの作成}
 
-本稿では、新たにkobuki\_navigationパッケージを作成する。まず、既存のkobuki\_navigationパッケージを削除する
+本稿では、新たにkobuki\_navigationパッケージを作成する。まず、既存のkobuki\_na\\vigationパッケージを削除する
 
 \begin{lstlisting}[language=ROS]
 $ roscd kobuki_navigation
@@ -913,30 +914,24 @@ $ catkin_create_pkg kobuki_navigation amcl move_base kobuki_node kobuki_tf urg_n
 $ mkdir ./kobuki_navigation/launch ./kobuki_navigation/maps ./kobuki_navigation/param ./kobuki_navigation/rviz
 \end{lstlisting}
 
-ナビゲーションの実行には、ナビゲーションノードに関連するパッケージを起動するlaunchファイル、xmlファイル、各種パラメータの設定をするyamlファイル、環境地図関連ファイル、rviz設定ファイルが必要である。これらの構成ファイルの名前と役割 は、次の通りである。以下のファイルはhttps://github.com/irvs/rosbook\_kobukiで公開している。必要に応じて参照してほしい。
+ナビゲーションの実行には、ナビゲーションノードに関連するパッケージを起動するlaunchファイル、xmlファイル、各種パラメータの設定をするyamlファイル、環境地図関連ファイル、rviz設定ファイルが必要である。これらの構成ファイルの名前と役割 は、次の通りである。以下のファイルはhttps://github.com/irvs/r\\osbook\_kobukiで公開している。必要に応じて参照してほしい。
 
-■ /launch/kobuki\_navigation.launch
-kobuki\_navigation.launchファイルを実行するだけで、全てのナビゲーション関連パッケージが起動される。
-
-■ /launch/amcl.launch.xml
-amcl.launch.xmlファイルは、AMCL の各種パラメータの設定値を記述したファイルで、kobuki\_navigationl.launchと同時に使用される。
-
-■ /param/move\_base\_params.yaml
-運動計画を統括するmove\_baseのパラメータ設定ファイルである。
-
-■ /param/costmap\_common\_params.yaml
-■ /param/global\_costmap\_params.yaml
-■ /param/local\_costmap\_params.yaml
-占有格子地図の設定パラメータを記載したファイルであり、大域経路計画に関するglobal\_costmap\_params.yaml、局所経路計画に関するlocal\_costmap\_params.yamlファイル、両者に共通のcostmap\_common\_params.yamlファイルからなる。本節で用いる占有格子地図では、costmap注7という手法を用いて、ロボットの位置情報とセンサから得られた周辺情報から、各ピクセルを障害物、移動不可領域、移動可能領域に分類する。この分類に必要なcostmapの設定パラメータが記載されている。
-
-■ /param/dwa\_local\_planner\_params.yaml
-dwa\_local\_plannerは計画された移動速度コマンドをロボットに送るパッケージで、このパッケージの実行に必要なパラメータ  を設定するファイルである。
-
-■ /maps/map.pgm
-■ /maps/map.yaml
-以前10.2節で  作成した占有格子地図である「map.pgm」と、その環境地図情報である「map.yaml」をmapsフォルダに保存して使用する。
-
-■ /rviz/kobuki\_nav.rviz
+■ /launch/kobuki\_navigation.launch\\
+kobuki\_navigation.launchファイルを実行するだけで、全てのナビゲーション関連パッケージが起動される。\\
+■ /launch/amcl.launch.xml\\
+amcl.launch.xmlファイルは、AMCL の各種パラメータの設定値を記述したファイルで、kobuki\_navigationl.launchと同時に使用される。\\
+■ /param/move\_base\_params.yaml\\
+運動計画を統括するmove\_baseのパラメータ設定ファイルである。\\
+■ /param/costmap\_common\_params.yaml\\
+■ /param/global\_costmap\_params.yaml\\
+■ /param/local\_costmap\_params.yaml\\
+占有格子地図の設定パラメータを記載したファイルであり、大域経路計画に関するglobal\_costmap\_params.yaml、局所経路計画に関するlocal\_costmap\_params.yamlファイル、両者に共通のcostmap\_common\_params.yamlファイルからなる。本節で用いる占有格子地図では、costmap注7という手法を用いて、ロボットの位置情報とセンサから得られた周辺情報から、各ピクセルを障害物、移動不可領域、移動可能領域に分類する。この分類に必要なcostmapの設定パラメータが記載されている。\\
+■ /param/dwa\_local\_planner\_params.yaml\\
+dwa\_local\_plannerは計画された移動速度コマンドをロボットに送るパッケージで、このパッケージの実行に必要なパラメータ  を設定するファイルである。\\
+■ /maps/map.pgm\\
+■ /maps/map.yaml\\
+以前10.2節で  作成した占有格子地図である「map.pgm」と、その環境地図情報である「map.yaml」をmapsフォルダに保存して使用する。\\
+■ /rviz/kobuki\_nav.rviz\\
 RVizの設定情報を含むファイルである。RVizのプラグインとして、Grid、RobotModel、TF、LaserScan、Bumper Hit、Map、Global Map、Local Map、AMCL Particlesを呼び出す。
 
 %-------------------------------------------------------------------------------
@@ -1069,7 +1064,8 @@ amcl.launch.xmlファイルはAMCLのパラメータ設定値が入ったファ�
 \textbf{ファイル名: /launch/amcl.launch.xml}
 \begin{lstlisting}[language=XML]
 <launch>
-<!-- %*trueの場合は、ACMLはマップのトピックを受信し、falseであればstatic\_mapのサービスコールを使用する。 *) -->
+<!-- %*trueの場合は、ACMLはマップのトピックを受信し、falseであればstatic\_mapのサービス*)
+%*コールを使用する。 *) -->
 <arg name = "use_map_topic" default = "false" />
 <!-- %*距離センサからの距離値のトピック名 *) -->
 <arg name = "scan_topic" default = "scan" />
@@ -1174,7 +1170,8 @@ controller_patience: 3.0
 planner_frequency: 1.0
 # %*space-clearing動作前に、使用可能な計画を見つけるために待機する最大時間*)
 planner_patience: 5.0
-# %*回復行動    (軌道計画に失敗した時の行動)を実行する前に、ロボットが行ったり来たりすることを可能にする時間*)
+# %*回復行動    (軌道計画に失敗した時の行動)を実行する前に、ロボットが行ったり来たりするこ*)
+%*とを可能にする時間*)
 oscillation_timeout: 10.0
 # %*この距離を移動した場合、oscillation\_timeoutは初期化される。*)
 oscillation_distance: 0.2
@@ -1182,7 +1179,7 @@ oscillation_distance: 0.2
 
 \subsubsection{costmap}
 
-共通のcostmap\_common\_params.yamlファイル、大域経路計画に必要なglobal\_costmap\_params.yaml、局所経路計画に必要なlocal\_costmap\_params.yamlファイルの設定について説明する。
+共通のcostmap\_common\_params.yamlファイル、大域経路計画に必要なglobal\_cost\\map\_params.yaml、局所経路計画に必要なlocal\_costmap\_params.yamlファイルの設定について説明する。
 
 \textbf{ファイル名: /param/costmap\_common\_params.yaml}
 \begin{lstlisting}[language=YAML]
@@ -1192,7 +1189,8 @@ obstacle_range: 2.5
 raytrace_range: 3.0
 # %*ロボット半径*)
 robot_radius: 0.18
-# %*インフレーション領域    (ロボットの近傍領域)を表す円の半径で、障害物へ接近させないようにするパラメータ*)
+# %*インフレーション領域    (ロボットの近傍領域)を表す円の半径で、障害物へ接近させないよう*)
+%*にするパラメータ*)
 inflation_radius: 0.50
 # %*使用するcostmapをvoxel (voxel-grid)とcostmap (costmap\_2d)の中から選択する。*)
 map_type: voxel
@@ -1200,7 +1198,8 @@ map_type: voxel
 origin_z: 0.0
 # %*各ボクセル   (3次元空間を構成する小6面体)の高さ*)
 z_resolution: 0.2
-# %*ボクセルの種類数を指定、以下のように2を設定すると、0と1が使える。ボクセル0はバンパーが使用され、ボクセル1はレーザースキャナが使用される。*)
+# %*ボクセルの種類数を指定、以下のように2を設定すると、0と1が使える。ボクセル0はバンパ*)
+  %*ーが使用され、ボクセル1はレーザースキャナが使用される。*)
 z_voxels: 2
 # %*ボクセルマップを配信するかどうかを決定*)
 publish_voxel_map: false
@@ -1208,9 +1207,11 @@ publish_voxel_map: false
 max_obstacle_height: 0.60
 # %*使用するセンサの指定*)
 observation_sources: scan bump
-# %*レーザスキャンのデータのタイプ、トピック名、costmapへの反映、最小・最大の障害物の高さについてのパラメータ*)
+# %*レーザスキャンのデータのタイプ、トピック名、costmapへの反映、最小・最大の障害物の*)
+%*高さについてのパラメータ*)
 scan: {data_type: LaserScan, topic: scan, marking: true, clearing: true, min_obstacle_height: 0.25, max_obstacle_height: 0.35}
-# %*バンパーのデータのタイプ、トピック名、costmapへの反映、最小・最大の障害物の高さについてのパラメータ*)
+# %*バンパーのデータのタイプ、トピック名、costmapへの反映、最小・最大の障害物の高さに*)
+%*ついてのパラメータ*)
 bump: {data_type: PointCloud2, topic: mobile_base/sensors/bumper_pointcloud, marking: true, clearing: false, min_obstacle_height: 0.0, max_obstacle_height: 0.15}
 \end{lstlisting}
 
@@ -1242,7 +1243,7 @@ local_costmap:
 
 \subsubsection{dwa\_local\_planner}
 
-dwa\_local\_plannerは移動速度コマンドをロボットに送るパッケージで、dwa\_local\_planner\_params.yamlはパラメータを設定するファイルである。この詳細設定について説明する。
+dwa\_local\_plannerは移動速度コマンドをロボットに送るパッケージで、dwa\_local\\\_planner\_params.yamlはパラメータを設定するファイルである。この詳細設定について説明する。
 
 \textbf{ファイル名: /param/dwa\_local\_planner\_params.yaml}
 \begin{lstlisting}[language=YAML]
@@ -1286,7 +1287,8 @@ scaling_speed: 0.25    #%*スケーリング速度 (meter/sec)*)
 max_scaling_factor: 0.2  #%*最大スケーリング係数*)
 
 #%*不安定な挙動 (Oscillation)を防ぐためのパラメータ*)
-oscillation_reset_dist: 0.05 #%*oscillationフラグがリセットされる前に、ロボットがどのように移動するかの設定*)
+oscillation_reset_dist: 0.05 #%*oscillationフラグがリセットされる前に、ロボットがどのように移動*)
+%*するかの設定*)
 
 #%*デバッグ*)
 publish_traj_pc: true    #%*移動軌跡のデバッグ設定*)
@@ -1305,7 +1307,7 @@ global_frame_id: odom    #%*グローバルフレームIDの設定*)
 
 \subsubsection{kobuki\_nav.rviz}
 
-RVizの設定情報を含むファイルである。 RVizのプラグインで、Grid、RobotModel、TF、LaserScan、Bumper Hit、Map、Global Map、Local Map、Amcl Particlesを呼び出す。RViz起動後に、図10-17のように「Add」ボタンを押して手動で追加することもできるが、より簡便に起動時に自動で  追加するための設定ファイルを下記アドレスからダウンロードできる。
+RVizの設定情報を含むファイルである。 RVizのプラグインで、Grid、RobotMode\\l、TF、LaserScan、Bumper Hit、Map、Global Map、Local Map、Amcl Particlesを呼び出す。RViz起動後に、図10-17のように「Add」ボタンを押して手動で追加することもできるが、より簡便に起動時に自動で  追加するための設定ファイルを下記アドレスからダウンロードできる。
 
 \begin{lstlisting}[language=ROS]
 $ wget https://raw.githubusercontent.com/irvs/rosbook_kobuki/master/kobuki_navigation/rviz/kobuki_nav.rviz
@@ -1315,7 +1317,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_slam`/rviz/kobuki_nav.rviz
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_17.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_17.png}
   \caption{RVizでのナビゲーションの様子}
 \end{figure}
 
@@ -1340,7 +1342,7 @@ costmapは、各領域の状態を0〜255の数値で表現する。  図10-18�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_18.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_18.png}
   \caption{障害物との距離とcostmap値の関係}
 \end{figure}
 
@@ -1349,7 +1351,7 @@ costmapを視覚的に表現すると、例えば図10-19のようになる。�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_19.png}
+  \includegraphics[width=10cm]{pictures/chapter10/pic_10_19.png}
   \caption{costmap表現 (「http://goo.gl/tlMnzv」を参照)}
 \end{figure}
 
@@ -1392,7 +1394,7 @@ costmapを視覚的に表現すると、例えば図10-19のようになる。�
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_20.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_20.png}
   \caption{AMCLを用いたロボットの位置推定}
 \end{figure}
 
@@ -1424,7 +1426,7 @@ Dynamic Windows Approach (DWA)は、ロボットの速度探索空間 (velocity 
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_21.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_21.png}
   \caption{ロボットの速度探索空間 (velocity search space)とダイナミックウィンドウ}
 \end{figure}
 
@@ -1432,7 +1434,7 @@ Dynamic Windows Approach (DWA)は、ロボットの速度探索空間 (velocity 
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=\columnwidth]{pictures/chapter10/pic_10_22.png}
+  \includegraphics[width=12cm]{pictures/chapter10/pic_10_22.png}
   \caption{並進速度vと回転速度ω}
 \end{figure}
 
