@@ -10,7 +10,7 @@
 %-------------------------------------------------------------------------------
 \section{ROSが対応するロボット}\index{ROSが対応するロボット}
 
-ROSに対応したロボットとして、2015年5月現在で140のロボットがwiki（http://wiki.ros\\.org/Robots）に登録されている。なかでも最も広く知られているロボットは、PR2とタートルボットである。これらはWillow Garage注1またはOSRF（Open Source Robotics Foundation）注2が開発した、ROSの標準的なリファレンス·プラットフォーム（standard reference platform）である。
+ROSに対応したロボットとして、2015年5月現在で140のロボットがwiki（http://wiki.ros\\.org/Robots）に登録されている。なかでも最も広く知られているロボットは、PR2とタートルボットである。これらはWillow Garage\footnote{\url{http://www.willowgarage.com/}}またはOSRF（Open Source Robotics Foundation）\footnote{\url{http://www.osrfoundation.org/}}が開発した、ROSの標準的なリファレンス·プラットフォーム（standard reference platform）である。
 
 %-------------------------------------------------------------------------------
 \subsection{タートルボット}
@@ -861,7 +861,8 @@ bumperの値は0, 1, 2の3通りで、それぞれ左、中央、右のバンパ
 
 \subsubsection{coreトピック}
 
-「/sensors/core」トピックでは、bumper、wheel\_drop、cliff、left\_encoder、right\_enc\\oder、left\_pwm、right\_pwm、buttons、charger、battery、bottom、current、over\_curre\\nt、digital\_input、analog\_inputのセンサの値を配信している。各データの単位は、「kobuki\_msgs/SensorState」注3で確認してほしい。
+「/sensors/core」トピックでは、bumper、wheel\_drop、cliff、left\_encoder、right\_enc\\oder、left\_pwm、right\_pwm、buttons、charger、battery、bottom、current、over\_curre\\nt、digital\_input、analog\_inputのセンサの値を配信している。各データの単位は、「kobuki\_msgs/SensorState」\footnote{\url{http://docs.ros.org/indigo/api/kobuki\_msgs/html/msg/SensorState.html
+}}で確認してほしい。
 
 \begin{lstlisting}[language=ROS]
 $ rostopic echo /mobile_base/sensors/core
@@ -1127,7 +1128,7 @@ features: 3
 %-------------------------------------------------------------------------------
 \subsection{ファームウェアバージョンの更新}
 
-ファームウェアのバージョンを確認して古いことがわかったら、以下の手順で更新をおこなう。まず、Kobukiのファームウェア注4ファイルhex注5と、これをKobukiにアップロードするためのstm32flash注6プログラムをダウンロードし、stm32flashプログラムを makeして実行可能な状態にしておく。
+ファームウェアのバージョンを確認して古いことがわかったら、以下の手順で更新をおこなう。まず、Kobukiのファームウェア\footnote{\url{http://kobuki.yujinrobot.com/home-en/documentation/howtos/upgrading-firmware/upgrading-firmware-linux/}}ファイルhex\footnote{\url{http://files.yujinrobot.com/kobuki/firmware/}}と、これをKobukiにアップロードするためのstm32flash\footnote{\url{http://stm32flash.googlecode.com/}}プログラムをダウンロードし、stm32flashプログラムを makeして実行可能な状態にしておく。
 
 \begin{lstlisting}[language=ROS]
 $ mkdir ~/firmware_update
@@ -1184,7 +1185,7 @@ Kobukiが自走してバッテリーを充電するには、図9-8のドッキ�
 %-------------------------------------------------------------------------------
 \subsection{ドッキングおよび自動充電}
 
-ドッキングと自動充電には、kobuki\_auto\_docking注7パッケージを使用する。以下のコマンドでminimal.launchノードを実行する。
+ドッキングと自動充電には、kobuki\_auto\_docking\footnote{\url{http://wiki.ros.org/kobuki\_auto\_docking}}パッケージを使用する。以下のコマンドでminimal.launchノードを実行する。
 
 \begin{lstlisting}[language=ROS]
 $ roslaunch kobuki_node minimal.launch --screen
@@ -1238,8 +1239,7 @@ $ roslaunch kobuki_auto_docking activate.launch --screen
 %-------------------------------------------------------------------------------
 \subsection{ドッキングアルゴリズム}
 
-Yujin Robot社では、参考資料注8でKobukiの自動ドッキングに関連する  プログラム注9を公開している。
-まず、ドッキングステーションの赤外線発光部は、図9-8のように左、中央、右の合計3箇所にある。そこで、ドッキングステーションの前の領域を、図9-19に示すように、左、中央、右の3つの領域に分け、さらに距離に応じて   これを近距離、遠距離の2つに分ける  。したがって、Kobukiとドッキングステーションの位置には、以下の7つのパターンがある。0～32までの数字はそれぞれの状態の番号、（）はその16進数での値である。近距離と遠距離で両方検出された場合（例えばNEAR\_LEFT+FAR\_LEFT=0x11）には、近距離が優先される。
+Yujin Robot社では、参考資料\footnote{\url{http://wiki.ros.org/kobuki/Tutorials/Testing\%20Automatic\%20Docking}}でKobukiの自動ドッキングに関連する  プログラム\footnote{\url{https://github.com/yujinrobot/kobuki/blob/indigo/kobuki\_auto\_docking/src/auto\_docking\_ros.cpp}}を公開している。まず、ドッキングステーションの赤外線発光部は、図9-8のように左、中央、右の合計3箇所にある。そこで、ドッキングステーションの前の領域を、図9-19に示すように、左、中央、右の3つの領域に分け、さらに距離に応じて   これを近距離、遠距離の2つに分ける  。したがって、Kobukiとドッキングステーションの位置には、以下の7つのパターンがある。0～32までの数字はそれぞれの状態の番号、（）はその16進数での値である。近距離と遠距離で両方検出された場合（例えばNEAR\_LEFT+FAR\_LEFT=0x11）には、近距離が優先される。
 
 \begin{itemize}[leftmargin=*]
 \item NONE = 0  (=0x00)
@@ -1302,7 +1302,7 @@ Kobukiでは、仮想ロボットを利用したシミュレーションによ�
 %-------------------------------------------------------------------------------
 \subsection{シミュレーションの準備}
 
-RVizによるKobukiのシミュレーションを実行するには、kobuki\_soft注10メタパッケージを利用する。
+RVizによるKobukiのシミュレーションを実行するには、kobuki\_soft\footnote{\url{http://wiki.ros.org/kobuki\_soft}}メタパッケージを利用する。
 
 \subsubsection{kobuki\_soft（メタパッケージ）}
 
@@ -1435,18 +1435,18 @@ kobuki\_softapps パッケージは、RViz環境でのオドメトリ情報と�
 %-------------------------------------------------------------------------------
 \subsection{Gazeboとは}
 
-Gazebo注11 は、物理エンジンを搭載したロボットアプリケーション開発のための3次元シミュレータである。OSRFで開発されたオープンソースシミュレータ注12の中でも高い評価を受けており、米国DARPA Robotics Challenge注13の公式シミュレータに選定されるなど、開発が加速している。ROSも、Player/Stage、Gazeboを基本シミュレータとして推奨しており、ROSへの導入も容易である注14。
+Gazebo\footnote{\url{http://gazebosim.org/}} は、物理エンジンを搭載したロボットアプリケーション開発のための3次元シミュレータである。OSRFで開発されたオープンソースシミュレータ\footnote{\url{http://en.wikipedia.org/wiki/Robotics\_simulator}}の中でも高い評価を受けており、米国DARPA Robotics Challenge\footnote{\url{http://www.darpa.mil/Our\_Work/TTO/Programs/DARPA\_Robotics\_Challenge.aspx}}の公式シミュレータに選定されるなど、開発が加速している。ROSも、Player/Stage、Gazeboを基本シミュレータとして推奨しており、ROSへの導入も容易である\footnote{\url{http://wiki.ros.org/gazebo\_ros\_pkgs}}。
 
 Gazeboの特徴は次の通りである。
 
 \begin{itemize}
-\item 様々な物理エンジンによる動力学シミュレーション  : 物理エンジンには、開発当初のGazeboはODE注15のみをサポートしていたが、バージョン3.0  以降では、ユーザーのさまざまな要求に応えるため、Bullet注16、Simbody注17、DART注18など、多くの物理エンジンが選択できるようになっている。
-\item 高度な 3次元グラフィックス機能: Gazeboでは、3次元グラフィクスエンジンにOGRE（open-source graphics rendering engines）注19を採用し、高度なレンダリング機能を提供している。
+\item 様々な物理エンジンによる動力学シミュレーション  : 物理エンジンには、開発当初のGazeboはODE\footnote{\url{http://www.ode.org/}}のみをサポートしていたが、バージョン3.0  以降では、ユーザーのさまざまな要求に応えるため、Bullet\footnote{\url{http://bulletphysics.org/}}、Simbody\footnote{\url{https://simtk.org/home/simbody/}}、DART\footnote{\url{http://dartsim.github.io/}}など、多くの物理エンジンが選択できるようになっている。
+\item 高度な 3次元グラフィックス機能: Gazeboでは、3次元グラフィクスエンジンにOGRE（open-source graphics rendering engines）\footnote{\url{http://www.ogre3d.org/}}を採用し、高度なレンダリング機能を提供している。
 \item  多様なセンサ:  LRF、カメラ、デプスカメラ、接触センサ、力-トルクセンサなど、多くの内界、外界センサを再現できる。さらに、検出されたセンサデータへのノイズの付加も可能である。
-\item  プラグインによる機能拡張: プラグイン開発のためのAPI注20が提供され、ユーザーはロボットやセンサ、制御プログラムなどの独自のプラグインを開発、導入できる。
-\item  多様なロボットモデル: PR2、Pioneer2 DX、iRobot Create、TurtleBotなど市販の多くのロボットが、GazeboのモデルファイルであるSDF（Simulated Description Format)注21形式で提供されている。独自のロボットも追加できる。
-\item  リモートサーバー機能の提供: ソケットベースのメッセージパッシングであるグーグルプロトバッファ（Protobufs）注22を利用して、リモートサーバーでもシミュレーションが実行可能である  。
-\item  クラウドシミュレーションの提供: GazeboをAmazon、Softlayer、OpenStackなどで使用できるよう、CloudSim注23を使用したクラウドシミュレーション環境を提供している。
+\item  プラグインによる機能拡張: プラグイン開発のためのAPI\footnote{\url{http://gazebosim.org/api.html}}が提供され、ユーザーはロボットやセンサ、制御プログラムなどの独自のプラグインを開発、導入できる。
+\item  多様なロボットモデル: PR2、Pioneer2 DX、iRobot Create、TurtleBotなど市販の多くのロボットが、GazeboのモデルファイルであるSDF（Simulated Description Format)\footnote{\url{http://gazebosim.org/sdf.html}}形式で提供されている。独自のロボットも追加できる。
+\item  リモートサーバー機能の提供: ソケットベースのメッセージパッシングであるグーグルプロトバッファ（Protobufs）\footnote{\url{https://code.google.com/p/protobuf/}}を利用して、リモートサーバーでもシミュレーションが実行可能である  。
+\item  クラウドシミュレーションの提供: GazeboをAmazon、Softlayer、OpenStackなどで使用できるよう、CloudSim\footnote{\url{http://cloudsim.io/}}を使用したクラウドシミュレーション環境を提供している。
 \item コマンドラインツール: 豊富なコマンドラインツール  を利用して、シミュレーションの状態を把握、制御することができる。
 \end{itemize}
 
@@ -1539,33 +1539,5 @@ $ roslaunch kobuki_gazebo safe_random_walker_app.launch
 http://wiki.ros.org/turtlebot\_stage\\
 http://wiki.ros.org/turtlebot\_stdr\\
 http://wiki.ros.org/turtlebot\_gazebo\\
-
-% 注1  http://www.willowgarage.com/
-% 注2  http://www.osrfoundation.org/
-% 注3  http://docs.ros.org/indigo/api/kobuki_msgs/html/msg/SensorState.html
-% 注4  http://kobuki.yujinrobot.com/home-en/documentation/howtos/upgrading-firmware/upgrading-firmware-linux/
-% 注5  http://files.yujinrobot.com/kobuki/firmware/
-% 注6  http://stm32flash.googlecode.com/
-% 注7  http://wiki.ros.org/kobuki_auto_docking
-% 注8  http://wiki.ros.org/kobuki/Tutorials/Testing%20Automatic%20Docking
-% 注9  https://github.com/yujinrobot/kobuki/blob/indigo/kobuki_auto_docking/src/auto_docking_ros.cpp
-% 注10 http://wiki.ros.org/kobuki_soft
-% 注11 http://gazebosim.org/
-% 注12 http://en.wikipedia.org/wiki/Robotics_simulator
-% 注13 http://www.darpa.mil/Our_Work/TTO/Programs/DARPA_Robotics_Challenge.aspx
-% 注14 http://wiki.ros.org/gazebo_ros_pkgs
-% 注15 http://www.ode.org/
-% 注16 http://bulletphysics.org/
-% 注17 https://simtk.org/home/simbody/
-% 注18 http://dartsim.github.io/
-% 注19 http://www.ogre3d.org/
-% 注20 http://gazebosim.org/api.html
-% 注21 http://gazebosim.org/sdf.html
-% 注22 https://code.google.com/p/protobuf/
-% 注23 http://cloudsim.io/
-
-
-
-
 
 %-------------------------------------------------------------------------------

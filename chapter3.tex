@@ -128,7 +128,7 @@ ROSのビルドシステムであるcatkinはCMakeを拡張したものである
 %-------------------------------------------------------------------------------
 \section{メッセージ通信}\index{メッセージ通信}
 
-本節では、ROSの重要な機能であるノード間のメッセージ通信注1,2について説明する。作業目的に応じて細分化されたノードは、他のノードと処理結果を送受信（メッセージ通信）することで一つの大きなプログラムになる。ノード間のメッセージ通信には、トピックメッセージ通信とサービスメッセージ通信の2つの方法がある。これらの通信方法について、以下で詳しく見ていこう。
+本節では、ROSの重要な機能であるノード間のメッセージ通信\footnote{\url{http://wiki.ros.org/ROS/Concepts}}\footnote{\url{http://wiki.ros.org/ROS/Higher-Level\%20Concepts}}について説明する。作業目的に応じて細分化されたノードは、他のノードと処理結果を送受信（メッセージ通信）することで一つの大きなプログラムになる。ノード間のメッセージ通信には、トピックメッセージ通信とサービスメッセージ通信の2つの方法がある。これらの通信方法について、以下で詳しく見ていこう。
 
 %-------------------------------------------------------------------------------
 \subsection{トピックメッセージ通信}
@@ -152,7 +152,7 @@ ROSのビルドシステムであるcatkinはCMakeを拡張したものである
 
 %-------------------------------------------------------------------------------
 \subsection{マスターによる接続管理}
-配信者、購読者、サービスサーバ、サービスクライアントは、一般にそれぞれ異なるノードの中に存在する。従って、これらのノードがメッセージ通信をするには、ノードを接続する必要がある。このノード間の接続を管理するのがマスター注3である。マスターは、ノードの名前、トピックやサービスの名前、URIアドレスとポート、パラメータなどの情報を管理している。ノードは、生成と同時にマスターに情報を登録し、マスターを介して接続先のノードの情報を得る。その後、ノードとノードが直接接続してメッセージ通信を行う。
+配信者、購読者、サービスサーバ、サービスクライアントは、一般にそれぞれ異なるノードの中に存在する。従って、これらのノードがメッセージ通信をするには、ノードを接続する必要がある。このノード間の接続を管理するのがマスター\footnote{\url{http://wiki.ros.org/Master}}である。マスターは、ノードの名前、トピックやサービスの名前、URIアドレスとポート、パラメータなどの情報を管理している。ノードは、生成と同時にマスターに情報を登録し、マスターを介して接続先のノードの情報を得る。その後、ノードとノードが直接接続してメッセージ通信を行う。
 図3-3にノード間のメッセージ通信の仕組みを示す。
 
 \begin{figure}[h]
@@ -161,7 +161,7 @@ ROSのビルドシステムであるcatkinはCMakeを拡張したものである
   \caption{メッセージ通信}
 \end{figure}
 
-マスターは、ノードの情報を管理し、各ノードは、必要に応じて他のノードと接続、メッセージ通信を行う。以下では、最も重要なマスター、ノード、トピック注4、サービス注5、メッセージ注6間の処理の流れについて、より詳しく説明する。
+マスターは、ノードの情報を管理し、各ノードは、必要に応じて他のノードと接続、メッセージ通信を行う。以下では、最も重要なマスター、ノード、トピック\footnote{\url{http://wiki.ros.org/Topics}}、サービス\footnote{\url{http://wiki.ros.org/Services}}、メッセージ\footnote{\url{http://wiki.ros.org/Messages}}間の処理の流れについて、より詳しく説明する。
 
 %-------------------------------------------------------------------------------
 \subsection{マスターの実行}
@@ -368,7 +368,7 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
 %-------------------------------------------------------------------------------
 \section{ROSビルドシステム}\index{ROSビルドシステム}
 
-ROSのビルドシステムは、ROSパッケージをマルチプラットフォームで開発するため、基本的にはCMake（Cross Platform Make）注7を利用している。catkinビルドシステムは、CMakeをROSに合わせて改良したものであり、CMakeと同様にパッケージのフォルダ内のCMakeLists.txtファイルにビルド環境を記述している。Make注8がUnix系を主な対象としているのとは異なり、CMakeは、Unix系のLinux、BSD、Mac OS Xだけでなく、Windows系にも対応している。また、マイクロソフトのVisual Studioもサポートしており、QT注9の開発にも容易に適用できる。さらに、catkinビルドシステムは、ROSに関連するビルド、パッケージ管理、依存関係パッケージの自動インストールなども容易に実行できる。
+ROSのビルドシステムは、ROSパッケージをマルチプラットフォームで開発するため、基本的にはCMake（Cross Platform Make）\footnote{\url{https://ja.wikipedia.org/wiki/CMake}}を利用している。catkinビルドシステムは、CMakeをROSに合わせて改良したものであり、CMakeと同様にパッケージのフォルダ内のCMakeLists.txtファイルにビルド環境を記述している。Make\footnote{\url{https://ja.wikipedia.org/wiki/Make}}がUnix系を主な対象としているのとは異なり、CMakeは、Unix系のLinux、BSD、Mac OS Xだけでなく、Windows系にも対応している。また、マイクロソフトのVisual Studioもサポートしており、Qt\footnote{\url{http://www.qt.io/}}の開発にも容易に適用できる。さらに、catkinビルドシステムは、ROSに関連するビルド、パッケージ管理、依存関係パッケージの自動インストールなども容易に実行できる。
 
 %-------------------------------------------------------------------------------
 \subsection{パッケージの作成}
@@ -386,7 +386,7 @@ $ catkin_create_pkg %*[パッケージ名] [依存するパッケージ1]…[依
 $ cd ~/catkin_ws/src
 \end{lstlisting}
 
-ここで作成するパッケージの名前は「my\_first\_ros\_pkg」である。 ROSのパッケージ名には、通常はすべて小文字を使用し、スペースは使用できない。またハイフン（-）ではなくアンダースコア（\_）を使用し、各単語を続ける。ROSプログラミングにおけるコーディングスタイルと名前の規則については、関連ページ注10,11,12を参照してほしい。
+ここで作成するパッケージの名前は「my\_first\_ros\_pkg」である。 ROSのパッケージ名には、通常はすべて小文字を使用し、スペースは使用できない。またハイフン（-）ではなくアンダースコア（\_）を使用し、各単語を続ける。ROSプログラミングにおけるコーディングスタイルと名前の規則については、関連ページ\footnote{\url{http://wiki.ros.org/StyleGuide}}\footnote{\url{http://wiki.ros.org/CppStyleGuide}}\footnote{\url{http://wiki.ros.org/Names}}を参照してほしい。
 では、次のコマンドでmy\_first\_ros\_pkgという名前のパッケージを作成しよう。
 
 \begin{lstlisting}[language=ROS]
@@ -716,7 +716,7 @@ ROS以外のパッケージまたはライブラリを使用するときの記�
 catkin_python_setup()
 \end{lstlisting}
 
-Pythonを使用する時に設定するオプションである。Pythonのインストールプロセスであるsetup.py注13を呼ぶ。
+Pythonを使用する時に設定するオプションである。Pythonのインストールプロセスであるsetup.py\footnote{\url{https://docs.python.org/2/distutils/setupscript.html}}を呼ぶ。
 
 \begin{lstlisting}[language=make]
 add_message_files (FILES
@@ -886,20 +886,6 @@ $ rosrun my_first_ros_pkg hello_world_node
 [INFO] [1423443540.731805683]: hello world 6
 \end{lstlisting}
 
-ノードを実行すると、hello world 0、1、2などのメッセージが配信されていることが確認できる。\\
-\\
-注1  http://wiki.ros.org/ROS/Concepts\\
-注2  http://wiki.ros.org/ROS/Higher-Level\\%20Concepts
-注3  http://wiki.ros.org/Master\\
-注4  http://wiki.ros.org/Topics\\
-注5  http://wiki.ros.org/Services\\
-注6  http://wiki.ros.org/Messages\\
-注7  http://ko.wikipedia.org/wiki/CMake\\
-注8  http://ko.wikipedia.org/wiki/Make\\
-注9  http://www.qt.io/\\
-注10 http://wiki.ros.org/StyleGuide\\
-注11 http://wiki.ros.org/CppStyleGuide\\
-注12 http://wiki.ros.org/Names\\
-注13 https://docs.python.org/2/distutils/setupscript.html\\
+ノードを実行すると、hello world 0、1、2などのメッセージが配信されていることが確認できる。
 
 %-------------------------------------------------------------------------------
