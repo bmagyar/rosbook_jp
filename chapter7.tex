@@ -11,8 +11,8 @@
 \section{ロボットパッケージ}\index{ロボットパッケージ}
 
 ロボットの構成要素はハードウェアとソフトウェアに大別される。ハードウェアには、モータ、ギア、制御回路、センサなどが含まれる。一方、ソフトウェアは、ロボットのハードウェアを制御するマイクロコントローラのファームウェアから、地図作成、ナビゲーション、動作生成、ユーザインタフェースなどの高度なアプリケーションソフトウェアまで様々である。
-アプリケーションソフトウェアには、Willow GarageやClearpathのようなロボット関連企業、オープンソースロボット財団（OSRF）、大学や企業の研究室、個人の開発者により開発され、パッケージとして配布されているものもある。これらのパッケージは、ロボットに対するロボットパッケージ注1と、センサに対するセンサパッケージ注2に分類される。
-ROSで用いられる代表的なロボットパッケージとしては、Willow Garageで開発されたPR2注3とWillow Garage, OSRF, Yujin Robotが共同開発したタートルボット（turtlebot）注4に対するロボットパッケージが挙げられる。PR2は、Willow Garageが研究用途に開発したヒューマノイド型ロボットであり、他のロボットパッケージは、PR2パッケージを参考に開発されているものが多い。しかし、PR2は汎用的で優れた性能をもつ一方、価格が高いという問題があった。これに対し、ロボット開発費用を抑え、低価格で提供されたロボットパッケージが移動ロボット、タートルボットである。当初、タートルボットはiRobot社のRoomba createを移動ベースとして用いていたが、その後開発されたタートルボット 2では、Yujin Robot社のKobukiが採用されている。タートルボットの詳細については、9章でタートルボットに関するロボットパッケージの使い方とともに説明する。
+アプリケーションソフトウェアには、Willow GarageやClearpathのようなロボット関連企業、オープンソースロボット財団（OSRF）、大学や企業の研究室、個人の開発者により開発され、パッケージとして配布されているものもある。これらのパッケージは、ロボットに対するロボットパッケージ\footnote{\url{http://wiki.ros.org/Robots}}と、センサに対するセンサパッケージ\footnote{\url{http://wiki.ros.org/Sensors}}に分類される。
+ROSで用いられる代表的なロボットパッケージとしては、Willow Garageで開発されたPR2\footnote{\url{http://wiki.ros.org/Robots/PR2}}とWillow Garage, OSRF, Yujin Robotが共同開発したタートルボット（turtlebot）\footnote{\url{http://wiki.ros.org/Robots/TurtleBot}}に対するロボットパッケージが挙げられる。PR2は、Willow Garageが研究用途に開発したヒューマノイド型ロボットであり、他のロボットパッケージは、PR2パッケージを参考に開発されているものが多い。しかし、PR2は汎用的で優れた性能をもつ一方、価格が高いという問題があった。これに対し、ロボット開発費用を抑え、低価格で提供されたロボットパッケージが移動ロボット、タートルボットである。当初、タートルボットはiRobot社のRoomba createを移動ベースとして用いていたが、その後開発されたタートルボット 2では、Yujin Robot社のKobukiが採用されている。タートルボットの詳細については、9章でタートルボットに関するロボットパッケージの使い方とともに説明する。
 
 
 \begin{figure}[htp]
@@ -53,7 +53,7 @@ $ sudo apt-get install ros-indigo-turtlebot ros-indigo-turtlebot-apps ros-indigo
 $ sudo apt-get install ros-indigo-jackal-desktop
 \end{lstlisting}
 
-もし、使用したいロボットパッケージが公式には提供されていなくても、通常、そのパッケージに関するWikiでインストール方法が説明されている。例えば、有名な移動ロボットのパイオニア（Pioneer）注５は、次のようにcatkinビルドシステムのユーザーソースフォルダに移動した後、Wikiに記されているリポジトリからロボットパッケージをダウンロードすることでインストールできる。
+もし、使用したいロボットパッケージが公式には提供されていなくても、通常、そのパッケージに関するWikiでインストール方法が説明されている。例えば、有名な移動ロボットのパイオニア（Pioneer）\footnote{\url{http://wiki.ros.org/ROSARIA}}は、次のようにcatkinビルドシステムのユーザーソースフォルダに移動した後、Wikiに記されているリポジトリからロボットパッケージをダウンロードすることでインストールできる。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws/src %*→ catkinビルドシステムのユーザーソースフォルダに移動*)
@@ -259,14 +259,5 @@ $ rosrun find_object_2d find_object_2d image:=image_raw
   \includegraphics[width=15cm]{pictures/chapter7/pic_07_10.png}
   \caption{画像の検出結果}
 \end{figure}
-
-
-% 注1  http://wiki.ros.org/Robots
-% 注2  http://wiki.ros.org/Sensors
-% 注3  http://wiki.ros.org/Robots/PR2
-% 注4  http://wiki.ros.org/Robots/TurtleBot
-% 注5  http://wiki.ros.org/ROSARIA
-
-
 
 %-------------------------------------------------------------------------------

@@ -38,7 +38,7 @@
 \section{ロボットアームの動作計画}\index{ロボットアームの動作計画}
 
 ロボットアームで、ある場所に置かれた既知の物体を把持し、目的の場所まで運び、置く作業(ピック＆プレイス)を考える。最も簡単な方法は、物体を把持するときの各関節の角度や、目的の場所に置くときの各関節の角度をあらかじめ求めておき、作業時には各関節がその角度になるように関節を一斉に動かすことである。しかし、この方法は、把持しようとした物体の大きさや形状、物体の設置場所、把持位置が変更されると適用できない。また、把持位置と設置位置の間に障害物が存在した場合、それを回避できない。
-そこでロボットアームによるピック＆プレイスの制御には、物体の大きさや形状、設置位置に応じた把持位置の設定や、障害物との衝突を回避する動作計画などの機能が必要である。ROSでは、これらの機能をMoveIt注1というモーションプランニングパッケージで提供する。MoveItを利用するうえで、ロボットアームに関する深い知識は必ずしも必要なく、上記の機能は比較的簡単に実現できる。ただし、基本的な知識や理解はもっておくべきであり、本節ではその説明を行う。
+そこでロボットアームによるピック＆プレイスの制御には、物体の大きさや形状、設置位置に応じた把持位置の設定や、障害物との衝突を回避する動作計画などの機能が必要である。ROSでは、これらの機能をMoveIt\footnote{\url{http://moveit.ros.org/}}というモーションプランニングパッケージで提供する。MoveItを利用するうえで、ロボットアームに関する深い知識は必ずしも必要なく、上記の機能は比較的簡単に実現できる。ただし、基本的な知識や理解はもっておくべきであり、本節ではその説明を行う。
 
 \subsubsection{作業空間と関節空間}
 
@@ -57,7 +57,7 @@ XYZ座標系などで定義された3次元空間で、ロボットに作業命�
 %-------------------------------------------------------------------------------
 \section{ロボットアームのモデリング}\index{ロボットアームのモデリング}
 
-ロボットアームの構成要素であるリンク、関節、エンドエフェクタなどのモデルを記述するために、ROSではURDF注2(Unified Robot Description Format)と呼ばれる形式を利用する。URDFで記述されたロボットモデルは、RVizに直接読み込んで表示できる。さらに、RViz上で各関節を仮想的に動かすことで、設計したモデルが正しいかを確認できる。また、RVizでロボットモデルを読み込み、各関節の値を入力すれば、実際のロボットを動作させることもできる。また作成したモデルは、MoveItによる動作計画や、Gazeboシミュレータによる動力学シミュレーションに用いることもできる。以降では、これらの一連の手順を紹介する。
+ロボットアームの構成要素であるリンク、関節、エンドエフェクタなどのモデルを記述するために、ROSではURDF\footnote{\url{http://wiki.ros.org/urdf}}(Unified Robot Description Format)と呼ばれる形式を利用する。URDFで記述されたロボットモデルは、RVizに直接読み込んで表示できる。さらに、RViz上で各関節を仮想的に動かすことで、設計したモデルが正しいかを確認できる。また、RVizでロボットモデルを読み込み、各関節の値を入力すれば、実際のロボットを動作させることもできる。また作成したモデルは、MoveItによる動作計画や、Gazeboシミュレータによる動力学シミュレーションに用いることもできる。以降では、これらの一連の手順を紹介する。
 
 %-------------------------------------------------------------------------------
 \subsection{3関節ロボットアームのモデリング}
@@ -413,8 +413,7 @@ $ git clone https://github.com/irvs/rosbook_robot_arm.git
 %-------------------------------------------------------------------------------
 \subsection{タートルボットアームのモデリング}
 
-ここまで、3関節ロボットアームを例にURDFを作成する方法を説明してきた。この項では、より実際に近い例として、図11-10に示す4関節と開閉型グリッパーをもつロボットアームのモデリングを説明する。このロボットアームは、タートルボットアーム(turtlebot arm)注3という名前で販売されており、主にロボットアームの学習に用いられる。
-タートルボットアームのベースは、タートルボットのフレームであり、関節アクチュエータにはRobotis社のDynamixel AX-12Aを使用している。エンドエフェクタの開閉型グリッパーなど、このアームで使用されている部品の3次元CADファイルは、「http://www.thingiverse.com/thing:5192」で公開されている。関連するハードウェアなどの説明は、http://wiki.ros.org/turtlebot\_armを参照してほしい。
+ここまで、3関節ロボットアームを例にURDFを作成する方法を説明してきた。この項では、より実際に近い例として、図11-10に示す4関節と開閉型グリッパーをもつロボットアームのモデリングを説明する。このロボットアームは、タートルボットアーム(turtlebot arm)\footnote{\url{http://wiki.ros.org/turtlebot_arm}}という名前で販売されており、主にロボットアームの学習に用いられる。タートルボットアームのベースは、タートルボットのフレームであり、関節アクチュエータにはRobotis社のDynamixel AX-12Aを使用している。エンドエフェクタの開閉型グリッパーなど、このアームで使用されている部品の3次元CADファイルは、「http://www.thingiverse.com/thing:5192」で公開されている。関連するハードウェアなどの説明は、http://wiki.ros.org/turtlebot\_armを参照してほしい。
 
 \begin{figure}[htp]
   \centering
@@ -436,7 +435,7 @@ $ sudo apt-get install ros-indigo-position-controllers
 $ sudo apt-get install ros-indigo-joint-trajectory-controller
 \end{lstlisting}
 
-その後、タートルボットアームの関連プログラム注4をダウンロードする。
+その後、タートルボットアームの関連プログラム\footnote{\url{https://github.com/turtlebot/turtlebot\_arm}}をダウンロードする。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws/src
@@ -503,12 +502,12 @@ $ rosrun xacro xacro.py arm.urdf.xacro > arm.urdf
 \section{MoveItを用いたロボットアームの動作計画}\index{MoveItを用いたロボットアームの動作計画}
 
 MoveItは、動作計画、3次元知覚、運動学計算、制御などを提供するパッケージである。特に、ロボットで頻繁に取り扱うロボットアームの順運動学計算と逆運動学計算が可能であり、物体把持やピック＆プレイス作業などが簡単に実行できる。
-MoveItで使用できるロボットアームは、前節で紹介したタートルボットアームのほかに、65種以上もある注5。ここでは、MoveItを用いて、タートルボットアームの動作計画を行ってみる。
+MoveItで使用できるロボットアームは、前節で紹介したタートルボットアームのほかに、65種以上もある\footnote{\url{http://moveit.ros.org/robots/}}。ここでは、MoveItを用いて、タートルボットアームの動作計画を行ってみる。
 
 %-------------------------------------------------------------------------------
 \subsection{MoveItの処理手順}
 
-本稿では、MoveItの内部で行われる処理手順の概要を説明する。MoveItのシステムアーキテクチャを図11-12に示す。MoveItは動作計画を行うノードなど、個々のノードと外部とのインターフェースの役割を担うmove\_groupノード注6を中心に構成されている。MoveItを起動すると、move\_groupのノードはROSパラメータサーバよりロボットモデルと環境変数をURDF、SRDF、Config形式で受けとる。また、move\_groupノードはロボットの各関節値の情報であるJoint Stateトピックと、各関節とリンクの相対位置関係を記述したtfトピックを受け取り、ロボットの現在の姿勢を計算する。さらに、ロボットが把持する物体として、RViz上に仮想的に存在する物体、もしくはKinectやXtionなどのデプスカメラから取得した点群(Point Cloud)形式の物体の情報が与えられる。
+本稿では、MoveItの内部で行われる処理手順の概要を説明する。MoveItのシステムアーキテクチャを図11-12に示す。MoveItは動作計画を行うノードなど、個々のノードと外部とのインターフェースの役割を担うmove\_groupノード\footnote{\url{http://moveit.ros.org/documentation/concepts/}}を中心に構成されている。MoveItを起動すると、move\_groupのノードはROSパラメータサーバよりロボットモデルと環境変数をURDF、SRDF、Config形式で受けとる。また、move\_groupノードはロボットの各関節値の情報であるJoint Stateトピックと、各関節とリンクの相対位置関係を記述したtfトピックを受け取り、ロボットの現在の姿勢を計算する。さらに、ロボットが把持する物体として、RViz上に仮想的に存在する物体、もしくはKinectやXtionなどのデプスカメラから取得した点群(Point Cloud)形式の物体の情報が与えられる。
 ユーザーは、move\_group\_interface(C ++)、moveit\_commander(Python)、RViz PluginのGUI画面などのユーザインターフェースを介し、move\_groupノードに接続して作業コマンドを送信する。move\_groupノードは、ユーザーから作業コマンドを受信すると、MoveItの主要コンポーネントの一つであるOMPL(Open Motion Planning Library、動作計画ライブラリ)、ロボットの姿勢、センサ情報、把持物体や障害物の幾何情報(Planning Scene)、順運動学・逆運動学プラグイン、衝突チェック機能などを使用して、必要な動作を自動生成する。最後に、Robot Controllersノードに、生成された作業動作を実現する各関節の関節軌道(Joint Trajectory)を渡すことで、ロボットが計画通りに動作する。
 
 \begin{figure}[htp]
@@ -519,7 +518,7 @@ MoveItで使用できるロボットアームは、前節で紹介したター�
 
 
 \begin{exercise}[SRDF(Semantic Robot Description Format)とは]
-SRDF注7は、MoveItでの動作計画で用いられるロボットの記述方式である。URDF(Universal Robot Description Format)の文法を一部採用しているが、URDFを拡張または置き換えるものではなく、意味(Semantic)情報を記述するための方式である。MoveItの「MoveIt Setup Assistant」を使用すると、作成しておいたURDFファイルを参照して、SRDFファイルを生成することができる。ちなみにGazeboシミュレータでは、シミュレーションに必要な仮想空間、光、物理的な力、センサ、衝突、視覚化、ロボットや物体などのモデルを記述できるSDF(Simulation Description Format、http://sdformat.org/)フォーマットを使用している。SRDF, URDF, SDFの違いは、次のWikiに詳しい。
+SRDF\footnote{\url{http://wiki.ros.org/srdf}}は、MoveItでの動作計画で用いられるロボットの記述方式である。URDF(Universal Robot Description Format)の文法を一部採用しているが、URDFを拡張または置き換えるものではなく、意味(Semantic)情報を記述するための方式である。MoveItの「MoveIt Setup Assistant」を使用すると、作成しておいたURDFファイルを参照して、SRDFファイルを生成することができる。ちなみにGazeboシミュレータでは、シミュレーションに必要な仮想空間、光、物理的な力、センサ、衝突、視覚化、ロボットや物体などのモデルを記述できるSDF(Simulation Description Format、http://sdformat.org/)フォーマットを使用している。SRDF, URDF, SDFの違いは、次のWikiに詳しい。
 
 http://wiki.ros.org/ROS/Patterns/RobotModelling
 \end{exercise}
@@ -527,7 +526,7 @@ http://wiki.ros.org/ROS/Patterns/RobotModelling
 %-------------------------------------------------------------------------------
 \subsection{MoveIt Setup Assistantを用いた設定ファイルの作成}
 
-MoveItを使用するには、あらかじめ作成しておいたURDF形式のロボットモデルをSRDF形式(コラム「SRDF(Semantic Robot Description Format)とは」参照)に変換し、MoveItに必要な設定を追加すればよい。しかし、これは簡単な作業ではない。設定作業を支援するGUIツールとして、MoveItではMoveIt Setup Assistant注8が提供されている。以下では、このツールの使用法について説明する。
+MoveItを使用するには、あらかじめ作成しておいたURDF形式のロボットモデルをSRDF形式(コラム「SRDF(Semantic Robot Description Format)とは」参照)に変換し、MoveItに必要な設定を追加すればよい。しかし、これは簡単な作業ではない。設定作業を支援するGUIツールとして、MoveItではMoveIt Setup Assistant\footnote{\url{http://moveit.ros.org/wiki/PR2/Setup\_Assistant/Quick\_Start}}が提供されている。以下では、このツールの使用法について説明する。
 まず、次のようにmoveit\_setup\_assistant.launchを実行する。
 
 \begin{lstlisting}[language=ROS]
@@ -616,7 +615,7 @@ turtlebot\_arm\_moveit\_configフォルダを選択して、<Load Files>ボタ�
   \caption{プランニンググループにおけるLinks項目の設定}
 \end{figure}
 
-次に、armグループについて説明する。armグループには、図11-18に示すように、[Joints]や[Links]の情報が設定されていない。一般的なロボットアームの場合、運動学ソルバとしてMoveItで提供される標準の6自由度アーム用KDLKinematicsPlugin注9を用いるには、図11-22、図11-23のように関節(arm\_sho\\ulder\_pan\_joint、arm\_shoulder\_lift\_joint、arm\_elbow\_flex\_joint、arm\_wrist\_flsx\_joint)\\やリンク(arm\_base\_linkからarm\_wrist\_F3\_0\_linkまで)の情報を入力して、図11-24のように設定しなければならない。しかし、 armグループのロボットアームは4自由度なので、6自由度アーム用KDLKinematicsPluginを用いることができない。そこで、4つのアクチュエータに1つの受動関節を追加した5関節モデルを作り、図11-25のように運動学ソルバにIKFASTKinematicsPlugin注10を設定した。この場合、図11-18に示すように、関節とリンク情報は設定する必要はなく、chain情報のみを記述する。
+次に、armグループについて説明する。armグループには、図11-18に示すように、[Joints]や[Links]の情報が設定されていない。一般的なロボットアームの場合、運動学ソルバとしてMoveItで提供される標準の6自由度アーム用KDLKinematicsPlugin\footnote{\url{http://www.orocos.org/kdl}}を用いるには、図11-22、図11-23のように関節(arm\_sho\\ulder\_pan\_joint、arm\_shoulder\_lift\_joint、arm\_elbow\_flex\_joint、arm\_wrist\_flsx\_joint)\\やリンク(arm\_base\_linkからarm\_wrist\_F3\_0\_linkまで)の情報を入力して、図11-24のように設定しなければならない。しかし、 armグループのロボットアームは4自由度なので、6自由度アーム用KDLKinematicsPluginを用いることができない。そこで、4つのアクチュエータに1つの受動関節を追加した5関節モデルを作り、図11-25のように運動学ソルバにIKFASTKinematicsPlugin\footnote{\url{http://moveit.ros.org/wiki/Kinematics/IKFast}}を設定した。この場合、図11-18に示すように、関節とリンク情報は設定する必要はなく、chain情報のみを記述する。
 
 \begin{figure}[htp]
   \centering
@@ -711,7 +710,7 @@ MoveItでは、ロボットアームの複数の姿勢を事前に登録でき�
 $ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch
 \end{lstlisting}
 
-図11-33に示すように、RVizの右側のウィンドウには、ロボットモデルと緑色のボールマーカ、ボールマーカの位置と姿勢を変更するためのインタラクティブマーカー注11が表示される。表示されないときは、catkin\_makeを実行する。この緑色のボールをタートルボットアームが把持可能な位置におき、MoveItで逆運動学計算を行うと、ボールを把持するのに適当な各関節の角度値が計算され、RViz上の仮想タートルボットアームが把持位置に動く。
+図11-33に示すように、RVizの右側のウィンドウには、ロボットモデルと緑色のボールマーカ、ボールマーカの位置と姿勢を変更するためのインタラクティブマーカー\footnote{\url{http://wiki.ros.org/interactive\_markers}}が表示される。表示されないときは、catkin\_makeを実行する。この緑色のボールをタートルボットアームが把持可能な位置におき、MoveItで逆運動学計算を行うと、ボールを把持するのに適当な各関節の角度値が計算され、RViz上の仮想タートルボットアームが把持位置に動く。
 
 \begin{figure}[htp]
   \centering
@@ -744,7 +743,7 @@ $ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch
 %-------------------------------------------------------------------------------
 \subsection{実際のロボットアームを使った動作確認}
 
-本項では、実際にロボットアームを使ってMoveItの動作を確認してみる。まず、タートルボットアームを準備する。11.4.2項で述べたとおり、タートルボットアームは4つの関節と1つのグリッパーをもち、合計5つのアクチュエータで構成される。アクチュエータには、スマートアクチュエータ注12 DynamixelシリーズのAX-12A(図11-37)を使用している。PCでアクチュエータを直接制御するには、USB2Dynamixel(図11-38)をPCのUSBポートに接続して、制御コマンドをアクチュエータにシリアル通信で伝達する。
+本項では、実際にロボットアームを使ってMoveItの動作を確認してみる。まず、タートルボットアームを準備する。11.4.2項で述べたとおり、タートルボットアームは4つの関節と1つのグリッパーをもち、合計5つのアクチュエータで構成される。アクチュエータには、スマートアクチュエータ\footnote{\url{http://jp.robotis.com/index/product.php?cate\_code=101010}} DynamixelシリーズのAX-12A(図11-37)を使用している。PCでアクチュエータを直接制御するには、USB2Dynamixel(図11-38)をPCのUSBポートに接続して、制御コマンドをアクチュエータにシリアル通信で伝達する。
 
 \begin{figure}[htp]
   \centering
@@ -759,7 +758,7 @@ $ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch
 \end{figure}
 
 Dynamixelシリーズは、図11-39のようにデイジーチェーン(Daisy chain)方式(アクチュエータの信号線を直列に接続可能な方式)であり、配線が簡単になる。一つのアクチュエータは、モータ、減速ギア、コントローラ、駆動部、通信部で構成され、位置、温度、負荷、電圧などが出力できる。また、基本的な位置制御だけでなく、速度制御やトルク制御(一部のシリーズ)も可能である。
-DynamixelシリーズのアクチュエータをROSで使用するには、dynamixelパッケージ注13かarbotixパッケージ注14のどちらかが必要になる。2つのパッケージのうち、タートルボットではarbotixのみをサポートしているので、ここではarbotixパッケージをインストールする。
+DynamixelシリーズのアクチュエータをROSで使用するには、dynamixelパッケージ\footnote{\url{http://wiki.ros.org/dynamixel\_motor}}かarbotixパッケージ\footnote{\url{http://wiki.ros.org/arbotix}}のどちらかが必要になる。2つのパッケージのうち、タートルボットではarbotixのみをサポートしているので、ここではarbotixパッケージをインストールする。
 
 \begin{lstlisting}[language=ROS]
 $ sudo apt-get install ros-indigo-arbotix*
@@ -903,20 +902,5 @@ $ roslaunch turtlebot_rviz_launchers view_model.launch
   \includegraphics[width=6cm]{pictures/chapter11/pic_11_43.png}
   \caption{Joint State PublisherのGUI画面}
 \end{figure}
-
-% 注1  http://moveit.ros.org/
-% 注2  http://wiki.ros.org/urdf
-% 注3  http://wiki.ros.org/turtlebot_arm
-% 注4  https://github.com/turtlebot/turtlebot_arm
-% 注6  http://moveit.ros.org/robots/
-% 注6  http://moveit.ros.org/documentation/concepts/
-% 注7  http://wiki.ros.org/srdf
-% 注8  http://moveit.ros.org/wiki/PR2/Setup_Assistant/Quick_Start
-% 注9  http://www.orocos.org/kdl
-% 注10 http://moveit.ros.org/wiki/Kinematics/IKFast
-% 注11 http://wiki.ros.org/interactive_markers
-% 注12 http://www.robotis.com/index/product.php?cate_code=131010
-% 注13 http://wiki.ros.org/dynamixel_motor
-% 注14 http://wiki.ros.org/arbotix
 
 %-------------------------------------------------------------------------------

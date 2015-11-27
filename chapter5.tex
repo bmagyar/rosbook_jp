@@ -99,10 +99,6 @@ RVizの画面構成について、図5-5を用いて説明する。
   \caption{RVizディスプレイの選択画面}
 \end{figure}
 
-表5-1 Rvizディスプレイ
-
-アイコン  名前  説明
-
 \begin{description}
 \item  [Axes]  xyz軸を表示する。
 \item  [Camera]  カメラの視点から、新しいレンダリングウィンドウを表示し、その上に画像をオーバーレイする。
@@ -121,7 +117,7 @@ RVizの画面構成について、図5-5を用いて説明する。
 \item  [MarkerArray] 上記マーカーを複数表示する。
 \item  [Odometry]  時間の経過に伴うオドメトリ（odometry）情報を矢印で表示する。例えば、ロボットが移動すると、通り過ぎたパス上に、矢印マーカーが一定の時間間隔で表示される。
 \item  [Path]  ナビゲーションで使用されるロボットの経路を表示する。
-\item  [Point Cloud] ポイントクラウド（point cloud）のデータを表示する。Kinect、Xtionなどの3次元計測器から得られる点群データを表示するために使用する。PointCloudと\\PointCloud2の2種類の形式があり、PointCloud2が最新のPCL(Point Cloud Library) 注1で使用しているフォーマットである。一般的にはPointCloud2を使用すればよい。
+\item  [Point Cloud] ポイントクラウド（point cloud）のデータを表示する。Kinect、Xtionなどの3次元計測器から得られる点群データを表示するために使用する。PointCloudと\\PointCloud2の2種類の形式があり、PointCloud2が最新のPCL(Point Cloud Library) \footnote{\url{http://pointclouds.org/}}で使用しているフォーマットである。一般的にはPointCloud2を使用すればよい。
 \item  [Point Cloud2]
 \item  [PointStamped]  丸いポイントを表示する。
 \item  [Polygon] ポリゴン（polygon）のアウトラインを表示する。主にロボットの外形などを簡単に2次元上に表現するために使用される。
@@ -392,4 +388,4 @@ rqt\_bagは、rosbagと同様に、トピックメッセージの保存、再生
 
 以上でrqtツールのインストール、使用方法について概略を説明した。この節では、すべてのプラグインについては説明できなかったが、ここで示したいくつかの例を参考に、様々なオプション機能を試してほしい。rqtツールは、他のROSノードのようにロボットやセンサを直接処理するものではないが、開発作業を行う上で、データの保存、修正、分析、デバッグなどに役立つ便利な補助ツールである。
 
-% 注1  http://pointclouds.org/
+%-------------------------------------------------------------------------------
