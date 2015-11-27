@@ -187,13 +187,13 @@ RVizが起動したら、Displaysオプションを変更する。RViz左下の<
 \subsubsection{カメラが接続されているコンピュータ上でマスターを起動}
 \index{ROS\_HOSTNAME}\index{ROS\_MASTER\_URI}
 
-マスターはどのコンピュータで起動しても構わないが、今回の例では、カメラが接続されているコンピュータをマスターとする。最初に行う設定はROS\_MASTER\_URIとROS\_HOSTNAMEなどのネットワーク変数の変更である。まず、geditなどの文書編集プログラムを使用して、次のように「.bashrc」ファイルを開く。
+マスターはどのコンピュータで起動しても構わないが、今回の例では、カメラが接続されているコンピュータをマスターとする。最初に行う設定はROS\_MASTER\_URIと\\ROS\_HOSTNAMEなどのネットワーク変数の変更である。まず、geditなどの文書編集プログラムを使用して、次のように「.bashrc」ファイルを開く。
 
 \begin{lstlisting}[language=ROS]
 $ gedit ~/.bashrc
 \end{lstlisting}
 
-「.bashrc」ファイルを読み込み、一番下までスクロールして、次のようにROS\_MASTER\_URIとROS\_HOSTNAME変数を変更しよう。ただし、この例のIPアドレス（ROS\_MASTER\_URI、ROS\_HOSTNAME ともに192.168.4.100で、カメラが接続されたコンピュータのIPアドレス）は、あくまでも例であり、実際のPCのIPアドレスに変更する必要がある。 IPを確認するには、2.2.1項で説明したifconfigコマンドを使用する。
+「.bashrc」ファイルを読み込み、一番下までスクロールして、次のようにROS\_MAS\\TER\_URIとROS\_HOSTNAME変数を変更しよう。ただし、この例のIPアドレス（ROS\_\\MASTER\_URI、ROS\_HOSTNAME ともに192.168.4.100で、カメラが接続されたコンピュータのIPアドレス）は、あくまでも例であり、実際のPCのIPアドレスに変更する必要がある。 IPを確認するには、2.2.1項で説明したifconfigコマンドを使用する。
 
 \begin{lstlisting}[language=bash]
 export ROS_MASTER_URI = http://192.168.4.100:11311
@@ -211,7 +211,7 @@ $ rosrun uvc_camera uvc_camera_node
 \subsubsection{リモートコンピュータでの画像表示}
 \index{ROS\_HOSTNAME}\index{ROS\_MASTER\_URI}
 
-リモートコンピュータでも同様に、「.bashrc」ファイルを開いてROS\_MASTER\_URIとROS\_HOSTNAME変数を変更する。次のように、ROS\_MASTER\_URIはカメラが接続されたコンピュータのIPアドレス（192.168.4.100）とし、ROS\_HOSTNAME変数はリモートコンピュータのIPアドレス（ここでは192.168.4.120）に変更する。ここでもリモートコンピュータのIPアドレス192.168.4.120は一例なので、実際のコンピュータのIPアドレスをifconfigで確認し、正しく入力する必要がある。
+リモートコンピュータでも同様に、「.bashrc」ファイルを開いてROS\_MASTER\_URIと\\ROS\_HOSTNAME変数を変更する。次のように、ROS\_MASTER\_URIはカメラが接続されたコンピュータのIPアドレス（192.168.4.100）とし、ROS\_HOSTNAME変数はリモートコンピュータのIPアドレス（ここでは192.168.4.120）に変更する。ここでもリモートコンピュータのIPアドレス192.168.4.120は一例なので、実際のコンピュータのIPアドレスをifconfigで確認し、正しく入力する必要がある。
 
 \begin{lstlisting}[language=bash]
 export ROS_MASTER_URI = http://192.168.4.100:11311
@@ -278,7 +278,9 @@ do_rectify: False
 
 カメラキャリブレーションでは、図8-5のように黒と白の四角形からなるチェスボード（chess board）を使用する。以下のアドレスから、8 x 6のチェスボードの画像（横方向に8つの格子点、縦方向に6つの格子点）がダウンロードできる。
 
-http://wiki.ros.org/camera\_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=\\view&target=check-108.pdf
+\vspace{\baselineskip}
+\url{http://wiki.ros.org/camera\_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=view&target=check-108.pdf}}
+\vspace{\baselineskip}
 
 ダウンロードしたチェスボード画像をプリンタでA4サイズの紙に出力して、平らな板などに張り付けておく。このチェスボード画像は、位置や姿勢を変えながらカメラで複数回撮影し、キャリブレーション用の画像を作成するのに使われる。
 
@@ -315,7 +317,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.024 image:
 
 十分な枚数の画像が自動的に撮影されると、キャリブレーション計算を実行するための<CALIBRATE>ボタンがアクティブになる。このボタンをクリックすると、キャリブレーション計算が実行される。キャリブレーション時間は約1〜5分程度である。計算が終了したら、<COMMIT>ボタンを押して、計算されたパラメータを保存する。<COMMIT>ボタンは、/camera/set\_camera\_infoサービスを呼び出し、求められたパラメータを「~/.ros/camera\_info/camera.yaml」ファイルに書き出す。以降、ROSで使用されるカメラ関連パッケージは、自動的にこのファイルを参照する。「~/.ros/camera\_info/camera.yaml」ファイルの例を以下に示す。なお、<SAVE>ボタンは、キャリブレーションで使用した画像やキャリブレーションデータをファイル（/tmp/calibrationdata.tar.gz）に保存する。
 
-ファイル名: ~/.ros/camera\_info/camera.yaml
+\noindent\textbf{ファイル名: ~/.ros/camera\_info/camera.yaml}
 \begin{lstlisting}[language=ROS]
 image_width: 640
 image_height: 480

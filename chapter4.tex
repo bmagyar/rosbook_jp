@@ -91,7 +91,7 @@ cmake images msg package.xml srv
 \subsection{rosed：ROSファイルの編集}
 \index{rosed}
 
-rosedはパッケージ内のファイルを編集するときに使用するコマンドであり、ユーザーが設定したエディタでファイルを開く。比較的簡単な内容を手軽に修正するときに使用する。この時、使用されるエディタは、「~/.bashrc」ファイルに「export EDITOR= 'nano'」のように指定する。\\
+rosedはパッケージ内のファイルを編集するときに使用するコマンドであり、ユーザーが設定したエディタでファイルを開く。比較的簡単な内容を手軽に修正するときに使用する。この時、使用されるエディタは、「\verb|~|/.bashrc」ファイルに「export EDITOR= 'nano'」のように指定する。\\
 
 \begin{itemize}
 \item   rosed [パッケージ名] [ファイル名]\\
@@ -120,7 +120,7 @@ ROS実行コマンドは、ROSノードの実行を制御する。特にroscore�
 \subsection{roscore：ROSマスター、rosout、パラメータサーバの起動}
 \index{roscore}
 
-roscoreは、ノード間のメッセージ通信の接続情報を管理するROSマスターを起動するコマンドである。起動されたROSマスターはXMLRPCのサーバとなる。ROSマスターは、ROSの使用にあたって最初に起動しておく必要がある。roscoreを実行すると、ユーザーが設定した「~/.bashrc」中のROS\_MASTER\_URIをマスターURIとし、ROSマスターが立ち上がる。
+roscoreは、ノード間のメッセージ通信の接続情報を管理するROSマスターを起動するコマンドである。起動されたROSマスターはXMLRPCのサーバとなる。ROSマスターは、ROSの使用にあたって最初に起動しておく必要がある。roscoreを実行すると、ユーザーが設定した「\verb|~|/.bashrc」中のROS\_MASTER\_URIをマスターURIとし、ROSマスターが立ち上がる。
 
 \setcounter{num}{0}
 
@@ -261,6 +261,7 @@ ROS情報コマンドは、ノード、トピック、サービス、パラメ�
 \item[rosversion]（★☆☆）ros+version：ROSパッケージとリリースバージョン情報の確認
 \item[roswtf]（☆☆☆）ros+wtf：ROSシステムチェック
 \end{description}
+\vspace{\baselineskip}
 
 以降では、各コマンドの使用方法を具体的に説明するため、ROSの公式チュートリアルで使用されるturtlesimパッケージを利用する。このパッケージは、画面上の亀をキー入力で移動させるものである。turtlesimパッケージがインストールされていない場合は、次のコマンドでインストールできる。
 
@@ -268,7 +269,7 @@ ROS情報コマンドは、ノード、トピック、サービス、パラメ�
 $ sudo apt-get install ros-indigo-turtlesim
 \end{lstlisting}
 
-ROS情報コマンドを説明するために、次の手順でturtlesim\_nodeノードを実行する。
+ROS情報コマンドを説明するために、次の手順でturtlesim\_nodeノードを実行する。\\
 
 \textbf{roscoreの実行}
 
@@ -298,11 +299,13 @@ $ rosrun turtlesim turtle_teleop_key
 
 rosnodeは、ROSノードの情報を確認するためのコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  rosnode [オプション]
 \end{itemize}
+\vspace{\baselineskip}
 
-オプションには、list、ping、info、machine、kill、cleanupなどが指定できる。
+オプションには、list、ping、info、machine、kill、cleanupなどが指定できる。\\
 
 %-------------------------------------------------------------------------------
 \subsubsection{rosnode list：実行中のノードのリストを確認}
@@ -317,7 +320,7 @@ $ rosnode list
 \end{lstlisting}
 
 \begin{exercise}[起動時に指定するノード名と実行されたノード名が違う理由]
-上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_key\\ノードは、ソースファイル\footnote{\url{https://github.com/ros/ros\_tutorials/blob/indigo-devel/turtlesim/tutorials/teleop\_turtle\_key.cpp}}の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(arg\\c, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
+上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_keyノードは、ソースファイル\footnote{\url{https://github.com/ros/ros\_tutorials/blob/indigo-devel/turtlesim/tutorials/teleop\_turtle\_key.cpp}}の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(arg\\c, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -397,11 +400,13 @@ $ rosnode cleanup
 
 rostopicは、使用中のROSトピックの情報の確認するためのコマンドであり、様々なオプションがある。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  rostopic [オプション]
 \end{itemize}
+\vspace{\baselineskip}
 
-オプションには、list、echo、find、type、bw、hz、info、pubなどが指定できる。
+オプションには、list、echo、find、type、bw、hz、info、pubなどが指定できる。\\
 
 rostopicコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_\\keyを実行する。
 
@@ -678,9 +683,11 @@ $ rosservice call /turtle1/set_pen 255 0 0 5 0
 
 rosparamは、ROSサービスのパラメータの情報の確認するためのコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item rosparam [オプション]
 \end{itemize}
+\vspace{\baselineskip}
 
 オプションには、list、get、set、dump、load、deleteなどが指定できる。
 
@@ -755,7 +762,7 @@ $ rosparam set background_b 0
 $ rosservice call clear
 \end{lstlisting}
 
-これにより、RGBは255、86、69から0、86、69に変更されるため、図4-4の右図のように背景色が濃い緑になる。ただし、turtlesimノードの仕様により、変更を反映するためには、「rosparam set background\_b0」コマンドでパラメータを変更した後、「rosservice call clear」コマンドで画面を更新する必要がある。
+これにより、RGBは255、86、69から0、86、69に変更されるため、図4-4の右図のように背景色が濃い緑になる。ただし、turtlesimノードの仕様により、変更を反映するためには、「rosparam set background\_b 0」コマンドでパラメータを変更した後、「rosservice call clear」コマンドで画面を更新する必要がある。
 
 \begin{figure}[h]
   \centering
@@ -786,7 +793,9 @@ $ rosparam delete /background_b
 \subsection{rosmsg：ROSメッセージ情報の確認}
 \index{rosmsg}\index{メッセージ}\index{Message}
 
+\vspace{\baselineskip}
 rosmsgは、ROSメッセージの情報の確認するためのコマンドである。
+\vspace{\baselineskip}
 
 \begin{itemize}
 \item   rosmsg [オプション]
@@ -884,7 +893,9 @@ control_msgs costmap_2d
 \subsection{rossrv：ROSサービス情報の確認}
 \index{rossrv}\index{サービス}\index{Service}
 
+\vspace{\baselineskip}
 rossrvは、ROSサービスの情報の確認するためのコマンドである。
+\vspace{\baselineskip}
 
 \begin{itemize}
 \item rossrv [オプション]
@@ -992,11 +1003,13 @@ turtlesim
 
 ros bagは、ROSメッセージを記録、再生するためのコマンドである。ROSは、bagという形式でメッセージを保存し、必要なときに再生して、記録した時の状況をそのまま再現できる。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item rosbag [オプション]
 \end{itemize}
+\vspace{\baselineskip}
 
-オプションには、record、info、play、compress、decompress、filter、reindex bag、check bag、fixなどが指定できる。
+オプションには、record、info、play、compress、decompress、filter、reindex bag、check bag、fixなどが指定できる。\\
 
 rosbagコマンドの例を示す前に、一度すべてのノードを終了する。次に、それぞれ別のターミナルウィンドウで、次のコマンドを実行して、turtlesim\_nodeとturtle\_teleop\_\\keyを実行する。
 
@@ -1251,9 +1264,11 @@ ROS catkinは、catkinビルドシステムを用いてパッケージをビル�
 
 catkin\_create\_pkgはCMakeLists.txtとpackage.xmlを含む空のパッケージを生成するコマンドである。詳しい使用方法は3.4.1項を参照のこと。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item catkin\_create\_pkg <パッケージ名> [依存パッケージ1] [依存パッケージ2] …
 \end{itemize}
+\vspace{\baselineskip}
 
 catkin\_create\_pkgの使用例を下に示す。
 
@@ -1267,18 +1282,20 @@ $ catkin_create_pkg my_package roscpp std_msgs
 
 catkin\_makeはユーザーが作成したパッケージまたはダウンロードしたパッケージをビルドするコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  catkin\_make
 \end{itemize}
+\vspace{\baselineskip}
 
-~/catkin\_ws/srcフォルダにある全てのパッケージをビルドする例を示す。
+\verb|~|/catkin\_ws/srcフォルダにある全てのパッケージをビルドする例を示す。\\
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws
 $ catkin_make
 \end{lstlisting}
 
-全てのパッケージではなく、一部のパッケージのみビルドする場合は、以下ように--pkg [パッケージ名] オプションを指定して実行する。
+全てのパッケージではなく、一部のパッケージのみビルドする場合は、以下ように--pkg [パッケージ名] オプションを指定して実行する。\\
 
 \begin{lstlisting}[language=ROS]
 catkin_make --pkg user_ros_tutorials
@@ -1290,11 +1307,13 @@ catkin_make --pkg user_ros_tutorials
 
 catkin\_eclipseは、統合開発環境（IDE）の一つであるEclipseを用いて、ユーザーが作成したパッケージを管理し、プログラミングを行う環境を構築するコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item catkin\_eclipse
 \end{itemize}
+\vspace{\baselineskip}
 
-このコマンドを実行すると~/catkin\_ws/build/.cproject、~/catkin\_ws/build/.projectなど、Eclipse用のプロジェクトファイルが生成される。Eclipse のメニューから「Makefile Project with Existing Code」を選択し、「~/catkin\_ws/build/」を選択すると、~/catkin\_ws/srcにある全パッケージをEclipseで管理できる。
+このコマンドを実行すると\verb|~|/catkin\_ws/build/.cproject、\verb|~|/catkin\_ws/build/.projectなど、Eclipse用のプロジェクトファイルが生成される。Eclipse のメニューから「Makefile Project with Existing Code」を選択し、「\verb|~|/catkin\_ws/build/」を選択すると、\verb|~|/catkin\_ws/srcにある全パッケージをEclipseで管理できる。
 
 \begin{lstlisting}[language=ROS]
 $ cd ~/catkin_ws
@@ -1307,9 +1326,11 @@ $ catkin_eclipse
 
 catkin\_generate\_changelogは、パッケージのバージョンアップ時に変更点を記述するCHANGELOG.rstファイルを作成するコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
-\item
+\item catkin\_generate\_changelog
 \end{itemize}
+\vspace{\baselineskip}
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_prepare\_release：リリース準備するときに使用されるchangelog整理とバージョンのタグ管理}
@@ -1317,9 +1338,11 @@ catkin\_generate\_changelogは、パッケージのバージョンアップ時�
 
 catkin\_prepare\_releaseは、catkin\_generate\_changelogコマンドで作成されたCHANGELOG.\\rstを更新するとき使用されるコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item catkin\_prepare\_release
 \end{itemize}
+\vspace{\baselineskip}
 
 catkin\_generate\_changelogとcatkin\_prepare\_releaseコマンドは、作成したパッケージをROSレポジトリ\footnote{\url{https://github.com/robotpilot/rosdistro}}に登録する時や、登録されたパッケージのバージョンアップの際に使用されるコマンドである。
 
@@ -1327,11 +1350,13 @@ catkin\_generate\_changelogとcatkin\_prepare\_releaseコマンドは、作成�
 \subsection{catkin\_init\_workspace：catkinビルドシステムの作業フォルダの初期化}
 \index{catkin\_init\_workspace}
 
-catkin\_init\_workspaceはユーザーの作業フォルダ（~/catkin\_ws/src）の初期化コマンドである。
+catkin\_init\_workspaceはユーザーの作業フォルダ（\verb|~|/catkin\_ws/src）の初期化コマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item catkin\_init\_workspace
 \end{itemize}
+\vspace{\baselineskip}
 
 2.1.1項で説明したように、このコマンドはROSインストールの後に一度だけ行えばよい。
 
@@ -1346,9 +1371,11 @@ $ catkin_init_workspace
 
 catkin\_findはプロジェクト毎に作業フォルダを表示するコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  catkin\_find [パッケージ名]
 \end{itemize}
+\vspace{\baselineskip}
 
 catkin\_findコマンドを実行すると、使用している全ての作業フォルダを調べることができる。また、「catkin\_find パッケージ名」とすると、オプションで指定したパッケージに関連する作業フォルダが表示される。
 
@@ -1387,6 +1414,7 @@ ROS パッケージは、パッケージの情報表示や関連パッケージ�
 \item[roscreate-pkg]（☆☆☆）ros+create-pkg：ROSパッケージの自動生成（旧rosbuildシステムで使用）
 \item[rosmake]（☆☆☆）ros+make：ROSパッケージをビルド（旧rosbuildシステムで使用）
 \end{description}
+\vspace{\baselineskip}
 
 %-------------------------------------------------------------------------------
 \subsection{rospack：指定したROSパッケージに関連する情報を表示}
@@ -1394,11 +1422,13 @@ ROS パッケージは、パッケージの情報表示や関連パッケージ�
 
 rospackは指定したROSパッケージに関連する保存先、依存関係、全パッケージのリストなどの情報を表示するコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  rospack [オプション] [パッケージ名]
 \end{itemize}
+\vspace{\baselineskip}
 
-オプションには、find、list、depends-on、depends、profileを指定できる。
+オプションには、find、list、depends-on、depends、profileを指定できる。\\
 
 以下の例のようにrospack findコマンドに続いてパッケージ名を指定すると、そのパッケージの保存先が表示される。
 
@@ -1464,7 +1494,7 @@ roslib
 std_srvs
 \end{lstlisting}
 
-rospack profileコマンドは、パッケージが保存されている「/opt/ros/indigo/share」や「~/catkin\_ws/src」などの作業フォルダやパッケージの情報を確認し、パッケージのインデックスを再構築するコマンドである。新しく追加したパッケージが「roscd」などで反映されないときに実行する。
+rospack profileコマンドは、パッケージが保存されている「/opt/ros/indigo/share」や「\verb|~|/catkin\_ws/src」などの作業フォルダやパッケージの情報を確認し、パッケージのインデックスを再構築するコマンドである。新しく追加したパッケージが「roscd」などで反映されないときに実行する。
 
 \begin{lstlisting}[language=ROS]
 $ rospack profile
@@ -1482,9 +1512,11 @@ To get just of list of directories without manifests, re-run the profile with --
 
 rosinstallは、SVN, Mercurial, git, Bazaarなどの様々なソース・コード・マネージメント（SCM）で管理されているROSのパッケージを、自動的にインストールあるいはアップデートするコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item rosinstall
 \end{itemize}
+\vspace{\baselineskip}
 
 2.1.1項のようにインストールしておくと、その後はパッケージをアップデートすると自動的に必要なパッケージがインストール、あるいはアップデートされる。
 
@@ -1494,11 +1526,13 @@ rosinstallは、SVN, Mercurial, git, Bazaarなどの様々なソース・コー�
 
 rosdepは指定したパッケージの依存関係ファイルをインストールするコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  rosdep [オプション]
 \end{itemize}
+\vspace{\baselineskip}
 
-オプションには、check、install、init、updateなどが指定できる。
+オプションには、check、install、init、updateなどが指定できる。\\
 
 下の例のように、「rosdep check パッケージ名」を実行すると、指定したパッケージの依存関係を確認する。「rosdep install パッケージ名」を実行すると、指定したパッケージの依存パッケージがインストールされる。他にも「rosdep init」や「rosdep update」もあるが、これらは2.1 節を参考にしてほしい。
 
@@ -1518,11 +1552,13 @@ All required rosdeps installed successfully
 
 roslocateは、パッケージが使用しているROSのバージョン、SCMの種類、レポジトリ先など、パッケージに関連した情報を表示するコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item roslocate [オプション] [パッケージ名]
 \end{itemize}
+\vspace{\baselineskip}
 
-オプションには、info、vcs、type、uri、repoなどが指定できるが、ここではそれらを全て一覧で表示するinfoオプションの例を示す。
+オプションには、info、vcs、type、uri、repoなどが指定できるが、ここではそれらを全て一覧で表示するinfoオプションの例を示す。\\
 
 \begin{lstlisting}[language=ROS]
 $ roslocate info turtlesim
@@ -1539,10 +1575,13 @@ Using ROS_DISTRO: indigo
 
 roscreate-pkgはcatkin\_create\_pkgコマンドと同様にパッケージを自動生成するコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  rosbuild [パッケージ名]
-catkinビルドシステム以前のrosbuildシステムのためのコマンドであり、最近は使われない。
 \end{itemize}
+\vspace{\baselineskip}
+
+catkinビルドシステム以前のrosbuildシステムのためのコマンドであり、最近は使われない。
 
 %-------------------------------------------------------------------------------
 \subsection{rosmake：ROSパッケージをビルド（旧rosbuildシステムで使用）}
@@ -1550,9 +1589,12 @@ catkinビルドシステム以前のrosbuildシステムのためのコマンド
 
 rosmakeは「catkin\_make」と同様にパッケージをビルドするコマンドである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item  rosmake
 \end{itemize}
+\vspace{\baselineskip}
+
 catkinビルドシステム以前のrosbuildシステムのためのコマンドであり、最近は使われない。
 
 %-------------------------------------------------------------------------------
