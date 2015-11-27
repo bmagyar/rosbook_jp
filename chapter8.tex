@@ -34,7 +34,7 @@ ROSはUSBカメラに関連した様々なパッケージを提供している�
 %-------------------------------------------------------------------------------
 \subsection{USBカメラの使用方法}
 
-本項では、USBカメラのパッケージの中でも最も広く利用されているuvc-camera注1を利用する。他のパッケージの使用方法もuvc-cameraと共通点が多いが、詳細についてはそれぞれのパッケージのWikiで確認してほしい。
+本項では、USBカメラのパッケージの中でも最も広く利用されているuvc-camera\footnote{\url{http://wiki.ros.org/uvc\_camera}}を利用する。他のパッケージの使用方法もuvc-cameraと共通点が多いが、詳細についてはそれぞれのパッケージのWikiで確認してほしい。
 
 \subsubsection{USBカメラの接続}
 
@@ -42,7 +42,7 @@ USBカメラを準備し、PCのUSBポートとUSBケーブルで接続する。
 
 \subsubsection{カメラ情報の確認}
 
-新しいターミナルウィンドウを開いて、lsusbコマンドにより接続が正しいことを確認する。UVC注2規格のカメラであれば、以下の太文字のように、接続されたUSBカメラのメーカやUSB規格が表示される。この例では、Z-Star Microelectronics社のUSBカメラが認識されている。
+新しいターミナルウィンドウを開いて、lsusbコマンドにより接続が正しいことを確認する。UVC\footnote{\url{http://en.wikipedia.org/wiki/USB\_video\_device\_class}}規格のカメラであれば、以下の太文字のように、接続されたUSBカメラのメーカやUSB規格が表示される。この例では、Z-Star Microelectronics社のUSBカメラが認識されている。
 
 \begin{lstlisting}[language=ROS]
 $ lsusb
@@ -75,7 +75,7 @@ $ sudo apt-get install ros-indigo-rqt-image-view
 
 \subsubsection{uvc\_cameraノードの実行}
 
-以下のようにuvc\_cameraノードを実行すると、「[WARN] [1423194481.257752159]: Camera calibration file /home/xxx/.ros/camera\_info/camera.yaml not found.」のように、カメラキャリブレーション注3に関連する警告が表示される。これは、キャリブレーションファイルが存在しないためであり、単に画像を表示するだけであれば無視しても構わない。キャリブレーション方法については、8.1.5項で詳しく説明する。
+以下のようにuvc\_cameraノードを実行すると、「[WARN] [1423194481.257752159]: Camera calibration file /home/xxx/.ros/camera\_info/camera.yaml not found.」のように、カメラキャリブレーション\footnote{\url{http://wiki.ros.org/camera\_calibration}}に関連する警告が表示される。これは、キャリブレーションファイルが存在しないためであり、単に画像を表示するだけであれば無視しても構わない。キャリブレーション方法については、8.1.5項で詳しく説明する。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -358,10 +358,10 @@ do_rectify: False
 %-------------------------------------------------------------------------------
 \section{レーザレンジファインダー（LRF）}\index{レーザレンジファインダー（LRF）}
 
-レーザレンジファインダー（Laser Range Finder, LRF）注4はレーザを用いて物体との距離を計測するセンサであり、レーザスキャナ（Laser Scanner）、あるいはLIDAR（Laser Imaging Detection and Ranging）とも呼ばれる。
-LRFは高速・高精度な距離計測が可能で、短時間で大量の点群データが取得でき、測定範囲も広い。これらの利点から、ロボット分野で最も頻繁に使用されているセンサの一つで、障害物検出やナビゲーション、SLAM（Simultaneous localization and mapping）注5などで使われている。
+レーザレンジファインダー（Laser Range Finder, LRF）\footnote{\url{http://en.wikipedia.org/wiki/Laser_rangefinder}}はレーザを用いて物体との距離を計測するセンサであり、レーザスキャナ（Laser Scanner）、あるいはLIDAR（Laser Imaging Detection and Ranging）とも呼ばれる。
+LRFは高速・高精度な距離計測が可能で、短時間で大量の点群データが取得でき、測定範囲も広い。これらの利点から、ロボット分野で最も頻繁に使用されているセンサの一つで、障害物検出やナビゲーション、SLAM（Simultaneous localization and mapping）\footnote{\url{http://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping}}などで使われている。
 
-ロボット分野で多く使用される代表的なLRFには、屋内外での無人走行車などに多く使用されているSICK注6社のLMSシリーズ、室内ロボットに広く使用されている北陽電機のURGシリーズ注7、そして複数のレーザ光源を搭載した全方向レーザスキャナであるVelodyne社のHDLシリーズ注8などがある。これらのセンサはまだ高価格であり、一台当たり数十万～数百万円である。しかしRPLIDAR注9などの低価格LRFが販売され始めており、今後、一層の低価格化が期待される。
+ロボット分野で多く使用される代表的なLRFには、屋内外での無人走行車などに多く使用されているSICK\footnote{\url{http://www.sick.com/}}社のLMSシリーズ、室内ロボットに広く使用されている北陽電機のURGシリーズ\footnote{\url{https://www.hokuyo-aut.jp/products/}}、そして複数のレーザ光源を搭載した全方向レーザスキャナであるVelodyne社のHDLシリーズ\footnote{\url{http://velodynelidar.com/lidar/lidar.aspx}}などがある。これらのセンサはまだ高価格であり、一台当たり数十万～数百万円である。しかしRPLIDAR\footnote{\url{http://www.robopeak.com}}などの低価格LRFが販売され始めており、今後、一層の低価格化が期待される。
 以降の項ではLRFの動作原理と必要なパッケージのインストール方法、利用方法について説明する。
 
 \begin{figure}[htp]
@@ -383,14 +383,14 @@ LRFは、主に単一のレーザ光源(Velodyne HDLシリーズは複数)と反
 \end{figure}
 
 LRFの使用にあたっては、以下の3つの点に留意する必要がある。
-第一に、LRFが使用する出力の高いレーザは、眼の網膜を損傷する危険がある。レーザの安全基準注10は出力や波長によってクラス1からクラス4まで複数のクラスに分けられ、クラスが高くなるほど危険性が増す。クラス1は、眼に対して安全な製品であり、直接裸目で見ても問題ない。詳しくは「レーザ製品の放射安全基準」（JIS C 6802）を参照してほしい。先に紹介したLRFは、すべてクラス1に該当する。
+第一に、LRFが使用する出力の高いレーザは、眼の網膜を損傷する危険がある。レーザの安全基準\footnote{\url{https://ja.wikipedia.org/wiki/\%E3\%83\%AC\%E3\%83\%BC\%E3\%82\%B6\%E3\%83\%BC}}は出力や波長によってクラス1からクラス4まで複数のクラスに分けられ、クラスが高くなるほど危険性が増す。クラス1は、眼に対して安全な製品であり、直接裸目で見ても問題ない。詳しくは「レーザ製品の放射安全基準」（JIS C 6802）を参照してほしい。先に紹介したLRFは、すべてクラス1に該当する。
 第二に、投射したレーザの反射光を捉えることで距離測定を行うため、レーザを反射しない対象物までの距離は計測できないことである。つまり、透明なガラス、ペットボトル、鏡、色の濃い物体などは、レーザが反射されずに透過したり、全反射したり、吸収されたり、複数の方向にレーザが拡散するため、距離値が得られない場合がある。
 　第三に、一般には水平面を走査するセンサなので、水平面上の物体しか検出できない(Velodyne HDLシリーズは除く)。
 
 %-------------------------------------------------------------------------------
 \subsection{LRFの接続とテスト}
 
-ROSでは、各社のLRFに対応する多くのパッケージが用意されている。例えば、SICK製LRFに対応したsicks300、sicktoolbox、sicktoolbox\_wrapperパッケージ、北陽電機製LRFのhokuyo\_node注11、urg\_node注12パッケージ、Velodyne製HDLをサポートするVelodyneパッケージなどがある。本項では、ROSで北陽電機製UTM-30LX注13を使用する例を挙げる。
+ROSでは、各社のLRFに対応する多くのパッケージが用意されている。例えば、SICK製LRFに対応したsicks300、sicktoolbox、sicktoolbox\_wrapperパッケージ、北陽電機製LRFのhokuyo\_node\footnote{\url{http://wiki.ros.org/hokuyo\_node}}、urg\_node\footnote{\url{http://wiki.ros.org/urg\_node}}パッケージ、Velodyne製HDLをサポートするVelodyneパッケージなどがある。本項では、ROSで北陽電機製UTM-30LX\footnote{\url{https://www.hokuyo-aut.jp/02sensor/07scanner/utm\_30lx.html}}を使用する例を挙げる。
 
 \subsubsection{urg\_nodeパッケージのインストール}
 
@@ -502,12 +502,12 @@ LRFは様々な用途に用いられるが、代表的な例としてSLAM（Simu
 \section{デプスカメラ}\index{デプスカメラ}
 
 デプスカメラは 2次元ので距離（距離画像）が一度に得られるセンサであり、深度センサ、あるいはデプスセンサとも呼ばれる。カラー映像が同時に取得できる場合にはRGB-Dカメラとも呼ばれるが、本書ではすべてデプスカメラと呼ぶことにする。
-デプスカメラの距離測定の方式として、様々なものが提案されている。ここでは、なかでも代表的なToF方式（Time of Flight）注14とパターン投影方式（Pattern projection）を紹介する。
+デプスカメラの距離測定の方式として、様々なものが提案されている。ここでは、なかでも代表的なToF方式（Time of Flight）\footnote{\url{http://en.wikipedia.org/wiki/Time\_of\_flight}}とパターン投影方式（Pattern projection）を紹介する。
 
 \subsubsection{ ToF方式}
 
 ToF方式は近赤外光などを投射し、対象物表面で反射して戻るまでの時間（Time of Flight）から距離を測定する。一般的には光投射部と受光部が対になり、ピクセルごとに距離を読み取る。ToF方式のデプスカメラは構造が複雑なため、次に説明するパターン投影方式のカメラよりも一般に高価である（近年では、位相差や高速シャッターを利用した、低価格なToF方式のセンサも開発されている）。
-ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Imaging社SwissRanger、Fotonic社FOTONIC-B70、pmdtechnologies社CamCubeとCamBoard、SoftKinectic社DepthSense DSシリーズ、Microsoft社から最近発売されたKinect 2などがある。
+ToF方式のセンサ\footnote{\url{http://en.wikipedia.org/wiki/Time-of-flight\_camera}}としては、パナソニックのD-IMager、MESA Imaging社SwissRanger、Fotonic社FOTONIC-B70、pmdtechnologies社CamCubeとCamBoard、SoftKinectic社DepthSense DSシリーズ、Microsoft社から最近発売されたKinect 2などがある。
 
 \begin{figure}[htp]
   \centering
@@ -517,7 +517,7 @@ ToF方式のセンサ注15としては、パナソニックのD-IMager、MESA Im
 
 \subsubsection{パターン投影方式}
 
-パターン投影方式を使用しているデプスカメラには、Microsoft社のKinect注16やASUS\\社のXtion注17、PrimeSense社のCarmine、Capriなどがあり、最近ではOccipital社からStructure Sensor注18が発売されている。これらのデプスカメラは、共通してPrimeSen\\se社のPrimeSense SoC（System on a Chip、半導体チップ上に機能を集積した集積回路）を使用している。
+パターン投影方式を使用しているデプスカメラには、Microsoft社のKinect\footnote{\url{http://en.wikipedia.org/wiki/Kinect}}やASUS\\社のXtion\footnote{\url{http://www.asus.com/Multimedia/Xtion\_PRO\_LIVE/}}、PrimeSense社のCarmine、Capriなどがあり、最近ではOccipital社からStructure Sensor\footnote{\url{http://structure.io/}}が発売されている。これらのデプスカメラは、共通してPrimeSen\\se社のPrimeSense SoC（System on a Chip、半導体チップ上に機能を集積した集積回路）を使用している。
 
 \begin{figure}[htp]
   \centering
@@ -541,13 +541,13 @@ PrimeSense社のPrimeSense SoCを使用したデプスカメラは、一対の�
 %-------------------------------------------------------------------------------
 \subsection{OpenNI}
 
-OpenNI（Open Natural Interaction）注20は、PrimeSense社を中心にWillow Garage社、ASUS社が協力して開発された、PrimeSense SoC搭載製品のドライバやさまざまなAPIライブラリをまとめたソフトウエア群である。ここでNI（Natural Interaction）とは、人間と機械との自然なコミュニケーションを意味し、キーボードやマウスではなく、全身動作や手足の動きなどの人間の自然な動作を介した直感的なコミュニケーションの実現を目指している。
-OpenNIには、距離画像やそれから得られる点群データだけでなく、スケルトン（骨格）の抽出やジェスチャー認識を行うミドルウェアであるNITEなども含まれている。OpenNIは、PrimeSense社がApple社に買収された後、一時的に開発中止となったが、現在ではOccipital社がGithubリポジトリ注21を公開し、開発を続けている。またOpenNI以外にも、Microsoft社のKinect for Windows SDKの発表直後に、Kinectを初めてハッキングし、無償で公開されたことで有名なlibfreenectがある。
+OpenNI（Open Natural Interaction）\footnote{\url{http://en.wikipedia.org/wiki/OpenNI}}は、PrimeSense社を中心にWillow Garage社、ASUS社が協力して開発された、PrimeSense SoC搭載製品のドライバやさまざまなAPIライブラリをまとめたソフトウエア群である。ここでNI（Natural Interaction）とは、人間と機械との自然なコミュニケーションを意味し、キーボードやマウスではなく、全身動作や手足の動きなどの人間の自然な動作を介した直感的なコミュニケーションの実現を目指している。
+OpenNIには、距離画像やそれから得られる点群データだけでなく、スケルトン（骨格）の抽出やジェスチャー認識を行うミドルウェアであるNITEなども含まれている。OpenNIは、PrimeSense社がApple社に買収された後、一時的に開発中止となったが、現在ではOccipital社がGithubリポジトリ\footnote{\url{https://github.com/occipital/openni2}}を公開し、開発を続けている。またOpenNI以外にも、Microsoft社のKinect for Windows SDKの発表直後に、Kinectを初めてハッキングし、無償で公開されたことで有名なlibfreenectがある。
 
 %-------------------------------------------------------------------------------
 \subsection{PCL (Point Cloud Library)を用いた点群処理}
 
-デプスセンサから得られた各画素の距離値と方向から、3次元空間上の一点の座標を得ることができる。この点を画像全体で計算すると、点の集合である点群(Point Cloud)が得られる。ROSでは、この点群処理にPCL（Point Cloud Library）注22と呼ばれるライブラリが利用できる。
+デプスセンサから得られた各画素の距離値と方向から、3次元空間上の一点の座標を得ることができる。この点を画像全体で計算すると、点の集合である点群(Point Cloud)が得られる。ROSでは、この点群処理にPCL（Point Cloud Library）\footnote{\url{http://pointclouds.org/}}と呼ばれるライブラリが利用できる。
 PCLは、PCD（Point Cloud Data）形式の点群データに対し、フィルタリング、セグメンテーション、特徴抽出、モデルフィッティングなどの様々な処理を提供するライブラリである。
 
 PCLをROSで使用するには、まず以下のようにlibpclパッケージをインストールする必要がある。
@@ -644,26 +644,4 @@ $ roslaunch openni2_launch openni2.launch
   \caption{デプスカメラの用途の例}
 \end{figure}
 
-
-% 注1  http://wiki.ros.org/uvc_camera
-% 注2  http://en.wikipedia.org/wiki/USB_video_device_class
-% 注3  http://wiki.ros.org/camera_calibration
-% 注4  http://en.wikipedia.org/wiki/Laser_rangefinder
-% 注5  http://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping
-% 注6  http://www.sick.com/
-% 注7  https://www.hokuyo-aut.jp/products/
-% 注8  http://velodynelidar.com/lidar/lidar.aspx
-% 注9  http://www.robopeak.com
-% 注10 http://ja.wikipedia.org/wiki/レーザー
-% 注11 http://wiki.ros.org/hokuyo_node
-% 注12 http://wiki.ros.org/urg_node
-% 注13 https://www.hokuyo-aut.jp/02sensor/07scanner/utm_30lx.html
-% 注14 http://en.wikipedia.org/wiki/Time_of_flight
-% 注15 http://en.wikipedia.org/wiki/Time-of-flight_camera
-% 注16 http://en.wikipedia.org/wiki/Kinect
-% 注17 http://www.asus.com/Multimedia/Xtion_PRO_LIVE/
-% 注18 http://structure.io/
-% 注19 http://www.google.com/patents/US20100225746
-% 注20 http://en.wikipedia.org/wiki/OpenNI
-% 注21 https://github.com/occipital/openni2
-% 注22 http://pointclouds.org/
+%-------------------------------------------------------------------------------

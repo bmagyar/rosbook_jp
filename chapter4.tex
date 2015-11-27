@@ -5,7 +5,7 @@
 %-------------------------------------------------------------------------------
 \chapter{ROS コマンド}\index{ROS コマンド}
 
-ROSは、Ubuntuのコマンドラインインタフェース (CLI)であるシェル（shell）環境で、様々なコマンドを使用して、ファイルシステムの利用、ソースコードの編集、ビルド、デバッグ、パッケージ管理などを行う。ROSを利用するには、基本的なLinuxコマンドに加えて、ROS固有のコマンド注1を修得する必要がある。本章では、それらのROS固有のコマンドを、ROSシェルコマンド、ROS実行コマンド、ROS情報コマンド、ROS catkinコマンド、ROSパッケージのコマンドに分けて説明する。主な用途を以下に示す。\\
+ROSは、Ubuntuのコマンドラインインタフェース (CLI)であるシェル（shell）環境で、様々なコマンドを使用して、ファイルシステムの利用、ソースコードの編集、ビルド、デバッグ、パッケージ管理などを行う。ROSを利用するには、基本的なLinuxコマンドに加えて、ROS固有のコマンド\footnote{\url{http://wiki.ros.org/ROS/CommandLineTools}}を修得する必要がある。本章では、それらのROS固有のコマンドを、ROSシェルコマンド、ROS実行コマンド、ROS情報コマンド、ROS catkinコマンド、ROSパッケージのコマンドに分けて説明する。主な用途を以下に示す。\\
 
 \begin{itemize}
 \item ROSシェルコマンド: コピーなどのファイル操作やディレクトリ操作
@@ -305,7 +305,7 @@ $ rosnode list
 \end{lstlisting}
 
 \begin{exercise}[起動時に指定するノード名と実行されたノード名が違う理由]
-上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_key\\ノードは、ソースファイル注2の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(arg\\c, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
+上の例で起動時に指定したノード名は、turtlesim\_nodeとturtle\_teleop\_keyであるのに対し、rosnode listコマンドではturtlesimとteleop\_turtleが表示されている。この理由は、起動時に指定したノード名と実行時のノード名が異なるためである。turtle\_teleop\_key\\ノードは、ソースファイル\footnote{\url{https://github.com/ros/ros\_tutorials/blob/indigo-devel/turtlesim/tutorials/teleop\_turtle\_key.cpp}}の中に「ros::init(argc, argv, ``teleop\_turtle'');」のように実行時のノード名が設定されている。しかし、特別な理由がない限り、「ros::init(arg\\c, argv, ``起動時に指定するノード名''（例えば``turtle\_teleop\_key'');」などとして、実行時のノード名は起動時に指定するノード名と同じにすべきである。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -1297,7 +1297,7 @@ catkin\_prepare\_releaseは、catkin\_generate\_changelogコマンドで作成�
 \item catkin\_prepare\_release
 \end{itemize}
 
-catkin\_generate\_changelogとcatkin\_prepare\_releaseコマンドは、作成したパッケージをROSレポジトリ注3に登録する時や、登録されたパッケージのバージョンアップの際に使用されるコマンドである。
+catkin\_generate\_changelogとcatkin\_prepare\_releaseコマンドは、作成したパッケージをROSレポジトリ\footnote{\url{https://github.com/robotpilot/rosdistro}}に登録する時や、登録されたパッケージのバージョンアップの際に使用されるコマンドである。
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_init\_workspace：catkinビルドシステムの作業フォルダの初期化}
@@ -1520,12 +1520,5 @@ rosmakeは「catkin\_make」と同様にパッケージをビルドするコマ�
 \item  rosmake
 \end{itemize}
 catkinビルドシステム以前のrosbuildシステムのためのコマンドであり、最近は使われない。
-
-% 注1  http://wiki.ros.org/ROS/CommandLineTools
-% 注2  https://github.com/ros/ros_tutorials/blob/indigo-devel/turtlesim/tutorials/teleop_turtle_key.cpp
-% 注3  rosdistroレポジトリ　https://github.com/robotpilot/rosdistro
-
-
-
 
 %-------------------------------------------------------------------------------

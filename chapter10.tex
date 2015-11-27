@@ -119,7 +119,7 @@ y_(k+1)=y_k+\Delta \sin(\theta_k+\Delta\theta/2)
 %-------------------------------------------------------------------------------
 \subsection{ロボットハードウェアの制約}
 
-本節では、SLAMのアルゴリズムとして公開されているGmapping注1を利用する。 Gmappingを利用するには、ハードウェアに以下のような制約がある。
+本節では、SLAMのアルゴリズムとして公開されているGmapping\footnote{\url{https://www.openslam.org/gmapping.html}}を利用する。 Gmappingを利用するには、ハードウェアに以下のような制約がある。
 
 \setcounter{num}{0}
 
@@ -144,7 +144,7 @@ XY平面 (床面)上の障害物の位置、形状を正確に計測できるLRF
 \stepcounter{num}\circled{\thenum} ロボットの形態
 
 正方形、長方形、円筒形 の車輪型移動ロボットでなければならない。一辺が極端に長いロボットや複雑な形状のロボット、2足ヒューマノイドロボット、多脚移動ロボット、飛行ロボット、水中ロボットなどは適用外である。
-本節では、第9章で紹介した移動ロボットプラットフォームKobuki注2を使用する。ただし、図10-4に示すように、Kobuki本体にタートルボット2のモジュールプレートとフレームを2段に積んだ。下段にはノートパソコンを設置し、上段に北陽電機製 LRF注3  (UTM-30LX)を搭載した。ただし、本節ではKobukiプラットフォームとLRFを用いた場合について説明するが、これを応用すれば、特定のロボットプラットフォーム、特定のセンサに限らず、様々なロボットにSLAMを実装できる。
+本節では、第9章で紹介した移動ロボットプラットフォームKobuki\footnote{\url{http://wiki.ros.org/kobuki}}を使用する。ただし、図10-4に示すように、Kobuki本体にタートルボット2のモジュールプレートとフレームを2段に積んだ。下段にはノートパソコンを設置し、上段に北陽電機製 LRF\footnote{\url{https://www.hokuyo-aut.jp/02sensor/07scanner/utm\_30lx.html}}  (UTM-30LX)を搭載した。ただし、本節ではKobukiプラットフォームとLRFを用いた場合について説明するが、これを応用すれば、特定のロボットプラットフォーム、特定のセンサに限らず、様々なロボットにSLAMを実装できる。
 
 \begin{figure}[htp]
   \centering
@@ -404,7 +404,7 @@ Kobukiノードは、ユーザーからの指令を受けて、実際にロボ�
 %-------------------------------------------------------------------------------
 \subsection{ロボットの各部分の相対座標変換 (tf)}
 
-図10-11は、「rosrun rqt\_tf\_tree rqt\_tf\_tree」コマンドで確認できるtf注4のtreeビューアで、ロボットとセンサ間の座標変換情報を示している。
+図10-11は、「rosrun rqt\_tf\_tree rqt\_tf\_tree」コマンドで確認できるtf\footnote{\url{http://wiki.ros.org/tf}}のtreeビューアで、ロボットとセンサ間の座標変換情報を示している。
 10.3.1で説明したように、距離センサの位置情報は、オドメトリ情報であるロボットの現在位置に、距離センサの取り付け位置の情報を加えた値である。実際に図10-11より、odom → base\_footprint → base\_link → base\_scanの順に位置情報が関連付けられていることがわかる。SLAMを行うには、このすべてのtf情報 (tfトピックとして配信される座標変換情報)が  必要である。
 
 \begin{figure}[htp]
@@ -660,8 +660,8 @@ LRFなどからの観測情報とパーティクルの状態量を基に、観�
 以上で、ROSでのSLAMの利用についての説明を終える。gmappingのより詳しい説明は、以下のコラム内の参考論文を参照してほしい。次節では、ナビゲーションについて解説する。
 
 \begin{exercise}[OpenSLAMとGmapping]
-  SLAMは、近年盛んに研究されている。SLAMに関する有益な最新情報は、学術誌や学会発表を通じて得ることができる。また、多くのアルゴリズムがオープンソースとして公開されている。代表的な手法を集めたOpenSLAM.orgというサイトもあり、まずはこちらを参照するとよい。10.4節で使用したgmapping注5もこのサイトで紹介されているが、ROSコミュニティでは頻繁に使用されている。GmappingはグリッドベースのFastSLAM2.0の実装である。Gmappingについては、以下の論文を参照してほしい。
-  Grisetti, Giorgio, Cyrill Stachniss, and Wolfram Burgard, Improving grid-based slam with rao-blackwellized particle filters by adaptive proposals and selective resampling, Proceedings of the 2005 IEEE International Conference on Robotics and Automation, pp. 2432-2437, 2005.
+  SLAMは、近年盛んに研究されている。SLAMに関する有益な最新情報は、学術誌や学会発表を通じて得ることができる。また、多くのアルゴリズムがオープンソースとして公開されている。代表的な手法を集めたOpenSLAM.orgというサイトもあり、まずはこちらを参照するとよい。10.4節で使用したgmapping\footnote{\url{http://www.openslam.org/gmapping.html}}もこのサイトで紹介されているが、ROSコミュニティでは頻繁に使用されている。GmappingはグリッドベースのFastSLAM2.0の実装である。Gmappingについては、以下の論文を参照してほしい。\\
+  Grisetti, Giorgio, Cyrill Stachniss, and Wolfram Burgard, Improving grid-based slam with rao-blackwellized particle filters by adaptive proposals and selective resampling, Proceedings of the 2005 IEEE International Conference on Robotics and Automation, pp. 2432-2437, 2005.\\
   Grisetti, Giorgio, Cyrill Stachniss, and Wolfram Burgard, Improved techniques for grid mapping with rao-blackwellized particle filters, IEEE Transactions on Robotics, Vol.23, No.1, pp.34-46, 2007
 \end{exercise}
 
@@ -829,7 +829,7 @@ $ rosrun rviz rviz -d `rospack find kobuki_navigation`/rviz/kobuki_nav.rviz
 
 \stepcounter{num}\circled{\thenum} 経路計画
 
-現在の位置から環境地図上で指定された目標の位置まで移動経路を計画する。ロボットの移動経路を作成する際には、環境地図全体の大域的な経路計画 (global path plannig)と、ロボットを中心とした局所的な経路計画 (local path plannig)に分けて考えるのが一般的である。本節では、障害物回避アルゴリズムであるDynamic Window Approach (DWA)注6を用いた、move\_baseとnav\_coreなどの経路計画パッケージを利用する。
+現在の位置から環境地図上で指定された目標の位置まで移動経路を計画する。ロボットの移動経路を作成する際には、環境地図全体の大域的な経路計画 (global path plannig)と、ロボットを中心とした局所的な経路計画 (local path plannig)に分けて考えるのが一般的である。本節では、障害物回避アルゴリズムであるDynamic Window Approach (DWA)\footnote{\url{The dynamic window approach to collision avoidance, D. Fox, W. Burgard, S. Thrun, Robotics\＆Automation Magazine, IEEE, vol.4, no.1, pp.23-33, 1997}}を用いた、move\_baseとnav\_coreなどの経路計画パッケージを利用する。
 
 \stepcounter{num}\circled{\thenum} 移動/障害物回避
 
@@ -925,7 +925,7 @@ amcl.launch.xmlファイルは、AMCL の各種パラメータの設定値を記
 ■ /param/costmap\_common\_params.yaml\\
 ■ /param/global\_costmap\_params.yaml\\
 ■ /param/local\_costmap\_params.yaml\\
-占有格子地図の設定パラメータを記載したファイルであり、大域経路計画に関するglobal\_costmap\_params.yaml、局所経路計画に関するlocal\_costmap\_params.yamlファイル、両者に共通のcostmap\_common\_params.yamlファイルからなる。本節で用いる占有格子地図では、costmap注7という手法を用いて、ロボットの位置情報とセンサから得られた周辺情報から、各ピクセルを障害物、移動不可領域、移動可能領域に分類する。この分類に必要なcostmapの設定パラメータが記載されている。\\
+占有格子地図の設定パラメータを記載したファイルであり、大域経路計画に関するglobal\_costmap\_params.yaml、局所経路計画に関するlocal\_costmap\_params.yamlファイル、両者に共通のcostmap\_common\_params.yamlファイルからなる。本節で用いる占有格子地図では、costmap\footnote{\url{http://wiki.ros.org/costmap\_2d}}という手法を用いて、ロボットの位置情報とセンサから得られた周辺情報から、各ピクセルを障害物、移動不可領域、移動可能領域に分類する。この分類に必要なcostmapの設定パラメータが記載されている。\\
 ■ /param/dwa\_local\_planner\_params.yaml\\
 dwa\_local\_plannerは計画された移動速度コマンドをロボットに送るパッケージで、このパッケージの実行に必要なパラメータ  を設定するファイルである。\\
 ■ /maps/map.pgm\\
@@ -1437,14 +1437,5 @@ Dynamic Windows Approach (DWA)は、ロボットの速度探索空間 (velocity 
   \includegraphics[width=12cm]{pictures/chapter10/pic_10_22.png}
   \caption{並進速度vと回転速度ω}
 \end{figure}
-
-% 注1 https://www.openslam.org/gmapping.html
-% 注2 http://wiki.ros.org/kobuki
-% 注3 https://www.hokuyo-aut.jp/02sensor/07scanner/utm_30lx.html
-% 注4 http://wiki.ros.org/tf
-% 注5 http://www.openslam.org/gmapping.html
-% 注6 The dynamic window approach to collision avoidance、D. Fox、W. Burgard、S. Thrun、Robotics＆Automation Magazine、IEEE、vol.4、no.1、pp.23-33、1997
-% 注7 http://wiki.ros.org/costmap_2d
-
 
 %-------------------------------------------------------------------------------

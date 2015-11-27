@@ -45,7 +45,7 @@
 \section{ROSとは}\index{ROSとは}
 
 ロボットソフトウェアプラットフォーム一般について理解したところで、ここからはROSについて説明する。まずは、そもそもROSとは何なのかを明らかにしよう。
-ROSの公式サイトであるROS Wiki注13では、ROSを以下のように定義している。
+ROSの公式サイトであるROS Wiki\footnote{\url{http://wiki.ros.org/ROS/Introduction}}では、ROSを以下のように定義している。
 
 ROS (Robot Operating System)はソフトウェア開発者のロボット・アプリケーション作成を支援するライブラリとツールを提供しています。具体的には、 ハードウェア抽象化、デバイスドライバ、ライブラリ、視覚化ツール、 メッセージ通信、パッケージ管理などが提供されています。
 
@@ -86,12 +86,12 @@ ROS (Robot Operating System)はソフトウェア開発者のロボット・ア�
   \caption{ROS生態系}
 \end{figure}
 
-図1-7は、ROSCon2014注14で発表されたROS公式統計注15とROS Wikiデータ注16,17 をもとにまとめたROSの現状である。まだ十分とはいえないが、ロボット分野でこれほど広く利用されているロボットソフトウェアプラットフォームは他にはなく、今後も成長が期待されている。
+図1-7は、ROSCon2014\footnote{\url{http://roscon.ros.org/2014/}}で発表されたROS公式統計\footnote{\url{http://wiki.ros.org/Metrics}}とROS Wikiデータ\footnote{\url{http://www.ros.org/browse/list.php}}\footnote{\url{http://www.ros.org/news/2012/12/ros-five-years.html}}をもとにまとめたROSの現状である。まだ十分とはいえないが、ロボット分野でこれほど広く利用されているロボットソフトウェアプラットフォームは他にはなく、今後も成長が期待されている。
 
 %-------------------------------------------------------------------------------
 \section{ROSの歴史}\index{ROSの歴史}
 
-ROSの技術的な詳細について述べる前に、ROSの歴史を振り返っておこう。 ROSは、2007年5月、米国のスタンフォード大学人工知能研究所（AI LAB）注18が実施したSTAIR（STanford AI Robot）プロジェクト注19において、Morgan Quigley注20が開発したSwitchyardに端を発する。2007年11月、米国のロボット専門企業Willow GarageがSwitchyardを引き継ぎ、ROSの名前で開発を始めた。Willow Garageは、パーソナルロボットとサービスロボットで著名な企業であり、有名な画像処理オープンソースソフトウエアであるOpenCV注23や、マイクロソフトKinectなどの3次元計測器で利用されるPCL（Point Cloud Library）注24をサポートしていたことでも知られる。
+ROSの技術的な詳細について述べる前に、ROSの歴史を振り返っておこう。 ROSは、2007年5月、米国のスタンフォード大学人工知能研究所（AI LAB）\footnote{\url{http://ai.stanford.edu/}}が実施したSTAIR（STanford AI Robot）プロジェクト\footnote{\url{http://stair.stanford.edu/}において、Morgan Quigley\footnote{\url{http://www.osrfoundation.org/morgan-quigley.html}}が開発したSwitchyardに端を発する。2007年11月、米国のロボット専門企業Willow GarageがSwitchyardを引き継ぎ、ROSの名前で開発を始めた。Willow Garageは、パーソナルロボットとサービスロボットで著名な企業であり、有名な画像処理オープンソースソフトウエアであるOpenCV\footnote{\url{http://opencv.org/}}や、マイクロソフトKinectなどの3次元計測器で利用されるPCL（Point Cloud Library）\footnote{\url{http://pointclouds.org/}をサポートしていたことでも知られる。
 
 \begin{figure}[h]
   \centering
@@ -100,16 +100,18 @@ ROSの技術的な詳細について述べる前に、ROSの歴史を振り返�
 \end{figure}
 
 Willow Garageは、2010年1月22日にROSの開発者向けプレリリース版であるROS 1.0を発表した。その後、2010年3月1日にその公式バージョンであるROS Box Turtleがリリースされた。その後も、C Turtle、Diamondbackなど、UbuntuやAndroidと同様にABC順にバージョン名を付け、アップデートを続けている。 2014年7月にはROSの9番目のバージョンROSインディゴイグルー（Indigo Igloo、公式リリースでは、8番目のバージョン）を公開した。
-ROSは、フリーソフトウェアの代表的なライセンス体系であるBSDライセンス（BSD 3-Clause License注25）をベースにしており、誰でも修正、再利用、再配布が可能である。開発者とユーザーを対象としたカンファレンス（ROSDay、ROSCon）が定期的に開催され、アメリカとヨーロッパではROS Industrial注26 （産業用途のROS）を開発しているコンソーシアムがある。また、それぞれの国で、ROS Meetupと呼ばれるコミュニティが、セミナーなどのイベントを開催している。日本でも、東京オープンソースロボティクス協会（TORK）注27やROS JAPAN Users Group注28が中心になってセミナーや勉強会を開催し、ROSの普及に努めている。一方、PR2（Personal Robot 2）注29やタートルボット（turtlebot）注30など、ROSの利用を前提としたロボット（リファレンスロボット）の開発も行われている。さらにこれらのリファレンスロボットを利用して多くのアプリケーション開発が行われ、これにより現在ではROSは最も標準的なロボットソフトウェアプラットフォームの一つとなっている。
+ROSは、フリーソフトウェアの代表的なライセンス体系であるBSDライセンス（BSD 3-Clause License\footnote{\url{http://opensource.org/licenses/BSD-3-Clause}}）をベースにしており、誰でも修正、再利用、再配布が可能である。開発者とユーザーを対象としたカンファレンス（ROSDay、ROSCon）が定期的に開催され、アメリカとヨーロッパではROS Industrial\footnote{\url{http://rosindustrial.org/}} （産業用途のROS）を開発しているコンソーシアムがある。また、それぞれの国で、ROS Meetupと呼ばれるコミュニティが、セミナーなどのイベントを開催している。日本でも、東京オープンソースロボティクス協会（TORK）\footnote{\url{http://opensource-robotics.tokyo.jp/}}やROS JAPAN Users Group\footnote{\url{https://groups.google.com/forum/#!forum/ros-japan-users}}が中心になってセミナーや勉強会を開催し、ROSの普及に努めている。一方、PR2（Personal Robot 2）\footnote{\url{http://www.willowgarage.com/pages/pr2/overview}}やタートルボット（turtlebot）\footnote{\url{http://turtlebot.com/}}など、ROSの利用を前提としたロボット（リファレンスロボット）の開発も行われている。さらにこれらのリファレンスロボットを利用して多くのアプリケーション開発が行われ、これにより現在ではROSは最も標準的なロボットソフトウェアプラットフォームの一つとなっている。
 
 %-------------------------------------------------------------------------------
 \section{ROSのバージョン}\index{ROSのバージョン}
 
 Willow GarageがSwitchyardをROS（Robot Operating System）という名前で引き継ぎ、その後7回のバージョンアップを経て、2012年12月にROS Groovy Galapagosバージョンをリリースした。
-その後、2013年にWillow Garageが商業サービスロボット市場に参入し、ROSの開発はロボット向けのオープンソースソフトウエア財団であるOSRF（Open Source Robotics Foundation）注31に移譲された。OSRFは、2014年7月にROSの9番目のバージョンアップROS Indigo Iglooバージョンをリリースした。各リリースは図1-9に示すように亀をモチーフにしたシンボルで表されている。
+その後、2013年にWillow Garageが商業サービスロボット市場に参入し、ROSの開発はロボット向けのオープンソースソフトウエア財団であるOSRF（Open Source Robotics Foundation）\footnote{\url{http://osrfoundation.org/}}に移譲された。OSRFは、2014年7月にROSの9番目のバージョンアップROS Indigo Iglooバージョンをリリースした。各リリースは図1-9に示すように亀をモチーフにしたシンボルで表されている。
 
-ROSのリリース注32とコンファレンス注33
+ROSのリリース\footnote{\url{http://wiki.ros.org/Distributions}}とカンファレンス\footnote{\url{http://roscon.ros.org/}}
 \begin{itemize}
+\item  2016/05/xx: Kinetic\textbf{Kame}リリース予定
+\item  2015/10/03: ROSCon2015カンファレンス開催
 \item  2015/05/30: Jade Turtleリリース
 \item  2014/09/12: ROSCon2014カンファレンス開催
 \item  2014/07/22: Indigo Iglooリリース
@@ -141,7 +143,7 @@ ROSのリリース注32とコンファレンス注33
 \subsection{ROSのバージョンのルール}\index{ROSのバージョンのルール}
 
 ROSはこれまでに、ROS 1.0、Box Turtle、C Turtle、Diamondback、Electric Emys、Fuerte、Groovy Galapagos、Hydro Medusa、Indigo Igloo、Jade Turtleの10のバージョンをリリースしている。ROSの各バージョンは、2つめのバージョン以降、その頭文字がアルファベット順になるように名づけられている（この命名方式は、UbuntuやAndroidと同様である）。つまり、現在多く使われているIndigo Iglooのバージョンは、アルファベットIバージョン、すなわち9番目のバージョンである。
-また、図1-9と図1-10に示すように、各バージョンではポスター形式のイラストと亀のアイコンを発表している。この亀のアイコンは、turtlesim注34というROS公式チュートリアル用のシミュレーションにも使用されている。
+また、図1-9と図1-10に示すように、各バージョンではポスター形式のイラストと亀のアイコンを発表している。この亀のアイコンは、turtlesim\footnote{\url{http://wiki.ros.org/turtlesim}}というROS公式チュートリアル用のシミュレーションにも使用されている。
 
 \begin{figure}[h]
   \centering
@@ -152,8 +154,8 @@ ROSはこれまでに、ROS 1.0、Box Turtle、C Turtle、Diamondback、Electric
 %-------------------------------------------------------------------------------
 \subsection{ROSリリースサイクル}\index{ROSリリースサイクル}
 
-ROSが正式にサポートしているオペレーティングシステムはUbuntu注35であるため、Ubuntuの新バージョンのリリースサイクルと同様に、1年に2回（4月、10月）の更新が行われていた。しかし2013年、ROSの開発と管理を担当しているOSRFは、ユーザーの意見を取り入れて、Hydro Medusaバージョンから1年に1回、Ubuntuの新しいバージョンのリリースに合わせて4月か5月にリリースすることを発表した。
-ROSのサポートは、一般的なUbuntuバージョンに合わせたものは1年間、2年に一度リリースされるUbuntu LTS（Long Term Support、例えばUbuntu 14.04）バージョンに合わせたものは、3年間サポートされる。例えば、2014年4月にリリースされたUbuntu 14.04 LTS（Trusty Tahr）に対応するROSのバージョンは、2014年のROS I版と2015年のJ版という2つのバージョンであり、それぞれ2017年4月までサポートされる予定である。現在までのUbuntu向けROSのリリースサイクル注36は、図1-11のとおりである。\\
+ROSが正式にサポートしているオペレーティングシステムはUbuntu\footnote{\url{http://www.ubuntu.com/}}であるため、Ubuntuの新バージョンのリリースサイクルと同様に、1年に2回（4月、10月）の更新が行われていた。しかし2013年、ROSの開発と管理を担当しているOSRFは、ユーザーの意見を取り入れて、Hydro Medusaバージョンから1年に1回、Ubuntuの新しいバージョンのリリースに合わせて4月か5月にリリースすることを発表した。
+ROSのサポートは、一般的なUbuntuバージョンに合わせたものは1年間、2年に一度リリースされるUbuntu LTS（Long Term Support、例えばUbuntu 14.04）バージョンに合わせたものは、3年間サポートされる。例えば、2014年4月にリリースされたUbuntu 14.04 LTS（Trusty Tahr）に対応するROSのバージョンは、2014年のROS I版と2015年のJ版という2つのバージョンであり、それぞれ2017年4月までサポートされる予定である。現在までのUbuntu向けROSのリリースサイクル\footnote{\url{http://wiki.ros.org/Distributions/Timeline}}は、図1-11のとおりである。\\
 
 \begin{figure}[h]
   \centering
@@ -177,13 +179,13 @@ http://ja.wikipedia.org/wiki/Ubuntu
   \caption{Indigo Iglooのバージョンのポスターとアイコン}
 \end{figure}
 
-現在、ROSのコミュニティで最も使われているバージョンは、2014年7月22日に正式リリースされたROS Indigo Igloo注37である。ポスターは、亀がイグルー（ドーム状の家、Igloo）を背負ってスキーを楽しむ姿である。
-このバージョンでは、特にcatkin注38ビルドシステムへの移行に重点を置き、すべてのパッケージがcatkin化された点が特徴的である。それに加え、今回のバージョンからPython3.3への対応や、OpenCVやPCLの標準ライブラリが使用されている。またcmake modulesという名前のパッケージがあり、これに公式サポートしていないパッケージを集約した。さらに、boostのsignal関数をすべてsignal2に変更し、最新のバージョンに対応した。全体的には、マイナーアップグレードとメンテナンスの色合いが強い。
+現在、ROSのコミュニティで最も使われているバージョンは、2014年7月22日に正式リリースされたROS Indigo Igloo\footnote{\url{http://wiki.ros.org/indigo/}}である。ポスターは、亀がイグルー（ドーム状の家、Igloo）を背負ってスキーを楽しむ姿である。
+このバージョンでは、特にcatkin\footnote{\url{http://wiki.ros.org/catkin}}ビルドシステムへの移行に重点を置き、すべてのパッケージがcatkin化された点が特徴的である。それに加え、今回のバージョンからPython3.3への対応や、OpenCVやPCLの標準ライブラリが使用されている。またcmake modulesという名前のパッケージがあり、これに公式サポートしていないパッケージを集約した。さらに、boostのsignal関数をすべてsignal2に変更し、最新のバージョンに対応した。全体的には、マイナーアップグレードとメンテナンスの色合いが強い。
 
 %-------------------------------------------------------------------------------
 \subsection{ROSバージョンの選択}\index{ROSバージョンの選択}
 
-ROSはメタ・オペレーティングシステムであり、ROSを利用するには、まず基本的に使用するオペレーティングシステムを選択する必要がある。ROSはUbuntu、Mac OS X、Fedora、Gentoo、OpenSUSE、Debian、Arch Linux、Windowsなどの多くのオペレーティングシステムをサポートしているが、ROSのユーザーが最も多く使用しているオペレーティングシステムはUbuntuである。開発チームでもUbuntuのLTSバージョン注39に合わせて新バージョンをリリースしていることから、特に支障がない限り、UbuntuのLTSバージョンに合ったROSのバージョンを選択することが好ましい。
+ROSはメタ・オペレーティングシステムであり、ROSを利用するには、まず基本的に使用するオペレーティングシステムを選択する必要がある。ROSはUbuntu、Mac OS X、Fedora、Gentoo、OpenSUSE、Debian、Arch Linux、Windowsなどの多くのオペレーティングシステムをサポートしているが、ROSのユーザーが最も多く使用しているオペレーティングシステムはUbuntuである。開発チームでもUbuntuのLTSバージョン\footnote{\url{https://wiki.ubuntu.com/Releases}}に合わせて新バージョンをリリースしていることから、特に支障がない限り、UbuntuのLTSバージョンに合ったROSのバージョンを選択することが好ましい。
 ROSの各バージョンにおけるUbuntuの対応状況に関する情報は、関連ROS Wikiサイトである「http://www.ros.org/debbuild/」にアクセスし、使用予定のROSのバージョンを選択することで得られる。このファイルには、現在選択しているROSのバージョンに対し、Ubuntuのバージョンごとに、既存のROSパッケージに対する最新のROSバージョンへの対応状況が記載されている。例えば、「http://www.ros.org/debbuild/indigo.html」では、図1-13のようにIndigo Iglooのバージョンの対応状況が確認できる。内容はパッケージの名前（Name）、パッケージのレポジトリ（Repo）、バージョン（Version）、開発やメンテナンスされているかの情報（Wet Status）、メインテナー（Maintainer）、各UbuntuとROSバージョンに対する移植状況等が記載されている。特に移植状況には注意する必要があるので、図1-13を例に説明する。
 
 \begin{figure}[h]
@@ -223,46 +225,5 @@ ROSの最新バージョンへの移行を考える際、まず自分が使用�
 \item オペレーティングシステム：Ubuntu 14.04 Trusty Tahr（LTS）
 \item ROSのバージョン：ROS Indigo Igloo
 \end{itemize}
-
-
-% 注1 http://www.segye.com/content/html/2013/04/04/20130404004829.html
-% 注2 http://www.evolution.com/products/ersp/
-% 注3 http://msdn.microsoft.com/en-us/robotics/default.aspx
-% 注4 http://marie.sourceforge.net/
-% 注5 http://www.urbiforge.org/
-% 注6 http://www.gostai.com/
-% 注7 http://www.ros.org/
-% 注8 http://www.osrfoundation.org/
-% 注9 http://www.openrtm.org
-% 注10 http://www.orocos.org/
-% 注11 http://www.opros.or.kr/
-% 注12 https://www.aldebaran.com/ja/naoqi-os
-% 注13 http://wiki.ros.org/ROS/Introduction
-% 注14 http://roscon.ros.org/
-% 注15 http://wiki.ros.org/Metrics
-% 注16 http://www.ros.org/browse/list.php
-% 注17 http://www.ros.org/news/2012/12/ros-five-years.html
-% 注18 http://ai.stanford.edu/
-% 注19 http://stair.stanford.edu/
-% 注20 http://www.osrfoundation.org/morgan-quigley.html
-% 注21 http://playerstage.sourceforge.net/
-% 注22 http://www.osrfoundation.org/brian-gerkey.html
-% 注23 http://opencv.org/
-% 注24 http://pointclouds.org/
-% 注25 http://opensource.org/licenses/BSD-3-Clause
-% 注26 http://rosindustrial.org/
-% 注27 http://opensource-robotics.tokyo.jp/
-% 注28 https://groups.google.com/forum/#!forum/ros-japan-users
-% 注29 http://www.willowgarage.com/pages/pr2/overview
-% 注30 http://turtlebot.com/
-% 注31 http://osrfoundation.org/
-% 注32 http://wiki.ros.org/Distributions
-% 注33 http://roscon.ros.org/
-% 注34 http://wiki.ros.org/turtlesim
-% 注35 http://www.ubuntu.com/
-% 注36 http://wiki.ros.org/Distributions/Timeline
-% 注37 http://wiki.ros.org/indigo/
-% 注38 http://wiki.ros.org/catkin
-% 注39 https://wiki.ubuntu.com/Releases
 
 %-------------------------------------------------------------------------------
