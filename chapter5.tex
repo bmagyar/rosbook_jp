@@ -8,15 +8,13 @@
 
 本章では、ROSを用いたプログラム開発で利用できる便利なツールを紹介する。この章で説明するツールは、次の通りである。\\
 
-\begin{itemize}
- \begin{itemize}
- \item [RViz] 3次元可視化ツール
- \item [rqt] QtベースのROS GUI開発ツール
- \item [rqt\_image\_view] カメラ映像を表示するツール
- \item [rqt\_graph] ノードとメッセージ間の関係をグラフで表示するツール
- \item [rqt\_plot] 2次元データのプロットツール
- \item [rqt\_bag] GUIベースのbagデータ分析ツール
- \end{itemize}
+\begin{itemize}[leftmargin=*]
+\item RViz: 3次元可視化ツール
+\item rqt: QtベースのROS GUI開発ツール
+\item rqt\_image\_view: カメラ映像を表示するツール
+\item rqt\_graph: ノードとメッセージ間の関係をグラフで表示するツール
+\item rqt\_plot: 2次元データのプロットツール
+\item rqt\_bag: GUIベースのbagデータ分析ツール
 \end{itemize}
 
 %-------------------------------------------------------------------------------
@@ -80,6 +78,8 @@ RVizの画面構成について、図5-5を用いて説明する。
   \caption{RVizの画面構成}
 \end{figure}
 
+\vspace{\baselineskip}
+\noindent\textbf{RVizの画面構成}
 \begin{itemize}
 \item 3Dビュー（3D view）：各種データを3次元的に表示するメイン画面である。3Dビューの背景色、固定フレーム、グリッドなどは左側のディスプレイ（Displays）のGlobal OptionsとGrid項目で設定できる。
 \item ディスプレイ（Displays）：左側にあるディスプレイ設定画面では、様々なトピックに対して、それぞれ適切なデータの表示方法（ディスプレイ）を選択できる。ディスプレイの選択は、画面の左下の<Add>をクリックし、表示された図5-6の選択画面でおこなう。現在、約30種類のディスプレイを選択できる。これについては、後で詳しく説明する。
@@ -94,6 +94,7 @@ RVizの画面構成について、図5-5を用いて説明する。
   \end{itemize}
 \item 時間（Time）：現在の時間（wall time）とROS Time、またそれぞれの経過時間を示す。経過時間を再起動するには、一番下の<Reset>ボタンをクリックする。
 \end{itemize}
+\vspace{\baselineskip}
 
 \begin{figure}[h]
   \centering
@@ -101,6 +102,8 @@ RVizの画面構成について、図5-5を用いて説明する。
   \caption{RVizディスプレイの選択画面}
 \end{figure}
 
+\vspace{\baselineskip}
+\noindent\textbf{RVizディスプレイの種類}
 \begin{description}
 \item  [Axes]  xyz軸を表示する。
 \item  [Camera]  カメラの視点から、新しいレンダリングウィンドウを表示し、その上に画像をオーバーレイする。
@@ -119,8 +122,7 @@ RVizの画面構成について、図5-5を用いて説明する。
 \item  [MarkerArray] 上記マーカーを複数表示する。
 \item  [Odometry]  時間の経過に伴うオドメトリ（odometry）情報を矢印で表示する。例えば、ロボットが移動すると、通り過ぎたパス上に、矢印マーカーが一定の時間間隔で表示される。
 \item  [Path]  ナビゲーションで使用されるロボットの経路を表示する。
-\item  [Point Cloud] ポイントクラウド（point cloud）のデータを表示する。Kinect、Xtionなどの3次元計測器から得られる点群データを表示するために使用する。PointCloudと\\PointCloud2の2種類の形式があり、PointCloud2が最新のPCL(Point Cloud Library) \footnote{\url{http://pointclouds.org/}}で使用しているフォーマットである。一般的にはPointCloud2を使用すればよい。
-\item  [Point Cloud2]
+\item  [Point Cloud, Point Cloud2] ポイントクラウド（point cloud）のデータを表示する。Kinect、Xtionなどの3次元計測器から得られる点群データを表示するために使用する。PointCloudとPointCloud2の2種類の形式があり、PointCloud2が最新のPCL(Point Cloud Library) \footnote{\url{http://pointclouds.org/}}で使用しているフォーマットである。一般的にはPointCloud2を使用すればよい。
 \item  [PointStamped]  丸いポイントを表示する。
 \item  [Polygon] ポリゴン（polygon）のアウトラインを表示する。主にロボットの外形などを簡単に2次元上に表現するために使用される。
 \item  [Pose]  2次元上のpose（位置と姿勢）を表示する。 Poseを矢印で表現する時、矢印の原点は位置（x、y）を表し、矢印の方向は姿勢（yaw）を示す。ロボットの位置と姿勢や、ナビゲーションの目的点（goal point）にも使用される。
@@ -363,12 +365,13 @@ $ rqt_plot /turtle1/pose/
 $ rosrun turtlesim turtle_teleop_key
 \end{lstlisting}
 
-その結果、図5-12のように亀の位置、姿勢、そして速度と角速度が表示されることが確認できる。
+その結果、図5-12のように亀の位置、姿勢、そして速度と角速度が表示されることが確認できる。\\
+
 このようにrqt\_plotは2次元データの表示に便利なツールである。今回はturtlesimに対して利用したが、ユーザーが開発したノードの2次元データの表示にも利用できる。特に、速度や加速度などの時間経過を伴うセンサの値を表示するのに適している。
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=8cm]{pictures/chapter5/pic_05_12.png}
+  \includegraphics[width=12cm]{pictures/chapter5/pic_05_12.png}
   \caption{rqt\_plotの使用例}
 \end{figure}
 
@@ -389,7 +392,7 @@ rqt\_bagは、rosbagと同様に、トピックメッセージの保存、再生
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=8cm]{pictures/chapter5/pic_05_13.png}
+  \includegraphics[width=12cm]{pictures/chapter5/pic_05_13.png}
   \caption{rqt\_bagの使用例}
 \end{figure}
 
