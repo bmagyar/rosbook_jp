@@ -7,13 +7,13 @@
 \index{Install}\index{Indigo Igloo}
 
 1章で述べたように、ROSは多くのオペレーティングシステムで動作する。しかし、Ubuntu以外のOSは実験的な提供(Experimental)とされており、公式にはサポートされていない。そこで本書では、操作性や導入のしやすさから、UbuntuにインストールされたROSの使用を前提とする。本書で利用するROSの開発環境は、次の通りである。
-
+\\
 \begin{itemize}
 \item ハードウェア：IntelやAMD製CPUを内蔵したデスクトップおよびノートパソコン
 \item オペレーティングシステム：Ubuntu 14.04 LTS または14.04.2 LTS（Trusty Tahr）
 \item ROS: Indigo Igloo
 \end{itemize}
-
+\vspace{1\baselineskip}
 もしコンピュータにインストールされているUbuntuのバージョンが異なる場合は、対応状況を公式サイト\footnote{\url{http://wiki.ros.org/indigo/Installation/Ubuntu}}で確認する必要がある。オペレーティングシステムがOS XまたはWindowsであれば、それぞれのインストール方法を関連Wiki\footnote{\url{http://wiki.ros.org/indigo/Installation/OSX/Homebrew/Source},\url{http://wiki.ros.org/hydro/Installation/Windows}} で確認されたい。
 
 \begin{figure}[h]
@@ -48,7 +48,7 @@ $ sudo apt-get install chrony
 $ sudo ntpdate -q ntp.ubuntu.com
 \end{lstlisting}
 
-これにより、各PCの時刻が指定したntpサーバの時刻に同期する。
+\noindentこれにより、各PCの時刻が指定したntpサーバの時刻に同期する。
 
 \subsubsection{ROSリポジトリアドレスの追加}
 
@@ -193,7 +193,7 @@ $ source ~/catkin_ws/devel/setup.bash
 $ roscore
 \end{lstlisting}
 
-次のようにエラーがなく実行された場合、インストールは正しく完了している。
+\noindent次のようにエラーがなく実行された場合、インストールは正しく完了している。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
@@ -259,9 +259,9 @@ $ source ~/catkin_ws/devel/setup.bash
 $ gedit ~/.bashrc
 \end{lstlisting}
 
-「.bashrc」ファイルを読み込むと、既に多くの環境設定がされている。設定済みの部分には触れずに、「.bashrc」ファイルの一番下までスクロールし、次の内容を追加する。6行目のxxx.xxx.xxx.xxxには、使用しているPCのIPアドレスを入れる。IPアドレスは「ifconfig」コマンドで確認できる。
+「.bashrc」ファイルを読み込むと、既に多くの環境設定がされている。設定済みの部分には触れずに、「.bashrc」ファイルの一番下までスクロールし、次の内容を追加する。6行目のxxx.xxx.xxx.xxxには、使用しているPCのIPアドレスを入れる。IPアドレスは「ifconfig」コマンドで確認できる。\\
 
-~/.bashrc ファイルの追加部分
+\noindent\textbf{.bashrc ファイルの追加部分}
 \begin{lstlisting}[language=bash]
 1: # Set ROS Indigo
 2: source /opt/ros/indigo/setup.bash
@@ -286,7 +286,7 @@ $ source ~/.bashrc
 %-------------------------------------------------------------------------------
 \subsubsection{ROSの環境設定ファイルの読み込み}
 
-「.bashrc」ファイルで、「＃」で始まる行はコメント行であり、設定に影響を与えない。追加部分の2行目の「source /opt/ros/indigo/setup.bash」と3行目の「source ~/catkin\_ws/devel/setup.bash」を設定することで、ターミナル起動時にROSの環境設定ファイルが読み込まれる。
+「.bashrc」ファイルで、「＃」で始まる行はコメント行であり、設定に影響を与えない。追加部分の2行目の「source /opt/ros/indigo/setup.bash」と3行目の「source \verb|~|/catkin\_ws/devel/setup.bash」を設定することで、ターミナル起動時にROSの環境設定ファイルが読み込まれる。
 
 %-------------------------------------------------------------------------------
 \subsubsection{ネットワーク設定}
@@ -324,9 +324,9 @@ export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
 前掲の「.bashrc」の追加部分の10～12行目からは、ROSの開発作業で頻繁に使用するコマンドの短縮形を設定している。
 
 \begin{itemize}[leftmargin=*]
-\item cw：あらかじめ設定しておいたcatkin作業フォルダである~/catkin\_wsに移動
-\item cs：catkin作業フォルダの中のソースファイルのフォルダである~/catkin\_ws/srcに移動
-\item cm：catkin作業フォルダの~/catkin\_wsに移動した後、catkin\_makeコマンドでROSパッケージをビルド
+\item cw：あらかじめ設定しておいたcatkin作業フォルダである\verb|~|/catkin\_wsに移動
+\item cs：catkin作業フォルダの中のソースファイルのフォルダである\verb|~|/catkin\_ws/srcに移動
+\item cm：catkin作業フォルダの\verb|~|/catkin\_wsに移動した後、catkin\_makeコマンドでROSパッケージをビルド
 \end{itemize}
 
 \begin{exercise}[ROSの環境設定を確認する方法]
@@ -349,7 +349,7 @@ export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
 \subsection{ROSの動作テスト}
 \index{動作テスト}\index{Test}
 
-ROSをインストールした後、正常に動作するかを確認するために、ROSが提供する簡単なノード（☞用語集P.XXX）の実行方法について説明する。使用するのはturtlesimというパッケージで、これは、ROSのシンボルである亀が画面に表示され、キーボード操作によって移動するプログラムである。
+ROSをインストールした後、正常に動作するかを確認するために、ROSが提供する簡単なノード（☞用語集:\textbf{\nameref{section:terms}(pp.\pageref{section:terms})}）の実行方法について説明する。使用するのはturtlesimというパッケージで、これは、ROSのシンボルである亀が画面に表示され、キーボード操作によって移動するプログラムである。
 
 %-------------------------------------------------------------------------------
 \subsubsection{roscoreの実行}
@@ -378,7 +378,7 @@ $ rosrun turtlesim turtlesim_node
 [INFO] [1430205691.827666004]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 \end{lstlisting}
 
-これを実行すると、メッセージがいくつか表示され、turtlesimパッケージのturtlesim \_nodeが実行される。そして図2-6のように、青い背景のウィンドウに亀が表示される。亀の形状はランダムに変化するため、図2-6と形状が異なる場合がある。
+これを実行すると、メッセージがいくつか表示され、turtlesimパッケージのturtlesim \_nodeが実行される。そして図2-3のように、青い背景のウィンドウに亀が表示される。亀の形状はランダムに変化するため、図2-3と形状が異なる場合がある。
 
 \begin{figure}[h]
   \centering
@@ -396,7 +396,7 @@ Reading from keyboard
 Use arrow keys to move the turtle.
 \end{lstlisting}
 
-これによりメッセージがいくつか表示され、turtlesimパッケージのturtle\_teleop\_key　が実行される。turtle\_teleop\_keyを実行したターミナルウィンドウで、キーボードの方向キー（←、→、↑、↓）を押すと、図2-6(b)のように亀が方向キーに応じて動くことが確認できる。これは2つのノード間の通信を利用した簡単な遠隔制御シミュレーションであるが、実際のロボットもこのような方法で遠隔制御することができる。後半の章で、ロボットの遠隔制御について取り上げる。
+これによりメッセージがいくつか表示され、turtlesimパッケージのturtle\_teleop\_key　が実行される。turtle\_teleop\_keyを実行したターミナルウィンドウで、キーボードの方向キー（←、→、↑、↓）を押すと、図2-3(b)のように亀が方向キーに応じて動くことが確認できる。これは2つのノード間の通信を利用した簡単な遠隔制御シミュレーションであるが、実際のロボットもこのような方法で遠隔制御することができる。後半の章で、ロボットの遠隔制御について取り上げる。
 
 %-------------------------------------------------------------------------------
 \subsubsection{実行中のノードの確認}
@@ -407,8 +407,8 @@ rqt\_graphノードは、現在実行中のノードの情報を見ることが�
 $ rosrun rqt_graph rqt_graph
 \end{lstlisting}
 
-これにより、rqt\_graphパッケージのrqt\_graphノードが実行され、図2-7のようなグラフが確認できる。
-楕円はノード（/teleop\_turtle、/turtlesim）を意味し、四角はトピック（/turtle1/cmd\_vel）を意味する。teleop\_turtle、turtlesim はそれぞれ、turtle\_teleop\_keyノード、turtlesim\_nodeノードの実行名である。外側の3つの四角（teleop\_turtle、turtle1、turtlesim）は異なるグループであることを示している。図2-7を詳細に見てみよう。/teleop\_turtleノードから矢印が引かれて/turtlesimにつながっている。これは、両方のノードが実行中で、両方のノードの間にはトピックメッセージ（/turtle1/cmd\_vel）通信が行われていることを表す。つまり、turtle\_teleop\_keyノードから、ユーザーのキーボードコマンドがロボットのシミュレーターであるturtlesim\_nodeノードに渡されている。ノード間のトピックメッセージ通信については、後半の章で取り上げる。
+これにより、rqt\_graphパッケージのrqt\_graphノードが実行され、図2-4のようなグラフが確認できる。
+楕円はノード（/teleop\_turtle、/turtlesim）を意味し、四角はトピック（/turtle1/cmd\_vel）を意味する。teleop\_turtle、turtlesim はそれぞれ、turtle\_teleop\_keyノード、turtlesim\_nodeノードの実行名である。外側の3つの四角（teleop\_turtle、turtle1、turtlesim）は異なるグループであることを示している。図2-4を詳細に見てみよう。/teleop\_turtleノードから矢印が引かれて/turtlesimにつながっている。これは、両方のノードが実行中で、両方のノードの間にはトピックメッセージ（/turtle1/cmd\_vel）通信が行われていることを表す。つまり、turtle\_teleop\_keyノードから、ユーザーのキーボードコマンドがロボットのシミュレーターであるturtlesim\_nodeノードに渡されている。ノード間のトピックメッセージ通信については、後半の章で取り上げる。
 以上でROS動作テストは完了である。ここまでスムーズに進行した場合、問題無くROSがインストールされている。
 
 \begin{figure}[h]

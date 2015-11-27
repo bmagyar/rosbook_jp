@@ -39,6 +39,7 @@ $ apt-cache search ros-indigo
 \end{lstlisting}
 
 使用するロボットのパッケージが公式パッケージであれば、インストールは簡単である。いくつかの例を挙げてみよう。
+\vspace{\baselineskip}
 
 ・PR2のパッケージをインストールするコマンド
 \begin{lstlisting}[language=ROS]
@@ -94,10 +95,12 @@ ROSのセンサパッケージの種類、使い方、ソースコードの公�
 \section{公開パッケージの使い方}
 \index{パッケージ}\index{Package}
 
-ROSで公開されているパッケージは 2015年7月20日の時点でROS Indigo向けに約1,800種類（http://www.ros.org/debbuild/indigo.html）あり、これまでリリースされた全てのROSバージョンに対して、ユーザーが開発・公開したパッケージは、約5,800個（http://rosindex\\.github.io/stats/）に達する。この節では、公開されているなかから必要なパッケージを検索する方法、パッケージのインストールおよび使用方法について述べる。
+ROSで公開されているパッケージは 2015年7月20日の時点でROS Indigo向けに約1,800種類（http://www.ros.org/debbuild/indigo.html）あり、これまでリリースされた全てのROSバージョンに対して、ユーザーが開発・公開したパッケージは、約5,800個（http://rosindex.github.io/stats/）に達する。この節では、公開されているなかから必要なパッケージを検索する方法、パッケージのインストールおよび使用方法について述べる。
 パッケージを検索するには、まず、次のWebページにアクセスする。
 
-http://www.ros.org/browse/list.php
+\vspace{\baselineskip}
+\url{http://www.ros.org/browse/list.php}
+\vspace{\baselineskip}
 
 図7-4のように、利用可能なパッケージの一覧がブラウザに表示されるので、Webページの上部のROSのバージョンを選択するボタンで"indigo"をクリックし、ROSのindigoバージョンのパッケージのリストを表示する。
 
@@ -117,8 +120,10 @@ http://www.ros.org/browse/list.php
 
 まず、公開されているROSパッケージから目的に合うものを検索する。以下のいずれかのページにおいて、検索キーワード「find object（物体検出）」を右上のSearch欄に入力し、Submitボタンを押す。なお、同じ検索キーワードでも1回目と2回目以降で検索範囲が異なるので、複数回試すことを推奨する。
 
-http://wiki.ros.org/
-http://www.ros.org/browse/list.php
+\vspace{\baselineskip}
+\noindent\url{http://wiki.ros.org/}\\
+\noindent\url{http://www.ros.org/browse/list.php}
+\vspace{\baselineskip}
 
 \begin{figure}[htp]
   \centering
@@ -141,6 +146,7 @@ find\_object\_2dパッケージを導入するには、まず上から2つ目の
 
 find\_object\_2dパッケージのWikiページ（http://wiki.ros.org/find\_object\_2d）でパッケージの依存関係（Dependencies）を確認すると、このパッケージには12種類のパッケージが必要であることがわかる。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item catkin
 \item cv\_bridge
@@ -155,8 +161,10 @@ find\_object\_2dパッケージのWikiページ（http://wiki.ros.org/find\_obje
 \item std\_srvs
 \item tf
 \end{itemize}
+\vspace{\baselineskip}
 
 rospack listコマンド、あるいはrospack findコマンドで、上記の必要なパッケージが既にインストールされているかを確認する。
+\vspace{\baselineskip}
 
 ・rospack listコマンドによる確認
 \begin{lstlisting}[language=ROS]
@@ -197,9 +205,9 @@ $ sudo apt-get install ros-indigo-uvc-camera
 %-------------------------------------------------------------------------------
 \subsection{パッケージのインストール}
 
-全ての依存パッケージをインストールした後、find\_object\_2dパッケージをインストールする。図7-6には、パッケージの入手先であるリポジトリアドレスが、以下のように記載されている。
+全ての依存パッケージをインストールした後、find\_object\_2dパッケージをインストールする。図7-6には、パッケージの入手先であるリポジトリアドレスが、以下のように記載されている。\\
 
-Source: svn https://find-object.googlecode.com/svn/trunk/ros-pkg/find\_object\_2d
+Source: svn https://find-object.googlecode.com/svn/trunk/ros-pkg/find\_object\_2d\\
 
 この方法では、インストールされたパッケージに含まれるソースファイルを、自分でコンパイルする必要がある。しかし、あらかじめコンパイルされたファイル（バイナリファイル）を利用し、より手軽にパッケージを導入する方法もある。以下では、その手順を紹介する。
 
@@ -258,7 +266,7 @@ $ rosrun find_object_2d find_object_2d image:=image_raw
 
 それでは、実際に物体検出に挑戦してみよう。図7-10のように、検出対象の画像を含む絵を用意し、それを紙に印刷したものをカメラで撮影する。実行結果の例を図7-10に示す。図7-9に示した2つの文字列が四角で囲まれ、適切に検出されている。なお、ターミナルウィンドウで、「rostopic echo /object」と入力すると、検出された対象の座標値が出力される。このパッケージを利用して新たなパッケージを作成する際には、この座標値をトピックで受信して利用することができる。
 
-以上で公開されているパッケージの活用方法の一例を示した。ROS Wiki（http://wiki.ros.org/）には、パッケージの開発者によって、パッケージの使用方法が詳細に記述されているので、公開パッケージの使用の際には参考にしてほしい。
+以上で公開されているパッケージの活用方法の一例を示した。ROS Wiki\footnote{\url{http://wiki.ros.org}}には、パッケージの開発者によって、パッケージの使用方法が詳細に記述されているので、公開パッケージの使用の際には参考にしてほしい。
 
 \begin{figure}[htp]
   \centering

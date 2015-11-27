@@ -8,6 +8,7 @@
 %-------------------------------------------------------------------------------
 \section{ROSで使われる専門用語}
 \index{用語}
+\label{section:terms}
 
 ROSでは多くの独特の概念や用語が使われる。本節では、頻繁に使用されるROSの用語についてまとめて解説する。ただし、ここですべて理解する必要はなく、わからない用語が出てきても、先に読み進めていただきたい。これらの用語は、実際にROSを利用していけば、自然と身につくものである。
 
@@ -335,11 +336,13 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 
 ここまでは、メッセージ通信のうち、トピックメッセージ通信について学んだ。トピックメッセージ通信では、配信者や購読者が停止していなければ、メッセージを連続して配信し、購読する。
 一方、ここからは、もうひとつのメッセージ通信であるサービスメッセージ通信について学んでいこう。サービスメッセージ通信はサービスクライアントとサービスサーバ間で行われる。
-
+\\
 \begin{itemize}
 \item サービスクライアント：サービスをリクエストする。
 \item サービスサーバ：サービスのリクエストを受けて定められた処理を実行し、その結果をレスポンスする。
 \end{itemize}
+\vspace{\baselineskip}
+
 サービスサーバとクライアントの接続は、配信者ノードと購読者ノード間の接続と同様にTCPROS接続である。しかし、サービスメッセージ通信はトピックメッセージ通信とは異なり、1回限り接続して、リクエストとレスポンスを行い、その後お互いの接続を切断する。再度通信するときは、再び接続から始めなければならない。
 
 \begin{figure}[h]
@@ -363,8 +366,8 @@ $ roslaunch PACKAGE_NAME LAUNCH_NAME
 \index{ファイルシステム}\index{Filesystem}
 
 OSのファイルシステムは、ROSのインストールフォルダとユーザー作業フォルダに分けられる。
-ROSのデスクトップバージョンをインストールすると、/optフォルダにrosという名前でインストールフォルダが作成され、その中にroscoreを含む重要なユーティリティとrqt、RViz、ロボット関連のライブラリ、シミュレーション、ナビゲーションなどが置かれる。ユーザーが/optフォルダのファイルを触れることはほとんどない。もしバイナリファイルとして公式配布されているパッケージを変更しようとする場合は、「sudo apt-get install ros-indigo-xxx」などのパッケージのインストールコマンドではなく、直接、元のソースがあるリポジトリアドレスを確認し、「cd ~/catkin\_ws/src」 として作業フォルダ内のソースフォルダに移動し、「git clone [リポジトリアドレス]」のようにソースをコピーしてビルドすればよい。
-ユーザー作業フォルダは、ユーザーが指定した任意の場所に作成できるが、特に問題がなければ、Linuxのユーザーフォルダに「~/catkin\_ws/」（「~/」は、Linux上で「/home/ユーザー名」に対応するフォルダ）を作成して利用する。
+ROSのデスクトップバージョンをインストールすると、/optフォルダにrosという名前でインストールフォルダが作成され、その中にroscoreを含む重要なユーティリティとrqt、RViz、ロボット関連のライブラリ、シミュレーション、ナビゲーションなどが置かれる。ユーザーが/optフォルダのファイルを触れることはほとんどない。もしバイナリファイルとして公式配布されているパッケージを変更しようとする場合は、「sudo apt-get install ros-indigo-xxx」などのパッケージのインストールコマンドではなく、直接、元のソースがあるリポジトリアドレスを確認し、「cd \verb|~|/catkin\_ws/src」 として作業フォルダ内のソースフォルダに移動し、「git clone [リポジトリアドレス]」のようにソースをコピーしてビルドすればよい。
+ユーザー作業フォルダは、ユーザーが指定した任意の場所に作成できるが、特に問題がなければ、Linuxのユーザーフォルダに「\verb|~|/catkin\_ws/」（「\verb|~|/」は、Linux上で「/home/ユーザー名」に対応するフォルダ）を作成して利用する。
 続いて、ROSのインストールフォルダとユーザー作業フォルダについて、さらに詳しく説明する。
 
 %-------------------------------------------------------------------------------
@@ -373,11 +376,13 @@ ROSのデスクトップバージョンをインストールすると、/optフ�
 
 ROSは、「/opt/ros/[バージョン名]」フォルダにインストールされている。例えば、Indigoバージョンをインストールした場合、ROSがインストールされたフォルダは、次のとおりである。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item ROSのインストールフォルダ: /opt/ros/indigo
 \end{itemize}
+\vspace{\baselineskip}
 
-ROSのインストールフォルダである「/opt/ros/indigo」フォルダは、図3-14のように、「bin」、「etc」、「include」、「lib」、「share」などのフォルダと、環境設定ファイルで構成されている。
+ROSのインストールフォルダである「/opt/ros/indigo」フォルダは、図3-14のように、「bin」、「etc」、「include」、「lib」、「share」などのフォルダと、環境設定ファイルで構成されている。各フォルダの詳細は、次のとおりである。
 
 \begin{figure}[h]
   \centering
@@ -385,8 +390,7 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
   \caption{ROSファイルの構成}
 \end{figure}
 
-各フォルダの詳細は、次のとおりである。
-
+\vspace{\baselineskip}
 \begin{itemize}
 \item /bin    実行可能なバイナリファイル
 \item /etc    ROSとcatkin関連の設定ファイル
@@ -396,22 +400,25 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
 \item env.*   環境設定ファイル
 \item setup.* 環境設定ファイル
 \end{itemize}
+\vspace{\baselineskip}
 
 %-------------------------------------------------------------------------------
 \subsection{ユーザー作業フォルダ}
 \index{ユーザー作業フォルダ}
 
-ユーザー作業フォルダは、ユーザーが指定した任意の場所に作成することができるが、本書では、ユーザー作業フォルダとして「~/catkin\_ws/」、あるいは「/home/ユーザー名/catkin\_ws」を使用する。例えば、ユーザー名が「irvs」でcatkinフォルダ名を「catkin\_ws」とすると、ユーザー作業フォルダは以下のフォルダとなる。
+ユーザー作業フォルダは、ユーザーが指定した任意の場所に作成することができるが、本書では、ユーザー作業フォルダとして「\verb|~|/catkin\_ws/」、あるいは「/home/ユーザー名/catkin\_ws」を使用する。例えば、ユーザー名が「irvs」でcatkinフォルダ名を「catkin\_ws」とすると、ユーザー作業フォルダは以下のフォルダとなる。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item ユーザー作業フォルダ: /home/irvs/catkin\_ws/
 \end{itemize}
+\vspace{\baselineskip}
 
 ユーザー作業フォルダは、ユーザーが作成したパッケージや、他の開発者が作成し、公開しているパッケージを保存し、ビルドする場所である。ユーザーは、ROSに関連するほとんどの作業を、このフォルダ内で行う。
 
 %-------------------------------------------------------------------------------
 \subsubsection{ファイルの構成}
-ユーザー作業フォルダは、図3-15のようにbuild、devel、srcの3つのフォルダで構成されている。
+ユーザー作業フォルダは、図3-15のようにbuild、devel、srcの3つのフォルダで構成されている。それぞれのフォルダの詳細は、次のとおりである。
 
 \begin{figure}[h]
   \centering
@@ -419,13 +426,13 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
   \caption{catkin workspaceのファイル構成}
 \end{figure}
 
-それぞれのフォルダの詳細は、次のとおりである。
-
+\vspace{\baselineskip}
 \begin{itemize}
 \item /build  ビルド関連ファイル
 \item /devel  msg又はsrvのヘッダーファイルとユーザーパッケージのライブラリ、実行ファイル
 \item /src    ユーザーパッケージ
 \end{itemize}
+\vspace{\baselineskip}
 
 %-------------------------------------------------------------------------------
 \subsubsection{ユーザーパッケージ}
@@ -439,6 +446,7 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
   \caption{ユーザーパッケージのファイル構成}
 \end{figure}
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item /include    ヘッダーファイル
 \item /launch   roslaunchに使用されるlaunchファイル
@@ -449,6 +457,7 @@ ROSのインストールフォルダである「/opt/ros/indigo」フォルダ�
 \item CMakeLists.txt  ビルドの設定ファイル
 \item package.xml   パッケージの設定ファイル
 \end{itemize}
+\vspace{\baselineskip}
 
 %-------------------------------------------------------------------------------
 \section{ROSビルドシステム}
@@ -480,7 +489,7 @@ $ catkin_create_pkg my_first_ros_pkg std_msgs roscpp
 \end{lstlisting}
 
 上記のコマンドでは、依存するパッケージ「std\_msgs」と「roscpp」をオプションとして記述している。これは作成するパッケージでは、ROSの標準的なメッセージパッケージstd\_msgsとC/C++を使用するためのクライアントライブラリroscppを使用するため、パッケージの作成に先立ってこれらをインストールしておく必要があることを意味する。依存するパッケージの設定は、上記のようにパッケージの作成時に指定する方法もあるが、生成されたフォルダ内の「package.xml」に後から直接記述してもよい。
-パッケージを作成すると、「~/catkin\_ws/src」の下に「my\_first\_ros\_pkg」というパッケージのフォルダが作成され、その中にROSパッケージが備えるべき基本的なフォルダと、CMakeLists.txtとpackage.xmlファイルが生成される。次のように「ls」コマンドや、UbuntuのGUIベースのNautilusを利用して、パッケージの内部を見てみよう。
+パッケージを作成すると、「\verb|~|/catkin\_ws/src」の下に「my\_first\_ros\_pkg」というパッケージのフォルダが作成され、その中にROSパッケージが備えるべき基本的なフォルダと、CMakeLists.txtとpackage.xmlファイルが生成される。次のように「ls」コマンドや、UbuntuのGUIベースのNautilusを利用して、パッケージの内部を見てみよう。
 
 \begin{lstlisting}[language=ROS]
 $ ls
@@ -502,7 +511,7 @@ package.xml
 
 ROSのパッケージの設定ファイルであるpackage.xmlは、パッケージの名前、著作者、ライセンス、依存性パッケージなどのパッケージの情報を、XMLファイルとして保存している。作成直後のpackage.xmlファイルは、以下の通りである。
 
-ファイル名：package.xml
+\noindent\textbf{ファイル名：package.xml}
 
 \begin{lstlisting}[language=ROS]
 <?xml version="1.0"?>
@@ -560,6 +569,7 @@ ROSのパッケージの設定ファイルであるpackage.xmlは、パッケー
 
 各構文について説明する。
 
+\vspace{\baselineskip}
 \begin{itemize}
 \item <? xml> ドキュメントの文法を定義する構文で、以下の内容は、xmlバージョン1.0であることを意味する。
 \item <package> この構文から</package>までがROSパッケージの設定部分である。
@@ -577,10 +587,11 @@ ROSのパッケージの設定ファイルであるpackage.xmlは、パッケー
 \item <export> ROSで明示していないタグ名を使用するときに使われる。ただし、使用頻度は低い。
 \item <metapackage> exportタグ内で使用するタグであり、現在のパッケージがメタパッケージであれば、ここで宣言する。
 \end{itemize}
+\vspace{\baselineskip}
 
 上述した作成直後のファイルに必要な情報を追加し、不要な行を削除したパッケージ設定ファイル（package.xml）の一例を示す。
 
-ファイル名：package.xml
+\noindent\textbf{ファイル名：package.xml}
 
 \begin{lstlisting}[language=XML]
 <?xml version="1.0"?>
@@ -615,7 +626,7 @@ ROSのパッケージの設定ファイルであるpackage.xmlは、パッケー
 
 ROSのビルドシステムであるcatkinでは、パッケージのフォルダ内のCMakeLists.txtファイルにビルドの環境を記述している。このCMakeLists.txtファイルには、作成するパッケージ名、依存パッケージ名、実行可能ファイル名などを設定する。作成直後のCMakeLists.txtファイルは、以下の通りである。
 
-ファイル名：CMakeLists.txt
+\noindent\textbf{ファイル名：CMakeLists.txt}
 
 \begin{lstlisting}[language=make]
 cmake_minimum_required(VERSION 2.8.3)
@@ -875,7 +886,7 @@ ${catkin_LIBRARIES}
 my\_first\_ros\_pkg\_nodeを作成する際に、リンクするライブラリを指定するオプションである。
 作成直後のファイルから不要な行を削除したビルド設定ファイル（CMakeLists.txt）を示す。
 
-ファイル名：CMakeLists.txt
+\noindent\textbf{ファイル名：CMakeLists.txt}
 \begin{lstlisting}[language=make]
 cmake_minimum_required(VERSION 2.8.3)
 project(my_first_ros_pkg)
@@ -910,7 +921,7 @@ $ gedit hello_world_node.cpp
 
 次に、以下のソースコードを作成し、保存する。
 
-ファイル名：hello\_world\_node.cpp
+フ\noindent\textbf{ァイル名：hello\_world\_node.cpp}
 
 \begin{lstlisting}[language=C++]
 #include <ros/ros.h>
@@ -952,7 +963,7 @@ $ cd ~/catkin_ws && catkin_make
 \end{lstlisting}
 
 \begin{exercise}[短縮コマンド]
-先に2.2節「ROSの開発環境の構築」で述べたように、「.bash\\rc」ファイルに「alias cm='cd ~/catkin\_ws \&\& catkin\_make'」と設定しておくと、ターミナルウィンドウで「cm」と入力するだけで、上のコマンドを実行できる。
+先に2.2節「ROSの開発環境の構築」で述べたように、「.bash\\rc」ファイルに「alias cm='cd \verb|~|/catkin\_ws \&\& catkin\_make'」と設定しておくと、ターミナルウィンドウで「cm」と入力するだけで、上のコマンドを実行できる。
 \end{exercise}
 
 %-------------------------------------------------------------------------------
@@ -961,7 +972,7 @@ $ cd ~/catkin_ws && catkin_make
 
 これで、パッケージをビルドするためのすべての準備作業が終了した。次はユーザー作業フォルダに移動し、catkinビルドを実行しよう。
 
-エラーがなくビルドが終了したら、「~/catkin\_ws/devel/lib/my\_first\_ros\_pkg」に「hello\_\\world\_node」という名前のファイルが生成されている。次のステップは、ノードの実行である。ただし、ROSのすべてのノードは、roscoreを実行して初めて利用できるので、必ず先にroscoreを実行しておく必要がある。
+エラーがなくビルドが終了したら、「\verb|~|/catkin\_ws/devel/lib/my\_first\_ros\_pkg」に「hello\_world\_node」という名前のファイルが生成されている。次のステップは、ノードの実行である。ただし、ROSのすべてのノードは、roscoreを実行して初めて利用できるので、必ず先にroscoreを実行しておく必要がある。
 
 \begin{lstlisting}[language=ROS]
 $ roscore
