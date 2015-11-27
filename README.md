@@ -33,7 +33,7 @@
   month     = {11},
   year      = {2015},
   publisher = {Kurazume Laboratory},
-  totalpages= {281},
+  totalpages= {340},
   isbn      = {9784990873608},
   url       = {\url{https://github.com/irvs/rosbook_jp}}
 }
