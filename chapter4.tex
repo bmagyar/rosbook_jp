@@ -3,7 +3,8 @@
 \chapterimage{chapter_head_4.pdf}
 
 %-------------------------------------------------------------------------------
-\chapter{ROS コマンド}\index{ROS コマンド}
+\chapter{ROS コマンド}
+\index{コマンド}\index{Command}
 
 ROSは、Ubuntuのコマンドラインインタフェース (CLI)であるシェル（shell）環境で、様々なコマンドを使用して、ファイルシステムの利用、ソースコードの編集、ビルド、デバッグ、パッケージ管理などを行う。ROSを利用するには、基本的なLinuxコマンドに加えて、ROS固有のコマンド\footnote{\url{http://wiki.ros.org/ROS/CommandLineTools}}を修得する必要がある。本章では、それらのROS固有のコマンドを、ROSシェルコマンド、ROS実行コマンド、ROS情報コマンド、ROS catkinコマンド、ROSパッケージのコマンドに分けて説明する。主な用途を以下に示す。\\
 
@@ -18,7 +19,8 @@ ROSは、Ubuntuのコマンドラインインタフェース (CLI)であるシ�
 なお、コマンドの後のアスタリスクは、そのコマンドの使用頻度を表している。
 
 %-------------------------------------------------------------------------------
-\section{ROSシェルコマンド}\index{ROSシェルコマンド}
+\section{ROSシェルコマンド}
+\index{コマンド}\index{Command}
 
 ROSシェルコマンドはrosbashと呼ばれ、Linuxで一般的に使用されるbashシェルコマンドに類似した、ROS特有のシェルコマンドである。
 
@@ -49,6 +51,7 @@ ROSシェルコマンドはrosbashと呼ばれ、Linuxで一般的に使用さ�
 
 %-------------------------------------------------------------------------------
 \subsection{roscd：ROSパッケージのディレクトリへ移動}
+\index{roscd}
 
 roscdは、パッケージの保存先のディレクトリに移動するコマンドである。自分が作成したパッケージやインストールしたパッケージの名前を、パラメータとしてこのコマンドに続けて入力すると、そのパッケージの置かれたディレクトリに移動する。使用頻度は非常に高い。\\
 
@@ -71,6 +74,7 @@ $ sudo apt-get install ros-indigo-turtlesim
 
 %-------------------------------------------------------------------------------
 \subsection{rosls：ROSファイルのリスト表示}
+\index{rosls}
 
 roslsは指定されたROSパッケージ内のファイルの一覧を表示するコマンドである。パッケージ名をこのコマンドに続けて入力すると、そのパッケージを検索し、パッケージ内のファイルの一覧を表示する。\\
 
@@ -85,6 +89,7 @@ cmake images msg package.xml srv
 
 %-------------------------------------------------------------------------------
 \subsection{rosed：ROSファイルの編集}
+\index{rosed}
 
 rosedはパッケージ内のファイルを編集するときに使用するコマンドであり、ユーザーが設定したエディタでファイルを開く。比較的簡単な内容を手軽に修正するときに使用する。この時、使用されるエディタは、「~/.bashrc」ファイルに「export EDITOR= 'nano'」のように指定する。\\
 
@@ -97,7 +102,8 @@ $ rosed turtlesim package.xml
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\section{ROS実行コマンド}\index{ROS実行コマンド}
+\section{ROS実行コマンド}
+\index{コマンド}\index{Command}
 
 ROS実行コマンドは、ROSノードの実行を制御する。特にroscoreはROSネームサーバであるROSマスター、標準出力・標準エラー出力のためのrosout、パラメータを管理するパラメータサーバを同時に起動するものであり、他のノードの実行前に実行する必要がある。ノードの実行コマンドには、rosrunとroslaunchがある。rosrunは単一のノードを実行するものであり、roslaunchは複数のノードを実行する。また、roscleanは、ノードの実行時に記録されるログを削除するコマンドである。
 
@@ -112,6 +118,7 @@ ROS実行コマンドは、ROSノードの実行を制御する。特にroscore�
 
 %-------------------------------------------------------------------------------
 \subsection{roscore：ROSマスター、rosout、パラメータサーバの起動}
+\index{roscore}
 
 roscoreは、ノード間のメッセージ通信の接続情報を管理するROSマスターを起動するコマンドである。起動されたROSマスターはXMLRPCのサーバとなる。ROSマスターは、ROSの使用にあたって最初に起動しておく必要がある。roscoreを実行すると、ユーザーが設定した「~/.bashrc」中のROS\_MASTER\_URIをマスターURIとし、ROSマスターが立ち上がる。
 
@@ -154,6 +161,7 @@ started core service [/rosout] \stepcounter{num}\circled{\thenum}
 
 %-------------------------------------------------------------------------------
 \subsection{rosrun：ROSノードの実行}
+\index{rosrun}
 
 rosrunは、指定したパッケージ内の1つのノードを実行するコマンドである。\\
 
@@ -178,6 +186,7 @@ $ rosrun turtlesim turtlesim_node
 
 %-------------------------------------------------------------------------------
 \subsection{roslaunch：複数のROSノードの実行}
+\index{roslaunch}
 
 roslaunchは、指定されたパッケージから1つ以上のノードを実行するコマンドである。\\
 
@@ -201,6 +210,7 @@ $ sudo apt-get install ros-indigo-openni-launch
 
 %-------------------------------------------------------------------------------
 \subsection{rosclean：ログの確認、および削除}
+\index{rosclean}\index{ログ}\index{log}
 
 roscleanは、ROSのログファイルを確認又は削除するコマンドである。roscoreの実行により、すべてのノードの記録はログファイルに記録される。時間が経つにつれデータが蓄積されるため、定期的にroscleanコマンドを用いてログファイルを削除する必要がある。\\
 
@@ -233,7 +243,8 @@ rm .rf /home/xxx/.ros/log (y/n)? y
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\section{ROS情報コマンド}\index{ROS情報コマンド}
+\section{ROS情報コマンド}
+\index{コマンド}\index{Command}
 
 ROS情報コマンドは、ノード、トピック、サービス、パラメータなどの情報を確認する際に使用する。特に、rosnode、rostopic、rosservice、rosparamの4つのコマンドは頻繁に使用される。また、rosbagはROSの特徴の一つであるデータ記録、再生機能を備えたコマンドで、主にデバック時に利用される。rosmsg、rossrv、rosversion、roswtfはメッセージやサービスの情報表示、ROSのバージョン確認、ROSシステムの確認に使用される。
 
@@ -283,6 +294,7 @@ $ rosrun turtlesim turtle_teleop_key
 
 %-------------------------------------------------------------------------------
 \subsection{rosnode：ROSノード情報の確認}
+\index{rosnode}\index{ノード}\index{Node}
 
 rosnodeは、ROSノードの情報を確認するためのコマンドである。
 
@@ -381,6 +393,7 @@ $ rosnode cleanup
 
 %-------------------------------------------------------------------------------
 \subsection{rostopic：ROSトピック情報の確認}
+\index{rostopic}\index{トピック}\index{Topic}
 
 rostopicは、使用中のROSトピックの情報の確認するためのコマンドであり、様々なオプションがある。
 
@@ -543,6 +556,7 @@ float64 z
 
 %-------------------------------------------------------------------------------
 \subsection{rosservice：ROSサービス情報の確認}
+\index{rosservice}\index{サービス}\index{Service}
 
 rosserviceは、ROSサービスの情報を確認するためのコマンドである。\\
 
@@ -660,6 +674,7 @@ $ rosservice call /turtle1/set_pen 255 0 0 5 0
 
 %-------------------------------------------------------------------------------
 \subsubsection{rosparam：ROSパラメータ情報の確認と修正}
+\index{rosparam}\index{パラメータ}\index{Prameter}
 
 rosparamは、ROSサービスのパラメータの情報の確認するためのコマンドである。
 
@@ -769,6 +784,7 @@ $ rosparam delete /background_b
 
 %-------------------------------------------------------------------------------
 \subsection{rosmsg：ROSメッセージ情報の確認}
+\index{rosmsg}\index{メッセージ}\index{Message}
 
 rosmsgは、ROSメッセージの情報の確認するためのコマンドである。
 
@@ -866,6 +882,7 @@ control_msgs costmap_2d
 
 %-------------------------------------------------------------------------------
 \subsection{rossrv：ROSサービス情報の確認}
+\index{rossrv}\index{サービス}\index{Service}
 
 rossrvは、ROSサービスの情報の確認するためのコマンドである。
 
@@ -971,6 +988,7 @@ turtlesim
 
 %-------------------------------------------------------------------------------
 \subsection{rosbag：ROSメッセージの記録と再生}
+\index{rosbag}\index{Bag}\index{メッセージ}\index{Message}
 
 ros bagは、ROSメッセージを記録、再生するためのコマンドである。ROSは、bagという形式でメッセージを保存し、必要なときに再生して、記録した時の状況をそのまま再現できる。
 
@@ -1210,7 +1228,8 @@ Bag migrated successfully.
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\section{ROS catkinコマンド}\index{ROS catkinコマンド}
+\section{ROS catkinコマンド}
+\index{ビルドシステム}\index{Catkin}
 
 ROS catkinは、catkinビルドシステムを用いてパッケージをビルドする際に使用される。
 
@@ -1228,6 +1247,7 @@ ROS catkinは、catkinビルドシステムを用いてパッケージをビル�
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_create\_pkg：catkinビルドシステムでパッケージを自動生成}
+\index{catkin\_create\_pkg}
 
 catkin\_create\_pkgはCMakeLists.txtとpackage.xmlを含む空のパッケージを生成するコマンドである。詳しい使用方法は3.4.1項を参照のこと。
 
@@ -1243,6 +1263,7 @@ $ catkin_create_pkg my_package roscpp std_msgs
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_make：catkinビルドシステムのビルド命令}
+\index{catkin\_make}
 
 catkin\_makeはユーザーが作成したパッケージまたはダウンロードしたパッケージをビルドするコマンドである。
 
@@ -1265,6 +1286,7 @@ catkin_make --pkg user_ros_tutorials
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_eclipse：Eclipseを使用したパッケージの管理}
+\index{catkin\_eclipse}
 
 catkin\_eclipseは、統合開発環境（IDE）の一つであるEclipseを用いて、ユーザーが作成したパッケージを管理し、プログラミングを行う環境を構築するコマンドである。
 
@@ -1281,15 +1303,17 @@ $ catkin_eclipse
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_generate\_changelog：CHANGELOG.rstファイルの作成}
+\index{catkin\_generate\_changelog}
 
 catkin\_generate\_changelogは、パッケージのバージョンアップ時に変更点を記述するCHANGELOG.rstファイルを作成するコマンドである。
 
 \begin{itemize}
-\item catkin\_generate\_changelog
+\item
 \end{itemize}
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_prepare\_release：リリース準備するときに使用されるchangelog整理とバージョンのタグ管理}
+\index{catkin\_prepare\_release}
 
 catkin\_prepare\_releaseは、catkin\_generate\_changelogコマンドで作成されたCHANGELOG.\\rstを更新するとき使用されるコマンドである。
 
@@ -1301,6 +1325,7 @@ catkin\_generate\_changelogとcatkin\_prepare\_releaseコマンドは、作成�
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_init\_workspace：catkinビルドシステムの作業フォルダの初期化}
+\index{catkin\_init\_workspace}
 
 catkin\_init\_workspaceはユーザーの作業フォルダ（~/catkin\_ws/src）の初期化コマンドである。
 
@@ -1317,6 +1342,7 @@ $ catkin_init_workspace
 
 %-------------------------------------------------------------------------------
 \subsection{catkin\_find：ワークスペースの検索}
+\index{catkin\_find}
 
 catkin\_findはプロジェクト毎に作業フォルダを表示するコマンドである。
 
@@ -1346,7 +1372,9 @@ $ catkin_find turtlesim
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\section{ROSパッケージコマンド}\index{ROSパッケージコマンド}
+\section{ROSパッケージコマンド}
+\index{コマンド}
+
 ROS パッケージは、パッケージの情報表示や関連パッケージのインストールなど、ROSのパッケージ操作に使用される。
 
 \vspace{\baselineskip}
@@ -1362,6 +1390,7 @@ ROS パッケージは、パッケージの情報表示や関連パッケージ�
 
 %-------------------------------------------------------------------------------
 \subsection{rospack：指定したROSパッケージに関連する情報を表示}
+\index{rospack}\index{パッケージ}\index{Package}
 
 rospackは指定したROSパッケージに関連する保存先、依存関係、全パッケージのリストなどの情報を表示するコマンドである。
 
@@ -1449,6 +1478,7 @@ To get just of list of directories without manifests, re-run the profile with --
 
 %-------------------------------------------------------------------------------
 \subsection{rosinstall：ROS追加パッケージの自動インストール}
+\index{rosinstall}\index{インストール}\index{Install}
 
 rosinstallは、SVN, Mercurial, git, Bazaarなどの様々なソース・コード・マネージメント（SCM）で管理されているROSのパッケージを、自動的にインストールあるいはアップデートするコマンドである。
 
@@ -1460,6 +1490,7 @@ rosinstallは、SVN, Mercurial, git, Bazaarなどの様々なソース・コー�
 
 %-------------------------------------------------------------------------------
 \subsection{rosdep：ROSパッケージの依存関係ファイルのインストール}
+\index{rosdep}
 
 rosdepは指定したパッケージの依存関係ファイルをインストールするコマンドである。
 
@@ -1483,6 +1514,7 @@ All required rosdeps installed successfully
 
 %-------------------------------------------------------------------------------
 \subsection{roslocate：ROSパッケージの情報表示}
+\index{roslocate}
 
 roslocateは、パッケージが使用しているROSのバージョン、SCMの種類、レポジトリ先など、パッケージに関連した情報を表示するコマンドである。
 
@@ -1503,6 +1535,7 @@ Using ROS_DISTRO: indigo
 
 %-------------------------------------------------------------------------------
 \subsection{roscreate-pkg：ROSパッケージの自動生成（旧rosbuildシステムで使用）}
+\index{rosbuild}
 
 roscreate-pkgはcatkin\_create\_pkgコマンドと同様にパッケージを自動生成するコマンドである。
 
@@ -1513,6 +1546,7 @@ catkinビルドシステム以前のrosbuildシステムのためのコマンド
 
 %-------------------------------------------------------------------------------
 \subsection{rosmake：ROSパッケージをビルド（旧rosbuildシステムで使用）}
+\index{rosmake}
 
 rosmakeは「catkin\_make」と同様にパッケージをビルドするコマンドである。
 
