@@ -52,26 +52,10 @@
 \begingroup
 \thispagestyle{empty}
 \AddToShipoutPicture*{\put(6,5){\includegraphics[scale=1]{cover}}} % Image background
+
 \centering
-\vspace*{3cm}
-
-\begin{figure}[htp]
-\centering\hspace{30pt}\includegraphics[scale=0.05]{turtle}
-\end{figure}
-
-\vspace*{1cm}
-\par\normalfont\fontsize{35}{35}\sffamily\selectfont
-詳説 ROS\\% Book title
-ロボットプログラミング\\% Book title
-{\LARGE \textit{- 導入からSLAM・Gazebo・MoveItまで -}}\par
-\vspace*{5cm}
-{\Large 表　允晳, 倉爪　亮, 渡邊　裕太}\\
-\vspace*{-0.5cm}
-{\Large Yoonseok Pyo, Ryo Kurazume, Yuta Watanabe}\\
-\vspace*{1cm}
-{\Large Laboratory For Intelligent Robots \& Vision System\\Kyushu University}\\
-\vspace*{2cm}
-{\large (Ver 0.9.0, 2015-11-26)}\\ % Printing/edition date
+~\vfill
+\large{(Ver 0.9.1, 2015-11-27)} \\ % Printing/edition date
 \endgroup
 
 %-------------------------------------------------------------------------------
@@ -91,11 +75,11 @@
 \item 出版社：Kurazume Laboratory (出版者記号 9908736)
 \item ISBNコード：9784990873608
 \item フォーマット：PDF版（無料公開）
-\item ページ数：278p
+\item ページ数：281p
 \item サイズ：A4
 \end{itemize}
 \vspace*{1cm}
-% \noindent \textit{Ver 0.9.0, \today}\\ % Printing/edition date
+
 
 \noindent{\LARGE [ライセンス]}\\
 \begin{figure}[htp]
@@ -113,10 +97,6 @@
 Free Turtle Pattern By freecooldesign (www.freecooldesign.com)\\
 License: CC BY-NC 3.0\\
 
-\noindent Turtle image of cover page\\
-By Nemo (http://pixabay.com/en/turtle-green-shell-animal-reptile-304427/)\\
-License : CC0 Public Domain\\
-
 \noindent LaTeX template ``The Legrand Orange Book'' made by LaTeXTemplates.com\\
 Original author (LaTeX template): Mathias Legrand (legrand.mathias@gmail.com)\\
 License: CC BY-NC-SA 3.0\\
@@ -130,7 +110,7 @@ License: CC BY-NC-SA 3.0\\
 \thispagestyle{empty}
 
 \noindent{\LARGE [著者プロフィール]}\\
-
+\vspace*{1cm}
 \noindent{\Large 表　允晳 ( Yoonseok Pyo )\\
 \noindent\rule{7cm}{1pt}\\
 \normalsize
@@ -145,6 +125,11 @@ License: CC BY-NC-SA 3.0\\
 \noindent\rule{7cm}{1pt}\\
 \normalsize
 2015年九州大学工学部電気情報工学科卒業．現在九州大学大学院システム情報科学府在学中．環境構造化の研究に従事.\\
+
+%-------------------------------------------------------------------------------
+% INTRO
+%-------------------------------------------------------------------------------
+\input{intro}
 
 %-------------------------------------------------------------------------------
 % TABLE OF CONTENTS
@@ -171,7 +156,6 @@ License: CC BY-NC-SA 3.0\\
 \input{chapter9}
 \input{chapter10}
 \input{chapter11}
-\input{end}
 
 %----------------------------------------------------------------------------------------
 % BIBLIOGRAPHY
@@ -192,7 +176,7 @@ License: CC BY-NC-SA 3.0\\
 
 \cleardoublepage
 \phantomsection
-% \setlength{\columnsep}{0.75cm}
+\setlength{\columnsep}{0.75cm}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
 \printindex
 

@@ -3,7 +3,8 @@
 \chapterimage{chapter_head_2.pdf}
 
 %-------------------------------------------------------------------------------
-\chapter{ROS のインストール}
+\chapter{ROSのインストール}
+\index{Install}\index{Indigo Igloo}
 
 1章で述べたように、ROSは多くのオペレーティングシステムで動作する。しかし、Ubuntu以外のOSは実験的な提供(Experimental)とされており、公式にはサポートされていない。そこで本書では、操作性や導入のしやすさから、UbuntuにインストールされたROSの使用を前提とする。本書で利用するROSの開発環境は、次の通りである。
 
@@ -22,10 +23,11 @@
 \end{figure}
 
 %-------------------------------------------------------------------------------
-\section{ROS Indigo のインストール}\index{ROS Indigo のインストール}
+\section{ROS Indigoのインストール}
 
 %-------------------------------------------------------------------------------
-\subsection{ROS Indigo の一般的なインストール方法}\index{ROS Indigo の一般的なインストール方法}
+\subsection{ROS Indigoの一般的なインストール方法}
+\index{インストール}\index{Install}\index{Indigo Igloo}
 
 まずROS Indigoのインストール方法について説明する。ただし、以下のインストール手順の説明に登場するソースリストやキーのアドレスは，OSRF財団の運営方針が変わると変更される場合もある。その時は\footnote{\url{http://wiki.ros.org/indigo/Installation/Ubuntu}}のWikiサイトを参照してほしい。
 
@@ -37,6 +39,8 @@
 \end{exercise}
 
 \subsubsection{NTP(Network Time Protocol) 設定}
+\index{NTP}
+
 ROSの公式な設定項目には含まれてないが、本書では複数のPCでROSを利用することを想定し、NTPの設定を行う。NTPはネットワーク上のPCで時刻同期を行うものである\footnote{\url{http://wiki.ros.org/ROS/NetworkSetup}} 。ROSの基準時間であるROS Timeが各PC間で異なっていると、通信処理に問題が生じるため、以下の2つのコマンドで各PC間のROS Timeを揃える。まず、最初の行のapt-getコマンドでchronyをインストールした後、次の行のntpdateコマンドでntpサーバをntp.ubuntu.com等に指定する。
 
 \begin{lstlisting}[language=ROS]
@@ -55,6 +59,7 @@ $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) ma
 \end{lstlisting}
 
 \subsubsection{キーの設定}
+\index{キー}\index{ros.key}
 
 ROSリポジトリからパッケージをダウンロードするために公開鍵を追加する。次のように入力する。
 
@@ -64,6 +69,7 @@ $ wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sud
 \end{lstlisting}
 
 \subsubsection{パッケージインデックスの更新}
+\index{update}\index{upgrade}
 
 ソースリストにROSリポジトリアドレスを追加したので、以下のコマンドでパッケージリストをアップデートする。必須ではないが、ROSのインストール前に、インストール済みのUbuntu関連の全てのパッケージを最新のものにしておくとよい。
 
@@ -73,6 +79,7 @@ $ sudo apt-get update && sudo apt-get upgrade
 \end{lstlisting}
 
 \subsubsection{ROS Indigo Iglooのインストール}
+\index{Indigo Igloo}
 
 次のコマンドで、デスクトップ用の基本的なROSパッケージをインストールする。ここには、ROS、rqt、RViz、モデルや位置推定などのロボット関連のライブラリ、シミュレーション、ナビゲーションなどが含まれる。rqtとは、標準的なグラフィカルユーザインタフェースであるQTを利用したROS GUI開発ツールであり、RVizはROS標準の3次元可視化ツールである。これらは5章でより詳細に取り上げる。
 
@@ -121,6 +128,7 @@ source /opt/ros/indigo/setup.bash
 \end{exercise}
 
 \subsubsection{rosdepの初期化}
+\index{rosdep}
 ROSをインストールした後は、一度rosdepを初期化する必要がある。rosdepとは、rosの主要コンポーネントの使用時、もしくはコンパイル時に、依存関係にあるパッケージのインストールを容易にするツールである。
 
 \begin{lstlisting}[language=ROS]
@@ -129,6 +137,7 @@ $ rosdep update
 \end{lstlisting}
 
 \subsubsection{rosinstallのインストール}
+\index{rosinstall}
 続いて、ROSの様々なパッケージを容易にインストールするためのプログラムであるrosinstallをインストールしよう。必須ではないが、使用頻度が高く便利なツールであることから、本書ではrosintallのインストールを推奨する。
 
 \begin{lstlisting}[language=ROS]
@@ -136,6 +145,7 @@ $ sudo apt-get install python-rosinstall
 \end{lstlisting}
 
 \subsubsection{環境設定ファイルのロード}
+\index{setup.bash}
 
 環境設定ファイルをロードする。 ファイルにはROS\_ROOT、ROS\_PACKAGE\_PATHなどの環境変数が定義されている。
 
@@ -144,6 +154,7 @@ $ source /opt/ros/indigo/setup.bash
 \end{lstlisting}
 
 \subsubsection{作業フォルダの作成と初期化}
+\index{catkin\_init\_workspace}
 
 ROSはcatkinというROS専用ビルドシステムを使用している。これを使用するには、次のコマンドでcatkin作業フォルダを作成し、作業フォルダ内の初期化を行う必要がある。この設定はROSインストールの後に一度だけ行えばよい。
 
@@ -175,6 +186,7 @@ $ source ~/catkin_ws/devel/setup.bash
 \end{lstlisting}
 
 \subsubsection{テスト}
+\index{Test}
 これで、ROSのインストールがすべて終了した。正しくインストールされたかを確認するため、一度すべてのターミナルウィンドウを閉じて、新しいターミナルウィンドウを開き、次のコマンドを入力してroscoreを実行してみよう。
 
 \begin{lstlisting}[language=ROS]
@@ -215,7 +227,8 @@ started core service [/rosout]
 ROSを終了するには、<Ctrl>+<c>を押す。
 
 %-------------------------------------------------------------------------------
-\subsection{ROS Indigo の簡単インストール}\index{ROS Indigo の簡単インストール}
+\subsection{ROS Indigoの簡単インストール}
+\index{インストール}\index{Install}\index{Indigo Igloo}
 
 2.1.1項ではROS標準のインストール方法について説明したが、Ubuntuのバージョンが13.10か14.04であれば、前述したROSのインストールを自動的に実行するスクリプトを準備した。これを利用すれば、容易にROSをインストールできる。
 ※ただし、インストールできるROSのバージョンはIndigoのみである。
@@ -226,10 +239,11 @@ $ sh ros_indigo_install.sh
 \end{lstlisting}
 
 %-------------------------------------------------------------------------------
-\section{ROS の開発環境の構築}\index{ROS の開発環境の構築}
+\section{ROSの開発環境の構築}
 
 %-------------------------------------------------------------------------------
-\subsection{ROS の環境設定}\index{ROS の環境設定}
+\subsection{ROSの環境設定}
+\index{環境設定}\index{setup.bash}\index{bashrc}
 
 ここまででROSがインストールできたので、次にROSが実行できるようにUbuntuの環境設定を行う。以下に示す手順で環境設定を行わない場合、ROSのインストールの途中で行った環境設定ファイルの読み込みは、新しいターミナルウィンドウを開く度に、次のコマンドにより行わなければならない。
 
@@ -275,7 +289,8 @@ $ source ~/.bashrc
 「.bashrc」ファイルで、「＃」で始まる行はコメント行であり、設定に影響を与えない。追加部分の2行目の「source /opt/ros/indigo/setup.bash」と3行目の「source ~/catkin\_ws/devel/setup.bash」を設定することで、ターミナル起動時にROSの環境設定ファイルが読み込まれる。
 
 %-------------------------------------------------------------------------------
-\subsubsection{ROSネットワーク設定}
+\subsubsection{ネットワーク設定}
+\index{ROS\_HOSTNAME}\index{ROS\_MASTER\_URI}
 
 「.bashrc」の追加部分の6～7行目はROSネットワークに関する記述であり、ROS\_MAS TER\_URIとROS\_HOSTNAMEを設定する意味をもつ。ROSはTCP/IPネットワークを利用した通信を行うため、この設定は極めて重要である。現段階では、どちらも使用しているPCのIPアドレスを入力すれば良い。今後、ROSネットワーク全体を統括するPC（マスターPC、roscoreを起動するPC）が一台だけ別にあり、複数台のロボットでそれぞれマスターPCとは異なるPC（ホストPC）を使用する場合、これらを分けて入力すると、異なるPC間で通信が可能になる。次に、マスターPC、ホストPCともに現在使用しているPCであり、このPCのIPアドレスが192.168.4.100である場合の設定例を示す。
 
@@ -304,6 +319,7 @@ export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
 
 %-------------------------------------------------------------------------------
 \subsubsection{短縮コマンドの設定}
+\index{bashrc}
 
 前掲の「.bashrc」の追加部分の10～12行目からは、ROSの開発作業で頻繁に使用するコマンドの短縮形を設定している。
 
@@ -330,7 +346,8 @@ export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
 
 
 %-------------------------------------------------------------------------------
-\subsection{ROSの動作テスト}\index{ROSの動作テスト}
+\subsection{ROSの動作テスト}
+\index{動作テスト}\index{Test}
 
 ROSをインストールした後、正常に動作するかを確認するために、ROSが提供する簡単なノード（☞用語集P.XXX）の実行方法について説明する。使用するのはturtlesimというパッケージで、これは、ROSのシンボルである亀が画面に表示され、キーボード操作によって移動するプログラムである。
 
@@ -351,6 +368,7 @@ $ roscore
 
 %-------------------------------------------------------------------------------
 \subsubsection{turtlesimパッケージのturtlesim\_nodeの実行}
+\index{turtlesim}
 
 新しいターミナルウィンドウを開いて、次のコマンドを実行する。
 

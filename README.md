@@ -6,7 +6,7 @@
 - 出版社：Kurazume Laboratory (出版者記号 9908736)
 - ISBNコード：9784990873608
 - フォーマット：PDF版（無料公開）
-- ページ数：278p
+- ページ数：281p
 - サイズ：A4
 
 # ダウンロード
@@ -33,7 +33,7 @@
   month     = {11},
   year      = {2015},
   publisher = {Kurazume Laboratory},
-  totalpages= {300},
+  totalpages= {281},
   isbn      = {9784990873608},
   url       = {\url{https://github.com/irvs/rosbook_jp}}
 }
@@ -51,10 +51,6 @@
 ### Background images of cover page and chapter head image
 - By freecooldesign (www.freecooldesign.com)
 - License: CC BY-NC 3.0
-
-### Turtle image of cover page
-- By Nemo (http://pixabay.com/en/turtle-green-shell-animal-reptile-304427/)
-- License : CC0 Public Domain
 
 ### LaTeX template
 - LaTeX template ‘‘The Legrand Orange Book’’ made by LaTeXTemplates.com
