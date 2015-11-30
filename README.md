@@ -1,7 +1,7 @@
 # 本の紹介
 - タイトル： 詳説　ROSロボットプログラミング
 - 副題：- 導入からSLAM・Gazebo・MoveItまで -
-- 著者：表 允晳, 倉爪 亮, 渡邊 裕太
+- 著者：[表 允晳](http://robotpilot.net/), [倉爪 亮](http://robotics.ait.kyushu-u.ac.jp/~kurazume/), 渡邊 裕太
 - 出版日：2015年 11月 30日（初版）
 - 出版社：Kurazume Laboratory (出版者記号 9908736)
 - ISBNコード：9784990873608
@@ -10,7 +10,7 @@
 - サイズ：A4
 
 # ダウンロード
-- [Direct download link (Version 1.0.0)](https://raw.githubusercontent.com/irvs/rosbook_jp/master/release/ROSBOOK_JP_V1.0.0.pdf)
+- [Direct download link (Version 1.0.0 / 2015-11-30)](https://raw.githubusercontent.com/irvs/rosbook_jp/master/release/ROSBOOK_JP_V1.0.0.pdf)
 
 # 主な内容
 1. ROS入門
