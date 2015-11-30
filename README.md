@@ -11,6 +11,7 @@
 
 # ダウンロード
 - 準備中（予定日：2015年 11月 30日）
+- [Direct download link (Version 1.0.0)](https://raw.githubusercontent.com/irvs/rosbook_jp/master/release/ROSBOOK_JP_V0.9.0.pdf)
 
 # 主な内容
 1. ROS入門
