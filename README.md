@@ -29,7 +29,7 @@
 ```bib
 @book{pyo2015ros,
   title     = {ROS Robot Programming},
-  author    = {Yoonseok Pyo, Ryo Kurazume, Yuta Watanabe},
+  author    = {Yoonseok Pyo, Ryo Kurazume, Yuuta Watanabe},
   month     = {11},
   year      = {2015},
   publisher = {Kurazume Laboratory},
