@@ -46,7 +46,7 @@
 
 # Licenses
 ### Book
-- この作品はクリエイティブ・コモンズ・表示 - 非営利 4.0 国際・ライセンスで提供されています。このライセンスのコピーを閲覧するには、http://creativecommons.org/licenses/by-nc/4.0/ を訪問して下さい。(This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.)
+- 本書はクリエイティブ・コモンズ・表示 - 非営利 4.0 国際・ライセンスで提供されています。詳しくは、http://creativecommons.org/licenses/by-nc/4.0/deed.ja を参照して下さい。(This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.)
 
 ### Background images of cover page and chapter head image
 - By freecooldesign (www.freecooldesign.com)
